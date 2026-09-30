@@ -1,0 +1,194 @@
+{
+ "dogs": [
+  {
+   "id": "caramelo",
+   "esp": "Cachorro",
+   "mod": "Módulo I",
+   "nome": "Caramelo",
+   "sexo": "Macho",
+   "idade": "cerca de 4 anos",
+   "status": "Comunitário",
+   "local": "Em frente ao pavilhão de aulas",
+   "coat": "#c98a4b",
+   "ear": "#a26a33",
+   "bg": "#e9d9b8",
+   "hist": "Chegou ao campus como filhote, seguindo um grupo de estudantes. Hoje é o recepcionista não oficial do pavilhão: acompanha quem chega e se despede de quem sai.",
+   "pers": [
+    "Sociável",
+    "Calmo",
+    "Adora petiscos"
+   ],
+   "car": "Pelagem caramelo, porte médio, orelha esquerda levemente caída."
+  },
+  {
+   "id": "jujuba",
+   "esp": "Cachorro",
+   "mod": "Biblioteca",
+   "nome": "Jujuba",
+   "sexo": "Fêmea",
+   "idade": "cerca de 1 ano",
+   "status": "Em adoção",
+   "local": "Biblioteca central",
+   "coat": "#2c2a29",
+   "ear": "#1a1918",
+   "bg": "#cfe0d6",
+   "hist": "Resgatada perto da biblioteca, já castrada e vacinada. Procura uma família com quintal ou muita disposição para caminhadas.",
+   "pers": [
+    "Brincalhona",
+    "Esperta",
+    "Energética"
+   ],
+   "car": "Pelo preto curto, peito branco, porte pequeno a médio."
+  },
+  {
+   "id": "pipoca",
+   "esp": "Cachorro",
+   "mod": "Restaurante Universitário",
+   "nome": "Pipoca",
+   "sexo": "Fêmea",
+   "idade": "cerca de 6 anos",
+   "status": "Comunitária",
+   "local": "Restaurante universitário",
+   "coat": "#ece3cf",
+   "ear": "#cdbf9f",
+   "bg": "#d9e2f2",
+   "hist": "Uma das moradoras mais antigas do campus. Conhece o horário do almoço melhor que muitos professores.",
+   "pers": [
+    "Tranquila",
+    "Carinhosa",
+    "Independente"
+   ],
+   "car": "Pelagem creme clara, focinho rosado, porte médio."
+  },
+  {
+   "id": "thor",
+   "esp": "Cachorro",
+   "mod": "Estacionamento",
+   "nome": "Thor",
+   "sexo": "Macho",
+   "idade": "cerca de 3 anos",
+   "status": "Adotado",
+   "local": "Antigo ponto: estacionamento",
+   "coat": "#6d5844",
+   "ear": "#3f3226",
+   "bg": "#e7d6d6",
+   "hist": "Foi adotado por uma técnica do campus e agora passeia de coleira. Continua visitando os amigos de vez em quando.",
+   "pers": [
+    "Protetor",
+    "Leal",
+    "Curioso"
+   ],
+   "car": "Pelagem marrom escura, porte grande."
+  },
+  {
+   "id": "mel",
+   "esp": "Cachorro",
+   "mod": "Módulo III",
+   "nome": "Mel",
+   "sexo": "Fêmea",
+   "idade": "cerca de 2 anos",
+   "status": "Em adoção",
+   "local": "Bloco de Ciências Biológicas",
+   "coat": "#d9a441",
+   "ear": "#b07f25",
+   "bg": "#dbe8d3",
+   "hist": "Acompanhou os estudantes de biologia durante um semestre inteiro. Dócil com crianças e com outros cães.",
+   "pers": [
+    "Dócil",
+    "Afetuosa",
+    "Sociável"
+   ],
+   "car": "Pelagem dourada, porte médio, olhos claros."
+  },
+  {
+   "id": "bolinha",
+   "esp": "Cachorro",
+   "mod": "Quadra",
+   "nome": "Bolinha",
+   "sexo": "Macho",
+   "idade": "cerca de 8 anos",
+   "status": "Comunitário",
+   "local": "Quadra poliesportiva",
+   "coat": "#9b9b98",
+   "ear": "#6f6f6c",
+   "bg": "#e3e0ef",
+   "hist": "Veterano do campus. Gosta de sombra, de carinho na cabeça e de assistir aos treinos de longe.",
+   "pers": [
+    "Sossegado",
+    "Idoso",
+    "Paciente"
+   ],
+   "car": "Pelagem cinza, porte pequeno, focinho já grisalho."
+  },
+  {
+   "id": "zeca",
+   "esp": "Cachorro",
+   "mod": "Portaria",
+   "nome": "Zeca",
+   "sexo": "Macho",
+   "idade": "cerca de 2 anos",
+   "status": "Adotado",
+   "local": "Antigo ponto: portaria",
+   "coat": "#f2f0ea",
+   "ear": "#2c2a29",
+   "bg": "#cfdde0",
+   "hist": "Adotado por um estudante de veterinária. Deixou saudade na portaria e uma foto na parede da secretaria.",
+   "pers": [
+    "Esperto",
+    "Brincalhão",
+    "Apegado"
+   ],
+   "car": "Branco com manchas pretas nas orelhas."
+  },
+  {
+   "id": "mingau",
+   "esp": "Gato",
+   "mod": "Módulo II",
+   "nome": "Mingau",
+   "sexo": "Macho",
+   "idade": "cerca de 3 anos",
+   "status": "Comunitário",
+   "local": "Jardim entre os módulos",
+   "coat": "#e8b77a",
+   "ear": "#c08a4d",
+   "bg": "#dde6dc",
+   "hist": "Dorme nos bancos do jardim e aparece quando alguém abre um pacote de biscoito. Já é figura conhecida dos corredores.",
+   "pers": [
+    "Independente",
+    "Dorminhoco",
+    "Carinhoso"
+   ],
+   "car": "Laranja, rabo comprido, olhos verdes."
+  },
+  {
+   "id": "a1790801497078",
+   "esp": "Cachorro",
+   "mod": "Módulo I",
+   "nome": "Serena",
+   "sexo": "Macho",
+   "idade": "2",
+   "status": "Comunitário",
+   "local": "Módulo I",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": "",
+   "foto": [
+    "fotos/a1790801497078-muolrtek0.jpg"
+   ],
+   "fotoCred": [
+    "luna"
+   ]
+  }
+ ],
+ "locs": [],
+ "vol": [
+  {
+   "id": "v1790800150469",
+   "nome": "David Matos Ferreira",
+   "papel": "ADM da página 🐶"
+  }
+ ]
+}
