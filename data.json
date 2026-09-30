@@ -161,28 +161,6 @@
    "car": "Laranja, rabo comprido, olhos verdes."
   },
   {
-   "id": "a1790802902704",
-   "esp": "Cachorro",
-   "mod": "Módulo I",
-   "nome": "serena",
-   "sexo": "Macho",
-   "idade": "2",
-   "status": "Comunitário",
-   "local": "Módulo I",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [],
-   "car": "",
-   "foto": [
-    "fotos/a1790802902704-muolt89y0.jpg"
-   ],
-   "fotoCred": [
-    "luna"
-   ]
-  },
-  {
    "id": "a1790800495807",
    "esp": "Cachorro",
    "mod": "Canil da UESB",
