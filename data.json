@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "thor",
-   "esp": "Cachorro",
-   "mod": "Estacionamento",
-   "nome": "Thor",
-   "sexo": "Macho",
-   "idade": "cerca de 3 anos",
-   "status": "Adotado",
-   "local": "Antigo ponto: estacionamento",
-   "coat": "#6d5844",
-   "ear": "#3f3226",
-   "bg": "#e7d6d6",
-   "hist": "Foi adotado por uma técnica do campus e agora passeia de coleira. Continua visitando os amigos de vez em quando.",
-   "pers": [
-    "Protetor",
-    "Leal",
-    "Curioso"
-   ],
-   "car": "Pelagem marrom escura, porte grande."
-  },
-  {
    "id": "mel",
    "esp": "Cachorro",
    "mod": "Módulo III",
