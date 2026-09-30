@@ -81,26 +81,6 @@
    "car": "Pelagem cinza, porte pequeno, focinho já grisalho."
   },
   {
-   "id": "zeca",
-   "esp": "Cachorro",
-   "mod": "Portaria",
-   "nome": "Zeca",
-   "sexo": "Macho",
-   "idade": "cerca de 2 anos",
-   "status": "Adotado",
-   "local": "Antigo ponto: portaria",
-   "coat": "#f2f0ea",
-   "ear": "#2c2a29",
-   "bg": "#cfdde0",
-   "hist": "Adotado por um estudante de veterinária. Deixou saudade na portaria e uma foto na parede da secretaria.",
-   "pers": [
-    "Esperto",
-    "Brincalhão",
-    "Apegado"
-   ],
-   "car": "Branco com manchas pretas nas orelhas."
-  },
-  {
    "id": "mingau",
    "esp": "Gato",
    "mod": "Módulo II",
