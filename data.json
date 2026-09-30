@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "bolinha",
-   "esp": "Cachorro",
-   "mod": "Quadra",
-   "nome": "Bolinha",
-   "sexo": "Macho",
-   "idade": "cerca de 8 anos",
-   "status": "Comunitário",
-   "local": "Quadra poliesportiva",
-   "coat": "#9b9b98",
-   "ear": "#6f6f6c",
-   "bg": "#e3e0ef",
-   "hist": "Veterano do campus. Gosta de sombra, de carinho na cabeça e de assistir aos treinos de longe.",
-   "pers": [
-    "Sossegado",
-    "Idoso",
-    "Paciente"
-   ],
-   "car": "Pelagem cinza, porte pequeno, focinho já grisalho."
-  },
-  {
    "id": "a1790800495807",
    "esp": "Cachorro",
    "mod": "Canil da UESB",
