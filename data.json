@@ -81,26 +81,6 @@
    "car": "Pelagem cinza, porte pequeno, focinho já grisalho."
   },
   {
-   "id": "mingau",
-   "esp": "Gato",
-   "mod": "Módulo II",
-   "nome": "Mingau",
-   "sexo": "Macho",
-   "idade": "cerca de 3 anos",
-   "status": "Comunitário",
-   "local": "Jardim entre os módulos",
-   "coat": "#e8b77a",
-   "ear": "#c08a4d",
-   "bg": "#dde6dc",
-   "hist": "Dorme nos bancos do jardim e aparece quando alguém abre um pacote de biscoito. Já é figura conhecida dos corredores.",
-   "pers": [
-    "Independente",
-    "Dorminhoco",
-    "Carinhoso"
-   ],
-   "car": "Laranja, rabo comprido, olhos verdes."
-  },
-  {
    "id": "a1790800495807",
    "esp": "Cachorro",
    "mod": "Canil da UESB",
