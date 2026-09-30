@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "jujuba",
-   "esp": "Cachorro",
-   "mod": "Biblioteca",
-   "nome": "Jujuba",
-   "sexo": "Fêmea",
-   "idade": "cerca de 1 ano",
-   "status": "Em adoção",
-   "local": "Biblioteca central",
-   "coat": "#2c2a29",
-   "ear": "#1a1918",
-   "bg": "#cfe0d6",
-   "hist": "Resgatada perto da biblioteca, já castrada e vacinada. Procura uma família com quintal ou muita disposição para caminhadas.",
-   "pers": [
-    "Brincalhona",
-    "Esperta",
-    "Energética"
-   ],
-   "car": "Pelo preto curto, peito branco, porte pequeno a médio."
-  },
-  {
    "id": "pipoca",
    "esp": "Cachorro",
    "mod": "Restaurante Universitário",
