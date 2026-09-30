@@ -203,6 +203,28 @@
    "fotoCred": [
     "Luna, @dillua.r"
    ]
+  },
+  {
+   "id": "a1790804622019",
+   "esp": "Cachorro",
+   "mod": "Módulo I",
+   "nome": "Bob",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "local": "Módulo IV",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": "",
+   "foto": [
+    "fotos/a1790804622019-muomu3120.jpg"
+   ],
+   "fotoCred": [
+    "Gabriel Braga, @photos.gsb"
+   ]
   }
  ],
  "locs": [
