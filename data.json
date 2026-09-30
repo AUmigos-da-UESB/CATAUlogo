@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "caramelo",
-   "esp": "Cachorro",
-   "mod": "Módulo I",
-   "nome": "Caramelo",
-   "sexo": "Macho",
-   "idade": "cerca de 4 anos",
-   "status": "Comunitário",
-   "local": "Em frente ao pavilhão de aulas",
-   "coat": "#c98a4b",
-   "ear": "#a26a33",
-   "bg": "#e9d9b8",
-   "hist": "Chegou ao campus como filhote, seguindo um grupo de estudantes. Hoje é o recepcionista não oficial do pavilhão: acompanha quem chega e se despede de quem sai.",
-   "pers": [
-    "Sociável",
-    "Calmo",
-    "Adora petiscos"
-   ],
-   "car": "Pelagem caramelo, porte médio, orelha esquerda levemente caída."
-  },
-  {
    "id": "jujuba",
    "esp": "Cachorro",
    "mod": "Biblioteca",
