@@ -225,10 +225,33 @@
    "fotoCred": [
     "Luna Moura, @dillua.r"
    ]
+  },
+  {
+   "id": "a1790803645938",
+   "esp": "Gato",
+   "mod": "Lar Temporário",
+   "nome": "Tom",
+   "sexo": "Macho",
+   "idade": "Cerca de 2 anos",
+   "status": "Lar temporário",
+   "local": "Lar Temporário",
+   "coat": "#b9a58c",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": "",
+   "foto": [
+    "fotos/a1790803645938-muom95qk0.jpg"
+   ],
+   "fotoCred": [
+    "Luna, @dillua.r"
+   ]
   }
  ],
  "locs": [
-  "Canil da UESB"
+  "Canil da UESB",
+  "Lar Temporário"
  ],
  "vol": [
   {
