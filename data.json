@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "pipoca",
-   "esp": "Cachorro",
-   "mod": "Restaurante Universitário",
-   "nome": "Pipoca",
-   "sexo": "Fêmea",
-   "idade": "cerca de 6 anos",
-   "status": "Comunitária",
-   "local": "Restaurante universitário",
-   "coat": "#ece3cf",
-   "ear": "#cdbf9f",
-   "bg": "#d9e2f2",
-   "hist": "Uma das moradoras mais antigas do campus. Conhece o horário do almoço melhor que muitos professores.",
-   "pers": [
-    "Tranquila",
-    "Carinhosa",
-    "Independente"
-   ],
-   "car": "Pelagem creme clara, focinho rosado, porte médio."
-  },
-  {
    "id": "thor",
    "esp": "Cachorro",
    "mod": "Estacionamento",
