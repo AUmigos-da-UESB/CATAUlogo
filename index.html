@@ -85,6 +85,21 @@ footer{padding:32px 0;color:var(--mut);font-size:14px}
 .cr{position:absolute;right:10px;bottom:10px;background:rgba(10,18,13,.62);color:#fff;font-size:12px;padding:3px 10px;border-radius:999px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .loc{display:flex;gap:5px;align-items:center}.pin{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
+.badge.lar{background:#fbe9c4;color:#7a4e00}
+.vol{padding:8px 24px 40px}.vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}.vhead h2{font-size:clamp(26px,3.2vw,36px)}.vhead p{color:var(--mut);margin:6px 0 0}
+#vadd,.vx{display:none}.isadm #vadd{display:inline-flex}.isadm .vx{display:inline-flex}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.vc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.vc small{display:block;color:var(--mut);font-size:13px;line-height:1.3}
+.av{width:42px;height:42px;border-radius:50%;background:var(--accsoft);color:var(--acc);display:grid;place-items:center;font:700 15px "Bricolage Grotesque",sans-serif;flex:none}
+.vx{margin-left:auto;border:0;background:transparent;color:var(--mut);font-size:20px;cursor:pointer;align-items:center;padding:4px 8px}
+.dx,.dxf,.ex,.exf{display:none}
+.ex{position:absolute;top:10px;right:54px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:var(--ink);cursor:pointer;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
+.ex svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.isadm .ex{display:grid}.isadm .exf{display:inline-flex}
+.dx{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:#c0392b;cursor:pointer;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
+.dx svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.isadm .dx{display:grid}.isadm .dxf{display:inline-flex;color:#c0392b;border-color:#c0392b}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 32px)}
 .fab .btn{box-shadow:0 6px 22px rgba(0,0,0,.18)}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
@@ -101,25 +116,27 @@ dialog .full{grid-column:1/-1}
 <body>
 <header><div class="wrap">
  <a class="logo" href="#/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--acc)"/><path d="M8 11c0-3 4-3 4 1v3M24 11c0-3-4-3-4 1v3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="16" cy="18" r="6" fill="#fff"/><circle cx="14" cy="17" r="1" fill="#17231d"/><circle cx="18" cy="17" r="1" fill="#17231d"/><ellipse cx="16" cy="20" rx="1.6" ry="1.1" fill="#17231d"/></svg>AUmigos da UESB</a>
- <nav><a href="#/">Início</a><a href="#catalogo">Catálogo</a><a href="#sobre">O projeto</a><a href="#ajudar">Como ajudar</a></nav>
+ <nav><a href="#/">Início</a><a href="#catalogo">Catálogo</a><a href="#voluntarios">Voluntários</a><a href="#sobre">O projeto</a><a href="#ajudar">Como ajudar</a></nav>
  <span style="display:flex;gap:8px"><a class="btn hm" href="#ajudar">Quero ajudar</a></span>
 </div></header>
 
 <div class="fab" id="fab"><button class="btn" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
+<dialog id="vdlg"><h2 style="font-size:28px;margin-bottom:16px">Adicionar voluntário</h2><form id="vfrm" method="dialog"><label class="full">Nome<input name="nome" required></label><label class="full">Como contribui<input name="papel" placeholder="ex.: alimentação, vacinação, fotos"></label><div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="vcancel">Cancelar</button><button class="btn">Salvar voluntário</button></div></form></dialog>
+<dialog id="cdlg"><h2 style="font-size:24px;margin-bottom:6px">Cortar foto</h2><p id="cinfo" style="margin:0 0 12px;color:var(--mut);font-size:14px"></p><canvas id="cv" width="320" height="352" style="width:100%;max-width:320px;border-radius:16px;touch-action:none;cursor:grab;background:#000;display:block;margin:0 auto"></canvas><label style="margin-top:12px">Zoom<input id="czoom" type="range" min="1" max="3" step="0.01" value="1"></label><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="ccancel">Cancelar</button><button type="button" class="btn" id="cok">Usar esta parte</button></div></dialog>
 <main id="app"></main>
 
-<dialog id="dlg"><h2 style="font-size:28px;margin-bottom:16px">Adicionar animal</h2><form id="frm" method="dialog">
+<dialog id="dlg"><h2 id="dtitle" style="font-size:28px;margin-bottom:16px">Adicionar animal</h2><form id="frm" method="dialog">
 <label class="full">Nome<input name="nome" required></label>
 <label>Espécie<select name="esp"><option>Cachorro</option><option>Gato</option></select></label>
 <label>Sexo<select name="sexo"><option>Macho</option><option>Fêmea</option></select></label>
 <label>Idade aproximada<input name="idade" placeholder="ex.: cerca de 2 anos" required></label>
-<label>Status<select name="status"><option>Comunitário</option><option>Em adoção</option><option>Adotado</option></select></label>
-<label>Localização<select name="mod">${""}</select></label>
+<label>Status<select name="status"><option>Comunitário</option><option>Em adoção</option><option>Lar temporário</option><option>Adotado</option></select></label>
+<label>Localização<select name="mod"></select><button type="button" class="btn ghost" id="newloc" style="padding:6px 12px;font-size:13px;margin-top:6px;justify-self:start">+ Novo local</button></label>
 <label>Onde costuma ficar<input name="local" placeholder="ex.: perto da cantina"></label>
 <label class="full">História<textarea name="hist" rows="3"></textarea></label>
 <label>Personalidade (separe por vírgula)<input name="pers"></label>
 <label>Características<input name="car"></label>
-<div class="full" style="font-size:13px;color:var(--mut)">Fotos (até 3). Informe o nome de quem tirou cada foto: ele aparece como "Foto por Nome, 2026". Aceita JPG, PNG, WebP e RAW (Canon, Nikon, Sony, Fujifilm, Panasonic, Sigma, DNG, ProRAW, Samsung Expert RAW).</div><div class="full fr"><label>Foto 1<input name="f1" type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng"></label><label>Foto por<input name="c1" placeholder="Nome do fotógrafo(a)"></label></div><div class="full fr"><label>Foto 2<input name="f2" type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng"></label><label>Foto por<input name="c2" placeholder="Nome do fotógrafo(a)"></label></div><div class="full fr"><label>Foto 3<input name="f3" type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng"></label><label>Foto por<input name="c3" placeholder="Nome do fotógrafo(a)"></label></div>
+<div class="full" style="font-size:13px;color:var(--mut)"><b>Tamanho recomendado: 1000 × 1100 px (mínimo 800 × 880), proporção 10:11</b>, quase quadrada e levemente vertical. Se a foto tiver outra proporção, você corta aqui mesmo antes de salvar. Até 6 fotos. Informe o nome de quem tirou cada foto: ele aparece como "Foto por Nome, 2026". Aceita JPG, PNG, WebP e RAW (Canon, Nikon, Sony, Fujifilm, Panasonic, Sigma, DNG, ProRAW, Samsung Expert RAW).</div><div class="full" id="slots" style="display:grid;gap:8px"></div><div class="full"><button type="button" class="btn ghost" id="addslot" style="padding:8px 16px;font-size:14px">+ Adicionar outra foto</button></div>
 <div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" id="save">Salvar animal</button></div></form></dialog>
 <script>
 const DOGS=[
@@ -133,8 +150,15 @@ const DOGS=[
 {id:"zeca",esp:"Cachorro",mod:"Portaria",nome:"Zeca",sexo:"Macho",idade:"cerca de 2 anos",status:"Adotado",local:"Antigo ponto: portaria",coat:"#f2f0ea",ear:"#2c2a29",bg:"#cfdde0",hist:"Adotado por um estudante de veterinária. Deixou saudade na portaria e uma foto na parede da secretaria.",pers:["Esperto","Brincalhão","Apegado"],car:"Branco com manchas pretas nas orelhas."},
 {id:"mingau",esp:"Gato",mod:"Módulo II",nome:"Mingau",sexo:"Macho",idade:"cerca de 3 anos",status:"Comunitário",local:"Jardim entre os módulos",coat:"#e8b77a",ear:"#c08a4d",bg:"#dde6dc",hist:"Dorme nos bancos do jardim e aparece quando alguém abre um pacote de biscoito. Já é figura conhecida dos corredores.",pers:["Independente","Dorminhoco","Carinhoso"],car:"Laranja, rabo comprido, olhos verdes."}
 ];
+const BASE=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
 const MODS=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
 let admin=false;try{admin=localStorage.auu_admin==="1";JSON.parse(localStorage.auu_extras||"[]").forEach(x=>DOGS.push(x))}catch(e){}
+try{JSON.parse(localStorage.auu_locs||"[]").forEach(l=>MODS.splice(MODS.length-1,0,l))}catch(e){}
+let DEL=[];try{DEL=JSON.parse(localStorage.auu_del||"[]")}catch(e){}
+for(let i=DOGS.length-1;i>=0;i--)if(DEL.includes(DOGS[i].id))DOGS.splice(i,1);
+let EDITS={};try{EDITS=JSON.parse(localStorage.auu_edits||"{}")}catch(e){}
+DOGS.forEach((d,i)=>{if(EDITS[d.id])DOGS[i]=EDITS[d.id]});
+let VOL=[];try{VOL=JSON.parse(localStorage.auu_vol||"[]")}catch(e){}
 const ico=e=>e==="Gato"?`<span class="sp" title="Gato"><svg viewBox="0 0 24 24"><path d="M5 9V4l4 3h6l4-3v5c1 2 1 4 0 6-2 4-12 4-14 0-1-2-1-4 0-6z"/><path d="M9.5 13h.01M14.5 13h.01M10 16.5c1 .7 3 .7 4 0"/></svg>Gato</span>`:`<span class="sp" title="Cachorro"><svg viewBox="0 0 24 24"><path d="M7 6C4 5 3 9 4 13l3-1M17 6c3-1 4 3 3 7l-3-1"/><path d="M7 6h10l1 7c0 4-3 7-6 7s-6-3-6-7z"/><path d="M9.5 12h.01M14.5 12h.01M10.5 16c.8.6 2.2.6 3 0"/></svg>Cachorro</span>`;
 const pin=`<svg class="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>`;
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -144,18 +168,18 @@ function art(d,v=0){
  const bgs=[d.bg,"#e9ecdf","#d9dff0"],dx=[0,-18,16][v],tilt=[0,-6,7][v];
  return `<svg viewBox="0 0 400 440" role="img" aria-label="Ilustração provisória de ${esc(d.nome)}"><rect width="400" height="440" fill="${bgs[v]}"/><ellipse cx="200" cy="470" rx="200" ry="120" fill="${d.coat}" opacity=".9"/><g transform="translate(${dx} 0) rotate(${tilt} 200 260)">${d.esp==="Gato"?`<path d="M114 60l-16 120 88-46zM286 60l16 120-88-46z" fill="${d.ear}"/><ellipse cx="200" cy="220" rx="102" ry="92" fill="${d.coat}"/><path d="M60 250l80 6M60 280l80-12M340 250l-80 6M340 280l-80-12" stroke="#17231d" stroke-width="3" opacity=".5"/>`:`<path d="M112 130c-46 0-56 88-34 130 20 10 50-20 56-70zM288 130c46 0 56 88 34 130-20 10-50-20-56-70z" fill="${d.ear}"/><ellipse cx="200" cy="215" rx="98" ry="104" fill="${d.coat}"/>`}<ellipse cx="200" cy="262" rx="52" ry="42" fill="#fff" opacity=".28"/><circle cx="160" cy="200" r="12" fill="#17231d"/><circle cx="240" cy="200" r="12" fill="#17231d"/><circle cx="164" cy="196" r="3.5" fill="#fff"/><circle cx="244" cy="196" r="3.5" fill="#fff"/><ellipse cx="200" cy="250" rx="19" ry="14" fill="#17231d"/><path d="M200 264v14M182 282c10 8 26 8 36 0" stroke="#17231d" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>`;
 }
-const cls=s=>s==="Em adoção"?"badge adocao":"badge";
+const cls=s=>s==="Em adoção"?"badge adocao":s==="Lar temporário"?"badge lar":"badge";
 let filtro="Todos",busca="";
-const FILTROS=["Todos","Machos","Fêmeas","Comunitários","Em adoção","Adotados","Cachorros","Gatos"];
+const FILTROS=["Todos","Machos","Fêmeas","Comunitários","Em adoção","Lar temporário","Adotados","Cachorros","Gatos"];
 let loc="Todos os locais";
 function passa(d){
- const f={"Todos":1,"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":d.status.startsWith("Comunit"),"Em adoção":d.status==="Em adoção","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato"}[filtro];
+ const f={"Todos":1,"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":d.status.startsWith("Comunit"),"Em adoção":d.status==="Em adoção","Lar temporário":d.status==="Lar temporário","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato"}[filtro];
  if(loc!=="Todos os locais"&&d.mod!==loc)return false;
  return f&&d.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(busca.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim());
 }
 function lista(){
  const r=DOGS.filter(passa);
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}</div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -175,6 +199,7 @@ function home(){
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${f===filtro}" data-f="${f}">${f}</button>`).join("")}</div>
   <div class="row"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select></div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
+<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>Voluntários do AmigoPet</h2><p>Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.</p></div><button class="btn" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
  <h2>Cuidar também é documentar</h2>
  <p style="margin-top:18px">O AUmigos da UESB é o catálogo dos cães e gatos que vivem ou circulam pelo campus: quem são, onde ficam, como estão e quais procuram um lar. Cada ficha é atualizada por estudantes e voluntários.</p>
@@ -192,18 +217,18 @@ function home(){
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
- lista();links();
+ lista();links();renderVol();rAdm();
 }
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
  document.getElementById("app").innerHTML=`<div class="wrap"><a class="back" href="#catalogo">← Voltar ao catálogo</a>
- <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${[0,1,2].map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}">${art(d,i)}</button>`).join("")}</div></div>
+ <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}">${art(d,i)}</button>`).join("")}</div></div>
  <div><span class="${cls(d.status)}">${d.status}</span><h1>${esc(d.nome)}</h1><p class="sub">${d.sexo} · ${d.idade}</p>
  <div class="kv"><div><small>Localização</small>${esc(d.mod)}</div><div><small>Onde costuma ficar</small>${esc(d.local)}</div><div><small>Espécie</small>${d.esp}</div><div><small>Status</small>${d.status}</div></div>
  <h3>História</h3><p style="margin:0;color:var(--mut)">${esc(d.hist)}</p>
  <h3>Personalidade</h3><div class="traits">${d.pers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>
  <h3>Características</h3><p style="margin:0;color:var(--mut)">${esc(d.car)}</p>
- <p style="margin-top:26px"><a class="btn" href="#ajudar" onclick="setTimeout(()=>location.hash='#/',0)">${d.status==="Em adoção"?"Quero adotar "+esc(d.nome):"Como ajudar"}</a></p>
+ <p style="margin-top:26px"><a class="btn" href="#ajudar" onclick="setTimeout(()=>location.hash='#/',0)">${d.status==="Em adoção"?"Quero adotar "+esc(d.nome):"Como ajudar"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></p>
  </div></article></div>`;
  document.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{document.getElementById("main").innerHTML=art(d,+b.dataset.i)+ico(d.esp);document.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b))});
  scrollTo(0,0);
@@ -215,7 +240,7 @@ function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);m?ficha(m[1]):home
 const SOCIAL={ig:"https://www.instagram.com/",fb:"https://www.facebook.com/"}; // coloque aqui os links reais do AmigoPet
 const ADMIN_PIN="uesb2026"; // troque antes de publicar
 function links(){const a=document.getElementById("lig"),b=document.getElementById("lfb");if(a)a.href=SOCIAL.ig;if(b)b.href=SOCIAL.fb}
-function rAdm(){const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display=admin?"inline-flex":"none";if(b)b.textContent=admin?"Sair do admin":"Admin"}
+function rAdm(){document.body.classList.toggle("isadm",admin);const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display=admin?"inline-flex":"none";if(b)b.textContent=admin?"Sair do admin":"Admin"}
 document.addEventListener("click",e=>{if(e.target.closest("#fadd")){abrirForm();return}if(!e.target.closest("#fadm"))return;
  if(admin){admin=false;try{localStorage.auu_admin="0"}catch(e){}}
  else{const v=prompt("Senha de administrador:");if(v===null)return;if(v!==ADMIN_PIN){alert("Senha incorreta.");return}admin=true;try{localStorage.auu_admin="1"}catch(e){}}
@@ -224,7 +249,45 @@ try{rAdm();links()}catch(e){console.error(e)}
 const dlg=document.getElementById("dlg"),frm=document.getElementById("frm");
 frm.mod.innerHTML=MODS.map(m=>`<option>${m}</option>`).join("");
 document.getElementById("cancel").onclick=()=>dlg.close();
-function abrirForm(){if(!admin)return;frm.reset();dlg.showModal()}
+function mkSlot(n){const d=document.createElement("div");d.className="fr";d.innerHTML=`<label>Foto ${n}<input type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" placeholder="Nome do fotógrafo(a)">${n>1?'<button type="button" class="btn ghost rmslot" aria-label="Remover foto" style="padding:6px 12px">×</button>':""}</span></label><small class="finfo" style="grid-column:1/-1;color:var(--mut)"></small>`;return d}
+function resetSlots(){const b=document.getElementById("slots");b.innerHTML="";b.append(mkSlot(1));document.getElementById("addslot").style.display=""}
+document.getElementById("addslot").onclick=()=>{const b=document.getElementById("slots"),n=b.children.length+1;if(n>6)return;b.append(mkSlot(n));if(n>=6)document.getElementById("addslot").style.display="none"};
+document.getElementById("slots").onclick=e=>{const x=e.target.closest(".rmslot");if(!x)return;x.closest(".fr").remove();[...document.querySelectorAll("#slots .fr")].forEach((r,i)=>r.querySelector("label").firstChild.textContent="Foto "+(i+1));document.getElementById("addslot").style.display=""};
+function fillLocs(sel){const o=["Todos os locais",...MODS];document.querySelectorAll("select[name=mod]").forEach(e=>{const v=e.value;e.innerHTML=MODS.map(m=>`<option>${m}</option>`).join("");if(MODS.includes(v))e.value=v});const l=document.getElementById("loc");if(l){l.innerHTML=o.map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}if(sel)frm.mod.value=sel}
+document.getElementById("newloc").onclick=()=>{if(!admin)return;const v=(prompt("Nome do novo local (ex.: Módulo V, Cantina):")||"").trim();if(!v)return;const ex=MODS.find(m=>m.toLowerCase()===v.toLowerCase());if(!ex){MODS.splice(MODS.length-1,0,v);try{localStorage.auu_locs=JSON.stringify(MODS.filter(m=>!BASE.includes(m)))}catch(e){}}fillLocs(ex||v)};
+let editId=null;
+const cdlg=document.getElementById("cdlg");
+function loadImg(b){return new Promise((ok,no)=>{const u=URL.createObjectURL(b),i=new Image;i.onload=()=>{URL.revokeObjectURL(u);ok(i)};i.onerror=()=>no(new Error("img"));i.src=u})}
+function coverJpg(img){const o=document.createElement("canvas");o.width=800;o.height=880;const s=Math.max(800/img.naturalWidth,880/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;o.getContext("2d").drawImage(img,(800-w)/2,(880-h)/2,w,h);return o.toDataURL("image/jpeg",.82)}
+function cropImage(img,info){return new Promise(res=>{
+ const cv=document.getElementById("cv"),cx=cv.getContext("2d"),W=320,H=352,z=document.getElementById("czoom"),base=Math.max(W/img.naturalWidth,H/img.naturalHeight);
+ let k=1,x=(W-img.naturalWidth*base)/2,y=(H-img.naturalHeight*base)/2,drag=null;z.value=1;
+ const draw=()=>{const s=base*k,w=img.naturalWidth*s,h=img.naturalHeight*s;x=Math.min(0,Math.max(W-w,x));y=Math.min(0,Math.max(H-h,y));cx.fillStyle="#000";cx.fillRect(0,0,W,H);cx.drawImage(img,x,y,w,h)};
+ document.getElementById("cinfo").textContent=info;
+ cv.onpointerdown=e=>{drag={px:e.clientX,py:e.clientY,x,y};cv.setPointerCapture(e.pointerId);cv.style.cursor="grabbing"};
+ cv.onpointermove=e=>{if(!drag)return;const r=W/cv.getBoundingClientRect().width;x=drag.x+(e.clientX-drag.px)*r;y=drag.y+(e.clientY-drag.py)*r;draw()};
+ cv.onpointerup=cv.onpointercancel=()=>{drag=null;cv.style.cursor="grab"};
+ z.oninput=()=>{const mx=(W/2-x)/(base*k),my=(H/2-y)/(base*k);k=+z.value;x=W/2-mx*base*k;y=H/2-my*base*k;draw()};
+ const done=v=>{cdlg.close();res(v)};
+ document.getElementById("ccancel").onclick=()=>done(null);
+ document.getElementById("cok").onclick=()=>{const o=document.createElement("canvas");o.width=800;o.height=880;const f=800/W,s=base*k;o.getContext("2d").drawImage(img,x*f,y*f,img.naturalWidth*s*f,img.naturalHeight*s*f);done(o.toDataURL("image/jpeg",.82))};
+ cdlg.oncancel=()=>res(null);cdlg.showModal();draw()})}
+document.getElementById("slots").addEventListener("change",async e=>{const fi=e.target;if(fi.type!=="file")return;
+ const row=fi.closest(".fr"),inf=row.querySelector(".finfo");row._src=null;inf.textContent="";const f=fi.files[0];if(!f)return;
+ try{const img=await loadImg(RAW.test(f.name)?await rawPreview(f):f),w=img.naturalWidth,h=img.naturalHeight,r=w/h,ok=Math.abs(r/(10/11)-1)<=.03,small=w<800||h<880;
+  const out=ok?coverJpg(img):await cropImage(img,"Sua foto tem "+w+"×"+h+" px (proporção "+r.toFixed(2)+"). O site usa 10:11 (0,91). Arraste a imagem e use o zoom para escolher a parte que aparece.");
+  if(!out){fi.value="";return}
+  row._src=out;inf.innerHTML=`<img src="${out}" alt="" style="height:44px;border-radius:8px;vertical-align:middle;margin-right:8px">${ok?"Proporção correta":"Foto cortada para 10:11"} (original ${w}×${h} px).${small?" Menor que o recomendado, pode perder nitidez.":""}`}
+ catch(err){fi.value="";inf.textContent="Não consegui ler esta foto. Se for RAW, exporte uma prévia em JPEG."}});
+function mkExisting(src,cred,n){const d=document.createElement("div");d.className="fr";d._src=src;d.innerHTML=`<label>Foto ${n}<img src="${src}" alt="" style="width:100%;height:70px;object-fit:cover;border-radius:10px;margin-top:4px"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" value="${esc(cred).replace(/"/g,"&quot;")}" placeholder="Nome do fotógrafo(a)"><button type="button" class="btn ghost rmslot" aria-label="Remover foto" style="padding:6px 12px">×</button></span></label>`;return d}
+function abrirForm(id){if(!admin)return;editId=id||null;frm.reset();resetSlots();fillLocs();
+ const d=editId&&DOGS.find(a=>a.id===editId);
+ document.getElementById("dtitle").textContent=d?"Editar animal":"Adicionar animal";document.getElementById("save").textContent=d?"Salvar alterações":"Salvar animal";
+ if(d){if(!MODS.includes(d.mod)){MODS.splice(MODS.length-1,0,d.mod);fillLocs()}
+  frm.nome.value=d.nome;frm.esp.value=d.esp;frm.sexo.value=d.sexo;frm.idade.value=d.idade;frm.status.value=d.status;frm.mod.value=d.mod;frm.local.value=d.local||"";frm.hist.value=d.hist||"";frm.pers.value=(d.pers||[]).join(", ");frm.car.value=d.car||"";
+  if(d.foto&&d.foto.length){const b=document.getElementById("slots");b.innerHTML="";d.foto.forEach((src,i)=>b.append(mkExisting(src,(d.fotoCred||[])[i]||"",i+1)));if(d.foto.length>=6)document.getElementById("addslot").style.display="none"}}
+ dlg.showModal()}
+document.addEventListener("click",e=>{const x=e.target.closest(".ex,.exf");if(!x)return;e.preventDefault();e.stopPropagation();abrirForm(x.dataset.id)},true);
 const RAW=/\.(crw|cr2|cr3|nef|nrw|arw|srf|sr2|raf|raw|rw2|x3f|dng|orf|pef)$/i;
 async function rawPreview(f){
  const u8=new Uint8Array(await f.arrayBuffer()),pos=[];
@@ -238,12 +301,26 @@ async function redim(f){return redimBlob(RAW.test(f.name)?await rawPreview(f):f)
 function redimBlob(f){return new Promise((r,j)=>{const i=new Image,u=URL.createObjectURL(f);i.onerror=()=>j(new Error("img"));i.onload=()=>{const k=Math.min(1,700/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);r(c.toDataURL("image/jpeg",.78))};i.src=u})}
 frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  const f=new FormData(frm),fotos=[],cred=[];
- for(const i of [1,2,3]){const fl=frm["f"+i].files[0];if(!fl)continue;const c=frm["c"+i].value.trim();if(!c){alert("Informe o nome de quem tirou a foto "+i+".");frm["c"+i].focus();return}try{fotos.push(await redim(fl))}catch(err){alert("Não consegui ler a foto "+i+" ("+fl.name+"). Se for RAW, exporte uma prévia em JPEG e tente de novo.");return}cred.push(c)}
+ let i=0;for(const row of document.querySelectorAll("#slots .fr")){i++;const ci=row.querySelector("input[type=text]"),c=ci.value.trim(),fi=row.querySelector("input[type=file]"),fl=fi&&fi.files[0];if(!row._src&&!fl)continue;if(!c){alert("Informe o nome de quem tirou a foto "+i+".");ci.focus();return}if(row._src)fotos.push(row._src);else{try{fotos.push(await redim(fl))}catch(err){alert("Não consegui ler a foto "+i+" ("+fl.name+"). Se for RAW, exporte uma prévia em JPEG e tente de novo.");return}}cred.push(c)}
  const esp=f.get("esp"),nome=f.get("nome").trim();
- const n={id:"a"+Date.now(),esp,mod:f.get("mod"),nome,sexo:f.get("sexo"),idade:f.get("idade"),status:f.get("status"),local:f.get("local")||f.get("mod"),coat:esp==="Gato"?"#b9a58c":"#b98a55",ear:"#7d5a36",bg:"#e3e7d8",hist:f.get("hist")||"História em breve.",pers:(f.get("pers")||"").split(",").map(x=>x.trim()).filter(Boolean),car:f.get("car")||"",foto:fotos,fotoCred:cred};
- DOGS.push(n);
- try{const x=JSON.parse(localStorage.auu_extras||"[]");x.push(n);localStorage.auu_extras=JSON.stringify(x)}catch(err){alert("Animal adicionado, mas o navegador não conseguiu salvá-lo (fotos muito grandes?).")}
- dlg.close();home();};
+ const old=editId&&DOGS.find(a=>a.id===editId);const n={id:old?old.id:"a"+Date.now(),esp,mod:f.get("mod"),nome,sexo:f.get("sexo"),idade:f.get("idade"),status:f.get("status"),local:f.get("local")||f.get("mod"),coat:old?old.coat:esp==="Gato"?"#b9a58c":"#b98a55",ear:old?old.ear:"#7d5a36",bg:old?old.bg:"#e3e7d8",hist:f.get("hist")||"História em breve.",pers:(f.get("pers")||"").split(",").map(x=>x.trim()).filter(Boolean),car:f.get("car")||"",foto:fotos,fotoCred:cred};
+ if(old)DOGS[DOGS.indexOf(old)]=n;else DOGS.push(n);
+ try{const x=JSON.parse(localStorage.auu_extras||"[]"),k=x.findIndex(a=>a.id===n.id);if(k>=0)x[k]=n;else if(old){EDITS[n.id]=n;localStorage.auu_edits=JSON.stringify(EDITS)}else x.push(n);localStorage.auu_extras=JSON.stringify(x)}catch(err){alert("Animal adicionado, mas o navegador não conseguiu salvá-lo (fotos muito grandes?).")}
+ dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
+document.addEventListener("click",e=>{const x=e.target.closest(".dx,.dxf");if(!x)return;e.preventDefault();e.stopPropagation();if(!admin)return;
+ const d=DOGS.find(a=>a.id===x.dataset.id);if(!d||!confirm("Excluir "+d.nome+" do catálogo? Essa ação não pode ser desfeita."))return;
+ DOGS.splice(DOGS.indexOf(d),1);
+ try{const ex=JSON.parse(localStorage.auu_extras||"[]"),r=ex.filter(a=>a.id!==d.id);if(r.length!==ex.length)localStorage.auu_extras=JSON.stringify(r);else{DEL.push(d.id);localStorage.auu_del=JSON.stringify(DEL)}}catch(err){}
+ if(/#\/cao\//.test(location.hash))location.hash="#/";else{const y=scrollY;home();scrollTo(0,y)}},true);
+function renderVol(){const g=document.getElementById("vgrid");if(!g)return;
+ g.innerHTML=VOL.length?VOL.map(v=>`<div class="vc"><span class="av">${esc(v.nome.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase())}</span><div><b>${esc(v.nome)}</b><small>${esc(v.papel||"Voluntário(a)")}</small></div><button class="vx" data-id="${v.id}" aria-label="Remover ${esc(v.nome)}">×</button></div>`).join(""):`<p class="empty" style="grid-column:1/-1;padding:16px 0">Em breve, os voluntários do projeto aparecem aqui.</p>`}
+const vdlg=document.getElementById("vdlg"),vfrm=document.getElementById("vfrm");
+document.getElementById("vcancel").onclick=()=>vdlg.close();
+const svVol=()=>{try{localStorage.auu_vol=JSON.stringify(VOL)}catch(e){}};
+document.addEventListener("click",e=>{
+ if(e.target.closest("#vadd")&&admin){vfrm.reset();vdlg.showModal();return}
+ const x=e.target.closest(".vx");if(x&&admin&&confirm("Remover este voluntário da lista?")){VOL=VOL.filter(v=>v.id!==x.dataset.id);svVol();renderVol()}});
+vfrm.onsubmit=e=>{e.preventDefault();if(!admin)return;const f=new FormData(vfrm);VOL.push({id:"v"+Date.now(),nome:f.get("nome").trim(),papel:(f.get("papel")||"").trim()});svVol();vdlg.close();renderVol()};
 try{rota2()}catch(e){console.error(e)}
 </script>
 </body>
