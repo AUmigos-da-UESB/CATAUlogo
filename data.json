@@ -1,26 +1,6 @@
 {
  "dogs": [
   {
-   "id": "mel",
-   "esp": "Cachorro",
-   "mod": "Módulo III",
-   "nome": "Mel",
-   "sexo": "Fêmea",
-   "idade": "cerca de 2 anos",
-   "status": "Em adoção",
-   "local": "Bloco de Ciências Biológicas",
-   "coat": "#d9a441",
-   "ear": "#b07f25",
-   "bg": "#dbe8d3",
-   "hist": "Acompanhou os estudantes de biologia durante um semestre inteiro. Dócil com crianças e com outros cães.",
-   "pers": [
-    "Dócil",
-    "Afetuosa",
-    "Sociável"
-   ],
-   "car": "Pelagem dourada, porte médio, olhos claros."
-  },
-  {
    "id": "bolinha",
    "esp": "Cachorro",
    "mod": "Quadra",
