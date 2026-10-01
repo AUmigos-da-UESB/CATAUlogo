@@ -132,5 +132,17 @@
    "nome": "Luna M A Moura",
    "papel": "ADM da página 🐶"
   }
- ]
+ ],
+ "options": {
+  "Cachorro": {
+   "pers": [],
+   "car": []
+  },
+  "Gato": {
+   "pers": [
+    "miau"
+   ],
+   "car": []
+  }
+ }
 }
