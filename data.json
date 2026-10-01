@@ -107,8 +107,12 @@
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
-   "car": "",
+   "pers": [
+    "Curioso"
+   ],
+   "car": [
+    "Pelagem longa"
+   ],
    "foto": [
     "fotos/a1790813408364-muos2ell0.jpg"
    ],
