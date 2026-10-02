@@ -30,13 +30,21 @@
    "sexo": "Macho",
    "idade": "Cerca de 2 anos",
    "status": "Lar temporário",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026
+   ],
    "local": "Lar Temporário",
    "coat": "#b9a58c",
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
    "pers": [],
-   "car": "",
+   "car": [
+    "Pelagem média"
+   ],
    "foto": [
     "fotos/a1790803645938-muom95qk0.jpg",
     "fotos/a1790803645938-muos8prz1.jpg",
