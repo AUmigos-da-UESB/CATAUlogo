@@ -190,6 +190,33 @@
     "David Matos, @davidmatos_15",
     "David Matos, @davidmatos_15"
    ]
+  },
+  {
+   "id": "a1790976427005",
+   "esp": "Cachorro",
+   "mod": "Lar Temporário",
+   "nome": "Lua",
+   "sexo": "Fêmea",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Lar Temporário",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Pelagem caramelo"
+   ],
+   "foto": [
+    "fotos/a1790976427005-murh4fx9-0.jpg"
+   ],
+   "fotoCred": [
+    "Nívea Ferraz, @nivia.ferraz"
+   ]
   }
  ],
  "locs": [
