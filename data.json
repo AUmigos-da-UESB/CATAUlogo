@@ -204,5 +204,36 @@
    ],
    "car": []
   }
+ },
+ "site": {
+  "navAbout": "Sobre e apoio",
+  "heroTitle": "Conheça os AUmigos da UESB",
+  "heroText": "Um CATAUlogo com as fotos, histórias e cuidados dos cães e gatos que vivem ou circulam pelo campus. Aqui você descobre quem é quem, onde cada um costuma ficar e como ajudar.",
+  "heroCatalog": "Ver CATAUlogo",
+  "heroAbout": "Sobre o projeto",
+  "catalogTitle": "Encontre um AUmigo",
+  "searchPlaceholder": "Buscar pelo nome do animal",
+  "volTitle": "Voluntários do AmigoPet",
+  "volText": "Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.",
+  "aboutTitle": "Cuidar também é documentar",
+  "aboutText1": "O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.",
+  "aboutText2": "Quem cuida dos animais no dia a dia é o AmigoPet, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.",
+  "contactTitle": "Fale com o AmigoPet",
+  "contactText": "Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.",
+  "help1Title": "Adote ou apadrinhe",
+  "help1Text": "Conheça os animais em adoção e chame o AmigoPet para conversar.",
+  "help2Title": "Doe ração",
+  "help2Text": "A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.",
+  "help3Title": "Seja voluntário",
+  "help3Text": "Ajude com cuidados, mutirões de vacina, fotos e divulgação.",
+  "help4Title": "Mande fotos",
+  "help4Text": "Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.",
+  "email1": "david.matosferreira15@gmail.com",
+  "email2": "ilunahmoura@gmail.com",
+  "comingTitle": "De onde tudo começou 🐾",
+  "comingText": "Antes do CATAUlogo existir, nasceu o **AUmigos da UESB**, um projeto de Cinema e Audiovisual que deu início à pesquisa sobre os cães que vivem e circulam pelo campus e as relações que constroem com estudantes, funcionários e professores.\n\nO documentário, que está atualmente **em produção**, acompanha essa convivência entre os animais e a comunidade universitária, buscando conhecer suas histórias, seus espaços e os vínculos que surgem no cotidiano da UESB.\n\nDurante a pesquisa, percebemos que contar essas histórias também significava saber **quem são esses AUmigos, onde costumam ficar e como a comunidade pode ajudar**. Foi assim que nasceu o **CATAUlogo**: uma extensão do projeto audiovisual que leva essa pesquisa para além da tela e transforma informações, histórias e registros em um catálogo vivo.\n\nEnquanto o documentário acompanha essa relação através do cinema, o CATAUlogo continua esse trabalho no dia a dia, ajudando a *registrar, conhecer e cuidar dos AUmigos da UESB*. 🐶💛",
+  "comingBackstageLabel": "Por trás das câmeras",
+  "backstage": [],
+  "footer": "AUmigos da UESB · Projeto universitário da UESB em Vitória da Conquista"
  }
 }
