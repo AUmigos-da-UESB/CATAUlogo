@@ -61,18 +61,31 @@
   {
    "id": "a1790804622019",
    "esp": "Cachorro",
-   "mod": "Módulo I",
-   "nome": "Bob",
+   "mod": "Módulo I e IV",
+   "nome": "Bob Jr",
    "sexo": "Macho",
    "idade": "Indefinida",
    "status": "Comunitário",
-   "local": "Módulo IV",
+   "ano": [
+    2026
+   ],
+   "local": "Módulo I e IV",
    "coat": "#b98a55",
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
    "pers": [],
-   "car": "",
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Peito branco",
+    "Orelhas pontudas",
+    "Rabo comprido",
+    "Gordinho",
+    "Olhos castanhos"
+   ],
    "foto": [
     "fotos/a1790804622019-muomu3120.jpg"
    ],
@@ -177,7 +190,8 @@
  ],
  "locs": [
   "Canil da UESB",
-  "Lar Temporário"
+  "Lar Temporário",
+  "Módulo I e IV"
  ],
  "vol": [
   {
