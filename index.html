@@ -25,7 +25,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .logo svg{width:30px;height:30px}
 nav{display:flex;gap:26px;font-size:15px;font-weight:500}
 nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;border:0;border-radius:999px;padding:12px 22px;font:600 15px Figtree,sans-serif;text-decoration:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;border:0;border-radius:999px;padding:12px 22px;font:600 15px Figtree,sans-serif;text-decoration:none}
 :root[data-theme="dark"] .btn{color:#10163a}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:56px 0 72px}
@@ -43,7 +43,7 @@ nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--ink)}
 .search input{flex:1;border:0;background:transparent;color:var(--ink);font:500 16px Figtree,sans-serif;padding:15px 0;outline:0}
 .search:focus-within{border-color:var(--acc)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.chip{border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 18px;font:500 15px Figtree,sans-serif;cursor:pointer}
+.chip{border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 18px;font:500 15px Figtree,sans-serif}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px;padding:12px 0 80px}
 .card{background:var(--card);border-radius:20px;overflow:hidden;text-decoration:none;display:block;border:1px solid var(--line);transition:transform .2s}
@@ -69,7 +69,7 @@ footer{padding:32px 0;color:var(--mut);font-size:14px}
 .fic{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;padding-bottom:80px}
 .gal .main{aspect-ratio:1/1.05;border-radius:28px;overflow:hidden}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.thumbs button{padding:0;border:2px solid transparent;border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;background:none}
+.thumbs button{padding:0;border:2px solid transparent;border-radius:16px;overflow:hidden;aspect-ratio:1;background:none}
 .thumbs button[aria-current=true]{border-color:var(--acc)}
 .fic h1{font-size:clamp(40px,6vw,68px);margin:6px 0 14px}
 .fic .sub{color:var(--mut);margin-bottom:22px}
@@ -77,7 +77,7 @@ footer{padding:32px 0;color:var(--mut);font-size:14px}
 .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .kv div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
 .kv small{display:block;color:var(--mut);font-size:13px}
-.traits{display:flex;flex-wrap:wrap;gap:8px}.traits span{border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px}
+.traits{display:flex;flex-wrap:wrap;gap:8px}.traits span{border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px}.traits.compact{gap:4px;margin-top:7px}.traits.compact span{font-size:11px;padding:3px 8px}
 .note{font-size:13px;color:var(--mut);margin-top:40px}
 .sp{position:absolute;top:12px;left:12px;background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px 5px 8px;font-size:13px;font-weight:600;display:flex;gap:6px;align-items:center}
 .sp svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -85,19 +85,19 @@ footer{padding:32px 0;color:var(--mut);font-size:14px}
 .cr{position:absolute;right:10px;bottom:10px;background:rgba(10,18,13,.62);color:#fff;font-size:12px;padding:3px 10px;border-radius:999px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .loc{display:flex;gap:5px;align-items:center}.pin{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
-.badge.lar{background:#fbe9c4;color:#7a4e00}
+.badge.comunitario{background:#dff2e3;color:#236b38}.badge.adocao{background:#dfe7ff;color:#2b4eff}.badge.lar{background:#fbe9c4;color:#7a4e00}.badge.adotado{background:#eadff7;color:#70439a}
 .vol{padding:8px 24px 40px}.vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}.vhead h2{font-size:clamp(26px,3.2vw,36px)}.vhead p{color:var(--mut);margin:6px 0 0}
 #vadd,.vx{display:none}.isadm #vadd{display:inline-flex}.isadm .vx{display:inline-flex}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .vc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
 .vc small{display:block;color:var(--mut);font-size:13px;line-height:1.3}
 .av{width:42px;height:42px;border-radius:50%;background:var(--accsoft);color:var(--acc);display:grid;place-items:center;font:700 15px "Bricolage Grotesque",sans-serif;flex:none}
-.vx{margin-left:auto;border:0;background:transparent;color:var(--mut);font-size:20px;cursor:pointer;align-items:center;padding:4px 8px}
+.vx{margin-left:auto;border:0;background:transparent;color:var(--mut);font-size:20px;align-items:center;padding:4px 8px}
 .dx,.dxf,.ex,.exf{display:none}
-.ex{position:absolute;top:10px;right:54px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:var(--ink);cursor:pointer;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
+.ex{position:absolute;top:10px;right:54px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:var(--ink);place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
 .ex svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .isadm .ex{display:grid}.isadm .exf{display:inline-flex}
-.dx{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:#c0392b;cursor:pointer;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
+.dx{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:var(--card);color:#c0392b;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:0}
 .dx svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .isadm .dx{display:grid}.isadm .dxf{display:inline-flex;color:#c0392b;border-color:#c0392b}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 32px)}
@@ -108,9 +108,12 @@ select,dialog input,dialog select,dialog textarea{font:500 15px Figtree,sans-ser
 dialog{border:0;border-radius:24px;padding:28px;max-width:560px;width:calc(100% - 28px);background:var(--bg);color:var(--ink);max-height:90vh}
 dialog::backdrop{background:rgba(10,18,13,.55)}
 dialog form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-dialog label{font-size:13px;color:var(--mut);display:grid;gap:4px}
+dialog label{font-size:13px;color:var(--mut);display:grid;gap:4px;align-self:start;align-content:start}
 dialog .full{grid-column:1/-1}
-@media(max-width:820px){.hm{display:none}.logo{font-size:16px}header .btn{padding:9px 14px;font-size:13px}nav{display:none}.hero,.about .wrap,.fic{grid-template-columns:1fr;gap:32px}.hero{padding-top:28px}.wrap{padding:0 18px}}
+.picker-field{display:grid;gap:7px}.picker-label{font-size:13px;color:var(--mut)}
+.form-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}.form-pair>label{min-width:0}.picker-tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.picker-tools .btn{padding:6px 10px;font-size:12px}.dialog-scroll{max-height:calc(90vh - 90px);overflow-y:auto;padding-right:3px}.picker{display:flex;flex-wrap:wrap;gap:7px;padding:9px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);max-height:150px;overflow:auto}.pick{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 10px;font:500 13px Figtree,sans-serif}.pick[aria-pressed="true"]{background:var(--accsoft);border-color:var(--acc);color:var(--acc)}.fr .photo-actions{display:flex;gap:6px;margin-top:4px}.fr .photo-actions .btn{padding:6px 10px;font-size:12px}.kv>div{min-width:0;min-height:64px}.kv small{margin-bottom:4px}.count-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:34px;color:var(--mut);font-size:13px}.count-grid b{display:block;color:var(--ink);font:700 28px "Bricolage Grotesque",sans-serif;margin-bottom:2px}.stats{display:none}
+
+@media(max-width:820px){.count-grid{grid-template-columns:repeat(2,1fr);gap:10px}.count-grid b{font-size:24px}.hm{display:none}.logo{font-size:16px}header .btn{padding:9px 14px;font-size:13px}nav{display:none}.hero,.about .wrap,.fic{grid-template-columns:1fr;gap:32px}.hero{padding-top:28px}.wrap{padding:0 18px}}
 </style>
 </head>
 <body>
@@ -122,93 +125,124 @@ dialog .full{grid-column:1/-1}
 
 <div class="fab" id="fab"><button class="btn" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
 <dialog id="vdlg"><h2 style="font-size:28px;margin-bottom:16px">Adicionar voluntário</h2><form id="vfrm" method="dialog"><label class="full">Nome<input name="nome" required></label><label class="full">Como contribui<input name="papel" placeholder="ex.: alimentação, vacinação, fotos"></label><div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="vcancel">Cancelar</button><button class="btn">Salvar voluntário</button></div></form></dialog>
-<dialog id="cdlg"><h2 style="font-size:24px;margin-bottom:6px">Cortar foto</h2><p id="cinfo" style="margin:0 0 12px;color:var(--mut);font-size:14px"></p><canvas id="cv" width="320" height="352" style="width:100%;max-width:320px;border-radius:16px;touch-action:none;cursor:grab;background:#000;display:block;margin:0 auto"></canvas><label style="margin-top:12px">Zoom<input id="czoom" type="range" min="1" max="3" step="0.01" value="1"></label><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="ccancel">Cancelar</button><button type="button" class="btn" id="cok">Usar esta parte</button></div></dialog>
+<dialog id="cdlg"><h2 style="font-size:24px;margin-bottom:6px">Cortar foto</h2><p id="cinfo" style="margin:0 0 12px;color:var(--mut);font-size:14px"></p><canvas id="cv" width="320" height="352" style="width:100%;max-width:320px;border-radius:16px;touch-action:none;background:#000;display:block;margin:0 auto"></canvas><label style="margin-top:12px">Zoom<input id="czoom" type="range" min="1" max="3" step="0.01" value="1"></label><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="crotate">↻ Girar</button><button type="button" class="btn ghost" id="ccancel">Cancelar</button><button type="button" class="btn" id="cok">Usar esta parte</button></div></dialog>
 <main id="app"></main>
 
-<dialog id="dlg"><h2 id="dtitle" style="font-size:28px;margin-bottom:16px">Adicionar animal</h2><form id="frm" method="dialog">
+<dialog id="dlg"><h2 id="dtitle" style="font-size:28px;margin-bottom:16px">Adicionar animal</h2><div class="dialog-scroll"><form id="frm" method="dialog">
 <label class="full">Nome<input name="nome" required></label>
-<label>Espécie<select name="esp"><option>Cachorro</option><option>Gato</option></select></label>
-<label>Sexo<select name="sexo"><option>Macho</option><option>Fêmea</option></select></label>
-<label>Idade aproximada<input name="idade" placeholder="ex.: cerca de 2 anos" required></label>
-<label>Status<select name="status"><option>Comunitário</option><option>Em adoção</option><option>Lar temporário</option><option>Adotado</option></select></label>
-<label>Localização<select name="mod"></select><button type="button" class="btn ghost" id="newloc" style="padding:6px 12px;font-size:13px;margin-top:6px;justify-self:start">+ Novo local</button></label>
-<label>Onde costuma ficar<input name="local" placeholder="ex.: perto da cantina"></label>
+<div class="form-pair full"><label>Espécie<select name="esp"><option>Cachorro</option><option>Gato</option></select></label><label>Sexo<select name="sexo"><option>Macho</option><option>Fêmea</option></select></label></div>
+<div class="form-pair full"><label>Idade aproximada<input name="idade" placeholder="ex.: cerca de 2 anos" required></label><label>Status<select name="status"><option>Comunitário</option><option>Disponível para adoção</option><option>Lar temporário</option><option>Adotado</option></select></label></div>
+<div class="form-pair full"><label>Localização<select name="mod"></select><div style="display:flex;gap:6px;margin-top:6px"><button type="button" class="btn ghost" id="newloc" style="padding:6px 12px;font-size:13px">+ Novo local</button><button type="button" class="btn ghost" id="delloc" style="padding:6px 12px;font-size:13px">Remover local</button></div></label><label>Onde costuma ficar<input name="local" placeholder="Ex.: perto da cantina"></label></div>
 <label class="full">História<textarea name="hist" rows="3"></textarea></label>
-<label>Personalidade (separe por vírgula)<input name="pers"></label>
-<label>Características<input name="car"></label>
-<div class="full" style="font-size:13px;color:var(--mut)"><b>Tamanho recomendado: 1000 × 1100 px (mínimo 800 × 880), proporção 10:11</b>, quase quadrada e levemente vertical. Se a foto tiver outra proporção, você corta aqui mesmo antes de salvar. Até 6 fotos. Informe o nome de quem tirou cada foto: ele aparece como "Foto por Nome, 2026". Aceita JPG, PNG, WebP e RAW (Canon, Nikon, Sony, Fujifilm, Panasonic, Sigma, DNG, ProRAW, Samsung Expert RAW).</div><div class="full" id="slots" style="display:grid;gap:8px"></div><div class="full"><button type="button" class="btn ghost" id="addslot" style="padding:8px 16px;font-size:14px">+ Adicionar outra foto</button></div>
-<div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" id="save">Salvar animal</button></div></form></dialog>
+<div class="full picker-field"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><span class="picker-label">Personalidade</span><div class="picker-tools"><button type="button" class="btn ghost" id="addPersOpt">+ Adicionar personalidade</button><button type="button" class="btn ghost" id="delPersOpt">− Remover personalidade</button></div></div><div class="picker" id="persPicker"></div><input type="hidden" name="pers"></div>
+<div class="full picker-field"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><span class="picker-label">Características</span><div class="picker-tools"><button type="button" class="btn ghost" id="addCarOpt">+ Adicionar característica</button><button type="button" class="btn ghost" id="delCarOpt">− Remover característica</button></div></div><div class="picker" id="carPicker"></div><input type="hidden" name="car"></div>
+<div class="full" style="font-size:13px;color:var(--mut)">Tamanho recomendado: 1000 × 1100 px. Até 6 fotos. Informe o nome de quem fotografou para os créditos. Formatos aceitos: JPG, PNG, WebP e RAW.</div><div class="full" id="slots" style="display:grid;gap:8px"></div><div class="full"><button type="button" class="btn ghost" id="addslot" style="padding:8px 16px;font-size:14px">+ Adicionar outra foto</button></div>
+<div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" id="save">Salvar animal</button></div></form></div></dialog>
 <script>
-const DOGS=[]
+const DOGS=[{"id":"a1790800495807","esp":"Cachorro","mod":"Canil da UESB","nome":"Floquinho","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Quadra, CAP, Portaria","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790800495807-muolvonw0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]},{"id":"a1790803645938","esp":"Gato","mod":"Lar Temporário","nome":"Tom","sexo":"Macho","idade":"Cerca de 2 anos","status":"Lar temporário","local":"Lar Temporário","coat":"#b9a58c","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790803645938-muom95qk0.jpg","fotos/a1790803645938-muos8prz1.jpg","fotos/a1790803645938-muos8prz2.jpg","fotos/a1790803645938-muos8prz3.jpg"],"fotoCred":["Luna Moura, @dillua.r","Luna Moura, @dillua.r","Luna Moura, @dillua.r","Luna Moura, @dillua.r"]},{"id":"a1790804622019","esp":"Cachorro","mod":"Módulo I","nome":"Bob","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Módulo IV","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790804622019-muomu3120.jpg"],"fotoCred":["Gabriel Braga, @photos.gsb"]},{"id":"a1790812807837","esp":"Cachorro","mod":"Canil da UESB","nome":"Mimosa","sexo":"Fêmea","idade":"Indefinida","status":"Comunitário","local":"Canil da UESB","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790812807837-muorpjhf0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]},{"id":"a1790813408364","esp":"Cachorro","mod":"Canil da UESB","nome":"Cotoco","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Canil da UESB","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790813408364-muos2ell0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]}];
 const BASE=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
 const MODS=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
-const SEED={dogs:JSON.parse(JSON.stringify(DOGS)),locs:[],vol:[]};
+const SEED={dogs:JSON.parse(JSON.stringify(DOGS)),locs:["Canil da UESB","Lar Temporário"],vol:[{"id":"v1790800150469","nome":"David Matos Ferreira","papel":"ADM da página 🐶"},{"id":"v1790803104805","nome":"Luna M A Moura","papel":"ADM da página 🐶"}],options:null};
 /* ===== Publicação no GitHub: os dados ficam em data.json e as fotos em fotos/ dentro do repositório ===== */
 let REPO="";/* "usuario/repositorio". Se vazio, é detectado pelo endereço github.io ou perguntado no login */
-let TOKEN="",BRANCH="main",admin=false,VOL=[];const PREV={};
+let TOKEN="",BRANCH="main",admin=true,VOL=[];const PREV={};
 try{TOKEN=localStorage.auu_token||"";REPO=localStorage.auu_repo||""}catch(e){}
 if(!REPO&&/\.github\.io$/.test(location.hostname)){const o=location.hostname.split(".")[0],q=location.pathname.split("/")[1];REPO=o+"/"+(q&&!/\./.test(q)?q:o+".github.io")}
 const toast=m=>{let t=document.getElementById("toast");if(!t){t=document.createElement("div");t.id="toast";t.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:999;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14px Figtree,sans-serif;max-width:90%;text-align:center";document.body.append(t)}t.textContent=m;t.style.display=m?"block":"none"};
 function erro(err){toast("");alert("Não consegui salvar no GitHub.\n\n"+err.message+"\n\nSe aparecer 401 ou 403, o token venceu ou não tem permissão: clique em \"Sair do admin\" e entre de novo.")}
-function apply(s){DOGS.splice(0,DOGS.length,...(s.dogs||[]));MODS.splice(0,MODS.length,...BASE.slice(0,-1),...(s.locs||[]),"Outro local");VOL=s.vol||[]}
+function apply(s){const ds=(s.dogs||[]).map(d=>({...d,status:d.status==="Em adoção"?"Disponível para adoção":d.status}));DOGS.splice(0,DOGS.length,...ds);MODS.splice(0,MODS.length,...BASE.slice(0,-1),...(s.locs||[]),"Outro local");VOL=s.vol||[];if(s.options){for(const esp of ["Cachorro","Gato"]){for(const kind of ["pers","car"]){const extra=Array.isArray(s.options?.[esp]?.[kind])?s.options[esp][kind]:[];for(const v of extra)if(v&&!PICKERS[esp][kind].includes(v))PICKERS[esp][kind].push(v)}}}}
 async function gh(p,o={}){const r=await fetch("https://api.github.com/repos/"+REPO+p,{...o,headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github+json","Content-Type":"application/json"}});if(!r.ok){const e=new Error(r.status+": "+(await r.text()).slice(0,160));e.status=r.status;throw e}return r.json()}
 async function remote(){const r=await fetch("https://api.github.com/repos/"+REPO+"/contents/data.json?ref="+encodeURIComponent(BRANCH)+"&t="+Date.now(),{headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github.raw+json"},cache:"no-store"});if(r.status===404)return null;if(!r.ok){const e=new Error(String(r.status));e.status=r.status;throw e}return r.json()}
 /* Aplica a alteração sobre a versão mais recente do repositório e grava tudo em um único commit */
-async function salvar(mut,msg){if(!TOKEN)throw new Error("Entre como administrador primeiro.");
+async function salvar(mut,msg){
+ if(!TOKEN) throw new Error("Você precisa entrar no Admin para salvar no GitHub.");
  toast("Salvando no GitHub…");
- const head=(await gh("/git/ref/heads/"+BRANCH)).object.sha,cm=await gh("/git/commits/"+head),s=(await remote())||JSON.parse(JSON.stringify(SEED));
- s.dogs=s.dogs||[];s.locs=s.locs||[];s.vol=s.vol||[];
- mut(s);
- const imgs={},ent=[];
- s.dogs.forEach(d=>(d.foto||[]).forEach((u,i)=>{if(u.startsWith("data:")){const f="fotos/"+d.id+"-"+Date.now().toString(36)+i+".jpg";imgs[f]=u;PREV[f]=u;d.foto[i]=f}}));
- for(const f in imgs){const b=await gh("/git/blobs",{method:"POST",body:JSON.stringify({content:imgs[f].split(",")[1],encoding:"base64"})});ent.push({path:f,mode:"100644",type:"blob",sha:b.sha})}
- const jb=await gh("/git/blobs",{method:"POST",body:JSON.stringify({content:JSON.stringify(s,null,1),encoding:"utf-8"})});
- ent.push({path:"data.json",mode:"100644",type:"blob",sha:jb.sha});
- const tr=await gh("/git/trees",{method:"POST",body:JSON.stringify({base_tree:cm.tree.sha,tree:ent})}),
- nc=await gh("/git/commits",{method:"POST",body:JSON.stringify({message:msg,tree:tr.sha,parents:[head]})});
- await gh("/git/refs/heads/"+BRANCH,{method:"PATCH",body:JSON.stringify({sha:nc.sha})});
- apply(s);toast("Salvo! Aparece para todos em cerca de 1 minuto.");setTimeout(()=>toast(""),4500)}
+ let lastErr=null;
+ for(let tentativa=0;tentativa<3;tentativa++){
+  try{
+   const s=(await remote())||JSON.parse(JSON.stringify(SEED));
+   s.dogs=(s.dogs||[]).map(d=>({...d,status:d.status==="Em adoção"?"Disponível para adoção":d.status}));
+   s.locs=s.locs||[];s.vol=s.vol||[];s.options=s.options||{};
+   for(const esp of ["Cachorro","Gato"]){
+    s.options[esp]=s.options[esp]||{};
+    for(const kind of ["pers","car"]){s.options[esp][kind]=Array.isArray(s.options[esp][kind])?s.options[esp][kind]:[]}
+   }
+   mut(s);
+   const uploads=[];
+   s.dogs.forEach(d=>(d.foto||[]).forEach((u,i)=>{if(typeof u==="string"&&u.startsWith("data:")){const f="fotos/"+d.id+"-"+Date.now().toString(36)+"-"+i+".jpg";uploads.push({path:f,data:u.split(",")[1]});PREV[f]=u;d.foto[i]=f}}));
+
+   // Fotos são gravadas pela API de Contents do GitHub.
+   for(const up of uploads){
+    await ghContentsPut(up.path,up.data,"Adiciona foto "+up.path.split("/").pop());
+   }
+
+   // data.json é gravado usando o SHA atual. Se alguém alterou o arquivo ao mesmo tempo,
+   // buscamos novamente e repetimos a operação para evitar o 422 de fast-forward.
+   await ghContentsPut("data.json",btoa(unescape(encodeURIComponent(JSON.stringify(s,null,1)))),msg,true);
+   apply(s);
+   toast("Salvo no GitHub! As alterações podem levar alguns instantes para aparecer no site.");
+   setTimeout(()=>toast(""),4500);
+   return;
+  }catch(err){
+   lastErr=err;
+   if(![409,422].includes(err.status)||tentativa===2)throw err;
+   await new Promise(r=>setTimeout(r,700));
+  }
+ }
+ throw lastErr;
+}
+async function ghContentsGet(path){
+ const r=await fetch("https://api.github.com/repos/"+REPO+"/contents/"+path+"?ref="+encodeURIComponent(BRANCH)+"&t="+Date.now(),{headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github+json"},cache:"no-store"});
+ if(r.status===404)return null;
+ if(!r.ok){const e=new Error(r.status+": "+(await r.text()).slice(0,200));e.status=r.status;throw e}
+ return r.json();
+}
+async function ghContentsPut(path,base64,message,isData=false){
+ const current=await ghContentsGet(path);
+ const body={message,content:base64,branch:BRANCH};
+ if(current&&current.sha)body.sha=current.sha;
+ const r=await fetch("https://api.github.com/repos/"+REPO+"/contents/"+path,{method:"PUT",headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+ if(!r.ok){const e=new Error(r.status+": "+(await r.text()).slice(0,240));e.status=r.status;throw e}
+ return r.json();
+}
 async function load(){let s=null;
  if(TOKEN&&REPO){try{const r=await gh("");if(!r.permissions||!r.permissions.push)throw Object.assign(new Error("sem permissão"),{status:403});BRANCH=r.default_branch;admin=true;s=await remote()}
   catch(e){if([401,403,404].includes(e.status)){TOKEN="";admin=false;try{localStorage.removeItem("auu_token")}catch(x){}}}}
  if(!s){try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(r.ok)s=await r.json()}catch(e){}}
- apply(s||SEED)}
+ apply(s||SEED);
+ if(admin)rAdm();else{document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="none";if(b)b.style.display="inline-flex"}
+}
 async function entrar(){
  if(!REPO){const r=(prompt("Endereço do repositório no GitHub (usuario/repositorio):")||"").trim();if(!/^[\w.-]+\/[\w.-]+$/.test(r))return false;REPO=r}
  const t=(prompt("Cole o token de acesso do GitHub:")||"").trim();if(!t)return false;
  TOKEN=t;
  try{const r=await gh("");if(!r.permissions||!r.permissions.push)throw new Error("sem permissão");BRANCH=r.default_branch;admin=true;try{localStorage.auu_token=t;localStorage.auu_repo=REPO}catch(e){}
-  const s=await remote();if(s)apply(s)}
- catch(err){TOKEN="";admin=false;alert("Não foi possível entrar. Confira o repositório e o token (precisa de permissão Contents: Read and write).");return false}
- await migrar();return true}
-/* Importa, uma única vez, o que foi salvo só neste navegador na versão antiga do site */
-async function migrar(){let x=[],ed={},dl=[],lc=[],vo=[];
- try{x=JSON.parse(localStorage.auu_extras||"[]");ed=JSON.parse(localStorage.auu_edits||"{}");dl=JSON.parse(localStorage.auu_del||"[]");lc=JSON.parse(localStorage.auu_locs||"[]");vo=JSON.parse(localStorage.auu_vol||"[]")}catch(e){return}
- if(!x.length&&!Object.keys(ed).length&&!dl.length&&!lc.length&&!vo.length)return;
- if(!confirm("Encontrei animais/voluntários salvos só neste navegador. Enviar para o site oficial agora?"))return;
- try{await salvar(s=>{s.dogs=s.dogs.filter(d=>!dl.includes(d.id)).map(d=>ed[d.id]||d);x.forEach(a=>{const i=s.dogs.findIndex(d=>d.id===a.id);if(i<0)s.dogs.push(a);else s.dogs[i]=a});lc.forEach(l=>{if(!s.locs.includes(l))s.locs.push(l)});vo.forEach(v=>{if(!s.vol.some(w=>w.id===v.id))s.vol.push(v)})},"Importa dados salvos no navegador");
-  ["auu_extras","auu_edits","auu_del","auu_locs","auu_vol","auu_admin"].forEach(k=>localStorage.removeItem(k))}catch(err){erro(err)}}
+  const s=await remote();if(s)apply(s)
+ }catch(err){TOKEN="";admin=false;alert("Não foi possível entrar. Confira o repositório e o token. Ele precisa ter acesso de leitura e escrita ao conteúdo do repositório.");return false}
+ rAdm();
+ return true;
+}
 const ico=e=>e==="Gato"?`<span class="sp" title="Gato"><svg viewBox="0 0 24 24"><path d="M5 9V4l4 3h6l4-3v5c1 2 1 4 0 6-2 4-12 4-14 0-1-2-1-4 0-6z"/><path d="M9.5 13h.01M14.5 13h.01M10 16.5c1 .7 3 .7 4 0"/></svg>Gato</span>`:`<span class="sp" title="Cachorro"><svg viewBox="0 0 24 24"><path d="M7 6C4 5 3 9 4 13l3-1M17 6c3-1 4 3 3 7l-3-1"/><path d="M7 6h10l1 7c0 4-3 7-6 7s-6-3-6-7z"/><path d="M9.5 12h.01M14.5 12h.01M10.5 16c.8.6 2.2.6 3 0"/></svg>Cachorro</span>`;
 const pin=`<svg class="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>`;
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-// Ilustração provisória. Para usar fotos reais, preencha "foto" com uma imagem embutida (data:image/jpeg;base64,...)
+
 function art(d,v=0){
- if(d.foto&&d.foto.length&&d.foto[v%d.foto.length]){const k=v%d.foto.length,c=d.fotoCred&&d.fotoCred[k];return `<img src="${PREV[d.foto[k]]||d.foto[k]}" alt="Foto de ${d.nome}" style="width:100%;height:100%;object-fit:cover">${c?`<span class="cr">Foto por ${esc(c)}, 2026</span>`:""}`}
+ if(d.foto&&d.foto.length&&d.foto[v%d.foto.length]){const k=v%d.foto.length,c=d.fotoCred&&d.fotoCred[k];return `<img src="${PREV[d.foto[k]]||d.foto[k]}" alt="Foto de ${d.nome}" style="width:100%;height:100%;object-fit:cover">${c?`<span class="cr">Foto por ${esc(c)}, ${((d.ano&&Array.isArray(d.ano))?d.ano[k]:d.ano)||new Date().getFullYear()}</span>`:""}`}
  const bgs=[d.bg,"#e9ecdf","#d9dff0"],dx=[0,-18,16][v],tilt=[0,-6,7][v];
- return `<svg viewBox="0 0 400 440" role="img" aria-label="Ilustração provisória de ${esc(d.nome)}"><rect width="400" height="440" fill="${bgs[v]}"/><ellipse cx="200" cy="470" rx="200" ry="120" fill="${d.coat}" opacity=".9"/><g transform="translate(${dx} 0) rotate(${tilt} 200 260)">${d.esp==="Gato"?`<path d="M114 60l-16 120 88-46zM286 60l16 120-88-46z" fill="${d.ear}"/><ellipse cx="200" cy="220" rx="102" ry="92" fill="${d.coat}"/><path d="M60 250l80 6M60 280l80-12M340 250l-80 6M340 280l-80-12" stroke="#17231d" stroke-width="3" opacity=".5"/>`:`<path d="M112 130c-46 0-56 88-34 130 20 10 50-20 56-70zM288 130c46 0 56 88 34 130-20 10-50-20-56-70z" fill="${d.ear}"/><ellipse cx="200" cy="215" rx="98" ry="104" fill="${d.coat}"/>`}<ellipse cx="200" cy="262" rx="52" ry="42" fill="#fff" opacity=".28"/><circle cx="160" cy="200" r="12" fill="#17231d"/><circle cx="240" cy="200" r="12" fill="#17231d"/><circle cx="164" cy="196" r="3.5" fill="#fff"/><circle cx="244" cy="196" r="3.5" fill="#fff"/><ellipse cx="200" cy="250" rx="19" ry="14" fill="#17231d"/><path d="M200 264v14M182 282c10 8 26 8 36 0" stroke="#17231d" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>`;
+ return `<svg viewBox="0 0 400 440" role="img" aria-label="Imagem ilustrativa de ${esc(d.nome)}"><rect width="400" height="440" fill="${bgs[v]}"/><ellipse cx="200" cy="470" rx="200" ry="120" fill="${d.coat}" opacity=".9"/><g transform="translate(${dx} 0) rotate(${tilt} 200 260)">${d.esp==="Gato"?`<path d="M114 60l-16 120 88-46zM286 60l16 120-88-46z" fill="${d.ear}"/><ellipse cx="200" cy="220" rx="102" ry="92" fill="${d.coat}"/><path d="M60 250l80 6M60 280l80-12M340 250l-80 6M340 280l-80-12" stroke="#17231d" stroke-width="3" opacity=".5"/>`:`<path d="M112 130c-46 0-56 88-34 130 20 10 50-20 56-70zM288 130c46 0 56 88 34 130-20 10-50-20-56-70z" fill="${d.ear}"/><ellipse cx="200" cy="215" rx="98" ry="104" fill="${d.coat}"/>`}<ellipse cx="200" cy="262" rx="52" ry="42" fill="#fff" opacity=".28"/><circle cx="160" cy="200" r="12" fill="#17231d"/><circle cx="240" cy="200" r="12" fill="#17231d"/><circle cx="164" cy="196" r="3.5" fill="#fff"/><circle cx="244" cy="196" r="3.5" fill="#fff"/><ellipse cx="200" cy="250" rx="19" ry="14" fill="#17231d"/><path d="M200 264v14M182 282c10 8 26 8 36 0" stroke="#17231d" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>`;
 }
-const cls=s=>s==="Em adoção"?"badge adocao":s==="Lar temporário"?"badge lar":"badge";
+const cls=s=>s==="Disponível para adoção"?"badge adocao":s==="Lar temporário"?"badge lar":s==="Adotado"?"badge adotado":s.startsWith("Comunit")?"badge comunitario":"badge";
 let filtro="Todos",busca="";
-const FILTROS=["Todos","Machos","Fêmeas","Comunitários","Em adoção","Lar temporário","Adotados","Cachorros","Gatos"];
+const FILTROS=["Todos","Machos","Fêmeas","Comunitários","Disponível para adoção","Lar temporário","Adotados","Cachorros","Gatos"];
 let loc="Todos os locais";
 function passa(d){
- const f={"Todos":1,"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":d.status.startsWith("Comunit"),"Em adoção":d.status==="Em adoção","Lar temporário":d.status==="Lar temporário","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato"}[filtro];
+ const f={"Todos":1,"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":d.status.startsWith("Comunit"),"Disponível para adoção":d.status==="Disponível para adoção","Lar temporário":d.status==="Lar temporário","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato"}[filtro];
  if(loc!=="Todos os locais"&&d.mod!==loc)return false;
  return f&&d.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(busca.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim());
 }
 function lista(){
  const r=DOGS.filter(passa);
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -219,9 +253,9 @@ function home(){
  document.getElementById("app").innerHTML=`
  <section class="wrap hero"><div>
   <h1>Conheça os AUmigos da UESB</h1>
-  <p>O CATAUlogo com as fotos, histórias e cuidados dos cães e gatos que vivem ou circulam pelo campus. Aqui você descobre quem é quem, onde cada um costuma ficar e como ajudar.</p>
+  <p>Um CATAUlogo com as fotos, histórias e cuidados dos cães e gatos que vivem ou circulam pelo campus. Aqui você descobre quem é quem, onde cada um costuma ficar e como ajudar.</p>
   <a class="btn" href="#catalogo">Ver CATAUlogo</a> <a class="btn ghost" href="#sobre">Sobre o projeto</a>
-  <div class="stats"><div><b>${DOGS.length}</b>animais catalogados</div><div><b>${n("Em adoção")}</b>esperando um lar</div><div><b>${n("Adotado")}</b>já adotados</div></div>
+  <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Lar temporário")}</b>Lar temporário</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
  <section class="wrap tools" id="catalogo"><h2>Encontre um AUmigo</h2>
   <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Buscar pelo nome do animal" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label>
@@ -231,18 +265,18 @@ function home(){
 <section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>Voluntários do AmigoPet</h2><p>Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.</p></div><button class="btn" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
  <h2>Cuidar também é documentar</h2>
- <p style="margin-top:18px">O AUmigos da UESB é o catálogo dos cães e gatos que vivem ou circulam pelo campus: quem são, onde ficam, como estão e quais procuram um lar. Cada ficha é atualizada por estudantes e voluntários.</p>
- <p>Quem cuida dos animais no dia a dia é o <b>AmigoPet</b>, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e evitar abandonos.</p>
+ <p style="margin-top:18px">O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.</p>
+ <p>Quem cuida dos animais no dia a dia é o <b>AmigoPet</b>, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.</p>
  <div class="amigo"><b>Fale com o AmigoPet</b><span>Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.</span>
-  <div class="soc"><a class="btn" id="lig" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a><a class="btn ghost" id="lfb" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg>Facebook</a></div></div>
+  <div class="soc"><a class="btn" id="lig" href="https://www.instagram.com/amigopet.vca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a></div></div>
 </div>
 <div class="help" id="ajudar">
  <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>Adote ou apadrinhe</b><span>Conheça os animais em adoção e chame o AmigoPet para conversar.</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>Doe ração</b><span>A ração é recebida pelo AmigoPet: entre em contato pelo Instagram ou Facebook para combinar a entrega.</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>Doe ração</b><span>A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.</span></p></div>
  <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>Seja voluntário</b><span>Ajude com cuidados, mutirões de vacina, fotos e divulgação.</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>Mande fotos</b><span>Viu algum AUmigo? Fotografe e envie ao projeto, com o crédito de quem fotografou.</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>Mande fotos</b><span>Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.<br><br><b>Envie para:</b> <a href="mailto:david.matosferreira15@gmail.com">david.matosferreira15@gmail.com</a> ou <a href="mailto:ilunahmoura@gmail.com">ilunahmoura@gmail.com</a></span></p></div>
 </div></div></section>
- <footer><div class="wrap">AUmigos da UESB · Projeto universitário · Dados e fotos de exemplo: substitua pelos registros reais.</div></footer>`;
+ <footer><div class="wrap">AUmigos da UESB · Projeto universitário da UESB em Vitória da Conquista</div></footer>`;
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
@@ -250,56 +284,84 @@ function home(){
 }
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
- document.getElementById("app").innerHTML=`<div class="wrap"><a class="back" href="#catalogo">← Voltar ao catálogo</a>
+ document.getElementById("app").innerHTML=`<div class="wrap"><a class="back" href="#/" onclick="setTimeout(()=>document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth'}),50)">← Voltar ao CATAUlogo</a>
  <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}">${art(d,i)}</button>`).join("")}</div></div>
  <div><span class="${cls(d.status)}">${d.status}</span><h1>${esc(d.nome)}</h1><p class="sub">${d.sexo} · ${d.idade}</p>
  <div class="kv"><div><small>Localização</small>${esc(d.mod)}</div><div><small>Onde costuma ficar</small>${esc(d.local)}</div><div><small>Espécie</small>${d.esp}</div><div><small>Status</small>${d.status}</div></div>
  <h3>História</h3><p style="margin:0;color:var(--mut)">${esc(d.hist)}</p>
  <h3>Personalidade</h3><div class="traits">${d.pers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>
- <h3>Características</h3><p style="margin:0;color:var(--mut)">${esc(d.car)}</p>
- <p style="margin-top:26px"><a class="btn" href="#ajudar" onclick="setTimeout(()=>location.hash='#/',0)">${d.status==="Em adoção"?"Quero adotar "+esc(d.nome):"Como ajudar"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></p>
+ <h3>Características</h3><div class="traits">${(Array.isArray(d.car)?d.car:(d.car||"").split(",").filter(Boolean)).map(p=>`<span>${esc(p.trim())}</span>`).join("")}</div>
+ <p style="margin-top:26px"><a class="btn" href="#/" onclick="event.preventDefault();location.hash='#/';setTimeout(()=>document.getElementById('ajudar')?.scrollIntoView({behavior:'smooth'}),80)">${d.status==="Disponível para adoção"?"Quero adotar "+esc(d.nome):"Como ajudar"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></p>
  </div></article></div>`;
  document.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{document.getElementById("main").innerHTML=art(d,+b.dataset.i)+ico(d.esp);document.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b))});
  scrollTo(0,0);
 }
-function rota(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);else if(!document.getElementById("grid"))home();else if(location.hash==="#/"||!location.hash)scrollTo(0,0);}
-addEventListener("hashchange",()=>{setTimeout(links,0);const m=location.hash.match(/^#\/cao\//);if(m||location.hash==="#/"){rota2()}});
-function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);m?ficha(m[1]):home()}
+function rota(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);else if(!document.getElementById("grid"))home();else if(location.hash==="#/"||!location.hash)scrollTo(0,0);else if(location.hash==="#catalogo")document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth"});}
+addEventListener("hashchange",()=>{setTimeout(links,0);const m=location.hash.match(/^#\/cao\//);if(m||location.hash==="#/"||location.hash==="#catalogo"){rota2()}else if(document.getElementById("grid")){document.querySelector(location.hash)?.scrollIntoView({behavior:"smooth"})}});
+function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);else{home();if(location.hash==="#catalogo")setTimeout(()=>document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth"}),30)}}
 
-const SOCIAL={ig:"https://www.instagram.com/",fb:"https://www.facebook.com/"}; // coloque aqui os links reais do AmigoPet
-function links(){const a=document.getElementById("lig"),b=document.getElementById("lfb");if(a)a.href=SOCIAL.ig;if(b)b.href=SOCIAL.fb}
-function rAdm(){document.body.classList.toggle("isadm",admin);const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display=admin?"inline-flex":"none";if(b)b.textContent=admin?"Sair do admin":"Admin"}
-document.addEventListener("click",async e=>{if(e.target.closest("#fadd")){if(!admin)return;abrirForm();return}if(!e.target.closest("#fadm"))return;
- if(admin){admin=false;TOKEN="";try{localStorage.removeItem("auu_token");localStorage.removeItem("auu_repo")}catch(e){}}
-else{if(!await entrar())return}
+function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
+function rAdm(){admin=true;document.body.classList.add("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none"}
+document.addEventListener("click",async e=>{if(e.target.closest("#fadd")){abrirForm();return}if(!e.target.closest("#fadm"))return;
+ if(admin){admin=false;TOKEN="";try{localStorage.removeItem("auu_token")}catch(e){}}
  else{if(!await entrar())return}
  rAdm();try{rota2()}catch(err){console.error(err)}links();});
 try{rAdm();links()}catch(e){console.error(e)}
 const dlg=document.getElementById("dlg"),frm=document.getElementById("frm");
 frm.mod.innerHTML=MODS.map(m=>`<option>${m}</option>`).join("");
 document.getElementById("cancel").onclick=()=>dlg.close();
-function mkSlot(n){const d=document.createElement("div");d.className="fr";d.innerHTML=`<label>Foto ${n}<input type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" placeholder="Nome do fotógrafo(a)">${n>1?'<button type="button" class="btn ghost rmslot" aria-label="Remover foto" style="padding:6px 12px">×</button>':""}</span></label><small class="finfo" style="grid-column:1/-1;color:var(--mut)"></small>`;return d}
-function resetSlots(){const b=document.getElementById("slots");b.innerHTML="";b.append(mkSlot(1));document.getElementById("addslot").style.display=""}
+function mkSlot(n,year=new Date().getFullYear()){const d=document.createElement("div");d.className="fr";d.innerHTML=`<label>Foto ${n}<input type="file" accept="image/*,.crw,.cr2,.cr3,.nef,.nrw,.arw,.srf,.sr2,.raf,.raw,.rw2,.x3f,.dng,.orf,.pef"></label><label>Ano da foto<input class="photo-year" type="number" min="2000" max="2100" step="1" value="${year}"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" placeholder="Nome de quem fotografou">${n>1?'<button type="button" class="btn ghost rmslot" aria-label="Remover foto">Remover</button>':""}</span></label><small class="finfo" style="grid-column:1/-1;color:var(--mut)"></small>`;return d}
+function resetSlots(){const b=document.getElementById("slots");b.innerHTML="";b.append(mkSlot(1,new Date().getFullYear()));document.getElementById("addslot").style.display=""}
 document.getElementById("addslot").onclick=()=>{const b=document.getElementById("slots"),n=b.children.length+1;if(n>6)return;b.append(mkSlot(n));if(n>=6)document.getElementById("addslot").style.display="none"};
 document.getElementById("slots").onclick=e=>{const x=e.target.closest(".rmslot");if(!x)return;x.closest(".fr").remove();[...document.querySelectorAll("#slots .fr")].forEach((r,i)=>r.querySelector("label").firstChild.textContent="Foto "+(i+1));document.getElementById("addslot").style.display=""};
 function fillLocs(sel){const o=["Todos os locais",...MODS];document.querySelectorAll("select[name=mod]").forEach(e=>{const v=e.value;e.innerHTML=MODS.map(m=>`<option>${m}</option>`).join("");if(MODS.includes(v))e.value=v});const l=document.getElementById("loc");if(l){l.innerHTML=o.map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}if(sel)frm.mod.value=sel}
+const PICKERS={
+Cachorro:{pers:["Brincalhão","Carinhoso","Dócil","Sociável","Calmo","Energético","Curioso","Protetor","Leal","Apegado","Independente","Medroso","Tímido","Agitado","Tranquilo","Esperto","Obediente","Afetuoso","Amigável","Paciente","Territorial","Desconfiado","Filhote","Idoso"],car:["Porte pequeno","Porte médio","Porte grande","Pelagem curta","Pelagem média","Pelagem longa","Pelagem lisa","Pelagem ondulada","Pelagem encaracolada","Pelagem preta","Pelagem branca","Pelagem caramelo","Pelagem marrom","Pelagem cinza","Pelagem dourada","Manchas","Peito branco","Orelhas caídas","Orelhas pontudas","Rabo comprido","Rabo curto","Olhos claros","Olhos escuros","Castrado","Vacinado"]},
+Gato:{pers:["Carinhoso","Independente","Brincalhão","Dócil","Sociável","Calmo","Curioso","Apegado","Tímido","Medroso","Agitado","Tranquilo","Esperto","Afetuoso","Amigável","Paciente","Territorial","Desconfiado","Dorminhoco","Aventureiro","Arisco","Filhote","Idoso"],car:["Porte pequeno","Porte médio","Porte grande","Pelagem curta","Pelagem média","Pelagem longa","Pelagem lisa","Pelagem ondulada","Pelagem encaracolada","Pelagem preta","Pelagem branca","Pelagem laranja","Pelagem cinza","Pelagem marrom","Pelagem tricolor","Pelagem rajada","Manchas","Olhos verdes","Olhos azuis","Olhos amarelos","Rabo comprido","Rabo curto","Castrado","Vacinado"]}};
+frm.esp.onchange=()=>setupPickers(frm.esp.value,[],[]);
+setupPickers("Cachorro",[],[]);
 document.getElementById("newloc").onclick=()=>{if(!admin)return;const v=(prompt("Nome do novo local (ex.: Módulo V, Cantina):")||"").trim();if(!v)return;const ex=MODS.find(m=>m.toLowerCase()===v.toLowerCase());if(!ex)MODS.splice(MODS.length-1,0,v);fillLocs(ex||v)};
+
+function renderPicker(kind,esp,selected){const el=document.getElementById(kind+"Picker");if(!el)return;const vals=PICKERS[esp][kind];const set=new Set(selected||[]);el.innerHTML=vals.map(v=>`<button type="button" class="pick" aria-pressed="${set.has(v)}" data-value="${esc(v)}">${esc(v)}</button>`).join("");el.querySelectorAll(".pick").forEach(b=>b.onclick=()=>{b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true");syncPicker(kind)});syncPicker(kind)}
+function syncPicker(kind){const el=document.getElementById(kind+"Picker"),out=document.querySelector(`input[name=${kind}]`);if(!el||!out)return;out.value=[...el.querySelectorAll('.pick[aria-pressed="true"]')].map(x=>x.dataset.value).join(", ")}
+function setupPickers(esp,pers=[],car=[]){renderPicker("pers",esp,pers);renderPicker("car",esp,car)}
+async function addPickerOption(kind){if(!admin)return;const label=kind==="pers"?"personalidade":"característica",esp=frm.esp.value,v=(prompt("Nova "+label+" para "+esp+":")||"").trim();if(!v)return;if(PICKERS[esp][kind].some(x=>x.toLowerCase()===v.toLowerCase())){alert("Essa opção já existe.");return}try{await salvar(s=>{s.options=s.options||{};s.options[esp]=s.options[esp]||{};s.options[esp][kind]=Array.isArray(s.options[esp][kind])?s.options[esp][kind]:[];s.options[esp][kind].push(v)},"Adiciona "+label+" "+v);if(!PICKERS[esp][kind].includes(v))PICKERS[esp][kind].push(v);const selected=[...document.querySelectorAll("#"+kind+"Picker .pick[aria-pressed=\"true\"]")].map(x=>x.dataset.value);renderPicker(kind,esp,selected);document.querySelector(`input[name=${kind}]`).value=selected.concat(v).join(", ");const last=[...document.querySelectorAll("#"+kind+"Picker .pick")].find(x=>x.dataset.value===v);if(last){last.setAttribute("aria-pressed","true");syncPicker(kind)}}catch(err){erro(err)}}
+async function removePickerOption(kind){
+ if(!admin)return;
+ const esp=frm.esp.value, label=kind==="pers"?"personalidade":"característica";
+ const selected=[...document.querySelectorAll("#"+kind+"Picker .pick[aria-pressed=\"true\"]")].map(x=>x.dataset.value);
+ if(!selected.length){alert("Selecione primeiro a "+label+" que deseja remover.");return}
+ const v=selected[0];
+ if(!confirm("Remover "+label+" \""+v+"\" da lista para "+esp+"? Animais já cadastrados não serão alterados."))return;
+ try{
+  await salvar(s=>{s.options=s.options||{};s.options[esp]=s.options[esp]||{};s.options[esp][kind]=Array.isArray(s.options[esp][kind])?s.options[esp][kind].filter(x=>x!==v):[]},"Remove "+label+" "+v);
+  PICKERS[esp][kind]=PICKERS[esp][kind].filter(x=>x!==v);
+  const remaining=selected.filter(x=>x!==v);
+  renderPicker(kind,esp,remaining);
+ }catch(err){erro(err)}
+}
+document.getElementById("addPersOpt").onclick=()=>addPickerOption("pers");
+document.getElementById("delPersOpt").onclick=()=>removePickerOption("pers");
+document.getElementById("addCarOpt").onclick=()=>addPickerOption("car");
+document.getElementById("delCarOpt").onclick=()=>removePickerOption("car");
+document.getElementById("delloc").onclick=async()=>{if(!admin)return;const v=frm.mod.value;if(BASE.includes(v)){alert("Os locais padrão não podem ser removidos.");return}if(!confirm("Remover o local "+v+" da lista? Animais que já usam esse local não serão apagados."))return;try{await salvar(s=>{s.locs=(s.locs||[]).filter(x=>x!==v)},"Remove local "+v);fillLocs();frm.mod.value=MODS[0]}catch(err){erro(err)}};
 let editId=null;
 const cdlg=document.getElementById("cdlg");
 function loadImg(b){return new Promise((ok,no)=>{const u=URL.createObjectURL(b),i=new Image;i.onload=()=>{URL.revokeObjectURL(u);ok(i)};i.onerror=()=>no(new Error("img"));i.src=u})}
 function coverJpg(img){const o=document.createElement("canvas");o.width=800;o.height=880;const s=Math.max(800/img.naturalWidth,880/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;o.getContext("2d").drawImage(img,(800-w)/2,(880-h)/2,w,h);return o.toDataURL("image/jpeg",.82)}
 function cropImage(img,info){return new Promise(res=>{
- const cv=document.getElementById("cv"),cx=cv.getContext("2d"),W=320,H=352,z=document.getElementById("czoom"),base=Math.max(W/img.naturalWidth,H/img.naturalHeight);
- let k=1,x=(W-img.naturalWidth*base)/2,y=(H-img.naturalHeight*base)/2,drag=null;z.value=1;
- const draw=()=>{const s=base*k,w=img.naturalWidth*s,h=img.naturalHeight*s;x=Math.min(0,Math.max(W-w,x));y=Math.min(0,Math.max(H-h,y));cx.fillStyle="#000";cx.fillRect(0,0,W,H);cx.drawImage(img,x,y,w,h)};
+ const cv=document.getElementById("cv"),cx=cv.getContext("2d"),W=320,H=352,z=document.getElementById("czoom");let base=Math.max(W/img.naturalWidth,H/img.naturalHeight);
+ let src=img,k=1,x=(W-img.naturalWidth*base)/2,y=(H-img.naturalHeight*base)/2,drag=null;z.value=1;
+ const draw=()=>{const s=base*k,w=src.naturalWidth*s,h=src.naturalHeight*s;x=Math.min(0,Math.max(W-w,x));y=Math.min(0,Math.max(H-h,y));cx.fillStyle="#000";cx.fillRect(0,0,W,H);cx.drawImage(src,x,y,w,h)};
  document.getElementById("cinfo").textContent=info;
- cv.onpointerdown=e=>{drag={px:e.clientX,py:e.clientY,x,y};cv.setPointerCapture(e.pointerId);cv.style.cursor="grabbing"};
+ cv.onpointerdown=e=>{drag={px:e.clientX,py:e.clientY,x,y};cv.setPointerCapture(e.pointerId)};
  cv.onpointermove=e=>{if(!drag)return;const r=W/cv.getBoundingClientRect().width;x=drag.x+(e.clientX-drag.px)*r;y=drag.y+(e.clientY-drag.py)*r;draw()};
- cv.onpointerup=cv.onpointercancel=()=>{drag=null;cv.style.cursor="grab"};
+ cv.onpointerup=cv.onpointercancel=()=>{drag=null};
  z.oninput=()=>{const mx=(W/2-x)/(base*k),my=(H/2-y)/(base*k);k=+z.value;x=W/2-mx*base*k;y=H/2-my*base*k;draw()};
  const done=v=>{cdlg.close();res(v)};
+ document.getElementById("crotate").onclick=()=>{const c=document.createElement("canvas");c.width=src.naturalHeight;c.height=src.naturalWidth;const q=c.getContext("2d");q.translate(c.width/2,c.height/2);q.rotate(Math.PI/2);q.drawImage(src,-src.naturalWidth/2,-src.naturalHeight/2);const ni=new Image;ni.onload=()=>{src=ni;k=1;base=Math.max(W/src.naturalWidth,H/src.naturalHeight);x=(W-src.naturalWidth*base)/2;y=(H-src.naturalHeight*base)/2;z.value=1;draw()};ni.src=c.toDataURL("image/jpeg",.9)};
  document.getElementById("ccancel").onclick=()=>done(null);
- document.getElementById("cok").onclick=()=>{const o=document.createElement("canvas");o.width=800;o.height=880;const f=800/W,s=base*k;o.getContext("2d").drawImage(img,x*f,y*f,img.naturalWidth*s*f,img.naturalHeight*s*f);done(o.toDataURL("image/jpeg",.82))};
+ document.getElementById("cok").onclick=()=>{const o=document.createElement("canvas");o.width=800;o.height=880;const f=800/W,s=base*k;o.getContext("2d").drawImage(src,x*f,y*f,src.naturalWidth*s*f,src.naturalHeight*s*f);done(o.toDataURL("image/jpeg",.82))};
  cdlg.oncancel=()=>res(null);cdlg.showModal();draw()})}
 document.getElementById("slots").addEventListener("change",async e=>{const fi=e.target;if(fi.type!=="file")return;
  const row=fi.closest(".fr"),inf=row.querySelector(".finfo");row._src=null;inf.textContent="";const f=fi.files[0];if(!f)return;
@@ -308,13 +370,13 @@ document.getElementById("slots").addEventListener("change",async e=>{const fi=e.
   if(!out){fi.value="";return}
   row._src=out;inf.innerHTML=`<img src="${out}" alt="" style="height:44px;border-radius:8px;vertical-align:middle;margin-right:8px">${ok?"Proporção correta":"Foto cortada para 10:11"} (original ${w}×${h} px).${small?" Menor que o recomendado, pode perder nitidez.":""}`}
  catch(err){fi.value="";inf.textContent="Não consegui ler esta foto. Se for RAW, exporte uma prévia em JPEG."}});
-function mkExisting(src,cred,n){const d=document.createElement("div");d.className="fr";d._src=src;d.innerHTML=`<label>Foto ${n}<img src="${PREV[src]||src}" alt="" style="width:100%;height:70px;object-fit:cover;border-radius:10px;margin-top:4px"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" value="${esc(cred).replace(/"/g,"&quot;")}" placeholder="Nome do fotógrafo(a)"><button type="button" class="btn ghost rmslot" aria-label="Remover foto" style="padding:6px 12px">×</button></span></label>`;return d}
+function mkExisting(src,cred,n,year=new Date().getFullYear()){const d=document.createElement("div");d.className="fr";d._src=src;d.innerHTML=`<label>Foto ${n}<img class="existing-photo" src="${PREV[src]||src}" alt="" style="width:100%;height:70px;object-fit:cover;border-radius:10px;margin-top:4px"></label><label>Ano da foto<input class="photo-year" type="number" min="2000" max="2100" step="1" value="${year||new Date().getFullYear()}"></label><label>Foto por<span style="display:flex;gap:6px"><input type="text" value="${esc(cred).replace(/"/g,"&quot;")}" placeholder="Nome de quem fotografou"><button type="button" class="btn ghost rmslot" aria-label="Remover foto">Remover</button></span></label><div class="photo-actions" style="grid-column:1/-1"><button type="button" class="btn ghost rotate-existing">↻ Girar foto</button></div>`;return d}
 function abrirForm(id){if(!admin)return;editId=id||null;frm.reset();resetSlots();fillLocs();
  const d=editId&&DOGS.find(a=>a.id===editId);
  document.getElementById("dtitle").textContent=d?"Editar animal":"Adicionar animal";document.getElementById("save").textContent=d?"Salvar alterações":"Salvar animal";
  if(d){if(!MODS.includes(d.mod)){MODS.splice(MODS.length-1,0,d.mod);fillLocs()}
-  frm.nome.value=d.nome;frm.esp.value=d.esp;frm.sexo.value=d.sexo;frm.idade.value=d.idade;frm.status.value=d.status;frm.mod.value=d.mod;frm.local.value=d.local||"";frm.hist.value=d.hist||"";frm.pers.value=(d.pers||[]).join(", ");frm.car.value=d.car||"";
-  if(d.foto&&d.foto.length){const b=document.getElementById("slots");b.innerHTML="";d.foto.forEach((src,i)=>b.append(mkExisting(src,(d.fotoCred||[])[i]||"",i+1)));if(d.foto.length>=6)document.getElementById("addslot").style.display="none"}}
+  frm.nome.value=d.nome;frm.esp.value=d.esp;frm.sexo.value=d.sexo;frm.idade.value=d.idade;frm.status.value=d.status;frm.mod.value=d.mod;frm.local.value=d.local||"";frm.hist.value=d.hist||"";setupPickers(d.esp,d.pers||[],Array.isArray(d.car)?d.car:(d.car||"").split(",").map(x=>x.trim()).filter(Boolean));
+  if(d.foto&&d.foto.length){const b=document.getElementById("slots");b.innerHTML="";d.foto.forEach((src,i)=>b.append(mkExisting(src,(d.fotoCred||[])[i]||"",i+1,(Array.isArray(d.ano)?d.ano[i]:d.ano)||new Date().getFullYear())));if(d.foto.length>=6)document.getElementById("addslot").style.display="none"}}
  dlg.showModal()}
 document.addEventListener("click",e=>{const x=e.target.closest(".ex,.exf");if(!x)return;e.preventDefault();e.stopPropagation();abrirForm(x.dataset.id)},true);
 const RAW=/\.(crw|cr2|cr3|nef|nrw|arw|srf|sr2|raf|raw|rw2|x3f|dng|orf|pef)$/i;
@@ -328,17 +390,18 @@ async function rawPreview(f){
  if(!best)throw new Error("sem prévia");return best}
 async function redim(f){return redimBlob(RAW.test(f.name)?await rawPreview(f):f)}
 function redimBlob(f){return new Promise((r,j)=>{const i=new Image,u=URL.createObjectURL(f);i.onerror=()=>j(new Error("img"));i.onload=()=>{const k=Math.min(1,700/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);r(c.toDataURL("image/jpeg",.78))};i.src=u})}
+document.addEventListener("click",async e=>{const b=e.target.closest(".rotate-existing");if(!b)return;const row=b.closest(".fr"),src=row._src;try{const u=PREV[src]||src;const img=await new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i);i.onerror=reject;i.src=u});const c=document.createElement("canvas");c.width=img.naturalHeight;c.height=img.naturalWidth;const x=c.getContext("2d");x.translate(c.width/2,c.height/2);x.rotate(Math.PI/2);x.drawImage(img,-img.naturalWidth/2,-img.naturalHeight/2);row._src=c.toDataURL("image/jpeg",.84);row.querySelector(".existing-photo").src=row._src}catch(err){alert("Não foi possível girar esta foto.")}});
 frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
- const f=new FormData(frm),fotos=[],cred=[];
- let i=0;for(const row of document.querySelectorAll("#slots .fr")){i++;const ci=row.querySelector("input[type=text]"),c=ci.value.trim(),fi=row.querySelector("input[type=file]"),fl=fi&&fi.files[0];if(!row._src&&!fl)continue;if(!c){alert("Informe o nome de quem tirou a foto "+i+".");ci.focus();return}if(row._src)fotos.push(row._src);else{try{fotos.push(await redim(fl))}catch(err){alert("Não consegui ler a foto "+i+" ("+fl.name+"). Se for RAW, exporte uma prévia em JPEG e tente de novo.");return}}cred.push(c)}
+ const f=new FormData(frm),fotos=[],cred=[],anos=[];
+ let i=0;for(const row of document.querySelectorAll("#slots .fr")){i++;const ci=row.querySelector("input[type=text]"),c=ci.value.trim(),yi=row.querySelector(".photo-year"),ano=Number(yi&&yi.value)||new Date().getFullYear(),fi=row.querySelector("input[type=file]"),fl=fi&&fi.files[0];if(!row._src&&!fl)continue;if(!c){alert("Informe o nome de quem tirou a foto "+i+".");ci.focus();return}if(row._src)fotos.push(row._src);else{try{fotos.push(await redim(fl))}catch(err){alert("Não consegui ler a foto "+i+" ("+fl.name+"). Se for RAW, exporte uma prévia em JPEG e tente de novo.");return}}cred.push(c);anos.push(ano)}
  const esp=f.get("esp"),nome=f.get("nome").trim();
- const old=editId&&DOGS.find(a=>a.id===editId);const n={id:old?old.id:"a"+Date.now(),esp,mod:f.get("mod"),nome,sexo:f.get("sexo"),idade:f.get("idade"),status:f.get("status"),local:f.get("local")||f.get("mod"),coat:old?old.coat:esp==="Gato"?"#b9a58c":"#b98a55",ear:old?old.ear:"#7d5a36",bg:old?old.bg:"#e3e7d8",hist:f.get("hist")||"História em breve.",pers:(f.get("pers")||"").split(",").map(x=>x.trim()).filter(Boolean),car:f.get("car")||"",foto:fotos,fotoCred:cred};
+ const old=editId&&DOGS.find(a=>a.id===editId);const n={id:old?old.id:"a"+Date.now(),esp,mod:f.get("mod"),nome,sexo:f.get("sexo"),idade:f.get("idade"),status:f.get("status"),ano:anos,local:f.get("local")||f.get("mod"),coat:old?old.coat:esp==="Gato"?"#b9a58c":"#b98a55",ear:old?old.ear:"#7d5a36",bg:old?old.bg:"#e3e7d8",hist:f.get("hist")||"História em breve.",pers:(f.get("pers")||"").split(",").map(x=>x.trim()).filter(Boolean),car:(f.get("car")||"").split(",").map(x=>x.trim()).filter(Boolean),foto:fotos,fotoCred:cred};
  const sv=document.getElementById("save");sv.disabled=true;sv.textContent="Salvando…";
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
 document.addEventListener("click",async e=>{const x=e.target.closest(".dx,.dxf");if(!x)return;e.preventDefault();e.stopPropagation();if(!admin)return;
- const d=DOGS.find(a=>a.id===x.dataset.id);if(!d||!confirm("Excluir "+d.nome+" do catálogo? Essa ação não pode ser desfeita."))return;
+ const d=DOGS.find(a=>a.id===x.dataset.id);if(!d||!confirm("Excluir "+d.nome+" do CATAUlogo? Essa ação não pode ser desfeita."))return;
  try{await salvar(s=>{s.dogs=s.dogs.filter(a=>a.id!==d.id)},"Remove "+d.nome)}catch(err){return erro(err)}
  if(/#\/cao\//.test(location.hash))location.hash="#/";else{const y=scrollY;home();scrollTo(0,y)}},true);
 function renderVol(){const g=document.getElementById("vgrid");if(!g)return;
