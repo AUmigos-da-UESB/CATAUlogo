@@ -163,7 +163,9 @@
  "options": {
   "Cachorro": {
    "pers": [],
-   "car": []
+   "car": [
+    "Gordinho"
+   ]
   },
   "Gato": {
    "pers": [
