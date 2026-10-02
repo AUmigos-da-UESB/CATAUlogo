@@ -132,16 +132,47 @@
    "sexo": "Macho",
    "idade": "3 anos",
    "status": "Comunitário",
-   "ano": [],
+   "ano": [
+    2026,
+    2026
+   ],
    "local": "Canil da UESB, Quadra, CAP, Portaria",
    "coat": "#b98a55",
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [],
-   "car": [],
-   "foto": [],
-   "fotoCred": []
+   "hist": "Serena foi encontrada na UESB junto com seus filhotes, em situação de abandono. No início, era muito magra, debilitada e bastante arisca, evitando o contato com as pessoas. Estudantes da Residência Universitária começaram a cuidar dos filhotes e, aos poucos, foram conquistando a confiança de Serena.\n\nDepois de ser resgatada com o apoio do projeto Amigo Pet, Serena passou por uma grande transformação. Recuperou o peso, a saúde e, principalmente, a confiança nas pessoas. Hoje, é uma cadela carinhosa, brincalhona e conhecida por muitos que passam pela UESB.\n\nSeu nome foi escolhido pelos próprios estudantes que participaram do resgate.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Leal",
+    "Apegado",
+    "Independente",
+    "Tranquilo",
+    "Esperto",
+    "Obediente",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Orelhas caídas",
+    "Olhos claros",
+    "Gordinho"
+   ],
+   "foto": [
+    "fotos/a1790900984986-muq8pmxl-0.jpg",
+    "fotos/a1790900984986-muq8pmxn-1.jpg"
+   ],
+   "fotoCred": [
+    "David Matos, @davidmatos_15",
+    "David Matos, @davidmatos_15"
+   ]
   }
  ],
  "locs": [
