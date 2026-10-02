@@ -145,7 +145,7 @@ const MODS=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Re
 const SEED={dogs:JSON.parse(JSON.stringify(DOGS)),locs:["Canil da UESB","Lar Temporário"],vol:[{"id":"v1790800150469","nome":"David Matos Ferreira","papel":"ADM da página 🐶"},{"id":"v1790803104805","nome":"Luna M A Moura","papel":"ADM da página 🐶"}],options:null};
 /* ===== Publicação no GitHub: os dados ficam em data.json e as fotos em fotos/ dentro do repositório ===== */
 let REPO="";/* "usuario/repositorio". Se vazio, é detectado pelo endereço github.io ou perguntado no login */
-let TOKEN="",BRANCH="main",admin=true,VOL=[];const PREV={};
+let TOKEN="",BRANCH="main",admin=false,VOL=[];const PREV={};
 try{TOKEN=localStorage.auu_token||"";REPO=localStorage.auu_repo||""}catch(e){}
 if(!REPO&&/\.github\.io$/.test(location.hostname)){const o=location.hostname.split(".")[0],q=location.pathname.split("/")[1];REPO=o+"/"+(q&&!/\./.test(q)?q:o+".github.io")}
 const toast=m=>{let t=document.getElementById("toast");if(!t){t=document.createElement("div");t.id="toast";t.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:999;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14px Figtree,sans-serif;max-width:90%;text-align:center";document.body.append(t)}t.textContent=m;t.style.display=m?"block":"none"};
@@ -206,8 +206,10 @@ async function ghContentsPut(path,base64,message,isData=false){
  return r.json();
 }
 async function load(){let s=null;
- if(TOKEN&&REPO){try{const r=await gh("");if(!r.permissions||!r.permissions.push)throw Object.assign(new Error("sem permissão"),{status:403});BRANCH=r.default_branch;admin=true;s=await remote()}
-  catch(e){if([401,403,404].includes(e.status)){TOKEN="";admin=false;try{localStorage.removeItem("auu_token")}catch(x){}}}}
+ if(TOKEN&&REPO){
+  // O token salvo não concede acesso automaticamente: o modo Admin só é ativado ao clicar em Admin.
+  // O conteúdo público continua sendo carregado por data.json.
+ }
  if(!s){try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(r.ok)s=await r.json()}catch(e){}}
  apply(s||SEED);
  if(admin)rAdm();else{document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="none";if(b)b.style.display="inline-flex"}
@@ -302,11 +304,32 @@ function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);e
 
 function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
 function rAdm(){admin=true;document.body.classList.add("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none"}
-document.addEventListener("click",async e=>{if(e.target.closest("#fadd")){abrirForm();return}if(!e.target.closest("#fadm"))return;
- if(admin){admin=false;TOKEN="";try{localStorage.removeItem("auu_token")}catch(e){}}
- else{if(!await entrar())return}
- rAdm();try{rota2()}catch(err){console.error(err)}links();});
-try{rAdm();links()}catch(e){console.error(e)}
+document.addEventListener("click",async e=>{
+ if(e.target.closest("#fadd")){if(admin)abrirForm();return}
+ if(!e.target.closest("#fadm"))return;
+ if(admin){
+  admin=false;
+  document.body.classList.remove("isadm");
+  const a=document.getElementById("fadd"),b=document.getElementById("fadm");
+  if(a)a.style.display="none";
+  if(b)b.style.display="inline-flex";
+  try{localStorage.removeItem("auu_token")}catch(err){}
+  TOKEN="";
+  try{rota2()}catch(err){console.error(err)}
+  return;
+ }
+ if(!await entrar())return;
+ rAdm();
+ try{rota2()}catch(err){console.error(err)}
+ links();
+});
+try{
+ document.body.classList.remove("isadm");
+ const a=document.getElementById("fadd"),b=document.getElementById("fadm");
+ if(a)a.style.display="none";
+ if(b)b.style.display="inline-flex";
+ links();
+}catch(e){console.error(e)}
 const dlg=document.getElementById("dlg"),frm=document.getElementById("frm");
 frm.mod.innerHTML=MODS.map(m=>`<option>${m}</option>`).join("");
 document.getElementById("cancel").onclick=()=>dlg.close();
