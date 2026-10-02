@@ -97,6 +97,21 @@ footer{padding:32px 0;color:var(--mut);font-size:14px}
 .dx svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .isadm .dx{display:grid}.isadm .dxf{display:inline-flex;color:#c0392b;border-color:#c0392b}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 32px)}
+/* Rolamentos personalizados do CATAUlogo */
+html{scrollbar-width:thin;scrollbar-color:var(--acc) transparent}
+*{scrollbar-width:thin;scrollbar-color:var(--acc) transparent}
+*::-webkit-scrollbar{width:9px;height:9px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:var(--acc);border-radius:999px;border:2px solid transparent;background-clip:padding-box}
+*::-webkit-scrollbar-thumb:hover{background:var(--acc);background-clip:padding-box}
+.dialog-scroll,.picker{scrollbar-width:thin;scrollbar-color:var(--acc) transparent}
+.dialog-scroll::-webkit-scrollbar,.picker::-webkit-scrollbar{width:8px}
+.dialog-scroll::-webkit-scrollbar-track,.picker::-webkit-scrollbar-track{background:transparent}
+.dialog-scroll::-webkit-scrollbar-thumb,.picker::-webkit-scrollbar-thumb{background:var(--acc);border-radius:999px;border:2px solid transparent;background-clip:padding-box}
+.pencil-btn{width:44px;min-width:44px;padding:10px 0;font-size:20px;line-height:1}.isadm #ftext{display:inline-flex !important}.text-editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.text-editor-grid .full{grid-column:1/-1}.text-editor-grid label{font-size:13px;color:var(--mut);display:grid;gap:5px}.text-editor-grid textarea{min-height:86px;resize:vertical}.text-editor-grid input,.text-editor-grid textarea{font:500 15px Figtree,sans-serif;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;box-sizing:border-box}@media(max-width:620px){.text-editor-grid{grid-template-columns:1fr}}
+#fadm{display:inline-flex !important}
+.isadm #fadm{display:none !important}
+.isadm #fadd{display:inline-flex !important}
 .fab .btn{box-shadow:0 6px 22px rgba(0,0,0,.18)}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
 select,dialog input,dialog select,dialog textarea{font:500 15px Figtree,sans-serif;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
@@ -120,11 +135,12 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w
 <body>
 <header><div class="wrap">
  <a class="logo" href="#/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--acc)"/><path d="M8 11c0-3 4-3 4 1v3M24 11c0-3-4-3-4 1v3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="16" cy="18" r="6" fill="#fff"/><circle cx="14" cy="17" r="1" fill="#17231d"/><circle cx="18" cy="17" r="1" fill="#17231d"/><ellipse cx="16" cy="20" rx="1.6" ry="1.1" fill="#17231d"/></svg>AUmigos da UESB</a>
- <nav><a href="#/">Início</a><a href="#catalogo">CATAUlogo</a><a href="#voluntarios">Voluntários</a><a href="#sobre">O projeto</a><a href="#ajudar">Como ajudar</a></nav>
+ <nav><a href="#/">Início</a><a href="#catalogo">CATAUlogo</a><a href="#voluntarios">Voluntários</a><a href="#sobre">Sobre e apoio</a></nav>
 </div></header>
 
-<div class="fab" id="fab"><button class="btn" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
+<div class="fab" id="fab"><button class="btn pencil-btn" id="ftext" style="display:none" title="Editar textos" aria-label="Editar textos">✎</button><button class="btn" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
 
+<dialog id="tdlg"><h2 style="font-size:28px;margin-bottom:6px">Editar textos</h2><p style="margin:0 0 18px;color:var(--mut);font-size:14px">Altere títulos, chamadas e textos do CATAUlogo. As mudanças são salvas no GitHub junto com o data.json.</p><form id="tfrm"><div class="dialog-scroll full" id="textFields"></div><div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px"><button type="button" class="btn ghost" id="tcancel">Cancelar</button><button class="btn" id="tsave">Salvar textos</button></div></form></dialog>
 <dialog id="vdlg"><h2 style="font-size:28px;margin-bottom:16px">Adicionar voluntário</h2><form id="vfrm" method="dialog"><label class="full">Nome<input name="nome" required></label><label class="full">Como contribui<input name="papel" placeholder="ex.: alimentação, vacinação, fotos"></label><div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="vcancel">Cancelar</button><button class="btn">Salvar voluntário</button></div></form></dialog>
 <dialog id="cdlg"><h2 style="font-size:24px;margin-bottom:6px">Cortar foto</h2><p id="cinfo" style="margin:0 0 12px;color:var(--mut);font-size:14px"></p><canvas id="cv" width="320" height="352" style="width:100%;max-width:320px;border-radius:16px;touch-action:none;background:#000;display:block;margin:0 auto"></canvas><label style="margin-top:12px">Zoom<input id="czoom" type="range" min="1" max="3" step="0.01" value="1"></label><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="crotate">↻ Girar</button><button type="button" class="btn ghost" id="ccancel">Cancelar</button><button type="button" class="btn" id="cok">Usar esta parte</button></div></dialog>
 <main id="app"></main>
@@ -145,7 +161,9 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w
 const DOGS=[{"id":"a1790800495807","esp":"Cachorro","mod":"Canil da UESB","nome":"Floquinho","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Quadra, CAP, Portaria","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790800495807-muolvonw0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]},{"id":"a1790803645938","esp":"Gato","mod":"Lar Temporário","nome":"Tom","sexo":"Macho","idade":"Cerca de 2 anos","status":"Lar temporário","local":"Lar Temporário","coat":"#b9a58c","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790803645938-muom95qk0.jpg","fotos/a1790803645938-muos8prz1.jpg","fotos/a1790803645938-muos8prz2.jpg","fotos/a1790803645938-muos8prz3.jpg"],"fotoCred":["Luna Moura, @dillua.r","Luna Moura, @dillua.r","Luna Moura, @dillua.r","Luna Moura, @dillua.r"]},{"id":"a1790804622019","esp":"Cachorro","mod":"Módulo I","nome":"Bob","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Módulo IV","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790804622019-muomu3120.jpg"],"fotoCred":["Gabriel Braga, @photos.gsb"]},{"id":"a1790812807837","esp":"Cachorro","mod":"Canil da UESB","nome":"Mimosa","sexo":"Fêmea","idade":"Indefinida","status":"Comunitário","local":"Canil da UESB","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790812807837-muorpjhf0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]},{"id":"a1790813408364","esp":"Cachorro","mod":"Canil da UESB","nome":"Cotoco","sexo":"Macho","idade":"Indefinida","status":"Comunitário","local":"Canil da UESB","coat":"#b98a55","ear":"#7d5a36","bg":"#e3e7d8","hist":"História em breve.","pers":[],"car":"","foto":["fotos/a1790813408364-muos2ell0.jpg"],"fotoCred":["Luna Moura, @dillua.r"]}];
 const BASE=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
 const MODS=["Módulo I","Módulo II","Módulo III","Módulo IV","Biblioteca","Restaurante Universitário","Quadra","Estacionamento","Portaria","Outro local"];
-const SEED={dogs:JSON.parse(JSON.stringify(DOGS)),locs:["Canil da UESB","Lar Temporário"],vol:[{"id":"v1790800150469","nome":"David Matos Ferreira","papel":"ADM da página 🐶"},{"id":"v1790803104805","nome":"Luna M A Moura","papel":"ADM da página 🐶"}],options:null};
+const DEFAULT_SITE={navAbout:"Sobre e apoio",heroTitle:"Conheça os AUmigos da UESB",heroText:"Um CATAUlogo com as fotos, histórias e cuidados dos cães e gatos que vivem ou circulam pelo campus. Aqui você descobre quem é quem, onde cada um costuma ficar e como ajudar.",heroCatalog:"Ver CATAUlogo",heroAbout:"Sobre o projeto",catalogTitle:"Encontre um AUmigo",searchPlaceholder:"Buscar pelo nome do animal",volTitle:"Voluntários do AmigoPet",volText:"Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.",aboutTitle:"Cuidar também é documentar",aboutText1:"O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.",aboutText2:"Quem cuida dos animais no dia a dia é o AmigoPet, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.",contactTitle:"Fale com o AmigoPet",contactText:"Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.",help1Title:"Adote ou apadrinhe",help1Text:"Conheça os animais em adoção e chame o AmigoPet para conversar.",help2Title:"Doe ração",help2Text:"A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.",help3Title:"Seja voluntário",help3Text:"Ajude com cuidados, mutirões de vacina, fotos e divulgação.",help4Title:"Mande fotos",help4Text:"Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.",email1:"david.matosferreira15@gmail.com",email2:"ilunahmoura@gmail.com",footer:"AUmigos da UESB · Projeto universitário da UESB em Vitória da Conquista"};
+let SITE={...DEFAULT_SITE};
+const SEED={dogs:JSON.parse(JSON.stringify(DOGS)),locs:["Canil da UESB","Lar Temporário"],vol:[{"id":"v1790800150469","nome":"David Matos Ferreira","papel":"ADM da página 🐶"},{"id":"v1790803104805","nome":"Luna M A Moura","papel":"ADM da página 🐶"}],options:null,site:{...DEFAULT_SITE}};
 /* ===== Publicação no GitHub: os dados ficam em data.json e as fotos em fotos/ dentro do repositório ===== */
 let REPO="";/* "usuario/repositorio". Se vazio, é detectado pelo endereço github.io ou perguntado no login */
 let TOKEN="",BRANCH="main",admin=false,VOL=[];const PREV={};
@@ -153,7 +171,7 @@ try{TOKEN=localStorage.auu_token||"";REPO=localStorage.auu_repo||""}catch(e){}
 if(!REPO&&/\.github\.io$/.test(location.hostname)){const o=location.hostname.split(".")[0],q=location.pathname.split("/")[1];REPO=o+"/"+(q&&!/\./.test(q)?q:o+".github.io")}
 const toast=m=>{let t=document.getElementById("toast");if(!t){t=document.createElement("div");t.id="toast";t.style.cssText="position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:999;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14px Figtree,sans-serif;max-width:90%;text-align:center";document.body.append(t)}t.textContent=m;t.style.display=m?"block":"none"};
 function erro(err){toast("");alert("Não consegui salvar no GitHub.\n\n"+err.message+"\n\nSe aparecer 401 ou 403, o token venceu ou não tem permissão: clique em \"Sair do admin\" e entre de novo.")}
-function apply(s){const ds=(s.dogs||[]).map(d=>({...d,status:d.status==="Em adoção"?"Disponível para adoção":d.status}));DOGS.splice(0,DOGS.length,...ds);MODS.splice(0,MODS.length,...BASE.slice(0,-1),...(s.locs||[]),"Outro local");VOL=s.vol||[];if(s.options){for(const esp of ["Cachorro","Gato"]){for(const kind of ["pers","car"]){const extra=Array.isArray(s.options?.[esp]?.[kind])?s.options[esp][kind]:[];for(const v of extra)if(v&&!PICKERS[esp][kind].includes(v))PICKERS[esp][kind].push(v)}}}}
+function apply(s){const ds=(s.dogs||[]).map(d=>({...d,status:d.status==="Em adoção"?"Disponível para adoção":d.status}));DOGS.splice(0,DOGS.length,...ds);MODS.splice(0,MODS.length,...BASE.slice(0,-1),...(s.locs||[]),"Outro local");VOL=s.vol||[];SITE={...DEFAULT_SITE,...(s.site||{})};const navAbout=document.querySelector('nav a[href="#sobre"]');if(navAbout)navAbout.textContent=SITE.navAbout;if(s.options){for(const esp of ["Cachorro","Gato"]){for(const kind of ["pers","car"]){const extra=Array.isArray(s.options?.[esp]?.[kind])?s.options[esp][kind]:[];for(const v of extra)if(v&&!PICKERS[esp][kind].includes(v))PICKERS[esp][kind].push(v)}}}}
 async function gh(p,o={}){const r=await fetch("https://api.github.com/repos/"+REPO+p,{...o,headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github+json","Content-Type":"application/json"}});if(!r.ok){const e=new Error(r.status+": "+(await r.text()).slice(0,160));e.status=r.status;throw e}return r.json()}
 async function remote(){const r=await fetch("https://api.github.com/repos/"+REPO+"/contents/data.json?ref="+encodeURIComponent(BRANCH)+"&t="+Date.now(),{headers:{Authorization:"Bearer "+TOKEN,Accept:"application/vnd.github.raw+json"},cache:"no-store"});if(r.status===404)return null;if(!r.ok){const e=new Error(String(r.status));e.status=r.status;throw e}return r.json()}
 /* Aplica a alteração sobre a versão mais recente do repositório e grava tudo em um único commit */
@@ -165,7 +183,7 @@ async function salvar(mut,msg){
   try{
    const s=(await remote())||JSON.parse(JSON.stringify(SEED));
    s.dogs=(s.dogs||[]).map(d=>({...d,status:d.status==="Em adoção"?"Disponível para adoção":d.status}));
-   s.locs=s.locs||[];s.vol=s.vol||[];s.options=s.options||{};
+   s.locs=s.locs||[];s.vol=s.vol||[];s.options=s.options||{};s.site={...DEFAULT_SITE,...(s.site||{})};
    for(const esp of ["Cachorro","Gato"]){
     s.options[esp]=s.options[esp]||{};
     for(const kind of ["pers","car"]){s.options[esp][kind]=Array.isArray(s.options[esp][kind])?s.options[esp][kind]:[]}
@@ -215,7 +233,7 @@ async function load(){let s=null;
  }
  if(!s){try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(r.ok)s=await r.json()}catch(e){}}
  apply(s||SEED);
- if(admin)rAdm();else{document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="none";if(b)b.style.display="inline-flex"}
+ if(admin)rAdm();else{document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="none";if(b)b.style.display="inline-flex";const t=document.getElementById("ftext");if(t)t.style.display="none"}
 }
 async function entrar(){
  if(!REPO){const r=(prompt("Endereço do repositório no GitHub (usuario/repositorio):")||"").trim();if(!/^[\w.-]+\/[\w.-]+$/.test(r))return false;REPO=r}
@@ -257,35 +275,35 @@ function home(){
  const n=k=>DOGS.filter(d=>d.status===k).length,d0=destaque();
  document.getElementById("app").innerHTML=`
  <section class="wrap hero"><div>
-  <h1>Conheça os AUmigos da UESB</h1>
-  <p>Um CATAUlogo com as fotos, histórias e cuidados dos cães e gatos que vivem ou circulam pelo campus. Aqui você descobre quem é quem, onde cada um costuma ficar e como ajudar.</p>
-  <a class="btn" href="#catalogo">Ver CATAUlogo</a> <a class="btn ghost" href="#sobre">Sobre o projeto</a>
+  <h1>${esc(SITE.heroTitle)}</h1>
+  <p>${esc(SITE.heroText)}</p>
+  <a class="btn" href="#catalogo">${esc(SITE.heroCatalog)}</a> <a class="btn ghost" href="#sobre">${esc(SITE.heroAbout)}</a>
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Lar temporário")}</b>Lar temporário</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
- <section class="wrap tools" id="catalogo"><h2>Encontre um AUmigo</h2>
-  <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Buscar pelo nome do animal" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label>
+ <section class="wrap tools" id="catalogo"><h2>${esc(SITE.catalogTitle)}</h2>
+  <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${f===filtro}" data-f="${f}">${f}</button>`).join("")}</div>
   <div class="row"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select></div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
-<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>Voluntários do AmigoPet</h2><p>Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.</p></div><button class="btn" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
+<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${esc(SITE.volTitle)}</h2><p>${esc(SITE.volText)}</p></div><button class="btn" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
- <h2>Cuidar também é documentar</h2>
- <p style="margin-top:18px">O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.</p>
- <p>Quem cuida dos animais no dia a dia é o <b>AmigoPet</b>, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.</p>
- <div class="amigo"><b>Fale com o AmigoPet</b><span>Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.</span>
+ <h2>${esc(SITE.aboutTitle)}</h2>
+ <p style="margin-top:18px">${esc(SITE.aboutText1)}</p>
+ <p>${esc(SITE.aboutText2)}</p>
+ <div class="amigo"><b>${esc(SITE.contactTitle)}</b><span>${esc(SITE.contactText)}</span>
   <div class="soc"><a class="btn" id="lig" href="https://www.instagram.com/amigopet.vca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a></div></div>
 </div>
 <div class="help" id="ajudar">
- <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>Adote ou apadrinhe</b><span>Conheça os animais em adoção e chame o AmigoPet para conversar.</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>Doe ração</b><span>A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.</span></p></div>
- <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>Seja voluntário</b><span>Ajude com cuidados, mutirões de vacina, fotos e divulgação.</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>Mande fotos</b><span>Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.<br><br><b>Envie para:</b> <a href="mailto:david.matosferreira15@gmail.com">david.matosferreira15@gmail.com</a> ou <a href="mailto:ilunahmoura@gmail.com">ilunahmoura@gmail.com</a></span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>${esc(SITE.help1Title)}</b><span>${esc(SITE.help1Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>${esc(SITE.help2Title)}</b><span>${esc(SITE.help2Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>${esc(SITE.help3Title)}</b><span>${esc(SITE.help3Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>${esc(SITE.help4Title)}</b><span>${esc(SITE.help4Text)}<br><br><b>Envie para:</b> <a href="mailto:${esc(SITE.email1)}">${esc(SITE.email1)}</a> ou <a href="mailto:${esc(SITE.email2)}">${esc(SITE.email2)}</a></span></p></div>
 </div></div></section>
- <footer><div class="wrap">AUmigos da UESB · Projeto universitário da UESB em Vitória da Conquista</div></footer>`;
+ <footer><div class="wrap">${esc(SITE.footer)}</div></footer>`;
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
- lista();links();renderVol();rAdm();
+ lista();links();renderVol();
 }
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
@@ -306,7 +324,22 @@ addEventListener("hashchange",()=>{setTimeout(links,0);const m=location.hash.mat
 function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);else{home();if(location.hash==="#catalogo")setTimeout(()=>document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth"}),30)}}
 
 function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
-function rAdm(){admin=true;document.body.classList.add("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none"}
+function rAdm(){admin=true;document.body.classList.add("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t)t.style.display="inline-flex"}
+const TEXT_FIELDS=[
+ ["heroTitle","Cabeçalho inicial","text"],["heroText","Texto inicial","textarea"],["heroCatalog","Botão do CATAUlogo","text"],["heroAbout","Botão Sobre","text"],
+ ["catalogTitle","Título do CATAUlogo","text"],["searchPlaceholder","Campo de busca","text"],
+ ["volTitle","Título de voluntários","text"],["volText","Texto de voluntários","textarea"],
+ ["aboutTitle","Título sobre o projeto","text"],["aboutText1","Texto sobre o projeto 1","textarea"],["aboutText2","Texto sobre o projeto 2","textarea"],
+ ["contactTitle","Título de contato","text"],["contactText","Texto de contato","textarea"],
+ ["help1Title","Ajuda 1 — título","text"],["help1Text","Ajuda 1 — texto","textarea"],["help2Title","Ajuda 2 — título","text"],["help2Text","Ajuda 2 — texto","textarea"],
+ ["help3Title","Ajuda 3 — título","text"],["help3Text","Ajuda 3 — texto","textarea"],["help4Title","Ajuda 4 — título","text"],["help4Text","Ajuda 4 — texto","textarea"],
+ ["email1","E-mail 1","email"],["email2","E-mail 2","email"],["footer","Rodapé","text"]
+];
+function renderTextEditor(){const box=document.getElementById("textFields");if(!box)return;box.innerHTML='<div class="text-editor-grid">'+TEXT_FIELDS.map(([k,l,type])=>`<label class="${type==="textarea"?"full":""}">${l}${type==="textarea"?`<textarea name="${k}">${esc(SITE[k]||"")}</textarea>`:`<input type="${type}" name="${k}" value="${esc(SITE[k]||"").replace(/"/g,"&quot;")}" required>`}</label>`).join("")+'</div>'}
+const tdlg=document.getElementById("tdlg"),tfrm=document.getElementById("tfrm");
+document.getElementById("tcancel").onclick=()=>tdlg.close();
+document.getElementById("ftext").onclick=()=>{if(!admin)return;renderTextEditor();tdlg.showModal()};
+tfrm.onsubmit=async e=>{e.preventDefault();if(!admin)return;const f=new FormData(tfrm),next={...SITE};TEXT_FIELDS.forEach(([k])=>next[k]=String(f.get(k)||"").trim());const btn=document.getElementById("tsave");btn.disabled=true;btn.textContent="Salvando…";try{await salvar(s=>{s.site={...next}},"Atualiza textos do CATAUlogo");SITE={...DEFAULT_SITE,...next};tdlg.close();const y=scrollY;home();scrollTo(0,y)}catch(err){erro(err)}finally{btn.disabled=false;btn.textContent="Salvar textos"}};
 document.addEventListener("click",async e=>{
  if(e.target.closest("#fadd")){if(admin)abrirForm();return}
  if(!e.target.closest("#fadm"))return;
@@ -316,6 +349,7 @@ document.addEventListener("click",async e=>{
   const a=document.getElementById("fadd"),b=document.getElementById("fadm");
   if(a)a.style.display="none";
   if(b)b.style.display="inline-flex";
+  const t=document.getElementById("ftext");if(t)t.style.display="none";
   try{localStorage.removeItem("auu_token")}catch(err){}
   TOKEN="";
   try{rota2()}catch(err){console.error(err)}
@@ -331,6 +365,7 @@ try{
  const a=document.getElementById("fadd"),b=document.getElementById("fadm");
  if(a)a.style.display="none";
  if(b)b.style.display="inline-flex";
+ const t=document.getElementById("ftext");if(t)t.style.display="none";
  links();
 }catch(e){console.error(e)}
 const dlg=document.getElementById("dlg"),frm=document.getElementById("frm");
