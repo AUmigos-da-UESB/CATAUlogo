@@ -1,12 +1,81 @@
-/* CATAUlogo 2026-10-03: ajustes de desempenho, editor de textos e mobile */
-#tdlg,#tdlg *{animation:none!important;transition:none!important}
-#tdlg .gradient-flow,#tdlg .btn,#tdlg button{animation:none!important}
-button:not(.gradient-flow),.btn:not(.gradient-flow),.chip:not(.gradient-flow),.pick:not(.gradient-flow),.badge:not(.gradient-flow),.back-expand:not(.gradient-flow){animation:none!important}
-#vadd.gradient-flow{animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important}
+/* CATAUlogo 2026-10-03: ajustes de editores, animações e alinhamento */
+
+/* Voluntários */
 .vc{position:relative!important;display:grid!important;grid-template-columns:52px minmax(0,1fr) 36px 36px!important;align-items:center!important;column-gap:10px!important;min-width:0!important}
 .vc>div{min-width:0!important}
 .vc .vx{position:static!important;inset:auto!important;transform:none!important;margin:0!important;width:36px!important;min-width:36px!important;max-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;justify-self:center!important;line-height:1!important}
 .vc .vedit,.vc .vrem{z-index:2!important;flex:0 0 36px!important}
-@media(max-width:620px){.vc{grid-template-columns:46px minmax(0,1fr) 34px 34px!important;column-gap:7px!important;padding:9px 0!important}.vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}.vc .vedit,.vc .vrem{position:static!important}#vdlg{max-width:calc(100vw - 24px)!important;width:calc(100vw - 24px)!important;box-sizing:border-box!important;overflow:visible!important}#vdlg form{min-width:0!important}.vphoto-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}.vphoto-actions #vphoto-remove{grid-column:1/-1!important}}
-@media(max-width:620px){dialog form label.full,dialog form .full{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}dialog input,dialog select,dialog textarea{max-width:100%!important;box-sizing:border-box!important}.picker-field{position:relative!important;z-index:1!important}.picker{position:relative!important;z-index:2!important}}
+@media(max-width:620px){
+ .vc{grid-template-columns:52px minmax(0,1fr) 34px 34px!important;column-gap:12px!important;padding:9px 0!important}
+ .vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}
+ .vc .vedit,.vc .vrem{position:static!important}
+ #vdlg{max-width:calc(100vw - 24px)!important;width:calc(100vw - 24px)!important;box-sizing:border-box!important;overflow:visible!important}
+ #vdlg form{min-width:0!important}
+ .vphoto-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+ .vphoto-actions #vphoto-remove{grid-column:1/-1!important}
+ dialog form label.full,dialog form .full{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+ dialog input,dialog select,dialog textarea{max-width:100%!important;box-sizing:border-box!important}
+ .picker-field{position:relative!important;z-index:1!important}
+ .picker{position:relative!important;z-index:2!important}
+}
+
+/* Editor de textos: controles com o mesmo movimento dos botões do site. */
+.rich-toolbar button:not(.color-dot){
+ background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;
+ background-size:360% 260%!important;
+ background-position:0% 50%;
+ color:#fff!important;
+ border-color:rgba(195,207,255,.34)!important;
+ animation:gradient-flow 8s linear infinite alternate!important;
+ animation-delay:0ms!important;
+}
+.rich-toolbar button:not(.color-dot):hover{filter:brightness(1.08)!important;transform:none!important}
+.rich-toolbar button.is-active{
+ background-image:linear-gradient(110deg,#7188e4 0%,#536bb8 48%,#8096ec 100%)!important;
+ border-color:var(--acc)!important;
+ box-shadow:0 0 0 2px rgba(142,163,255,.22)!important;
+}
+.rich-toolbar .color-dot{
+ animation:none!important;
+ transition:box-shadow .18s ease,border-color .18s ease,transform .18s ease;
+}
+.rich-toolbar .color-dot:hover{transform:scale(1.08)}
+.rich-toolbar .color-dot.is-active{
+ border-color:#fff!important;
+ box-shadow:0 0 0 2px var(--acc),0 0 0 4px rgba(142,163,255,.22)!important;
+}
+.rich-toolbar input[type=color]{border-color:var(--line)!important}
+
+/* Editor de aparência: duas áreas independentes e controles de cor claros. */
+.bg-editor-section{border:1px solid var(--line);border-radius:16px;background:rgba(23,35,29,.34);padding:16px;margin-top:12px}
+.bg-editor-section:first-of-type{margin-top:0}
+.bg-editor-head h3{font-size:19px;margin:0}
+.bg-editor-head p{font-size:13px;color:var(--mut);margin:4px 0 14px}
+.bg-color-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bg-color-field{display:grid!important;gap:6px!important;font-size:13px!important;color:var(--mut)!important}
+.bg-color-control{display:flex;align-items:center;gap:8px}
+.bg-color-control input[type=color]{width:100%;height:42px;padding:4px;border-radius:12px;cursor:pointer}
+.bg-color-swatch{width:32px;height:32px;min-width:32px;border-radius:50%;border:2px solid rgba(255,255,255,.72);box-shadow:0 0 0 2px var(--line),0 3px 8px rgba(0,0,0,.18);display:block}
+.bg-range-field{display:grid!important;gap:6px!important;margin-top:12px;font-size:13px!important;color:var(--mut)!important}
+.bg-range-field input{width:100%!important}
+.bg-editor-preview{height:110px;border-radius:14px;border:1px solid var(--line);margin-top:14px;overflow:hidden}
+.bg-gradient-preview{background:linear-gradient(135deg,#1c2922,#222b38)}
+.bg-preview-label{color:var(--mut);font-size:12px;margin:6px 0 0!important}
+.bg-editor-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+@media(max-width:620px){.bg-color-grid{grid-template-columns:1fr}.bg-editor-section{padding:13px}.bg-editor-preview{height:96px}.bg-editor-actions{flex-wrap:wrap}.bg-editor-actions .btn{flex:1;min-width:120px}}
+
+/* Busca + locais: o select acompanha exatamente a altura do campo de busca no desktop. */
+@media(min-width:821px){
+ .search-row{align-items:stretch!important}
+ .search-row .search{align-self:stretch!important}
+ .search-row .location-filter{display:flex!important;align-items:stretch!important}
+ .search-row .location-filter select{height:auto!important;align-self:stretch!important;margin:0!important}
+}
+
+/* Hero desktop: reduz o vazio visual entre o destaque e o título sem mover a foto. */
+@media(min-width:821px){
+ .hero>div:first-child{transform:translateY(-24px)}
+}
+
+/* Idade */
 .meta.age-meta{white-space:normal!important}
