@@ -162,20 +162,20 @@ function home(){
  <section class="wrap hero"><div>
   <h1>${rh(SITE.heroTitle)}</h1>
   <p>${rh(SITE.heroText)}</p>
-  <a class="btn" href="#catalogo">${rh(SITE.heroCatalog)}</a> <a class="btn ghost" href="#sobre">${rh(SITE.heroAbout)}</a>
+  <a class="btn gradient-flow" href="#catalogo">${rh(SITE.heroCatalog)}</a> <a class="btn ghost" href="#sobre">${rh(SITE.heroAbout)}</a>
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
  <section class="wrap tools" id="catalogo"><h2>${rh(SITE.catalogTitle)}</h2>
   <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select></div></div>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
-<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${rh(SITE.volTitle)}</h2><p>${rh(SITE.volText)}</p></div><button class="btn" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
+<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${rh(SITE.volTitle)}</h2><p>${rh(SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
  <h2>${rh(SITE.aboutTitle)}</h2>
  <p style="margin-top:18px">${rh(SITE.aboutText1)}</p>
  <p>${rh(SITE.aboutText2)}</p>
  <div class="amigo"><b>${rh(SITE.contactTitle)}</b><span>${rh(SITE.contactText)}</span>
-  <div class="soc"><a class="btn" id="lig" href="https://www.instagram.com/amigopet.vca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a></div></div>
+  <div class="soc"><a class="btn gradient-flow" id="lig" href="https://www.instagram.com/amigopet.vca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a></div></div>
 </div>
 <div class="help" id="ajudar">
  <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>${rh(SITE.help1Title)}</b><span>${rh(SITE.help1Text)}</span></p></div>
