@@ -932,3 +932,46 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 }
 /* História fica abaixo dos dados e dos menus, sem ocupar só a coluna esquerda */
 #dlg form#frm>.history-field{grid-column:1/-1!important;width:100%}
+
+
+/* História ocupa o espaço livre abaixo dos campos, até o fim dos seletores */
+#dlg form#frm>.form-left{
+  grid-template-rows:auto auto auto auto minmax(180px,1fr)!important;
+  height:100%;
+  align-self:stretch;
+}
+#dlg form#frm>.form-left>.history-field{
+  grid-column:1/-1!important;
+  width:100%;
+  min-height:0;
+  display:flex!important;
+  flex-direction:column;
+}
+#dlg form#frm>.form-left>.history-field textarea{
+  flex:1 1 auto;
+  min-height:150px;
+  height:100%;
+  resize:vertical;
+}
+#dlg form#frm>.form-right{align-self:stretch}
+
+/* Uma animação e uma cadência comuns para todas as ações de adicionar/remover e salvar */
+#dlg #newloc,#dlg #addPersOpt,#dlg #addCarOpt,#dlg #save{
+  background-color:#8fbe9a!important;
+  background-image:linear-gradient(110deg,#9bc7a1 0%,#86b792 36%,#a2c9a2 68%,#88b994 100%)!important;
+  background-size:360% 260%!important;
+  background-position:0% 50%;
+  border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
+  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+}
+#dlg #delloc,#dlg #delPersOpt,#dlg #delCarOpt,#dlg #cancel{
+  background-color:#cd8c94!important;
+  background-image:linear-gradient(110deg,#d49aa0 0%,#c47f88 36%,#d7a0a4 68%,#c7838c 100%)!important;
+  background-size:360% 260%!important;
+  background-position:0% 50%;
+  border-color:rgba(157,79,91,.58)!important;color:#54262d!important;
+  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #dlg #newloc,#dlg #delloc,#dlg #addPersOpt,#dlg #delPersOpt,#dlg #addCarOpt,#dlg #delCarOpt,#dlg #cancel,#dlg #save{animation:none!important}
+}
