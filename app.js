@@ -204,7 +204,7 @@ function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
  document.getElementById("app").innerHTML=`<div class="wrap animal-profile"><a class="back back-arrow-button" href="#/" onclick="setTimeout(()=>document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth'}),50)"><img class="back-arrow" src="fotos/seta-voltar.png" alt=""> Voltar ao CATAUlogo</a>
  <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" aria-current="${i===0}">${art(d,i)}</button>`).join("")}</div></div>
- <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="${cls(d.status)}">${esc(d.status)}</span></div><p class="sub">${esc(d.sexo)} · ${esc(d.idade)}</p>
+ <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
  <div class="kv"><div><small>Localização</small>${esc(d.mod)}</div><div><small>Onde costuma ficar</small>${esc(d.local)}</div></div>
  <h3>História</h3><p class="fic-story">${esc(d.hist)}</p>
  <h3>Personalidade</h3><div class="traits">${d.pers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>
