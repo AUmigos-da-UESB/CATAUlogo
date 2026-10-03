@@ -209,7 +209,7 @@ function ficha(id){
  <h3>História</h3><p class="fic-story">${esc(d.hist)}</p>
  <h3>Personalidade</h3><div class="traits">${d.pers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>
  <h3>Características</h3><div class="traits">${(Array.isArray(d.car)?d.car:(d.car||"").split(",").filter(Boolean)).map(p=>`<span>${esc(p.trim())}</span>`).join("")}</div>
- <div class="fic-actions"><a class="btn" href="#/" onclick="event.preventDefault();location.hash='#/';setTimeout(()=>document.getElementById('ajudar')?.scrollIntoView({behavior:'smooth'}),80)">${d.status==="Disponível para adoção"?"Quero adotar "+esc(d.nome):"Como ajudar"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></div>
+ <div class="fic-actions"><a class="btn" href="#/" onclick="event.preventDefault();location.hash='#/';setTimeout(()=>document.getElementById('ajudar')?.scrollIntoView({behavior:'smooth'}),80)">${d.status==="Disponível para adoção"?"Quero adotar "+esc(d.nome):d.status==="Adotado"?"Ajude mais AUmigos a serem adotados":"Como ajudar "+esc(d.nome)+"?"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></div>
  </div></article></div>`;
  const thumbs=document.querySelector(".thumbs"),mainPhoto=document.getElementById("main"),totalPhotos=d.foto&&d.foto.length?d.foto.length:3;
  function renderThumbs(active){thumbs.innerHTML=Array.from({length:totalPhotos},(_,i)=>i).filter(i=>i!==active).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}">${art(d,i)}</button>`).join("");thumbs.querySelectorAll("button").forEach(b=>b.onclick=()=>selectPhoto(Number(b.dataset.i)))}
