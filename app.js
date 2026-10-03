@@ -501,26 +501,3 @@ vfrm.onsubmit=async e=>{e.preventDefault();if(!admin)return;const f=new FormData
 document.getElementById("app").innerHTML='<p class="wrap empty">Carregando…</p>';
 try{apply(SEED);rota2();paintBackground(SITE.background||{})}catch(e){console.error("Falha ao abrir o catálogo inicial:",e)}
 load().then(()=>{try{rota2()}catch(e){console.error("Falha ao montar a página com os dados publicados:",e);apply(SEED);try{rota2()}catch(f){console.error(f);document.getElementById("app").innerHTML="<section class=\"wrap empty\"><h2>Não foi possível abrir o catálogo</h2><p>Recarregue a página para tentar novamente.</p></section>"}}paintBackground(SITE.background||{})},e=>{console.error(e);try{apply(SEED);rota2()}catch(f){console.error(f);document.getElementById("app").innerHTML="<section class=\"wrap empty\"><h2>Não foi possível abrir o catálogo</h2><p>Recarregue a página para tentar novamente.</p></section>"}paintBackground(SITE.background||{})});
-
-/* Sincroniza a fase das animações de gradiente, inclusive após remontar cartões e diálogos. */
-(()=>{
-  const selector="button,.btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand";
-  const synced=new WeakSet();
-  function sync(root=document){
-    const nodes=[];
-    if(root instanceof Element && root.matches(selector))nodes.push(root);
-    if(root.querySelectorAll)nodes.push(...root.querySelectorAll(selector));
-    for(const el of nodes){
-      if(typeof el.getAnimations!=="function")continue;
-      for(const animation of el.getAnimations()){
-        if(animation.animationName==="gradient-flow"&&!synced.has(animation)){
-          try{animation.startTime=0;synced.add(animation)}catch(_){}
-        }
-      }
-    }
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>sync(),{once:true});
-  else sync();
-  new MutationObserver(records=>{for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1)sync(node)})
-    .observe(document.documentElement,{childList:true,subtree:true});
-})();
