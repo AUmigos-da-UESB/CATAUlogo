@@ -6,8 +6,8 @@
 <title>AUmigos da UESB</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css?v=photoarrows-history20261003">
-<link rel="stylesheet" href="fixes.css?v=20261003">
-<link rel="stylesheet" href="mobile-fixes.css?v=20261003-mobile3">
+<link rel="stylesheet" href="fixes.css?v=20261003-v2">
+<link rel="stylesheet" href="mobile-fixes.css?v=20261003-mobile4">
 </head>
 <body>
 <header><div class="wrap">
@@ -20,7 +20,30 @@
 <dialog id="tdlg"><h2 style="font-size:28px;margin-bottom:6px">Editar textos</h2><p style="margin:0 0 18px;color:var(--mut);font-size:14px">Altere títulos, chamadas e textos do CATAUlogo. As mudanças são salvas no GitHub junto com o data.json.</p><form id="tfrm"><div class="dialog-scroll full" id="textFields"></div><div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px"><button type="button" class="btn ghost" id="tcancel">Cancelar</button><button class="btn" id="tsave">Salvar textos</button></div></form></dialog>
 <dialog id="bdlg"><h2 style="font-size:28px;margin-bottom:6px">Bastidores do documentário</h2><p style="margin:0 0 18px;color:var(--mut);font-size:14px">Adicione fotos dos bastidores. Você pode trocar, remover e adicionar quantas quiser.</p><div id="backFields" class="back-editor"></div><div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px"><button type="button" class="btn ghost" id="badd">+ Adicionar foto</button><div style="display:flex;gap:10px"><button type="button" class="btn ghost" id="bcancel">Cancelar</button><button type="button" class="btn" id="bsave">Salvar bastidores</button></div></div></dialog>
 <dialog id="vdlg"><h2 id="vtitle" style="font-size:28px;margin-bottom:16px">Adicionar voluntário</h2><form id="vfrm" method="dialog"><label class="full">Nome<input name="nome" required></label><label class="full">Como contribui<input name="papel" placeholder="ex.: alimentação, vacinação, fotos"></label><div class="full" id="vphoto-preview"></div><label class="full">Foto do voluntário<input id="vphoto-file" type="file" accept="image/*"></label><div class="full vphoto-actions"><button type="button" class="btn ghost" id="vphoto-crop">✂ Cortar foto</button><button type="button" class="btn ghost" id="vphoto-rotate">↻ Girar foto</button><button type="button" class="btn ghost" id="vphoto-remove">Remover foto</button></div><div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="vcancel">Cancelar</button><button class="btn">Salvar voluntário</button></div></form></dialog>
-<dialog id="bgdlg"><h2 style="font-size:28px;margin-bottom:8px">Editar aparência do fundo</h2><p style="color:var(--mut);margin:0 0 14px">Ajuste o padrão do site e o gradiente da seção “Cuidar também é documentar”.</p><label>Azul petróleo do padrão<input id="bgblue" type="color"></label><label>Rosa queimado do padrão<input id="bgpink" type="color"></label><label>Escala do padrão<input id="bgscale" type="range" min="90" max="380" step="10"></label><h3 style="font-size:18px;margin:12px 0 6px">Gradiente da seção Sobre</h3><div id="bggradpreview" style="height:82px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px;background:linear-gradient(135deg,#1c2922,#222b38)"></div><label>Cor inicial<input id="bgAboutStart" type="color"></label><label>Cor final<input id="bgAboutEnd" type="color"></label><div id="bgpreview" style="height:96px;border-radius:14px;border:1px solid var(--line);margin-top:14px;background-color:var(--bg)"></div><p style="color:var(--mut);font-size:12px;margin:6px 0 0">Prévia do padrão do site</p><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="bgcancel">Cancelar</button><button type="button" class="btn" id="bgsave">Salvar aparência</button></div></dialog>
+<dialog id="bgdlg">
+ <h2 style="font-size:28px;margin-bottom:8px">Editar aparência do fundo</h2>
+ <p style="color:var(--mut);margin:0 0 16px">Ajuste separadamente as cores do padrão do site e do gradiente da seção “Cuidar também é documentar”.</p>
+ <section class="bg-editor-section">
+  <div class="bg-editor-head"><div><h3>Padrão do site</h3><p>Escolha as duas cores usadas nos elementos do padrão.</p></div></div>
+  <div class="bg-color-grid">
+   <label class="bg-color-field"><span>Cor 1</span><span class="bg-color-control"><input id="bgblue" type="color"><i id="bgblue-swatch" class="bg-color-swatch"></i></span></label>
+   <label class="bg-color-field"><span>Cor 2</span><span class="bg-color-control"><input id="bgpink" type="color"><i id="bgpink-swatch" class="bg-color-swatch"></i></span></label>
+  </div>
+  <label class="bg-range-field"><span>Escala do padrão</span><input id="bgscale" type="range" min="90" max="380" step="10"></label>
+  <div id="bgpreview" class="bg-editor-preview"></div>
+  <p class="bg-preview-label">Prévia do padrão do site</p>
+ </section>
+ <section class="bg-editor-section">
+  <div class="bg-editor-head"><div><h3>Gradiente da seção Sobre</h3><p>Escolha as duas cores que formam o gradiente.</p></div></div>
+  <div class="bg-color-grid">
+   <label class="bg-color-field"><span>Cor 1</span><span class="bg-color-control"><input id="bgAboutStart" type="color"><i id="bgAboutStart-swatch" class="bg-color-swatch"></i></span></label>
+   <label class="bg-color-field"><span>Cor 2</span><span class="bg-color-control"><input id="bgAboutEnd" type="color"><i id="bgAboutEnd-swatch" class="bg-color-swatch"></i></span></label>
+  </div>
+  <div id="bggradpreview" class="bg-editor-preview bg-gradient-preview"></div>
+  <p class="bg-preview-label">Prévia do gradiente da seção Sobre</p>
+ </section>
+ <div class="bg-editor-actions"><button type="button" class="btn ghost" id="bgcancel">Cancelar</button><button type="button" class="btn" id="bgsave">Salvar aparência</button></div>
+</dialog>
 <dialog id="cdlg"><h2 style="font-size:24px;margin-bottom:6px">Cortar foto</h2><p id="cinfo" style="margin:0 0 12px;color:var(--mut);font-size:14px"></p><canvas id="cv" width="320" height="352" style="width:100%;max-width:320px;border-radius:16px;touch-action:none;background:#000;display:block;margin:0 auto"></canvas><label style="margin-top:12px">Zoom<input id="czoom" type="range" min="1" max="3" step="0.01" value="1"></label><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn ghost" id="crotate">↻ Girar</button><button type="button" class="btn ghost" id="ccancel">Cancelar</button><button type="button" class="btn" id="cok">Usar esta parte</button></div></dialog>
 <main id="app"></main>
 
