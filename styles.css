@@ -538,3 +538,73 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-image:none!important;animation:none!important;box-shadow:none!important
 }
 .fic-title-row>.profile-sex,.fic-title-row>.profile-age{margin-bottom:0}
+
+
+/* Ajustes finais do perfil: letras na mesma linha, foto integral e CTA destacado */
+.animal-profile .fic-title-row{
+  align-items:baseline!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  margin-bottom:16px!important;
+}
+.animal-profile .fic-title-row h1{
+  line-height:1!important;
+  margin:0!important;
+}
+.animal-profile .fic-title-row>.profile-sex,
+.animal-profile .fic-title-row>.profile-age{
+  margin:0!important;
+  position:relative;
+  top:-2px;
+}
+.animal-profile .fic-title-row>.profile-sex{
+  line-height:1.15!important;
+  padding:4px 10px!important;
+}
+.animal-profile .fic-title-row>.badge{
+  align-self:baseline!important;
+  margin:0 0 0 auto!important;
+}
+
+/* A área acompanha a proporção natural da foto, sem painel lateral ou corte */
+.animal-profile .gal .main:has(>img){
+  aspect-ratio:auto!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.animal-profile .gal .main:has(>img)>img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:min(68vh,760px)!important;
+  object-fit:contain!important;
+  border:0!important;
+  border-radius:18px!important;
+}
+.animal-profile .gal .main:has(>img)>.sp{z-index:2}
+.animal-profile .gal .main .cr,
+.animal-profile .gal .thumbs .cr,
+.animal-profile .cr{display:none!important;visibility:hidden!important}
+
+/* As miniaturas ficam sem aro colorido */
+.animal-profile .thumbs button,
+.animal-profile .thumbs button[aria-current="true"]{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  background-image:none!important;
+}
+
+/* CTA com mais presença sem alterar as ações administrativas */
+.animal-profile .fic-actions>a.btn:first-child{
+  min-height:54px!important;
+  padding:15px 30px!important;
+  font-size:17px!important;
+  font-weight:700!important;
+  border-radius:999px!important;
+}
