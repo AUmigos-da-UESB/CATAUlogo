@@ -156,3 +156,9 @@ footer{padding-top:12px;margin-top:-48px}
 footer{margin-top:0}
 #fadd,#vadd,.soc .btn,.hero .btn:not(.ghost){background:linear-gradient(135deg,#9aabff,#7188ec);border:1px solid rgba(228,234,255,.28);box-shadow:0 4px 14px rgba(0,0,0,.2)}
 @media(max-width:620px){.fab .fab-icon-btn{width:48px;height:48px;flex-basis:48px}.fab #fadd{height:48px;min-height:48px}footer{margin-top:0}}
+
+/* Gradiente animado aplicado explicitamente aos quatro botões principais */
+.gradient-flow{background-color:#4a5f9e!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
+@keyframes gradient-flow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.gradient-flow:hover{animation-duration:4s;filter:brightness(1.08)}
+@media(prefers-reduced-motion:reduce){.gradient-flow{animation:none;background-position:50% 50%}}
