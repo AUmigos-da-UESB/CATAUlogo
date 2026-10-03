@@ -358,3 +358,7 @@ footer{margin-top:0}
   animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 @media(prefers-reduced-motion:reduce){.card .ph .dx,.chips .chip[aria-pressed="true"]{animation:none!important}}
+
+/* Prioridade maior para os ícones compactos dos voluntários contra a regra geral de botões */
+button.vx:not(.btn):not(.chip):not(.pick){background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;color:var(--mut)!important;animation:none!important}
+button.vx:not(.btn):not(.chip):not(.pick):hover{background:transparent!important;filter:none!important;transform:none!important}
