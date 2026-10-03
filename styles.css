@@ -916,3 +916,19 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 @media(max-width:620px){
  #dlg #slots .existing-photo{width:100%!important;height:auto!important}
 }
+
+
+/* Alinha os controles redondos de local ao cabeçalho da coluna vizinha */
+#dlg .location-label-row{
+  min-height:16px!important;height:16px!important;margin-bottom:4px!important;
+  align-items:center!important;overflow:visible!important
+}
+#dlg .location-tools{align-items:center!important;gap:5px!important}
+#dlg #newloc,#dlg #delloc{
+  width:24px!important;min-width:24px!important;height:24px!important;min-height:24px!important;
+  padding:0!important;border-radius:50%!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  font-size:15px!important;line-height:1!important
+}
+/* História fica abaixo dos dados e dos menus, sem ocupar só a coluna esquerda */
+#dlg form#frm>.history-field{grid-column:1/-1!important;width:100%}
