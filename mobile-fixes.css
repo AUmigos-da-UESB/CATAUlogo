@@ -134,11 +134,12 @@
 }
 
 
-/* Ajuste final: legenda do destaque maior no desktop/tablet, sem alterar o mobile. */
+/* Ajuste final: crédito do destaque maior no desktop, sem alterar o mobile. */
 @media(min-width:621px){
- .hero .ph .tag{
-  font-size:16px!important;
-  padding:9px 15px!important;
+ #destaque-rotativo .cr{
+  font-size:14px!important;
+  padding:4px 10px!important;
+  line-height:1.25!important;
  }
 }
 
