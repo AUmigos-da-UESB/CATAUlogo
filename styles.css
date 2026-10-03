@@ -278,3 +278,17 @@ footer{margin-top:0}
   #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok,
   #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot,.back-remove{animation:none!important}
 }
+
+
+/* Os dois CTAs da página inicial compartilham o mesmo gradiente e a mesma cadência */
+.hero a.btn[href="#catalogo"],.hero a.btn[href="#sobre"]{
+  background-color:#435994!important;
+  background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
+  background-size:360% 260%!important;
+  background-position:0% 50%;
+  border:1px solid rgba(195,207,255,.34)!important;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  color:#fff!important;
+  animation:gradient-flow 8s linear infinite alternate!important;
+  animation-delay:0ms!important;
+}
