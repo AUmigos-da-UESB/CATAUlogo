@@ -203,7 +203,7 @@ document.addEventListener("click",e=>{const card=e.target.closest(".backstage-ph
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
  document.getElementById("app").innerHTML=`<div class="wrap animal-profile"><a class="back back-arrow-button" href="#/" onclick="setTimeout(()=>document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth'}),50)"><img class="back-arrow" src="fotos/seta-voltar.png" alt=""> Voltar ao CATAUlogo</a>
- <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).filter(i=>i!==0).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}">${art(d,i)}</button>`).join("")}</div></div>
+ <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" ${i===0?`aria-current="true"`:""}>${art(d,i)}</button>`).join("")}</div></div>
  <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
  <div class="kv"><div><small>Localização</small>${esc(d.mod)}</div><div><small>Onde costuma ficar</small>${esc(d.local)}</div></div>
  <h3>História</h3><p class="fic-story">${esc(d.hist)}</p>
@@ -212,7 +212,7 @@ function ficha(id){
  <div class="fic-actions"><a class="btn" href="#/" onclick="event.preventDefault();location.hash='#/';setTimeout(()=>document.getElementById('ajudar')?.scrollIntoView({behavior:'smooth'}),80)">${d.status==="Disponível para adoção"?"Quero adotar "+esc(d.nome):d.status==="Adotado"?"Ajude mais AUmigos a serem adotados":"Como ajudar "+esc(d.nome)+"?"}</a> <button class="btn ghost exf" data-id="${d.id}">Editar animal</button> <button class="btn ghost dxf" data-id="${d.id}">Excluir animal</button></div>
  </div></article></div>`;
  const thumbs=document.querySelector(".thumbs"),mainPhoto=document.getElementById("main"),totalPhotos=d.foto&&d.foto.length?d.foto.length:3;
- function renderThumbs(active){thumbs.innerHTML=Array.from({length:totalPhotos},(_,i)=>i).filter(i=>i!==active).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}">${art(d,i)}</button>`).join("");thumbs.querySelectorAll("button").forEach(b=>b.onclick=()=>selectPhoto(Number(b.dataset.i)))}
+ function renderThumbs(active){thumbs.innerHTML=Array.from({length:totalPhotos},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" ${i===active?'aria-current="true"':""}>${art(d,i)}</button>`).join("");thumbs.querySelectorAll("button").forEach(b=>b.onclick=()=>selectPhoto(Number(b.dataset.i)))}
  function selectPhoto(index){mainPhoto.innerHTML=art(d,index)+ico(d.esp);renderThumbs(index)}
  thumbs.querySelectorAll("button").forEach(b=>b.onclick=()=>selectPhoto(Number(b.dataset.i)));
  scrollTo(0,0);
