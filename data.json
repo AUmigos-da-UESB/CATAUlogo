@@ -373,7 +373,9 @@
   "background": {
    "blue": "#42526c",
    "pink": "#8e6b6c",
-   "scale": 270
+   "scale": 170,
+   "aboutStart": "#1c2922",
+   "aboutEnd": "#222b38"
   }
  }
 }
