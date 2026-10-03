@@ -801,3 +801,62 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 @media(max-width:620px){
   #dlg #slots{grid-template-columns:minmax(0,1fr)!important}
 }
+
+
+/* Ações de localização alinhadas com o rótulo, mantendo o seletor em largura total */
+#dlg .location-label-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+#dlg .location-tools{display:flex;gap:6px}
+#dlg #newloc,#dlg #delloc{
+  width:30px!important;min-width:30px!important;height:30px!important;min-height:30px!important;
+  padding:0!important;border-radius:50%!important;display:inline-flex!important;
+  align-items:center!important;justify-content:center!important;font-size:18px!important;line-height:1!important
+}
+
+/* Cartões de foto: imagem grande e controles neutros sobre o canto inferior direito */
+#dlg #slots>.fr{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:10px!important;padding:10px!important;
+  border:0!important;background:transparent!important;box-shadow:none!important
+}
+#dlg #slots>.fr>.photo-image-field{
+  grid-column:1/-1!important;grid-row:auto!important;display:grid!important;gap:5px!important;min-width:0
+}
+#dlg .photo-field-title{font-size:13px;color:var(--mut)}
+#dlg .photo-image-wrap{
+  position:relative;display:block;width:100%;overflow:hidden;border:0!important;
+  border-radius:12px;background:transparent!important
+}
+#dlg #slots .existing-photo{
+  width:100%!important;height:clamp(230px,28vw,360px)!important;max-height:none!important;
+  display:block;object-fit:contain!important;background:transparent!important;
+  border:0!important;border-radius:12px!important;margin:0!important
+}
+#dlg .photo-actions{
+  position:absolute!important;right:10px!important;bottom:10px!important;
+  display:flex!important;flex-wrap:nowrap!important;gap:6px!important;
+  grid-column:auto!important;z-index:3
+}
+#dlg #slots .icon-photo-button{
+  width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;
+  padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  border:1px solid rgba(226,235,226,.26)!important;border-radius:50%!important;
+  background:rgba(22,31,25,.88)!important;background-image:none!important;
+  color:#f2f5ef!important;box-shadow:0 2px 8px rgba(0,0,0,.3)!important;
+  animation:none!important;filter:none!important
+}
+#dlg #slots .icon-photo-button:hover{background:rgba(45,58,48,.96)!important;transform:none!important}
+#dlg #slots .icon-photo-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#dlg .photo-empty-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#dlg .photo-upload{
+  min-width:0;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
+  border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);cursor:pointer
+}
+#dlg .photo-upload input{max-width:100%;font-size:12px}
+#dlg #slots .photo-year{grid-column:auto}
+#dlg #slots .fr>label:not(.photo-image-field){min-width:0}
+#dlg #slots .fr>label:not(.photo-image-field) input{min-width:0;width:100%}
+@media(max-width:620px){
+ #dlg #slots>.fr{grid-template-columns:minmax(0,1fr)!important}
+ #dlg #slots .existing-photo{height:240px!important}
+ #dlg .photo-actions{right:8px!important;bottom:8px!important}
+}
