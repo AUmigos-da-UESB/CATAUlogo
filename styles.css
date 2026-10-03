@@ -166,3 +166,46 @@ footer{margin-top:0}
 /* Alvos explícitos para garantir gradiente nas ações indicadas */
 #fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{background-color:#40538f!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
 #fadd:hover,#vadd:hover,#lig:hover,.hero a.btn[href="#catalogo"]:hover{animation-duration:4s;filter:brightness(1.08)}
+
+
+/* Gradiente animado e ações por intenção: azul padrão, verde para confirmar/adicionar, vermelho para cancelar/remover */
+.btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado{
+  background-size:260% 260%;
+  background-position:0% 50%;
+  animation:gradient-flow 8s ease-in-out infinite alternate;
+  transition:filter .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.btn:not(.ghost){background-image:linear-gradient(110deg,#91a5ff 0%,#748be8 42%,#a0afff 70%,#8095f2 100%)}
+.btn.ghost{background-size:260% 260%}
+.chip{background-size:260% 260%}
+.chip[aria-pressed="true"]{background-image:linear-gradient(110deg,#8197ed 0%,#536bb8 45%,#8499ed 75%,#6078c6 100%);background-size:260% 260%}
+.pick{background-image:linear-gradient(110deg,rgba(91,111,183,.25),rgba(54,71,131,.20),rgba(122,141,210,.28));background-size:260% 260%}
+.pick[aria-pressed="true"]{background-image:linear-gradient(110deg,#7188e4,#536bb8 48%,#8096ec)!important;background-size:260% 260%;color:#fff!important}
+.badge.comunitario{background-size:260% 260%}
+.badge.adocao{background-size:260% 260%}
+.badge.adotado{background-size:260% 260%}
+.btn:hover,.chip:hover,.pick:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.gradient-flow:hover{transform:translateY(-1px)}
+/* Adicionar/salvar: verde pastel */
+#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok{
+  background-color:#acd9b9!important;
+  background-image:linear-gradient(110deg,#c4e7ce 0%,#9ed4ad 42%,#d0ecd6 72%,#a8dbb6 100%)!important;
+  border:1px solid rgba(115,170,129,.38)!important;
+  color:#204b32!important;
+  background-size:260% 260%!important;
+  animation:gradient-flow 8s ease-in-out infinite alternate!important;
+}
+/* Cancelar/remover: vermelho pastel */
+#tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot{
+  background-color:#e9b8bd!important;
+  background-image:linear-gradient(110deg,#f3d0d3 0%,#e8adb4 42%,#f5d7da 72%,#e7b0b7 100%)!important;
+  border:1px solid rgba(186,115,125,.38)!important;
+  color:#642e36!important;
+  background-size:260% 260%!important;
+  animation:gradient-flow 8s ease-in-out infinite alternate!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado{animation:none}
+  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok,
+  #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot{animation:none!important}
+}
