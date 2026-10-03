@@ -320,6 +320,11 @@
     "credit": "Luna Moura, @dillua.r"
    }
   ],
-  "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>"
+  "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>",
+  "background": {
+   "blue": "#59adc0",
+   "pink": "#c89a9b",
+   "scale": 520
+  }
  }
 }
