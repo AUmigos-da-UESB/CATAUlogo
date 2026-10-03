@@ -200,7 +200,9 @@
    "idade": "1 ano e 6 meses",
    "status": "Disponível para adoção",
    "ano": [
-    2026
+    2026,
+    2025,
+    2025
    ],
    "local": "Lar Temporário",
    "coat": "#b98a55",
@@ -212,7 +214,6 @@
     "Carinhoso",
     "Dócil",
     "Sociável",
-    "Calmo",
     "Curioso",
     "Leal",
     "Apegado",
@@ -226,10 +227,14 @@
     "Pelagem caramelo"
    ],
    "foto": [
-    "fotos/a1790976427005-murh4fx9-0.jpg"
+    "fotos/a1790976427005-murh4fx9-0.jpg",
+    "fotos/a1790976427005-murz6aoe-1.jpg",
+    "fotos/a1790976427005-murz6aoe-2.jpg"
    ],
    "fotoCred": [
-    "Nívea Ferraz, @nivia.ferraz"
+    "Nívea Ferraz, @nivia.ferraz",
+    "David Matos, @davidmatos_15",
+    "David Matos, @davidmatos_15"
    ]
   },
   {
