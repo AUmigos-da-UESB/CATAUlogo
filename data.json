@@ -149,7 +149,7 @@
    "mod": "Canil da UESB",
    "nome": "Serena",
    "sexo": "Fêmea",
-   "idade": "3 anos",
+   "idade": "Cerca de 3 anos",
    "status": "Comunitário",
    "ano": [
     2026,
@@ -203,7 +203,7 @@
    "mod": "Lar Temporário",
    "nome": "Lua",
    "sexo": "Fêmea",
-   "idade": "1 ano e 6 meses",
+   "idade": "Cerca de 1 ano e 6 meses",
    "status": "Disponível para adoção",
    "ano": [
     2026,
@@ -386,7 +386,7 @@
   "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>",
   "background": {
    "blue": "#42526c",
-   "pink": "#8e6b6c",
+   "pink": "#ab4f52",
    "scale": 170,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38"
