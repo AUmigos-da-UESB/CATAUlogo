@@ -1,20 +1,20 @@
 (function(){
-  function syncVolunteer(){
-    const target=document.getElementById("vadd");
-    if(!target)return;
-    target.classList.add("gradient-flow");
-    const source=document.querySelector("#fadd.gradient-flow:not([style*='display: none'])")||document.querySelector(".gradient-flow");
-    if(!source||!source.getAnimations)return;
-    const a=source.getAnimations().find(x=>x.animationName==="gradient-flow");
-    const b=target.getAnimations().find(x=>x.animationName==="gradient-flow");
-    if(a&&b&&typeof a.currentTime==="number"&&a.currentTime!=null){
-      b.currentTime=a.currentTime;
-    }
-  }
-  function boot(){
-    syncVolunteer();
-    const app=document.getElementById("app");
-    if(app)new MutationObserver(syncVolunteer).observe(app,{childList:true,subtree:true});
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
+ function syncGradientButtons(){
+  const source=document.querySelector(".gradient-flow");
+  if(!source||!source.getAnimations)return;
+  const a=source.getAnimations().find(x=>x.animationName==="gradient-flow");
+  if(!a||typeof a.currentTime!=="number")return;
+  document.querySelectorAll(".gradient-flow,.rich-toolbar button:not(.color-dot)").forEach(el=>{
+   if(el===source||!el.getAnimations)return;
+   const b=el.getAnimations().find(x=>x.animationName==="gradient-flow");
+   if(b&&typeof b.currentTime==="number")b.currentTime=a.currentTime;
+  });
+ }
+ function boot(){
+  syncGradientButtons();
+  const app=document.getElementById("app");
+  if(app)new MutationObserver(()=>requestAnimationFrame(syncGradientButtons)).observe(app,{childList:true,subtree:true});
+  document.querySelectorAll("dialog").forEach(d=>new MutationObserver(()=>requestAnimationFrame(syncGradientButtons)).observe(d,{childList:true,subtree:true}));
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
 })();
