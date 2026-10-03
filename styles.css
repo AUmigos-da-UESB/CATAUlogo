@@ -136,5 +136,5 @@ body{background-image:linear-gradient(rgba(15,23,19,.38),rgba(15,23,19,.38)),url
 .fab .fab-icon-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .fab .fab-logout{background:linear-gradient(135deg,#565f7d,#3b455f)}
 .coming{padding-bottom:0}
-footer{padding-top:12px}
-@media(max-width:620px){.coming{padding-bottom:0}footer{padding-top:10px}.fab{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));gap:6px;max-width:calc(100% - 20px)}.fab .fab-icon-btn{width:44px;height:44px}.fab #fadd{padding:11px 15px;font-size:14px}}
+footer{padding-top:12px;margin-top:-48px}
+@media(max-width:620px){.coming{padding-bottom:0}footer{padding-top:10px;margin-top:-48px}.fab{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));gap:6px;max-width:calc(100% - 20px)}.fab .fab-icon-btn{width:44px;height:44px}.fab #fadd{padding:11px 15px;font-size:14px}}
