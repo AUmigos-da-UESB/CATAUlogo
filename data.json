@@ -197,8 +197,8 @@
    "mod": "Lar Temporário",
    "nome": "Lua",
    "sexo": "Fêmea",
-   "idade": "Indefinida",
-   "status": "Lar temporário",
+   "idade": "1 ano e 6 meses",
+   "status": "Disponível para adoção",
    "ano": [
     2026
    ],
@@ -207,7 +207,21 @@
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
+   "pers": [
+    "Brincalhão",
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Curioso",
+    "Leal",
+    "Apegado",
+    "Tímido",
+    "Tranquilo",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
    "car": [
     "Pelagem caramelo"
    ],
