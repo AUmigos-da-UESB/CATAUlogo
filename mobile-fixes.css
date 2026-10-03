@@ -1,6 +1,6 @@
-/* CATAUlogo 2026-10-03: correções exclusivamente mobile */
+/* CATAUlogo 2026-10-03: correções mobile isoladas */
 
-/* O selo da imagem de destaque mantém a posição original no desktop. */
+/* Destaque: posição original no desktop. */
 .hero .ph{position:relative!important}
 .hero .ph .tag{
   bottom:16px!important;
@@ -22,30 +22,10 @@
 }
 
 @media (max-width:620px){
-  /* Navegação completa no celular, sem alterar o desktop. */
-  header .wrap{
-    height:auto!important;
-    min-height:68px!important;
-    flex-wrap:wrap!important;
-    padding-top:10px!important;
-    padding-bottom:10px!important;
-  }
-  header nav{
-    display:flex!important;
-    width:100%!important;
-    max-width:100%!important;
-    gap:18px!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-    white-space:nowrap!important;
-    padding:2px 0 4px!important;
-    scrollbar-width:none!important;
-    -webkit-overflow-scrolling:touch!important;
-  }
-  header nav::-webkit-scrollbar{display:none!important}
-  header nav a{flex:0 0 auto!important}
+  /* O cabeçalho pode permanecer oculto no celular. */
+  header nav{display:none!important}
 
-  /* Admin continua flutuante e clicável no celular. */
+  /* Admin permanece flutuante no celular. */
   .fab{
     position:fixed!important;
     right:16px!important;
@@ -67,21 +47,51 @@
     z-index:9999!important;
     pointer-events:auto!important;
   }
-  .fab .btn{
-    flex:0 0 auto!important;
-    pointer-events:auto!important;
-  }
+  .fab .btn{flex:0 0 auto!important;pointer-events:auto!important}
   #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
   .grid{padding-bottom:88px!important}
 
-  /* Na imagem de destaque, nome/local e crédito ficam em faixas separadas. */
+  /* Botões dos animais: lixeira em cima e lápis logo abaixo, sem sobreposição. */
+  .card .ph .dx{
+    top:16px!important;
+    right:10px!important;
+    z-index:6!important;
+  }
+  .card .ph .ex{
+    top:60px!important;
+    right:10px!important;
+    z-index:6!important;
+  }
+
+  /* A foto rotativa ocupa exatamente toda a moldura e não pisca ao trocar. */
+  #destaque-rotativo{
+    position:relative!important;
+    overflow:hidden!important;
+  }
+  #destaque-rotativo img{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    display:block!important;
+    opacity:1!important;
+    transition:none!important;
+  }
+  #destaque-rotativo .cr{
+    right:12px!important;
+    bottom:12px!important;
+    z-index:4!important;
+    max-width:calc(100% - 24px)!important;
+    white-space:normal!important;
+  }
   .hero .ph .tag{
     bottom:62px!important;
     left:16px!important;
     right:auto!important;
     max-width:calc(100% - 32px)!important;
     white-space:normal!important;
-    z-index:3!important;
+    z-index:5!important;
   }
   .hero .ph .credit,
   .hero .ph .photo-credit,
@@ -90,6 +100,16 @@
     bottom:12px!important;
     max-width:calc(100% - 24px)!important;
     white-space:normal!important;
-    z-index:2!important;
+    z-index:4!important;
   }
+
+  /* Voluntários: a foto tem espaço real antes do nome. */
+  .vc{
+    grid-template-columns:52px minmax(0,1fr) 34px 34px!important;
+    column-gap:12px!important;
+    padding:9px 0!important;
+  }
+  .vc .av{width:52px!important;height:52px!important}
+  .vc>div{padding-left:0!important;min-width:0!important}
+  .vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}
 }
