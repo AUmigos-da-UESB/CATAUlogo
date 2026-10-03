@@ -1,115 +1,134 @@
 /* CATAUlogo 2026-10-03: correções mobile isoladas */
 
-/* Destaque: posição original no desktop. */
+/* Destaque: desktop preservado; no mobile os dois textos ficam juntos na base. */
 .hero .ph{position:relative!important}
 .hero .ph .tag{
-  bottom:16px!important;
-  left:16px!important;
-  right:auto!important;
-  max-width:calc(100% - 32px)!important;
-  white-space:normal!important;
-  z-index:3!important;
+ bottom:16px!important;
+ left:16px!important;
+ right:auto!important;
+ max-width:calc(100% - 32px)!important;
+ white-space:normal!important;
+ z-index:5!important;
 }
 .hero .ph .credit,
 .hero .ph .photo-credit,
 .hero .ph [class*="credit"]{
-  bottom:14px!important;
-  left:auto!important;
-  right:16px!important;
-  max-width:calc(100% - 32px)!important;
-  white-space:normal!important;
-  z-index:2!important;
+ bottom:14px!important;
+ left:auto!important;
+ right:16px!important;
+ max-width:calc(100% - 32px)!important;
+ white-space:normal!important;
+ line-height:1.25!important;
+ z-index:4!important;
 }
 
-@media (max-width:620px){
-  /* O cabeçalho pode permanecer oculto no celular. */
-  header nav{display:none!important}
+@media(max-width:620px){
+ header nav{display:none!important}
 
-  /* Admin permanece flutuante no celular. */
-  .fab{
-    position:fixed!important;
-    right:16px!important;
-    bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;
-    top:auto!important;
-    left:auto!important;
-    width:auto!important;
-    max-width:calc(100% - 32px)!important;
-    padding:0!important;
-    margin:0!important;
-    display:flex!important;
-    justify-content:flex-end!important;
-    align-items:center!important;
-    flex-wrap:wrap!important;
-    gap:8px!important;
-    background:transparent!important;
-    border:0!important;
-    box-shadow:none!important;
-    z-index:9999!important;
-    pointer-events:auto!important;
-  }
-  .fab .btn{flex:0 0 auto!important;pointer-events:auto!important}
-  #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
-  .grid{padding-bottom:88px!important}
+ .fab{
+  position:fixed!important;
+  right:16px!important;
+  bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;
+  top:auto!important;
+  left:auto!important;
+  width:auto!important;
+  max-width:calc(100% - 32px)!important;
+  padding:0!important;
+  margin:0!important;
+  display:flex!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  z-index:9999!important;
+  pointer-events:auto!important;
+ }
+ .fab .btn{flex:0 0 auto!important;pointer-events:auto!important}
+ #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
+ .grid{padding-bottom:88px!important}
 
-  /* Botões dos animais: lixeira em cima e lápis logo abaixo, sem sobreposição. */
-  .card .ph .dx{
-    top:16px!important;
-    right:10px!important;
-    z-index:6!important;
-  }
-  .card .ph .ex{
-    top:60px!important;
-    right:10px!important;
-    z-index:6!important;
-  }
+ /* Cards: lixeira em cima e lápis exatamente abaixo dela. */
+ .card .ph .dx{
+  position:absolute!important;
+  top:16px!important;
+  right:10px!important;
+  left:auto!important;
+  bottom:auto!important;
+  z-index:7!important;
+ }
+ .card .ph .ex{
+  position:absolute!important;
+  top:60px!important;
+  right:10px!important;
+  left:auto!important;
+  bottom:auto!important;
+  z-index:7!important;
+ }
 
-  /* A foto rotativa ocupa exatamente toda a moldura e não pisca ao trocar. */
-  #destaque-rotativo{
-    position:relative!important;
-    overflow:hidden!important;
-  }
-  #destaque-rotativo img{
-    position:absolute!important;
-    inset:0!important;
-    width:100%!important;
-    height:100%!important;
-    object-fit:cover!important;
-    display:block!important;
-    opacity:1!important;
-    transition:none!important;
-  }
-  #destaque-rotativo .cr{
-    right:12px!important;
-    bottom:12px!important;
-    z-index:4!important;
-    max-width:calc(100% - 24px)!important;
-    white-space:normal!important;
-  }
-  .hero .ph .tag{
-    bottom:62px!important;
-    left:16px!important;
-    right:auto!important;
-    max-width:calc(100% - 32px)!important;
-    white-space:normal!important;
-    z-index:5!important;
-  }
-  .hero .ph .credit,
-  .hero .ph .photo-credit,
-  .hero .ph [class*="credit"]{
-    right:12px!important;
-    bottom:12px!important;
-    max-width:calc(100% - 24px)!important;
-    white-space:normal!important;
-    z-index:4!important;
-  }
+ /* Destaque rotativo sem piscar e ocupando toda a moldura. */
+ #destaque-rotativo{
+  position:relative!important;
+  overflow:hidden!important;
+ }
+ #destaque-rotativo img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+  opacity:1!important;
+  transition:none!important;
+ }
 
-  /* Voluntários: a foto tem espaço real antes do nome. */
-  .vc{
-    grid-template-columns:52px minmax(0,1fr) 34px 34px!important;
-    column-gap:12px!important;
-    padding:9px 0!important;
-  }
-  .vc .av{width:52px!important;height:52px!important}
-  .vc>div{padding-left:0!important;min-width:0!important}
-  .vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}
+ /* Nome/status e crédito permanecem na parte inferior, lado a lado. */
+ #destaque-rotativo .tag{
+  left:12px!important;
+  right:auto!important;
+  bottom:12px!important;
+  max-width:calc(50% - 18px)!important;
+  padding:8px 11px!important;
+  white-space:normal!important;
+  line-height:1.2!important;
+  z-index:5!important;
+ }
+ #destaque-rotativo .cr{
+  right:12px!important;
+  left:auto!important;
+  bottom:12px!important;
+  max-width:calc(50% - 18px)!important;
+  padding:5px 9px!important;
+  white-space:normal!important;
+  line-height:1.25!important;
+  text-align:right!important;
+  z-index:4!important;
+ }
+
+ .hero .ph .credit,
+ .hero .ph .photo-credit,
+ .hero .ph [class*="credit"]{
+  right:12px!important;
+  left:auto!important;
+  bottom:12px!important;
+  max-width:calc(50% - 18px)!important;
+  white-space:normal!important;
+  line-height:1.25!important;
+ }
+ .grid .card .cr{
+  max-width:82%!important;
+  white-space:normal!important;
+ }
+
+ /* Voluntários: espaço real entre foto e nome. */
+ .vc{
+  grid-template-columns:52px minmax(0,1fr) 34px 34px!important;
+  column-gap:12px!important;
+  padding:9px 0!important;
+ }
+ .vc .av{width:52px!important;height:52px!important}
+ .vc>div{padding-left:0!important;min-width:0!important}
+ .vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}
 }
