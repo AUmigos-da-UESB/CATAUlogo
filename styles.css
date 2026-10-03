@@ -647,3 +647,69 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   box-shadow:none!important;
   transform:none!important;
 }
+
+
+/* No editor de animais, os dois menus de opções ficam lado a lado */
+#dlg form#frm>.picker-field{
+  grid-column:auto!important;
+  min-width:0;
+  align-self:stretch;
+}
+#dlg form#frm>.picker-field .picker-tools{
+  flex:0 0 auto;
+  gap:5px;
+  flex-wrap:nowrap;
+}
+#dlg form#frm>.picker-field>div:first-child{
+  min-height:34px;
+}
+#dlg form#frm>.picker-field .picker-label{
+  font-size:13px;
+  white-space:nowrap;
+}
+#dlg form#frm>.picker-field .picker{
+  min-width:0;
+  max-height:190px;
+  align-content:flex-start;
+}
+#dlg form#frm #addPersOpt,#dlg form#frm #delPersOpt,
+#dlg form#frm #addCarOpt,#dlg form#frm #delCarOpt{
+  width:30px!important;
+  min-width:30px!important;
+  height:30px!important;
+  min-height:30px!important;
+  padding:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:50%!important;
+  font-size:18px!important;
+  line-height:1!important;
+}
+@media(max-width:650px){
+  #dlg form#frm>.picker-field{grid-column:1/-1!important}
+}
+
+/* Opções ficam neutras até serem selecionadas */
+#dlg .picker .pick[aria-pressed="false"]{
+  background:#1b251f!important;
+  background-image:none!important;
+  background-size:auto!important;
+  border:1px solid #344238!important;
+  color:#eef2ea!important;
+  animation:none!important;
+  box-shadow:none!important;
+}
+#dlg .picker .pick[aria-pressed="false"]:hover{
+  background:#27342b!important;
+  border-color:#46584a!important;
+  color:#fff!important;
+}
+#dlg .picker .pick[aria-pressed="true"]{
+  background-color:#435994!important;
+  background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
+  background-size:360% 260%!important;
+  border:1px solid rgba(195,207,255,.58)!important;
+  color:#fff!important;
+  animation:gradient-flow 8s linear infinite alternate!important;
+}
