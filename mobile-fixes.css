@@ -1,0 +1,58 @@
+/* CATAUlogo 2026-10-03: correções mobile de sobreposição e destaque */
+@media (max-width:620px){
+  /* O painel administrativo não fica mais flutuando por cima dos animais. */
+  .fab{
+    position:relative!important;
+    right:auto!important;
+    bottom:auto!important;
+    top:auto!important;
+    z-index:4!important;
+    width:100%!important;
+    max-width:none!important;
+    padding:8px 12px 10px!important;
+    margin:0!important;
+    justify-content:flex-end!important;
+    flex-wrap:wrap!important;
+    background:var(--bg)!important;
+    border-bottom:1px solid var(--line)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
+  }
+  .fab .btn{flex:0 0 auto!important}
+  #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
+  /* Mantém os cartões livres do dock administrativo. */
+  .grid{padding-bottom:32px!important}
+}
+
+/* Na imagem de destaque, nome/local e crédito ocupam faixas separadas. */
+.hero .ph{position:relative!important}
+.hero .ph .tag{
+  bottom:58px!important;
+  left:16px!important;
+  right:auto!important;
+  max-width:calc(100% - 32px)!important;
+  white-space:normal!important;
+  z-index:3!important;
+}
+.hero .ph .credit,
+.hero .ph .photo-credit,
+.hero .ph [class*="credit"]{
+  bottom:14px!important;
+  left:auto!important;
+  right:16px!important;
+  max-width:calc(100% - 32px)!important;
+  white-space:normal!important;
+  z-index:2!important;
+}
+@media(max-width:620px){
+  .hero .ph .tag{
+    bottom:62px!important;
+    max-width:calc(100% - 32px)!important;
+  }
+  .hero .ph .credit,
+  .hero .ph .photo-credit,
+  .hero .ph [class*="credit"]{
+    right:12px!important;
+    bottom:12px!important;
+    max-width:calc(100% - 24px)!important;
+  }
+}
