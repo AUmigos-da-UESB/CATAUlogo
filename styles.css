@@ -608,3 +608,42 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   font-weight:700!important;
   border-radius:999px!important;
 }
+
+
+/* Galeria do perfil: foto inteira, arredondada e crédito visível */
+.animal-profile .gal .main:has(>img){
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  max-height:none!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:20px!important;
+  box-shadow:none!important;
+}
+.animal-profile .gal .main:has(>img)>img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  border:0!important;
+  border-radius:20px!important;
+}
+.animal-profile .gal .main>.cr{
+  display:block!important;
+  visibility:visible!important;
+  z-index:3!important;
+}
+
+/* Mostra todas as fotos na faixa, inclusive a foto principal ativa */
+.animal-profile .thumbs button[aria-current="true"]{
+  opacity:.72!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
