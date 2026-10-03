@@ -162,3 +162,7 @@ footer{margin-top:0}
 @keyframes gradient-flow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
 .gradient-flow:hover{animation-duration:4s;filter:brightness(1.08)}
 @media(prefers-reduced-motion:reduce){.gradient-flow{animation:none;background-position:50% 50%}}
+
+/* Alvos explícitos para garantir gradiente nas ações indicadas */
+#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{background-color:#40538f!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
+#fadd:hover,#vadd:hover,#lig:hover,.hero a.btn[href="#catalogo"]:hover{animation-duration:4s;filter:brightness(1.08)}
