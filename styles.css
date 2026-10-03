@@ -323,3 +323,38 @@ footer{margin-top:0}
 .badge.comunitario{background-image:linear-gradient(110deg,#9bd8ad 0%,#64b982 36%,#a1d9ad 68%,#70c18a 100%)!important}
 .badge.adocao{background-image:linear-gradient(110deg,#839bff 0%,#596fc7 36%,#90a4ff 68%,#637bd9 100%)!important}
 .badge.adotado{background-image:linear-gradient(110deg,#c09ade 0%,#8a62b2 36%,#c8a4e4 68%,#9a73c0 100%)!important}
+
+
+/* Restaurar os controles compactos dos voluntários e animais */
+.vx{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;color:var(--mut)!important;animation:none!important;padding:4px 8px}
+.vx:hover{background:transparent!important;filter:none!important;transform:none!important}
+.card .ph{position:relative}
+.card .ph .ex,.card .ph .dx{
+  position:absolute!important;top:54px!important;width:36px!important;height:36px!important;
+  border-radius:50%!important;padding:0!important;place-items:center;z-index:2;
+  box-shadow:0 2px 10px rgba(0,0,0,.2)!important;
+}
+.card .ph .ex{right:54px!important;background:var(--card)!important;background-image:none!important;color:var(--ink)!important;border:0!important;animation:none!important}
+.card .ph .dx{
+  right:10px!important;background-color:#c17b84!important;
+  background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
+  border:1px solid rgba(157,79,91,.58)!important;color:#54262d!important;
+  background-size:360% 260%!important;animation:gradient-flow 8s linear infinite alternate!important;
+}
+.card .ph .ex svg,.card .ph .dx svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* Filtros voltam a ficar discretos quando inativos; só os selecionados animam */
+.chips .chip:not([aria-pressed="true"]){
+  background-color:rgba(27,37,31,.28)!important;
+  background-image:linear-gradient(110deg,rgba(83,104,181,.22),rgba(64,85,143,.16),rgba(96,120,198,.22))!important;
+  background-size:100% 100%!important;background-position:center!important;
+  border:1px solid rgba(173,188,255,.26)!important;color:var(--ink)!important;
+  animation:none!important;
+}
+.chips .chip[aria-pressed="true"]{
+  background-color:#435994!important;
+  background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
+  background-size:360% 260%!important;background-position:0% 50%;
+  border:1px solid rgba(195,207,255,.58)!important;color:#fff!important;
+  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+}
+@media(prefers-reduced-motion:reduce){.card .ph .dx,.chips .chip[aria-pressed="true"]{animation:none!important}}
