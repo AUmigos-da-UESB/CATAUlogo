@@ -488,3 +488,11 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 .coming .coming-box{
   background:transparent!important;border:0!important;box-shadow:none!important;
 }
+
+
+/* O gradiente fica restrito ao cartão, sem pintar toda a seção */
+.coming{background:transparent!important}
+.coming .coming-box{
+  background:linear-gradient(135deg,var(--about-bg-start,#1c2922),var(--about-bg-end,#222b38))!important;
+  border:1px solid var(--line)!important;border-radius:28px;box-shadow:none!important;
+}
