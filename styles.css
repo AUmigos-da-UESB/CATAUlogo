@@ -479,3 +479,12 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   .fic-title-row h1{font-size:clamp(30px,8vw,42px)}
   .fic-title-row>.badge{margin-left:auto}
 }
+
+
+/* Fundo gradiente da seção documental, sincronizado com as cores configuráveis da seção Sobre */
+.coming{
+  background:linear-gradient(135deg,var(--about-bg-start,#1c2922),var(--about-bg-end,#222b38));
+}
+.coming .coming-box{
+  background:transparent!important;border:0!important;box-shadow:none!important;
+}
