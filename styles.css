@@ -362,3 +362,18 @@ footer{margin-top:0}
 /* Prioridade maior para os ícones compactos dos voluntários contra a regra geral de botões */
 button.vx:not(.btn):not(.chip):not(.pick){background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;color:var(--mut)!important;animation:none!important}
 button.vx:not(.btn):not(.chip):not(.pick):hover{background:transparent!important;filter:none!important;transform:none!important}
+
+
+/* Ações ADM ancoradas no canto superior direito da foto */
+.card .ph button.ex,.card .ph button.dx{
+  position:absolute!important;top:12px!important;transform:none!important;
+  width:36px!important;height:36px!important;border-radius:50%!important;
+  padding:0!important;place-items:center;z-index:4;
+}
+.card .ph button.ex{right:54px!important;background:var(--card)!important;background-image:none!important;color:var(--ink)!important;border:0!important;animation:none!important}
+.card .ph button.dx{
+  right:10px!important;background-color:#c17b84!important;
+  background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
+  border:1px solid rgba(157,79,91,.58)!important;color:#54262d!important;
+  background-size:360% 260%!important;animation:gradient-flow 8s linear infinite alternate!important;
+}
