@@ -377,3 +377,49 @@ button.vx:not(.btn):not(.chip):not(.pick):hover{background:transparent!important
   border:1px solid rgba(157,79,91,.58)!important;color:#54262d!important;
   background-size:360% 260%!important;animation:gradient-flow 8s linear infinite alternate!important;
 }
+
+
+/* Visualização dos bastidores: controles neutros, sem gradiente azul ou animação */
+button.back-lightbox-close:not(.btn):not(.chip):not(.pick),button.back-lightbox-nav:not(.btn):not(.chip):not(.pick),button.back-lightbox-thumb:not(.btn):not(.chip):not(.pick),button.back-expand:not(.btn):not(.chip):not(.pick){
+  background-color:rgba(18,25,20,.86)!important;background-image:none!important;
+  border:1px solid rgba(225,232,222,.22)!important;color:#eef2ea!important;
+  box-shadow:none!important;animation:none!important;filter:none!important;
+}
+.back-lightbox-thumb{outline:0!important}
+button.back-lightbox-thumb[aria-current="true"],button.back-lightbox-thumb.is-current{
+  border-color:rgba(225,232,222,.34)!important;box-shadow:none!important;
+}
+button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lightbox-nav:not(.btn):not(.chip):not(.pick):hover,button.back-lightbox-thumb:not(.btn):not(.chip):not(.pick):hover,button.back-expand:not(.btn):not(.chip):not(.pick):hover{
+  background-color:rgba(35,45,38,.92)!important;background-image:none!important;
+  color:#fff!important;filter:none!important;transform:none!important;animation:none!important;
+}
+/* Editor de bastidores: botões de foto neutros com movimento discreto e sincronizado */
+#bdlg .back-row .back-meta .btn,#bdlg #badd{
+  background-color:#1b251f!important;
+  background-image:linear-gradient(110deg,#1b251f 0%,#27342b 38%,#202c24 72%,#1b251f 100%)!important;
+  background-size:260% 220%!important;background-position:0% 50%;
+  border:1px solid #344238!important;color:#eef2ea!important;
+  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+}
+#bdlg .back-row .back-meta .btn:hover,#bdlg #badd:hover{
+  background-color:#27342b!important;filter:none!important;transform:none!important;
+}
+/* Somente Remover e Cancelar ficam vermelhos; Salvar bastidores fica verde */
+#bdlg .back-remove,#bdlg #bcancel{
+  background-color:#cd8c94!important;
+  background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
+  background-size:360% 260%!important;border:1px solid rgba(157,79,91,.58)!important;
+  color:#54262d!important;animation:gradient-flow 8s linear infinite alternate!important;
+  animation-delay:0ms!important;
+}
+#bdlg #bsave{
+  background-color:#8fbe9a!important;
+  background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
+  background-size:360% 260%!important;border:1px solid rgba(83,139,96,.58)!important;
+  color:#193f29!important;animation:gradient-flow 8s linear infinite alternate!important;
+  animation-delay:0ms!important;
+}
+@media(prefers-reduced-motion:reduce){
+  button.back-lightbox-close:not(.btn):not(.chip):not(.pick),button.back-lightbox-nav:not(.btn):not(.chip):not(.pick),button.back-lightbox-thumb:not(.btn):not(.chip):not(.pick),button.back-expand:not(.btn):not(.chip):not(.pick){animation:none!important}
+  #bdlg .back-row .back-meta .btn,#bdlg #badd,#bdlg .back-remove,#bdlg #bcancel,#bdlg #bsave{animation:none!important}
+}
