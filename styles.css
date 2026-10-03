@@ -457,3 +457,25 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   .fic-title-row h1{font-size:clamp(34px,9vw,48px)}
   .fic-actions{margin-top:18px}
 }
+
+
+/* Perfil mais compacto; sexo e idade aparecem imediatamente após o nome */
+.animal-profile{max-width:1320px;padding-left:clamp(14px,2vw,28px);padding-right:clamp(14px,2vw,28px)}
+.animal-profile .fic{grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);gap:clamp(22px,2.6vw,36px);padding-bottom:42px}
+.animal-profile .gal .main{aspect-ratio:4/3;max-height:min(66vh,620px)}
+.animal-profile .main>.cr{display:none!important}
+.fic-title-row{justify-content:flex-start;gap:10px}
+.fic-title-row h1{font-size:clamp(32px,3.4vw,52px);flex:0 1 auto}
+.fic-title-row>.profile-sex,.fic-title-row>.profile-age{font-size:14px;line-height:1.2;white-space:nowrap}
+.fic-title-row>.profile-sex{padding:5px 10px;border-radius:999px;font-weight:600;border:1px solid transparent}
+.profile-sex.female{background:rgba(220,125,159,.16);border-color:rgba(226,145,172,.3);color:#f0aec5}
+.profile-sex.male{background:rgba(104,157,220,.17);border-color:rgba(130,177,231,.3);color:#a8cefa}
+.profile-age{color:var(--mut)}
+.fic-title-row>.badge{margin-left:auto;white-space:nowrap}
+@media(max-width:720px){
+  .animal-profile .fic{grid-template-columns:1fr;gap:20px}
+  .animal-profile .gal .main{aspect-ratio:4/3;max-height:62vh}
+  .fic-title-row{gap:8px}
+  .fic-title-row h1{font-size:clamp(30px,8vw,42px)}
+  .fic-title-row>.badge{margin-left:auto}
+}
