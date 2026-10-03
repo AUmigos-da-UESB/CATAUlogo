@@ -529,3 +529,12 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   transform:rotate(1deg)!important;
 }
 @media(max-width:720px){.coming .coming-art{min-height:120px}}
+
+
+/* Sobrescreve o estilo geral de botões somente nas miniaturas da galeria */
+.animal-profile .thumbs button:not(.btn):not(.chip):not(.pick),
+.animal-profile .thumbs button:not(.btn):not(.chip):not(.pick)[aria-current="true"]{
+  border-color:var(--line)!important;background-color:transparent!important;
+  background-image:none!important;animation:none!important;box-shadow:none!important
+}
+.fic-title-row>.profile-sex,.fic-title-row>.profile-age{margin-bottom:0}
