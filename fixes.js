@@ -1,0 +1,21 @@
+/* CATAUlogo 2026-10-03: idade estimada/automática + botão voluntário */
+(function(){
+"use strict";
+const pad=n=>String(n).padStart(2,"0");
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());};
+function parseAge(text){if(typeof text!=="string")return null;const s=text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/,/g,".");let y=0,m=0;const ym=s.match(/(\d+(?:\.\d+)?)\s*anos?/);const mm=s.match(/(\d+)\s*mes(?:es)?/);if(ym)y=Math.floor(Number(ym[1]));if(mm)m=Math.floor(Number(mm[1]));if(!ym&&!mm)return null;return Number.isFinite(y)&&Number.isFinite(m)?{years:y,months:m}:null;}
+function addMonths(date,months){const d=new Date(date.getTime());d.setDate(1);d.setMonth(d.getMonth()+months);const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(date.getDate(),last));return d;}
+function ageFromBirth(iso){const b=new Date(iso+"T12:00:00"),n=new Date();n.setHours(12,0,0,0);if(Number.isNaN(b.getTime())||b>n)return null;let years=n.getFullYear()-b.getFullYear(),months=n.getMonth()-b.getMonth();if(n.getDate()<b.getDate())months--;if(months<0){years--;months+=12;}return years<0?null:{years,months};}
+function formatAge(a,approximate){if(!a)return null;const p=[];if(a.years)p.push(a.years+" "+(a.years===1?"ano":"anos"));if(a.months||!a.years)p.push(a.months+" "+(a.months===1?"mês":"meses"));return (approximate?"Cerca de ":"")+p.join(" e ");}
+function ensureAgeMeta(d,reference){if(!d||typeof d!=="object"||d.nascimentoEstimado)return;const parsed=parseAge(d.idade);if(!parsed)return;const ref=new Date((reference||d.idadeReferencia||today())+"T12:00:00");if(Number.isNaN(ref.getTime()))return;const birth=addMonths(ref,-(parsed.years*12+parsed.months));d.idadeReferencia=reference||d.idadeReferencia||today();d.nascimentoEstimado=birth.toISOString().slice(0,10);d.idadeAproximada=true;}
+function refreshAges(){if(!Array.isArray(window.DOGS))return;DOGS.forEach(d=>{if(!d.nascimentoEstimado)ensureAgeMeta(d);const a=d.nascimentoEstimado?ageFromBirth(d.nascimentoEstimado):null;if(a)d.idadeExibicao=formatAge(a,d.idadeAproximada!==false);});updateAgeNodes();}
+function updateAgeNodes(){if(!Array.isArray(window.DOGS))return;for(const d of DOGS){if(!d.idadeExibicao)continue;const card=document.querySelector('a.card[href="#/cao/'+CSS.escape(d.id)+'"]');if(card){const metas=card.querySelectorAll('.bd .meta:not(.loc)');if(metas[0]){metas[0].textContent=d.sexo+' · '+d.idadeExibicao;metas[0].classList.add('age-meta');}}document.querySelectorAll('[data-age-id="'+CSS.escape(d.id)+'"]').forEach(el=>el.textContent=d.idadeExibicao);document.querySelectorAll('.age-value,.detail-age,.animal-age').forEach(el=>{if(el.dataset.animalName===d.nome||el.dataset.id===d.id)el.textContent=d.idadeExibicao;});}}
+function migrateAndRefreshData(s){if(!s||!Array.isArray(s.dogs))return;s.dogs.forEach(d=>{if(!d.nascimentoEstimado)ensureAgeMeta(d,d.idadeReferencia||today());if(d.nascimentoEstimado){const a=ageFromBirth(d.nascimentoEstimado);if(a)d.idade=formatAge(a,d.idadeAproximada!==false);}});}
+if(typeof window.salvar==="function"&&!window.__ageSalvarWrapped){const originalSalvar=window.salvar;window.salvar=function(mut,msg){return originalSalvar.call(this,s=>{if(typeof mut==="function")mut(s);migrateAndRefreshData(s);},msg);};window.__ageSalvarWrapped=true;}
+function setupVolunteerButton(){const b=document.getElementById('vadd');if(!b)return false;b.classList.add('gradient-flow');b.style.animationName='gradient-flow';b.style.animationDuration='8s';b.style.animationTimingFunction='linear';b.style.animationIterationCount='infinite';b.style.animationDirection='alternate';b.style.animationDelay='0ms';return true;}
+function boot(){refreshAges();setupVolunteerButton();let lastDay=today();setInterval(()=>{const now=today();if(now!==lastDay){lastDay=now;refreshAges();}setupVolunteerButton();},60000);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+const mo=new MutationObserver(()=>{refreshAges();setupVolunteerButton();});
+const start=()=>{const app=document.getElementById('app');if(app)mo.observe(app,{childList:true,subtree:true});};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
