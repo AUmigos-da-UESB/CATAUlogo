@@ -501,7 +501,7 @@ load().then(()=>{try{rota2()}catch(e){console.error("Falha ao montar a página c
 
 /* Sincroniza a fase das animações de gradiente, inclusive após remontar cartões e diálogos. */
 (()=>{
-  const selector=".btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand";
+  const selector="button,.btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand";
   const synced=new WeakSet();
   function sync(root=document){
     const nodes=[];
