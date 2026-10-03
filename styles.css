@@ -423,3 +423,37 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   button.back-lightbox-close:not(.btn):not(.chip):not(.pick),button.back-lightbox-nav:not(.btn):not(.chip):not(.pick),button.back-lightbox-thumb:not(.btn):not(.chip):not(.pick),button.back-expand:not(.btn):not(.chip):not(.pick){animation:none!important}
   #bdlg .back-row .back-meta .btn,#bdlg #badd,#bdlg .back-remove,#bdlg #bcancel,#bdlg #bsave{animation:none!important}
 }
+
+
+/* Seção do documentário sem moldura decorativa */
+.coming .coming-box{background:transparent!important;border:0!important;box-shadow:none!important}
+.coming .coming-art{background:transparent!important;border:0!important;box-shadow:none!important;transform:none!important}
+
+/* Perfil do animal mais largo e com informações agrupadas */
+.animal-profile{max-width:1560px;width:100%;padding-left:clamp(14px,2.2vw,34px);padding-right:clamp(14px,2.2vw,34px)}
+.animal-profile .fic{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:start;gap:clamp(22px,3.2vw,52px);padding-bottom:56px
+}
+.fic .gal,.fic-info{min-width:0}
+.fic-title-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fic-title-row h1{margin:0;flex:1 1 auto;font-size:clamp(36px,4.2vw,60px)}
+.fic-title-row .badge{flex:0 0 auto;margin:0;padding:6px 14px}
+.fic .sub{margin:8px 0 16px}
+.fic .kv{grid-template-columns:1fr;gap:8px}
+.fic .kv>div{min-height:0;padding:10px 14px}
+.fic .kv small{margin:0 0 3px}
+.fic h3{font-size:19px;margin:18px 0 7px}
+.fic .fic-story{margin:0;color:var(--mut);line-height:1.6}
+.fic-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.fic-actions .btn{margin:0}
+.animal-profile .thumbs button{
+  background:transparent!important;background-image:none!important;border:2px solid var(--line)!important;
+  animation:none!important;box-shadow:none!important
+}
+.animal-profile .thumbs button[aria-current="true"]{border-color:rgba(225,232,222,.55)!important}
+@media(max-width:680px){
+  .animal-profile .fic{grid-template-columns:1fr;gap:24px;padding-bottom:36px}
+  .fic-title-row h1{font-size:clamp(34px,9vw,48px)}
+  .fic-actions{margin-top:18px}
+}
