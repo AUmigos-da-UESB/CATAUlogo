@@ -727,3 +727,77 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
     padding:18px!important;
   }
 }
+
+
+/* Editor de animal: dados principais à esquerda, seletores à direita */
+#dlg form#frm{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:start;
+  gap:12px 18px!important;
+}
+#dlg form#frm>.form-left,
+#dlg form#frm>.form-right{
+  min-width:0;
+  display:grid;
+  align-content:start;
+  gap:12px;
+}
+#dlg form#frm>.form-left{grid-column:1}
+#dlg form#frm>.form-right{grid-column:2}
+#dlg form#frm>.form-left>.full{grid-column:1/-1}
+#dlg form#frm>.form-left .form-pair{width:100%}
+#dlg form#frm>.form-right>.picker-field{grid-column:1/-1!important}
+#dlg form#frm>.form-right .picker{
+  max-height:none!important;
+  overflow:visible!important;
+  height:auto!important;
+  align-content:flex-start;
+}
+#dlg form#frm>.form-right .picker-field{align-self:start}
+#dlg form#frm>label.full,
+#dlg form#frm>.full{grid-column:1/-1!important}
+#dlg #slots{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:start;
+  gap:10px!important;
+}
+#dlg #slots>.fr{
+  min-width:0;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(120px,1fr);
+  gap:8px;
+  align-content:start;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--card);
+}
+#dlg #slots>.fr>label:first-child{grid-row:span 2}
+#dlg #slots>.fr>label:nth-child(3){min-width:0}
+#dlg #slots>.fr>label:nth-child(3)>span{min-width:0}
+#dlg #slots>.fr>label:nth-child(3) input{min-width:0}
+#dlg #slots .existing-photo{
+  display:block;
+  width:100%!important;
+  height:140px!important;
+  max-height:140px!important;
+  object-fit:contain!important;
+  background:rgba(0,0,0,.12);
+}
+#dlg #slots .photo-actions{
+  grid-column:1/-1!important;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+#dlg #slots .photo-actions .btn,
+#dlg #slots .rmslot{padding:6px 10px!important;font-size:12px!important}
+@media(max-width:820px){
+  #dlg form#frm{grid-template-columns:minmax(0,1fr)!important}
+  #dlg form#frm>.form-left,#dlg form#frm>.form-right{grid-column:1!important}
+  #dlg form#frm>.form-right .picker{max-height:none!important;overflow:visible!important}
+}
+@media(max-width:620px){
+  #dlg #slots{grid-template-columns:minmax(0,1fr)!important}
+}
