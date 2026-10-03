@@ -975,3 +975,6 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 @media(prefers-reduced-motion:reduce){
  #dlg #newloc,#dlg #delloc,#dlg #addPersOpt,#dlg #delPersOpt,#dlg #addCarOpt,#dlg #delCarOpt,#dlg #cancel,#dlg #save{animation:none!important}
 }
+
+/* Filtro de locais alinhado ao campo de busca no desktop, sem alterar a posição da linha. */
+@media(min-width:821px){.search-row .location-filter{align-self:stretch;display:flex}.search-row .location-filter select{height:100%;box-sizing:border-box}}
