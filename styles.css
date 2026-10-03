@@ -713,3 +713,17 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   color:#fff!important;
   animation:gradient-flow 8s linear infinite alternate!important;
 }
+
+
+/* O editor de animais precisa de largura para acomodar os campos inferiores lado a lado */
+#dlg{
+  width:min(1120px,calc(100vw - 40px))!important;
+  max-width:none!important;
+  padding:clamp(20px,3vw,36px)!important;
+}
+@media(max-width:720px){
+  #dlg{
+    width:calc(100vw - 20px)!important;
+    padding:18px!important;
+  }
+}
