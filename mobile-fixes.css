@@ -1,32 +1,9 @@
-/* CATAUlogo 2026-10-03: correções mobile de sobreposição e destaque */
-@media (max-width:620px){
-  /* O painel administrativo não fica mais flutuando por cima dos animais. */
-  .fab{
-    position:relative!important;
-    right:auto!important;
-    bottom:auto!important;
-    top:auto!important;
-    z-index:4!important;
-    width:100%!important;
-    max-width:none!important;
-    padding:8px 12px 10px!important;
-    margin:0!important;
-    justify-content:flex-end!important;
-    flex-wrap:wrap!important;
-    background:var(--bg)!important;
-    border-bottom:1px solid var(--line)!important;
-    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
-  }
-  .fab .btn{flex:0 0 auto!important}
-  #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
-  /* Mantém os cartões livres do dock administrativo. */
-  .grid{padding-bottom:32px!important}
-}
+/* CATAUlogo 2026-10-03: correções exclusivamente mobile */
 
-/* Na imagem de destaque, nome/local e crédito ocupam faixas separadas. */
+/* O selo da imagem de destaque mantém a posição original no desktop. */
 .hero .ph{position:relative!important}
 .hero .ph .tag{
-  bottom:58px!important;
+  bottom:16px!important;
   left:16px!important;
   right:auto!important;
   max-width:calc(100% - 32px)!important;
@@ -43,10 +20,68 @@
   white-space:normal!important;
   z-index:2!important;
 }
-@media(max-width:620px){
+
+@media (max-width:620px){
+  /* Navegação completa no celular, sem alterar o desktop. */
+  header .wrap{
+    height:auto!important;
+    min-height:68px!important;
+    flex-wrap:wrap!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
+  header nav{
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:18px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    white-space:nowrap!important;
+    padding:2px 0 4px!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  header nav::-webkit-scrollbar{display:none!important}
+  header nav a{flex:0 0 auto!important}
+
+  /* Admin continua flutuante e clicável no celular. */
+  .fab{
+    position:fixed!important;
+    right:16px!important;
+    bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;
+    top:auto!important;
+    left:auto!important;
+    width:auto!important;
+    max-width:calc(100% - 32px)!important;
+    padding:0!important;
+    margin:0!important;
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    flex-wrap:wrap!important;
+    gap:8px!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    z-index:9999!important;
+    pointer-events:auto!important;
+  }
+  .fab .btn{
+    flex:0 0 auto!important;
+    pointer-events:auto!important;
+  }
+  #fadd{max-width:calc(100vw - 155px)!important;white-space:nowrap!important}
+  .grid{padding-bottom:88px!important}
+
+  /* Na imagem de destaque, nome/local e crédito ficam em faixas separadas. */
   .hero .ph .tag{
     bottom:62px!important;
+    left:16px!important;
+    right:auto!important;
     max-width:calc(100% - 32px)!important;
+    white-space:normal!important;
+    z-index:3!important;
   }
   .hero .ph .credit,
   .hero .ph .photo-credit,
@@ -54,5 +89,7 @@
     right:12px!important;
     bottom:12px!important;
     max-width:calc(100% - 24px)!important;
+    white-space:normal!important;
+    z-index:2!important;
   }
 }
