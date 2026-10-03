@@ -1,0 +1,12 @@
+/* CATAUlogo 2026-10-03: ajustes de desempenho, editor de textos e mobile */
+#tdlg,#tdlg *{animation:none!important;transition:none!important}
+#tdlg .gradient-flow,#tdlg .btn,#tdlg button{animation:none!important}
+button:not(.gradient-flow),.btn:not(.gradient-flow),.chip:not(.gradient-flow),.pick:not(.gradient-flow),.badge:not(.gradient-flow),.back-expand:not(.gradient-flow){animation:none!important}
+#vadd.gradient-flow{animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important}
+.vc{position:relative!important;display:grid!important;grid-template-columns:52px minmax(0,1fr) 36px 36px!important;align-items:center!important;column-gap:10px!important;min-width:0!important}
+.vc>div{min-width:0!important}
+.vc .vx{position:static!important;inset:auto!important;transform:none!important;margin:0!important;width:36px!important;min-width:36px!important;max-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;justify-self:center!important;line-height:1!important}
+.vc .vedit,.vc .vrem{z-index:2!important;flex:0 0 36px!important}
+@media(max-width:620px){.vc{grid-template-columns:46px minmax(0,1fr) 34px 34px!important;column-gap:7px!important;padding:9px 0!important}.vc .vx{width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important}.vc .vedit,.vc .vrem{position:static!important}#vdlg{max-width:calc(100vw - 24px)!important;width:calc(100vw - 24px)!important;box-sizing:border-box!important;overflow:visible!important}#vdlg form{min-width:0!important}.vphoto-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}.vphoto-actions #vphoto-remove{grid-column:1/-1!important}}
+@media(max-width:620px){dialog form label.full,dialog form .full{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}dialog input,dialog select,dialog textarea{max-width:100%!important;box-sizing:border-box!important}.picker-field{position:relative!important;z-index:1!important}.picker{position:relative!important;z-index:2!important}}
+.meta.age-meta{white-space:normal!important}
