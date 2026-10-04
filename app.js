@@ -316,6 +316,7 @@ const TEXT_FIELDS=[
  ["email1","E-mail 1","email"],["email2","E-mail 2","email"],["comingTitle","Vem aí — título","rich"],["comingText","Vem aí — texto","rich"],["comingBackstageLabel","Título dos bastidores","rich"],["footer","Rodapé","rich"]
 ];
 let inlineTextMode=false,inlineTextSnapshot=null;
+document.addEventListener("click",e=>{if(!inlineTextMode)return;const a=e.target.closest?.("a");if(a&&a.closest("#app")&&!e.target.closest("#inline-text-bar"))e.preventDefault()});
 function startInlineTextEdit(){
  if(!admin||inlineTextMode)return;
  inlineTextSnapshot={...SITE};inlineTextMode=true;document.body.classList.add("inline-text-edit");
