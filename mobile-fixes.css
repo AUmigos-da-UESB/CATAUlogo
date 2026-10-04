@@ -242,3 +242,15 @@
   flex:0 0 36px!important;
  }
 }
+
+
+/* Correção final dos controles dos cards no desktop: voltar ao canto superior. */
+@media(min-width:621px){
+ .card .ph .card-actions{
+  top:12px!important;
+  right:10px!important;
+  width:80px!important;
+  height:36px!important;
+  justify-content:flex-end!important;
+ }
+}
