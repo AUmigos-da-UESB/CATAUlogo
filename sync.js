@@ -1,6 +1,6 @@
 (function(){
  function syncGradientButtons(){
-  const source=document.querySelector(".gradient-flow");
+  const source=document.querySelector(".gradient-flow:not(#ftext)")||document.querySelector(".gradient-flow");
   if(!source||!source.getAnimations)return;
   const a=source.getAnimations().find(x=>x.animationName==="gradient-flow");
   if(!a||typeof a.currentTime!=="number")return;
@@ -11,9 +11,10 @@
   });
  }
  function boot(){
-  syncGradientButtons();
+  const start=()=>{document.querySelectorAll(".gradient-flow").forEach(el=>{if(el.id==="ftext")el.style.removeProperty("animation-delay")});syncGradientButtons()};
+  start();
   const app=document.getElementById("app");
-  if(app)new MutationObserver(()=>requestAnimationFrame(syncGradientButtons)).observe(app,{childList:true,subtree:true});
+  if(app)new MutationObserver(()=>requestAnimationFrame(start)).observe(app,{childList:true,subtree:true});
   document.querySelectorAll("dialog").forEach(d=>new MutationObserver(()=>requestAnimationFrame(syncGradientButtons)).observe(d,{childList:true,subtree:true}));
  }
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
