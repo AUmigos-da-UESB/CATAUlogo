@@ -156,35 +156,36 @@ function assetUrl(src){
  if(/^https?:\/\//i.test(u)||u.startsWith("data:")||u.startsWith("blob:"))return u;
  try{return new URL(u.replace(/^\.\//,""),location.href).href}catch(e){return u}
 }
+function et(key,value){return `<span class="site-editable" data-site-edit="${key}">${rh(value)}</span>`}
 function home(){
  const n=k=>DOGS.filter(d=>d.status===k).length,d0=destaque()||SEED.dogs[0];
  document.getElementById("app").innerHTML=`
  <section class="wrap hero"><div>
-  <h1>${rh(SITE.heroTitle)}</h1>
-  <p>${rh(SITE.heroText)}</p>
-  <a class="btn gradient-flow" href="#catalogo">${rh(SITE.heroCatalog)}</a> <a class="btn ghost" href="#sobre">${rh(SITE.heroAbout)}</a>
+  <h1>${et("heroTitle",SITE.heroTitle)}</h1>
+  <p>${et("heroText",SITE.heroText)}</p>
+  <a class="btn gradient-flow" href="#catalogo">${et("heroCatalog",SITE.heroCatalog)}</a> <a class="btn ghost" href="#sobre">${et("heroAbout",SITE.heroAbout)}</a>
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
- <section class="wrap tools" id="catalogo"><h2>${rh(SITE.catalogTitle)}</h2>
-  <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select></div></div>
+ <section class="wrap tools" id="catalogo"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2>
+  <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select></div></div>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
-<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${rh(SITE.volTitle)}</h2><p>${rh(SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
+<section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
- <h2>${rh(SITE.aboutTitle)}</h2>
- <p style="margin-top:18px">${rh(SITE.aboutText1)}</p>
- <p>${rh(SITE.aboutText2)}</p>
- <div class="amigo"><b>${rh(SITE.contactTitle)}</b><span>${rh(SITE.contactText)}</span>
+ <h2>${et("aboutTitle",SITE.aboutTitle)}</h2>
+ <p style="margin-top:18px">${et("aboutText1",SITE.aboutText1)}</p>
+ <p>${et("aboutText2",SITE.aboutText2)}</p>
+ <div class="amigo"><b>${et("contactTitle",SITE.contactTitle)}</b><span>${et("contactText",SITE.contactText)}</span>
   <div class="soc"><a class="btn gradient-flow" id="lig" href="https://www.instagram.com/amigopet.vca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg>Instagram</a></div></div>
 </div>
 <div class="help" id="ajudar">
- <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>${rh(SITE.help1Title)}</b><span>${rh(SITE.help1Text)}</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>${rh(SITE.help2Title)}</b><span>${rh(SITE.help2Text)}</span></p></div>
- <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>${rh(SITE.help3Title)}</b><span>${rh(SITE.help3Text)}</span></p></div>
- <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>${rh(SITE.help4Title)}</b><span>${rh(SITE.help4Text)}<br><br><b>Envie para:</b> <a href="mailto:${esc(SITE.email1)}">${esc(SITE.email1)}</a> ou <a href="mailto:${esc(SITE.email2)}">${esc(SITE.email2)}</a></span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/></svg><p style="margin:0"><b>${et("help1Title",SITE.help1Title)}</b><span>${et("help1Text",SITE.help1Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg><p style="margin:0"><b>${et("help2Title",SITE.help2Title)}</b><span>${et("help2Text",SITE.help2Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>${et("help3Title",SITE.help3Title)}</b><span>${et("help3Text",SITE.help3Text)}</span></p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>${et("help4Title",SITE.help4Title)}</b><span>${et("help4Text",SITE.help4Text)}<br><br><b>Envie para:</b> <a href="mailto:${esc(SITE.email1)}">${esc(SITE.email1)}</a> ou <a href="mailto:${esc(SITE.email2)}">${esc(SITE.email2)}</a></span></p></div>
 </div></div></section>
- <section class="coming" id="vem-ai"><div class="wrap"><div class="coming-box"><div><h2>${rh(SITE.comingTitle)}</h2><p>${rh(SITE.comingText)}</p></div><div class="coming-art" aria-hidden="true">🎬 🐾</div></div><div class="backstage-head"><div><h3>${rh(SITE.comingBackstageLabel||"Por trás das câmeras")}</h3><p>Um pouquinho do processo de criação do documentário.</p></div><button class="btn ghost" id="bedit" style="display:none">✎ Editar bastidores</button></div><div class="backstage-grid">${(SITE.backstage||[]).filter(b=>b&&b.src).length?(SITE.backstage||[]).filter(b=>b&&b.src).map((b,i)=>`<figure class="backstage-photo" data-back-index="${i}"><div class="back-image"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt="${esc(b.alt||("Bastidores do documentário "+(i+1)))}" loading="${i===0?"eager":"lazy"}" decoding="async" fetchpriority="${i===0?"high":"auto"}"><button type="button" class="back-expand" aria-label="Expandir foto" title="Expandir foto">⤢</button>${b.credit?`<span class="back-credit">Foto por ${esc(String(b.credit).replace(/^foto\s+por\s+/i,""))}</span>`:""}</div><figcaption>${b.caption?rh(b.caption):"Bastidores do documentário."}</figcaption></figure>`).join(""): '<div class="back-empty">Os bastidores vão aparecer aqui 🎬<br><span style="font-size:12px">Em breve, fotos do processo de pesquisa e filmagem do documentário.</span></div>'}</div></div></section>
- <footer><div class="wrap">${rh(SITE.footer)}</div></footer>`;
+ <section class="coming" id="vem-ai"><div class="wrap"><div class="coming-box"><div><h2>${et("comingTitle",SITE.comingTitle)}</h2><p>${et("comingText",SITE.comingText)}</p></div><div class="coming-art" aria-hidden="true">🎬 🐾</div></div><div class="backstage-head"><div><h3>${rh(SITE.comingBackstageLabel||"Por trás das câmeras")}</h3><p>Um pouquinho do processo de criação do documentário.</p></div><button class="btn ghost" id="bedit" style="display:none">✎ Editar bastidores</button></div><div class="backstage-grid">${(SITE.backstage||[]).filter(b=>b&&b.src).length?(SITE.backstage||[]).filter(b=>b&&b.src).map((b,i)=>`<figure class="backstage-photo" data-back-index="${i}"><div class="back-image"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt="${esc(b.alt||("Bastidores do documentário "+(i+1)))}" loading="${i===0?"eager":"lazy"}" decoding="async" fetchpriority="${i===0?"high":"auto"}"><button type="button" class="back-expand" aria-label="Expandir foto" title="Expandir foto">⤢</button>${b.credit?`<span class="back-credit">Foto por ${esc(String(b.credit).replace(/^foto\s+por\s+/i,""))}</span>`:""}</div><figcaption>${b.caption?rh(b.caption):"Bastidores do documentário."}</figcaption></figure>`).join(""): '<div class="back-empty">Os bastidores vão aparecer aqui 🎬<br><span style="font-size:12px">Em breve, fotos do processo de pesquisa e filmagem do documentário.</span></div>'}</div></div></section>
+ <footer><div class="wrap">${et("footer",SITE.footer)}</div></footer>`;
  iniciarDestaqueRotacao();
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const f=b.dataset.f;if(filtrosAtivos.has(f))filtrosAtivos.delete(f);else{for(const grupo of gruposFiltros)if(grupo.includes(f))grupo.forEach(outro=>filtrosAtivos.delete(outro));filtrosAtivos.add(f)}document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(filtrosAtivos.has(x.dataset.f))));lista()});
@@ -314,6 +315,22 @@ const TEXT_FIELDS=[
  ["help3Title","Ajuda 3 — título","rich"],["help3Text","Ajuda 3 — texto","rich"],["help4Title","Ajuda 4 — título","rich"],["help4Text","Ajuda 4 — texto","rich"],
  ["email1","E-mail 1","email"],["email2","E-mail 2","email"],["comingTitle","Vem aí — título","rich"],["comingText","Vem aí — texto","rich"],["comingBackstageLabel","Título dos bastidores","rich"],["footer","Rodapé","rich"]
 ];
+let inlineTextMode=false,inlineTextSnapshot=null;
+function startInlineTextEdit(){
+ if(!admin||inlineTextMode)return;
+ inlineTextSnapshot={...SITE};inlineTextMode=true;document.body.classList.add("inline-text-edit");
+ document.querySelectorAll("[data-site-edit]").forEach(el=>{el.contentEditable="true";el.spellcheck=true});
+ document.querySelectorAll("[data-site-edit-input]").forEach(el=>{el.dataset.inlineOriginal=el.value;el.classList.add("inline-text-input")});
+ const bar=document.createElement("div");bar.id="inline-text-bar";bar.innerHTML='<div><strong>Editar textos</strong><span>Edite diretamente na página</span></div><div class="inline-text-actions"><button type="button" class="btn ghost" id="inline-text-cancel">Cancelar</button><button type="button" class="btn" id="inline-text-save">Salvar alterações</button></div>';document.body.appendChild(bar);
+ document.getElementById("inline-text-cancel").onclick=cancelInlineTextEdit;document.getElementById("inline-text-save").onclick=saveInlineTextEdit;
+}
+function cancelInlineTextEdit(){if(!inlineTextMode)return;SITE={...inlineTextSnapshot};inlineTextMode=false;document.body.classList.remove("inline-text-edit");document.getElementById("inline-text-bar")?.remove();home();}
+async function saveInlineTextEdit(){
+ if(!inlineTextMode)return;
+ const next={...SITE};document.querySelectorAll("[data-site-edit]").forEach(el=>{const k=el.dataset.siteEdit;if(k)next[k]=cleanRich(el.innerHTML)});document.querySelectorAll("[data-site-edit-input]").forEach(el=>{const k=el.dataset.siteEditInput;if(k)next[k]=String(el.value||"").trim()});
+ const btn=document.getElementById("inline-text-save");if(btn){btn.disabled=true;btn.textContent="Salvando…"}
+ try{await salvar(s=>{s.site={...next}},"Atualiza textos do CATAUlogo");SITE={...DEFAULT_SITE,...next};inlineTextMode=false;document.body.classList.remove("inline-text-edit");document.getElementById("inline-text-bar")?.remove();home()}catch(err){erro(err);if(btn){btn.disabled=false;btn.textContent="Salvar alterações"}}
+}
 function renderTextEditor(){
  const box=document.getElementById("textFields");if(!box)return;
  const groups=[["Navegação","Defina o texto do menu.",["navAbout"]],["Página inicial","Título, apresentação e botões da abertura.",["heroTitle","heroText","heroCatalog","heroAbout"]],["CATAUlogo","Nome da seção e busca.",["catalogTitle","searchPlaceholder"]],["Voluntários","Título e texto de apresentação.",["volTitle","volText"]],["Sobre e apoio","Conteúdo institucional, contato e formas de ajudar.",["aboutTitle","aboutText1","aboutText2","contactTitle","contactText","help1Title","help1Text","help2Title","help2Text","help3Title","help3Text","help4Title","help4Text","email1","email2"]],["Vem aí 👀","Conteúdo da seção de novidades e bastidores.",["comingTitle","comingText","comingBackstageLabel"]],["Rodapé","Texto final do site.",["footer"]]];
@@ -324,7 +341,7 @@ box.querySelectorAll("[data-rich-editor]").forEach(ed=>{ed.addEventListener("key
 }
 const tdlg=document.getElementById("tdlg"),tfrm=document.getElementById("tfrm");
 document.getElementById("tcancel").onclick=()=>tdlg.close();
-document.getElementById("ftext").onclick=()=>{if(!admin)return;renderTextEditor();tdlg.showModal()};
+document.getElementById("ftext").onclick=()=>{if(!admin)return;startInlineTextEdit()};
 document.getElementById("textFields").addEventListener("pointerdown",e=>{
  const btn=e.target.closest("button[data-cmd],button[data-color],button[data-clear-color],button[data-remove-format]");
  if(!btn)return;
