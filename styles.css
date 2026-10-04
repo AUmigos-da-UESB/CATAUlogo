@@ -8,7 +8,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-hei
 a{color:inherit}
 :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:8px}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font:700 19px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.02em}
