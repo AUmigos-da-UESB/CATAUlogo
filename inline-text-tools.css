@@ -1,15 +1,6 @@
-/* Botão de lápis: mesmo azul animado usado pelos controles ativos do site. */
-.fab .pencil-btn{
-  background-color:#435994!important;
-  background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
-  background-size:360% 260%!important;
-  background-position:0% 50%;
-  border-color:rgba(195,207,255,.58)!important;
-  color:#fff!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
-  animation-delay:0ms!important;
-}
-.fab .pencil-btn:hover{color:#fff!important;transform:none!important}
+/* O botão Editar textos usa exatamente o mesmo fluxo do tema global .gradient-flow. */
+.fab .pencil-btn{color:#fff!important}
+.fab .pencil-btn:hover{color:#fff!important}
 #inline-text-bar .inline-color-tools{display:flex;align-items:center;gap:6px;min-width:0;flex:1 1 auto}
 #inline-text-bar .inline-color-label{font-size:12px;color:var(--mut);white-space:nowrap}
 #inline-text-bar #inline-text-color{width:30px;height:30px;padding:2px;border:1px solid var(--line);border-radius:50%;background:var(--card);cursor:pointer;flex:0 0 auto}
