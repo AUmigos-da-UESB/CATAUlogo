@@ -8,13 +8,40 @@
    "sexo": "Macho",
    "idade": "Indefinida",
    "status": "Comunitário",
+   "ano": [
+    2026
+   ],
    "local": "Quadra, CAP, Portaria",
    "coat": "#b98a55",
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
-   "car": "",
+   "pers": [
+    "Brincalhão",
+    "Sociável",
+    "Energético",
+    "Curioso",
+    "Independente",
+    "Medroso",
+    "Agitado",
+    "Esperto",
+    "Territorial",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte grande",
+    "Pelagem longa",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Manchas",
+    "Peito branco",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Castrado",
+    "Vacinado",
+    "Olhos castanhos",
+    "Tricolor"
+   ],
    "foto": [
     "fotos/a1790800495807-muolvonw0.jpg"
    ],
