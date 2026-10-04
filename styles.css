@@ -160,12 +160,12 @@ footer{margin-top:0}
 /* Gradiente animado aplicado explicitamente aos quatro botões principais */
 .gradient-flow{background-color:#4a5f9e!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
 @keyframes gradient-flow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
-.gradient-flow:hover{animation-duration:4s;filter:brightness(1.08)}
+.gradient-flow:hover{filter:brightness(1.08)}
 @media(prefers-reduced-motion:reduce){.gradient-flow{animation:none;background-position:50% 50%}}
 
 /* Alvos explícitos para garantir gradiente nas ações indicadas */
 #fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{background-color:#40538f!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
-#fadd:hover,#vadd:hover,#lig:hover,.hero a.btn[href="#catalogo"]:hover{animation-duration:4s;filter:brightness(1.08)}
+#fadd:hover,#vadd:hover,#lig:hover,.hero a.btn[href="#catalogo"]:hover{filter:brightness(1.08)}
 
 
 /* Gradiente animado e ações por intenção: azul padrão, verde para confirmar/adicionar, vermelho para cancelar/remover */
@@ -187,7 +187,7 @@ footer{margin-top:0}
 .btn:hover,.chip:hover,.pick:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .gradient-flow:hover{transform:translateY(-1px)}
 /* Adicionar/salvar: verde pastel */
-#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok{
+#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
   background-color:#acd9b9!important;
   background-image:linear-gradient(110deg,#c4e7ce 0%,#9ed4ad 42%,#d0ecd6 72%,#a8dbb6 100%)!important;
   border:1px solid rgba(115,170,129,.38)!important;
@@ -206,7 +206,7 @@ footer{margin-top:0}
 }
 @media(prefers-reduced-motion:reduce){
   .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado{animation:none}
-  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok,
+  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok,
   #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot{animation:none!important}
 }
 
@@ -218,7 +218,7 @@ footer{margin-top:0}
   animation:gradient-flow 3.6s ease-in-out infinite!important;
 }
 /* Ações positivas: verde suave mais fechado, sem faixas quase brancas */
-#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok{
+#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
   background-color:#8fbe9a!important;
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
@@ -240,7 +240,7 @@ footer{margin-top:0}
 }
 @media(prefers-reduced-motion:reduce){
   .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand,
-  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok,
+  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok,
   #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot,.back-remove,
   .back-row .back-meta .btn,.back-row .back-meta label.btn,.fr .photo-actions .btn,.vphoto-actions .btn,#crotate{animation:none!important}
 }
@@ -257,7 +257,7 @@ footer{margin-top:0}
   animation-delay:0ms!important;
 }
 .btn:hover,.chip:hover,.pick:hover,.gradient-flow:hover{filter:none!important;transform:none!important}
-#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok{
+#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   background-size:360% 260%!important;
   animation:gradient-flow 8s linear infinite alternate!important;
@@ -275,7 +275,7 @@ footer{margin-top:0}
 .badge.adotado{background-image:linear-gradient(110deg,#c09ade 0%,#8a62b2 36%,#c8a4e4 68%,#9a73c0 100%)!important}
 @media(prefers-reduced-motion:reduce){
   .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand,
-  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok,
+  #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok,
   #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot,.back-remove{animation:none!important}
 }
 
@@ -306,7 +306,7 @@ footer{margin-top:0}
   animation-delay:0ms!important;
 }
 /* As cores de intenção e de status mudam, mas conservam exatamente o mesmo movimento */
-#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vadd,#vfrm button[type="submit"],#cok{
+#tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
   background-color:#8fbe9a!important;
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
@@ -978,3 +978,16 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 
 /* Filtro de locais alinhado ao campo de busca no desktop, sem alterar a posição da linha. */
 @media(min-width:821px){.search-row .location-filter{align-self:stretch;display:flex}.search-row .location-filter select{height:100%;box-sizing:border-box}}
+
+/* Gradiente principal: uma única cadência para todos os controles azuis. */
+.gradient-flow{
+ background-color:#435994!important;
+ background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
+ background-size:360% 260%!important;
+ background-position:0% 50%!important;
+ border-color:rgba(195,207,255,.34)!important;
+ color:#fff!important;
+ animation:gradient-flow 8s linear infinite alternate!important;
+ animation-play-state:running!important;
+}
+#ftext,#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{animation:gradient-flow 8s linear infinite alternate!important}
