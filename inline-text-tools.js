@@ -49,6 +49,7 @@
     const box=document.getElementById('inline-color-presets');if(!box)return;
     box.innerHTML='';loadPalette().forEach(c=>box.appendChild(paletteButton(c)));
   }
+  function updateColorDot(){const input=document.getElementById('inline-text-color');if(input)input.style.setProperty('--inline-picked-color',input.value)}
   function buildBar(){
     const bar=document.getElementById('inline-text-bar');if(!bar||bar.dataset.colorTools==='1')return;
     bar.dataset.colorTools='1';
@@ -57,7 +58,7 @@
     const actions=bar.querySelector('.inline-text-actions');bar.insertBefore(tool,actions);
     const input=tool.querySelector('#inline-text-color');
     input.addEventListener('pointerdown',rememberSelection);
-    input.addEventListener('change',()=>applyColor(input.value));
+    input.addEventListener('input',updateColorDot);input.addEventListener('change',()=>{updateColorDot();applyColor(input.value)});updateColorDot();
     tool.querySelector('#inline-color-save').onclick=()=>{
       const color=input.value.toLowerCase();if(!validColor(color))return;
       const arr=loadPalette().filter(c=>c.toLowerCase()!==color);arr.unshift(color);storePalette(arr);renderPalette();
