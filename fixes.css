@@ -79,3 +79,122 @@
 
 /* Idade */
 .meta.age-meta{white-space:normal!important}
+
+/* Editor de textos: interface mais limpa, sem o padrão animado dos botões gerais. */
+#ftext{
+ background:linear-gradient(135deg,#7f93df,#5f73c2)!important;
+ background-image:none!important;
+ border:1px solid rgba(225,232,255,.3)!important;
+ color:#fff!important;
+ box-shadow:0 6px 18px rgba(46,59,112,.24)!important;
+ animation:none!important;
+ transition:transform .18s ease,filter .18s ease,box-shadow .18s ease!important;
+}
+#ftext:hover{transform:translateY(-2px)!important;filter:brightness(1.06)!important}
+
+#tdlg .text-editor-sections{gap:8px!important}
+#tdlg .text-section{
+ background:rgba(23,35,29,.24)!important;
+ border-color:rgba(142,163,255,.16)!important;
+ border-radius:14px!important;
+}
+#tdlg .text-section>summary{
+ padding:12px 15px!important;
+ min-height:22px;
+ background:rgba(255,255,255,.018);
+}
+#tdlg .text-section[open]>summary{
+ background:rgba(142,163,255,.055)!important;
+}
+#tdlg .text-editor-grid{
+ padding:14px!important;
+ gap:14px!important;
+}
+#tdlg .text-editor-grid label{
+ font-size:12px!important;
+ font-weight:600!important;
+ letter-spacing:.01em;
+ color:var(--mut)!important;
+}
+#tdlg .rich-wrap{gap:0!important}
+#tdlg .rich-toolbar{
+ gap:4px!important;
+ padding:7px!important;
+ background:rgba(13,21,17,.34)!important;
+ border:1px solid var(--line)!important;
+ border-bottom:0!important;
+ border-radius:10px 10px 0 0!important;
+}
+#tdlg .rich-toolbar button:not(.color-dot){
+ width:30px!important;
+ height:28px!important;
+ padding:0!important;
+ background:transparent!important;
+ background-image:none!important;
+ border:1px solid transparent!important;
+ color:var(--ink)!important;
+ box-shadow:none!important;
+ animation:none!important;
+ transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease!important;
+}
+#tdlg .rich-toolbar button:not(.color-dot):hover{
+ background:rgba(142,163,255,.10)!important;
+ border-color:var(--line)!important;
+ transform:none!important;
+}
+#tdlg .rich-toolbar button.is-active{
+ background:rgba(142,163,255,.18)!important;
+ border-color:rgba(142,163,255,.55)!important;
+ color:var(--ink)!important;
+ box-shadow:none!important;
+}
+#tdlg .rich-toolbar .color-dot{
+ animation:none!important;
+ width:20px!important;
+ height:20px!important;
+ border:2px solid rgba(255,255,255,.24)!important;
+ box-shadow:none!important;
+ transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease!important;
+}
+#tdlg .rich-toolbar .color-dot:hover{transform:scale(1.08)!important}
+#tdlg .rich-toolbar .color-dot.is-active{
+ border-color:#fff!important;
+ box-shadow:0 0 0 2px var(--acc)!important;
+}
+#tdlg .rich-toolbar input[type=color]{
+ width:28px!important;
+ height:28px!important;
+ padding:2px!important;
+ background:transparent!important;
+ border:1px solid var(--line)!important;
+ border-radius:7px!important;
+ animation:none!important;
+}
+#tdlg .rich-editor{
+ min-height:84px!important;
+ border-color:var(--line)!important;
+ border-radius:0 0 10px 10px!important;
+}
+#tdlg #tcancel{
+ background:rgba(255,255,255,.045)!important;
+ background-image:none!important;
+ color:var(--ink)!important;
+ border:1px solid var(--line)!important;
+ animation:none!important;
+}
+#tdlg #tsave{
+ background:linear-gradient(135deg,#8ea3ff,#687fdc)!important;
+ background-image:none!important;
+ color:#fff!important;
+ border:1px solid rgba(225,232,255,.28)!important;
+ animation:none!important;
+ box-shadow:0 5px 16px rgba(46,59,112,.2)!important;
+}
+#tdlg #tcancel:hover,#tdlg #tsave:hover{
+ transform:translateY(-1px)!important;
+ filter:brightness(1.05)!important;
+}
+@media(max-width:620px){
+ #tdlg .text-editor-grid{grid-template-columns:1fr!important}
+ #tdlg .rich-toolbar{padding:6px!important}
+}
