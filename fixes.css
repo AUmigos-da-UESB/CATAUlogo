@@ -369,6 +369,3 @@ body.inline-text-edit .inline-text-input{
  #inline-text-bar .inline-text-actions .btn{flex:1}
 }
 
-/* Editar textos: animação herdada integralmente de .gradient-flow. */
-#ftext.gradient-flow{animation:inherit!important}
-#ftext.gradient-flow:hover{animation:inherit!important;}
