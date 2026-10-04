@@ -378,13 +378,13 @@ body.inline-text-edit .inline-text-input{
  border:1px solid rgba(195,207,255,.34)!important;
  color:#fff!important;
  box-shadow:0 3px 14px rgba(0,0,0,.28)!important;
- animation:gradient-flow 8s ease-in-out infinite alternate!important;
+ animation:gradient-flow 8s linear infinite alternate!important;
  animation-delay:0ms!important;
  transition:none!important;
  transform:none!important;
 }
 #ftext.gradient-flow:hover{
- animation-duration:4s!important;
+ animation-duration:8s!important;
  filter:brightness(1.08)!important;
  transform:none!important;
 }
