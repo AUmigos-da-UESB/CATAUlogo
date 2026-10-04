@@ -26,7 +26,7 @@
  background-position:0% 50%;
  color:#fff!important;
  border-color:rgba(195,207,255,.34)!important;
- animation:gradient-flow 8s linear infinite alternate!important;
+ animation:catau-gradient-flow 8s linear infinite alternate!important;
  animation-delay:0ms!important;
 }
 .rich-toolbar button:not(.color-dot):hover{filter:brightness(1.08)!important;transform:none!important}
