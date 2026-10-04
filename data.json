@@ -68,9 +68,27 @@
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
+   "pers": [
+    "Carinhoso",
+    "Brincalhão",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Curioso",
+    "Tranquilo",
+    "Esperto",
+    "Afetuoso",
+    "Amigável",
+    "Dorminhoco"
+   ],
    "car": [
-    "Pelagem média"
+    "Porte médio",
+    "Pelagem média",
+    "Pelagem lisa",
+    "Manchas",
+    "Rabo comprido",
+    "Vacinado",
+    "Pelagem cinza e branca"
    ],
    "foto": [
     "fotos/a1790803645938-muom95qk0.jpg",
@@ -84,8 +102,8 @@
     "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ],
-   "idadeReferencia": "2026-10-03",
-   "nascimentoEstimado": "2024-10-03",
+   "idadeReferencia": "2026-10-04",
+   "nascimentoEstimado": "2024-10-04",
    "idadeAproximada": true
   },
   {
