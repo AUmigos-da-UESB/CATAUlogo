@@ -39,7 +39,7 @@
   }
   function paletteButton(color){
     const item=document.createElement('span');item.className='inline-color-preset';item.title='Aplicar '+color;
-    const apply=document.createElement('button');apply.type='button';apply.className='inline-color-swatch';apply.style.setProperty('background-color',color,'important');apply.style.setProperty('background-image','none','important');apply.dataset.color=color;apply.setAttribute('aria-label','Aplicar cor '+color);
+    const apply=document.createElement('button');apply.type='button';apply.className='inline-color-swatch';apply.style.setProperty('background',color,'important');apply.style.setProperty('background-color',color,'important');apply.style.setProperty('background-image','none','important');apply.dataset.color=color;apply.setAttribute('aria-label','Aplicar cor '+color);
     const remove=document.createElement('button');remove.type='button';remove.className='inline-color-remove';remove.textContent='×';remove.title='Remover cor predefinida';remove.setAttribute('aria-label','Remover cor '+color);
     apply.onclick=()=>applyColor(color);
     remove.onclick=()=>{storePalette(loadPalette().filter(c=>c.toLowerCase()!==color.toLowerCase()));renderPalette()};
