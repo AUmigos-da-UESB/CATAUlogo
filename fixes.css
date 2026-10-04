@@ -369,22 +369,6 @@ body.inline-text-edit .inline-text-input{
  #inline-text-bar .inline-text-actions .btn{flex:1}
 }
 
-/* Correção definitiva do botão Editar textos: o tema do site prevalece sobre o legado do editor antigo. */
-#ftext.gradient-flow{
- background-color:#4a5f9e!important;
- background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;
- background-size:300% 300%!important;
- background-position:0% 50%!important;
- border:1px solid rgba(195,207,255,.34)!important;
- color:#fff!important;
- box-shadow:0 3px 14px rgba(0,0,0,.28)!important;
- animation:gradient-flow 8s linear infinite alternate!important;
- animation-delay:0ms!important;
- transition:none!important;
- transform:none!important;
-}
-#ftext.gradient-flow:hover{
- animation-duration:8s!important;
- filter:brightness(1.08)!important;
- transform:none!important;
-}
+/* Editar textos: animação herdada integralmente de .gradient-flow. */
+#ftext.gradient-flow{animation:inherit!important}
+#ftext.gradient-flow:hover{animation:inherit!important;}
