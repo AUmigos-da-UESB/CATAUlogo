@@ -203,3 +203,42 @@
   line-height:1.2!important;
  }
 }
+
+
+/* Controles dos cards: alinhamento rígido no desktop, preservando a pilha do mobile. */
+@media(min-width:621px){
+ .card .ph .card-actions{
+  position:absolute!important;
+  top:54px!important;
+  right:10px!important;
+  left:auto!important;
+  bottom:auto!important;
+  width:80px!important;
+  height:36px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  z-index:8!important;
+ }
+ .card .ph .card-actions .dx,
+ .card .ph .card-actions .ex{
+  position:static!important;
+  inset:auto!important;
+  width:36px!important;
+  min-width:36px!important;
+  max-width:36px!important;
+  height:36px!important;
+  min-height:36px!important;
+  max-height:36px!important;
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  place-items:center!important;
+  transform:none!important;
+  flex:0 0 36px!important;
+ }
+}
