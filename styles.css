@@ -158,13 +158,13 @@ footer{margin-top:0}
 @media(max-width:620px){.fab .fab-icon-btn{width:48px;height:48px;flex-basis:48px}.fab #fadd{height:48px;min-height:48px}footer{margin-top:0}}
 
 /* Gradiente animado aplicado explicitamente aos quatro botões principais */
-.gradient-flow{background-color:#4a5f9e!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
-@keyframes gradient-flow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.gradient-flow{background-color:#4a5f9e!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:catau-gradient-flow 8s ease-in-out infinite alternate}
+
 .gradient-flow:hover{filter:brightness(1.08)}
 @media(prefers-reduced-motion:reduce){.gradient-flow{animation:none;background-position:50% 50%}}
 
 /* Alvos explícitos para garantir gradiente nas ações indicadas */
-#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{background-color:#40538f!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:gradient-flow 8s ease-in-out infinite alternate}
+#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{background-color:#40538f!important;background-image:linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)!important;background-size:300% 300%!important;background-position:0% 50%;border:1px solid rgba(195,207,255,.34)!important;color:#fff!important;animation:catau-gradient-flow 8s ease-in-out infinite alternate}
 #fadd:hover,#vadd:hover,#lig:hover,.hero a.btn[href="#catalogo"]:hover{filter:brightness(1.08)}
 
 
@@ -172,7 +172,7 @@ footer{margin-top:0}
 .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado{
   background-size:260% 260%;
   background-position:0% 50%;
-  animation:gradient-flow 8s ease-in-out infinite alternate;
+  animation:catau-gradient-flow 8s ease-in-out infinite alternate;
   transition:filter .2s ease,transform .2s ease,box-shadow .2s ease;
 }
 .btn:not(.ghost){background-image:linear-gradient(110deg,#91a5ff 0%,#748be8 42%,#a0afff 70%,#8095f2 100%)}
@@ -193,7 +193,7 @@ footer{margin-top:0}
   border:1px solid rgba(115,170,129,.38)!important;
   color:#204b32!important;
   background-size:260% 260%!important;
-  animation:gradient-flow 8s ease-in-out infinite alternate!important;
+  animation:catau-gradient-flow 8s ease-in-out infinite alternate!important;
 }
 /* Cancelar/remover: vermelho pastel */
 #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot{
@@ -202,7 +202,7 @@ footer{margin-top:0}
   border:1px solid rgba(186,115,125,.38)!important;
   color:#642e36!important;
   background-size:260% 260%!important;
-  animation:gradient-flow 8s ease-in-out infinite alternate!important;
+  animation:catau-gradient-flow 8s ease-in-out infinite alternate!important;
 }
 @media(prefers-reduced-motion:reduce){
   .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado{animation:none}
@@ -212,10 +212,10 @@ footer{margin-top:0}
 
 
 /* Animação única, mais visível e sincronizada para todos os controles */
-@keyframes gradient-flow{0%{background-position:0% 50%}50%{background-position:55% 50%}100%{background-position:100% 50%}}
+
 .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand{
   background-size:360% 260%!important;
-  animation:gradient-flow 3.6s ease-in-out infinite!important;
+  animation:catau-gradient-flow 3.6s ease-in-out infinite!important;
 }
 /* Ações positivas: verde suave mais fechado, sem faixas quase brancas */
 #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
@@ -223,7 +223,7 @@ footer{margin-top:0}
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 3.6s ease-in-out infinite!important;
+  animation:catau-gradient-flow 3.6s ease-in-out infinite!important;
 }
 /* Cancelar e remover: vermelho suave mais fechado, sem faixas quase brancas */
 #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot,.back-remove{
@@ -231,12 +231,12 @@ footer{margin-top:0}
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   border-color:rgba(157,79,91,.58)!important;color:#54262d!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 3.6s ease-in-out infinite!important;
+  animation:catau-gradient-flow 3.6s ease-in-out infinite!important;
 }
 /* Controles de foto também recebem movimento sincronizado */
 .back-row .back-meta .btn,.back-row .back-meta label.btn,.fr .photo-actions .btn,.vphoto-actions .btn,#crotate{
   background-size:360% 260%!important;
-  animation:gradient-flow 3.6s ease-in-out infinite!important;
+  animation:catau-gradient-flow 3.6s ease-in-out infinite!important;
 }
 @media(prefers-reduced-motion:reduce){
   .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,.back-expand,
@@ -247,26 +247,23 @@ footer{margin-top:0}
 
 
 /* Movimento contínuo: todos os elementos decorativos compartilham a mesma fase */
-@keyframes gradient-flow{
-  from{background-position:0% 50%}
-  to{background-position:100% 50%}
-}
+
 .btn,.chip,.pick,.badge.comunitario,.badge.adocao,.badge.adotado,
 .back-expand,.back-row .back-meta label.btn,.fr .photo-actions .btn,.vphoto-actions .btn{
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 .btn:hover,.chip:hover,.pick:hover,.gradient-flow:hover{filter:none!important;transform:none!important}
 #tsave,#bsave,#bgsave,#save,#newloc,#addPersOpt,#addCarOpt,#addslot,#badd,#vfrm button[type="submit"],#cok{
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.rmslot,.back-remove{
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 /* As cores de status continuam próprias; só o gradiente se move */
@@ -289,7 +286,7 @@ footer{margin-top:0}
   border:1px solid rgba(195,207,255,.34)!important;
   box-shadow:0 4px 14px rgba(0,0,0,.2);
   color:#fff!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 
@@ -302,7 +299,7 @@ footer{margin-top:0}
   background-position:0% 50%;
   border-color:rgba(195,207,255,.34)!important;
   color:#fff!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 /* As cores de intenção e de status mudam, mas conservam exatamente o mesmo movimento */
@@ -311,14 +308,14 @@ footer{margin-top:0}
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 #tcancel,#bcancel,#bgcancel,#cancel,#ccancel,#vcancel,#delloc,#delPersOpt,#delCarOpt,#vphoto-remove,.btn.back-remove,.btn.rmslot{
   background-color:#cd8c94!important;
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   border-color:rgba(157,79,91,.58)!important;color:#54262d!important;
   background-size:360% 260%!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 .badge.comunitario{background-image:linear-gradient(110deg,#9bd8ad 0%,#64b982 36%,#a1d9ad 68%,#70c18a 100%)!important}
 .badge.adocao{background-image:linear-gradient(110deg,#839bff 0%,#596fc7 36%,#90a4ff 68%,#637bd9 100%)!important}
@@ -339,7 +336,7 @@ footer{margin-top:0}
   right:10px!important;background-color:#c17b84!important;
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   border:1px solid rgba(157,79,91,.58)!important;color:#54262d!important;
-  background-size:360% 260%!important;animation:gradient-flow 8s linear infinite alternate!important;
+  background-size:360% 260%!important;animation:catau-gradient-flow 8s linear infinite alternate!important;
 }
 .card .ph .ex svg,.card .ph .dx svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 /* Filtros voltam a ficar discretos quando inativos; só os selecionados animam */
@@ -355,7 +352,7 @@ footer{margin-top:0}
   background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
   background-size:360% 260%!important;background-position:0% 50%;
   border:1px solid rgba(195,207,255,.58)!important;color:#fff!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 @media(prefers-reduced-motion:reduce){.card .ph .dx,.chips .chip[aria-pressed="true"]{animation:none!important}}
 
@@ -375,7 +372,7 @@ button.vx:not(.btn):not(.chip):not(.pick):hover{background:transparent!important
   right:10px!important;background-color:#c17b84!important;
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   border:1px solid rgba(157,79,91,.58)!important;color:#54262d!important;
-  background-size:360% 260%!important;animation:gradient-flow 8s linear infinite alternate!important;
+  background-size:360% 260%!important;animation:catau-gradient-flow 8s linear infinite alternate!important;
 }
 
 
@@ -399,7 +396,7 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-image:linear-gradient(110deg,#1b251f 0%,#27342b 38%,#202c24 72%,#1b251f 100%)!important;
   background-size:260% 220%!important;background-position:0% 50%;
   border:1px solid #344238!important;color:#eef2ea!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 #bdlg .back-row .back-meta .btn:hover,#bdlg #badd:hover{
   background-color:#27342b!important;filter:none!important;transform:none!important;
@@ -409,14 +406,14 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-color:#cd8c94!important;
   background-image:linear-gradient(110deg,#d49aa0 0%,#bc747e 36%,#d6a0a3 68%,#c17b84 100%)!important;
   background-size:360% 260%!important;border:1px solid rgba(157,79,91,.58)!important;
-  color:#54262d!important;animation:gradient-flow 8s linear infinite alternate!important;
+  color:#54262d!important;animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 #bdlg #bsave{
   background-color:#8fbe9a!important;
   background-image:linear-gradient(110deg,#9bc7a1 0%,#78ad86 36%,#acd0aa 68%,#82b78e 100%)!important;
   background-size:360% 260%!important;border:1px solid rgba(83,139,96,.58)!important;
-  color:#193f29!important;animation:gradient-flow 8s linear infinite alternate!important;
+  color:#193f29!important;animation:catau-gradient-flow 8s linear infinite alternate!important;
   animation-delay:0ms!important;
 }
 @media(prefers-reduced-motion:reduce){
@@ -711,7 +708,7 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-size:360% 260%!important;
   border:1px solid rgba(195,207,255,.58)!important;
   color:#fff!important;
-  animation:gradient-flow 8s linear infinite alternate!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
 }
 
 
@@ -962,7 +959,7 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-size:360% 260%!important;
   background-position:0% 50%;
   border-color:rgba(83,139,96,.58)!important;color:#193f29!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 #dlg #delloc,#dlg #delPersOpt,#dlg #delCarOpt,#dlg #cancel{
   background-color:#cd8c94!important;
@@ -970,7 +967,7 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   background-size:360% 260%!important;
   background-position:0% 50%;
   border-color:rgba(157,79,91,.58)!important;color:#54262d!important;
-  animation:gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;animation-delay:0ms!important;
 }
 @media(prefers-reduced-motion:reduce){
  #dlg #newloc,#dlg #delloc,#dlg #addPersOpt,#dlg #delPersOpt,#dlg #addCarOpt,#dlg #delCarOpt,#dlg #cancel,#dlg #save{animation:none!important}
@@ -987,7 +984,26 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
  background-position:0% 50%!important;
  border-color:rgba(195,207,255,.34)!important;
  color:#fff!important;
- animation:gradient-flow 8s linear infinite alternate!important;
+ animation:catau-gradient-flow 8s linear infinite alternate!important;
  animation-play-state:running!important;
 }
-#ftext,#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{animation:gradient-flow 8s linear infinite alternate!important}
+#ftext,#fadd,#vadd,#lig,.hero a.btn[href="#catalogo"]{animation:catau-gradient-flow 8s linear infinite alternate!important}
+
+
+/* FLUXO ÚNICO DOS GRADIENTES DO CATAUlogo */
+@keyframes catau-gradient-flow{
+  from{background-position:0% 50%}
+  to{background-position:100% 50%}
+}
+.gradient-flow{
+  background-color:#435994!important;
+  background-image:linear-gradient(110deg,#5368b5 0%,#40558f 36%,#6078c6 68%,#465b9b 100%)!important;
+  background-size:360% 260%!important;
+  background-position:0% 50%!important;
+  border-color:rgba(195,207,255,.34)!important;
+  color:#fff!important;
+  animation:catau-gradient-flow 8s linear infinite alternate!important;
+  animation-delay:0ms!important;
+  animation-play-state:running!important;
+}
+#ftext,#fadd,#vadd{animation:catau-gradient-flow 8s linear infinite alternate!important}
