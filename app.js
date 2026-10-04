@@ -223,7 +223,7 @@ addEventListener("hashchange",()=>{setTimeout(links,0);const m=location.hash.mat
 function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);else{home();if(location.hash==="#catalogo")setTimeout(()=>document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth"}),30)}}
 
 function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
-function forceFtextGradient(t){if(!t)return;t.classList.add("gradient-flow");[["background-color","#4a5f9e"],["background-image","linear-gradient(110deg,#5368b5 0%,#394d89 38%,#596db7 68%,#465b9d 100%)"],["background-size","300% 300%"],["background-position","0% 50%"],["border","1px solid rgba(195,207,255,.34)"],["color","#fff"],["animation","gradient-flow 8s linear infinite alternate"],["animation-delay","0ms"],["animation-play-state","running"]].forEach(([k,v])=>t.style.setProperty(k,v,"important"))}
+function forceFtextGradient(t){if(!t)return;t.classList.add("gradient-flow");t.style.removeProperty("animation");t.style.removeProperty("animation-delay");t.style.removeProperty("animation-play-state");}
 function rAdm(){admin=true;document.body.classList.add("isadm");const bgButton=document.getElementById("fbgedit"),out=document.getElementById("flogout");if(bgButton)bgButton.style.display="inline-flex";if(out)out.style.display="inline-flex";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t){t.style.display="inline-flex";forceFtextGradient(t)}const be=document.getElementById("bedit");if(be){be.style.display="inline-flex";be.onclick=openBackEditor}}
 function cleanRich(v){
   const src=String(v??"");
