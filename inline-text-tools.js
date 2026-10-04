@@ -1,9 +1,10 @@
 (function(){
   const PALETTE_KEY = 'catau_inline_text_colors_v1';
+  const DEFAULT_COLORS = ['#17231d','#ffffff','#5368b5','#8ea3ff','#c98792','#d9a441','#6ea67d','#7b61a8'];
   let savedRange = null;
   let savedEditor = null;
   function validColor(v){return /^#[0-9a-f]{6}$/i.test(String(v||''));}
-  function loadPalette(){try{const arr=JSON.parse(localStorage.getItem(PALETTE_KEY)||'[]');return Array.isArray(arr)?arr.filter(validColor).slice(0,16):[]}catch(e){return []}}
+  function loadPalette(){try{const raw=JSON.parse(localStorage.getItem(PALETTE_KEY)||'null');const arr=Array.isArray(raw)?raw.filter(validColor):[];const merged=[...arr,...DEFAULT_COLORS.filter(c=>!arr.some(x=>x.toLowerCase()===c.toLowerCase()))];return merged.slice(0,16)}catch(e){return DEFAULT_COLORS.slice()}}
   function storePalette(arr){try{localStorage.setItem(PALETTE_KEY,JSON.stringify(arr.slice(0,16)))}catch(e){}}
   function currentSelection(){
     const sel=window.getSelection();if(!sel||!sel.rangeCount||sel.isCollapsed)return null;
@@ -42,7 +43,7 @@
     const bar=document.getElementById('inline-text-bar');if(!bar||bar.dataset.colorTools==='1')return;
     bar.dataset.colorTools='1';
     const tool=document.createElement('div');tool.className='inline-color-tools';
-    tool.innerHTML='<span class="inline-color-label">Cor</span><input id="inline-text-color" type="color" value="#8ea3ff" title="Escolher cor para o texto selecionado" aria-label="Escolher cor para o texto selecionado"><button type="button" class="inline-color-save" id="inline-color-save" title="Salvar esta cor como predefinida" aria-label="Salvar cor predefinida">+</button><div class="inline-color-presets" id="inline-color-presets" aria-label="Cores predefinidas"></div>';
+    tool.innerHTML='<input id="inline-text-color" type="color" value="#8ea3ff" title="Escolher cor para o texto selecionado" aria-label="Escolher cor para o texto selecionado"><button type="button" class="inline-color-save" id="inline-color-save" title="Salvar esta cor como predefinida" aria-label="Salvar cor predefinida">+</button><div class="inline-color-presets" id="inline-color-presets" aria-label="Cores predefinidas"></div>';
     const actions=bar.querySelector('.inline-text-actions');bar.insertBefore(tool,actions);
     const input=tool.querySelector('#inline-text-color');
     input.addEventListener('pointerdown',rememberSelection);
