@@ -4,7 +4,17 @@
   let savedRange = null;
   let savedEditor = null;
   function validColor(v){return /^#[0-9a-f]{6}$/i.test(String(v||''));}
-  function loadPalette(){try{const raw=JSON.parse(localStorage.getItem(PALETTE_KEY)||'null');const arr=Array.isArray(raw)?raw.filter(validColor):[];const merged=[...arr,...DEFAULT_COLORS.filter(c=>!arr.some(x=>x.toLowerCase()===c.toLowerCase()))];return merged.slice(0,16)}catch(e){return DEFAULT_COLORS.slice()}}
+  function loadPalette(){
+    try{
+      const raw=localStorage.getItem(PALETTE_KEY);
+      if(raw===null){
+        storePalette(DEFAULT_COLORS);
+        return DEFAULT_COLORS.slice();
+      }
+      const arr=JSON.parse(raw);
+      return Array.isArray(arr)?arr.filter(validColor).slice(0,16):[];
+    }catch(e){return DEFAULT_COLORS.slice()}
+  }
   function storePalette(arr){try{localStorage.setItem(PALETTE_KEY,JSON.stringify(arr.slice(0,16)))}catch(e){}}
   function currentSelection(){
     const sel=window.getSelection();if(!sel||!sel.rangeCount||sel.isCollapsed)return null;
