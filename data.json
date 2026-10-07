@@ -122,7 +122,15 @@
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
+   "pers": [
+    "Brincalhão",
+    "Carinhoso",
+    "Dócil",
+    "Calmo",
+    "Independente",
+    "Tranquilo",
+    "Amigável"
+   ],
    "car": [
     "Porte médio",
     "Pelagem curta",
