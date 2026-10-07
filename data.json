@@ -290,25 +290,6 @@
    "idadeReferencia": "2026-10-03",
    "nascimentoEstimado": "2025-04-03",
    "idadeAproximada": true
-  },
-  {
-   "id": "a1790995379273",
-   "esp": "Cachorro",
-   "mod": "Módulo I",
-   "nome": "teste",
-   "sexo": "Macho",
-   "idade": "a",
-   "status": "Adotado",
-   "ano": [],
-   "local": "Módulo I",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [],
-   "car": [],
-   "foto": [],
-   "fotoCred": []
   }
  ],
  "locs": [
