@@ -161,7 +161,7 @@ function lista(){
   const nb=String(b.nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
   return na<nb?-1:na>nb?1:0;
  });
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`${admin&&ordem==="normal"&&editOrder?`<div class="card order-card" draggable="true" data-order-id="${d.id}" role="button" tabindex="0" aria-label="Arraste para mudar a ordem de ${esc(d.nome)}">`:`<a class="card" href="#/cao/${d.id}">`}<div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div>${admin&&ordem==="normal"&&editOrder?`</div>`:`</a>`}`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`${admin&&ordem==="normal"&&editOrder?`<div class="card order-card" data-order-id="${d.id}" role="button" tabindex="0" aria-label="Arraste para mudar a ordem de ${esc(d.nome)}">`:`<a class="card" href="#/cao/${d.id}">`}<div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div>${admin&&ordem==="normal"&&editOrder?`</div>`:`</a>`}`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -602,43 +602,6 @@ document.addEventListener("pointerup",async e=>{
 document.addEventListener("pointercancel",()=>{
  if(pointerDragCard)pointerDragCard.classList.remove("is-dragging");
  pointerDragCard=null;pointerDragId=null;pointerDragActive=false;pointerDragMoved=false;
-},true);
-
-// Fallback nativo para navegadores desktop.
-document.addEventListener("dragstart",e=>{
- const card=e.target.closest("#grid .order-card");
- if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
- card.classList.add("is-dragging");
- e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",card.dataset.orderId);
-},true);
-document.addEventListener("dragover",e=>{
- const card=e.target.closest("#grid .order-card");
- const dragging=document.querySelector("#grid .order-card.is-dragging");
- if(!dragging||!card||dragging===card||!admin||ordem!=="normal"||!editOrder)return;
- e.preventDefault();
- const r=card.getBoundingClientRect();
- card.parentNode.insertBefore(dragging,e.clientY<r.top+r.height/2?card:card.nextSibling);
-},true);
-document.addEventListener("drop",async e=>{
- const dragging=document.querySelector("#grid .order-card.is-dragging");
- if(!dragging||!admin||ordem!=="normal"||!editOrder)return;
- e.preventDefault();e.stopPropagation();
- const ids=[...document.querySelectorAll("#grid .order-card")].map(x=>x.dataset.orderId).filter(Boolean);
- dragging.classList.remove("is-dragging");
- if(!ids.length)return;
- orderSaving=true;
- try{
-  await salvar(s=>{
-   const arr=s.dogs||[],visible=new Set(ids),items=arr.filter(x=>visible.has(x.id)),by=new Map(items.map(x=>[x.id,x]));
-   const reordered=ids.map(id=>by.get(id)).filter(Boolean);let n=0;
-   for(let i=0;i<arr.length;i++)if(visible.has(arr[i].id))arr[i]=reordered[n++];
-  },"Reordena animais");
-  editOrder=false;document.body.classList.remove("order-editing");lista();
- }catch(err){erro(err);lista()}
- finally{orderSaving=false}
-},true);
-document.addEventListener("dragend",e=>{
- const card=e.target.closest("#grid .order-card");if(card)card.classList.remove("is-dragging");
 },true);
 
 const bgDialog=document.getElementById("bgdlg"), bgDefaults={blue:"#84a8b0",pink:"#c89a9b",scale:140,aboutStart:"#1c2922",aboutEnd:"#222b38"};
