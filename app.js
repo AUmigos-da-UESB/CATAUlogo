@@ -546,7 +546,7 @@ function renderOrderMenu(){
  const old=document.getElementById("orderMenu");
  if(!admin||!editOrder||ordem!=="normal"){if(old)old.remove();return}
  const items=DOGS.filter(passa);
- const html=`<div class="order-menu-backdrop" id="orderMenu"><section class="order-menu" role="dialog" aria-modal="true" aria-labelledby="orderMenuTitle"><div class="order-menu-head"><div><strong id="orderMenuTitle">Organizar animais</strong><span>Arraste pelo ícone à direita para mudar a ordem.</span></div><button type="button" class="order-menu-close" id="orderMenuClose" aria-label="Fechar menu">×</button></div><div class="order-list" id="orderList">${items.length?items.map(d=>`<div class="order-item" data-order-id="${d.id}"><div class="order-item-thumb-wrap">${miniaturaOrdem(d)}</div><div class="order-item-info"><strong>${esc(d.nome)}</strong><span>${esc(d.mod||"Sem localização")} · ${esc(d.status||"")}</span></div><button type="button" class="order-drag-handle" draggable="true" aria-label="Arrastar ${esc(d.nome)} para mudar a ordem" title="Arrastar para reordenar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="6" r="1.4"/><circle cx="16" cy="6" r="1.4"/><circle cx="8" cy="12" r="1.4"/><circle cx="16" cy="12" r="1.4"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg></button></div>`).join(""):`<p class="empty">Nenhum AUmigo encontrado com os filtros atuais.</p>`}</div><div class="order-menu-foot"><span>A ordem normal é a ordem usada no catálogo.</span><button type="button" class="btn order-menu-neutral" id="orderMenuDone">Concluir</button></div></section></div>`;
+ const html=`<div class="order-menu-backdrop" id="orderMenu"><section class="order-menu" role="dialog" aria-modal="true" aria-labelledby="orderMenuTitle"><div class="order-menu-head"><div><strong id="orderMenuTitle">Organizar animais</strong><span>Arraste o item inteiro para mudar a ordem.</span></div><button type="button" class="order-menu-close" id="orderMenuClose" aria-label="Fechar menu">×</button></div><div class="order-list" id="orderList">${items.length?items.map(d=>`<div class="order-item" draggable="true" data-order-id="${d.id}" tabindex="0" aria-label="Arrastar ${esc(d.nome)} para mudar a ordem"><div class="order-item-thumb-wrap">${miniaturaOrdem(d)}</div><div class="order-item-info"><strong>${esc(d.nome)}</strong><span>${esc(d.mod||"Sem localização")} · ${esc(d.status||"")}</span></div><div class="order-drag-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="6" r="1.4"/><circle cx="16" cy="6" r="1.4"/><circle cx="8" cy="12" r="1.4"/><circle cx="16" cy="12" r="1.4"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg></div></div>`).join(""):`<p class="empty">Nenhum AUmigo encontrado com os filtros atuais.</p>`}</div><div class="order-menu-foot"><span>A ordem normal é a ordem usada no catálogo.</span><button type="button" class="btn order-menu-neutral" id="orderMenuDone">Concluir</button></div></section></div>`;
  if(old)old.outerHTML=html;else document.body.insertAdjacentHTML("beforeend",html);
  const menu=document.getElementById("orderMenu"),list=document.getElementById("orderList");
  if(!menu||!list)return;
@@ -555,8 +555,8 @@ function renderOrderMenu(){
  const rows=()=>[...list.querySelectorAll(".order-item")];
  const saveCurrentOrder=async()=>{
   const ids=rows().map(x=>x.dataset.orderId);
-  const changed=ids.some((id,i)=>id!==original[i]);
-  if(!changed)return;
+  const changed=ids.length===original.length&&ids.some((id,i)=>id!==original[i]);
+  if(!changed)return false;
   orderSaving=true;
   try{
    await salvar(s=>{
@@ -564,14 +564,16 @@ function renderOrderMenu(){
     let n=0;for(let i=0;i<arr.length;i++)if(visibleSet.has(arr[i].id))arr[i]=next[n++];
    },"Reordena animais");
    lista();
-  }catch(err){erro(err);renderOrderMenu()}
-  finally{orderSaving=false}
+   return true;
+  }catch(err){
+   erro(err);
+   renderOrderMenu();
+   return false;
+  }finally{orderSaving=false}
  };
  rows().forEach(row=>{
-  const handle=row.querySelector(".order-drag-handle");
-  if(!handle)return;
-  handle.addEventListener("dragstart",e=>{
-   if(orderSaving)return;
+  row.addEventListener("dragstart",e=>{
+   if(orderSaving){e.preventDefault();return}
    dragged=row;
    row.classList.add("is-dragging");
    if(e.dataTransfer){
@@ -580,29 +582,33 @@ function renderOrderMenu(){
     e.dataTransfer.setData("text/plain",row.dataset.orderId);
    }
   });
-  handle.addEventListener("dragend",()=>{
-   if(dragged===row)row.classList.remove("is-dragging");
-   dragged=null;
-  });
   row.addEventListener("dragover",e=>{
    if(!dragged||dragged===row)return;
    e.preventDefault();
    if(e.dataTransfer)e.dataTransfer.dropEffect="move";
    const rect=row.getBoundingClientRect();
-   row.parentNode.insertBefore(dragged,e.clientY<rect.top+rect.height/2?row:row.nextSibling);
+   const before=e.clientY<rect.top+rect.height/2;
+   const target=before?row:row.nextSibling;
+   if(target!==dragged)row.parentNode.insertBefore(dragged,target);
   });
-  row.addEventListener("drop",async e=>{
+  row.addEventListener("drop",e=>{
    if(!dragged)return;
    e.preventDefault();
-   const moved=dragged;
-   moved.classList.remove("is-dragging");
+  });
+  row.addEventListener("dragend",async()=>{
+   if(dragged!==row)return;
+   row.classList.remove("is-dragging");
    dragged=null;
    await saveCurrentOrder();
   });
  });
  const close=()=>{editOrder=false;document.body.classList.remove("order-editing");document.getElementById("orderMenu")?.remove()};
  document.getElementById("orderMenuClose")?.addEventListener("click",close);
- document.getElementById("orderMenuDone")?.addEventListener("click",close);
+ document.getElementById("orderMenuDone")?.addEventListener("click",async()=>{
+  if(orderSaving)return;
+  await saveCurrentOrder();
+  if(!orderSaving)close();
+ });
  menu.addEventListener("click",e=>{if(e.target===menu)close()});
 }
 
