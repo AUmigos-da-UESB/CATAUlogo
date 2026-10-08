@@ -244,7 +244,6 @@
    "idade": "Cerca de 3 anos",
    "status": "Comunitário",
    "ano": [
-    2026,
     2026
    ],
    "local": "Canil da UESB, Quadra, CAP, Portaria",
@@ -278,15 +277,13 @@
     "Gordinho"
    ],
    "foto": [
-    "fotos/a1790900984986-muq8pmxl-0.jpg",
-    "fotos/a1790900984986-muq8pmxn-1.jpg"
+    "fotos/a1790900984986-muq8pmxl-0.jpg"
    ],
    "fotoCred": [
-    "David Matos, @davidmatos_15",
     "David Matos, @davidmatos_15"
    ],
-   "idadeReferencia": "2026-10-03",
-   "nascimentoEstimado": "2023-10-03",
+   "idadeReferencia": "2026-10-08",
+   "nascimentoEstimado": "2023-10-08",
    "idadeAproximada": true
   },
   {
