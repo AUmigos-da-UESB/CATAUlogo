@@ -1,6 +1,69 @@
 {
  "dogs": [
   {
+   "id": "a1790900984986",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Serena",
+   "sexo": "Fêmea",
+   "idade": "Cerca de 3 anos",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Canil da UESB, Quadra, CAP, Portaria",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "Serena foi encontrada na UESB junto com seus filhotes, em situação de abandono. No início, era muito magra, debilitada e bastante arisca, evitando o contato com as pessoas. Estudantes da Residência Universitária começaram a cuidar dos filhotes e, aos poucos, foram conquistando a confiança de Serena.\n\nDepois de ser resgatada com o apoio do projeto Amigo Pet, Serena passou por uma grande transformação. Recuperou o peso, a saúde e, principalmente, a confiança nas pessoas. Hoje, é uma cadela carinhosa, brincalhona e conhecida por muitos que passam pela UESB.\n\nSeu nome foi escolhido pelos próprios estudantes que participaram do resgate.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Leal",
+    "Apegado",
+    "Independente",
+    "Tranquilo",
+    "Esperto",
+    "Obediente",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Orelhas caídas",
+    "Olhos claros",
+    "Castrado",
+    "Gordinho"
+   ],
+   "foto": [
+    "fotos/a1790900984986-muq8pmxl-0.jpg",
+    "fotos/a1790900984986-muzirhhw-2.jpg",
+    "fotos/a1790900984986-muzirhhw-3.jpg",
+    "fotos/a1790900984986-muzirhhw-4.jpg",
+    "fotos/a1790900984986-muzmqder-4.jpg"
+   ],
+   "fotoCred": [
+    "David Matos, @davidmatos_15",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "David Matos, @davidmatos_15"
+   ],
+   "idadeReferencia": "2026-10-08",
+   "nascimentoEstimado": "2023-10-08",
+   "idadeAproximada": true
+  },
+  {
    "id": "a1790804622019",
    "esp": "Cachorro",
    "mod": "Módulo I e IV",
@@ -203,69 +266,6 @@
     "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ]
-  },
-  {
-   "id": "a1790900984986",
-   "esp": "Cachorro",
-   "mod": "Canil da UESB",
-   "nome": "Serena",
-   "sexo": "Fêmea",
-   "idade": "Cerca de 3 anos",
-   "status": "Comunitário",
-   "ano": [
-    2026,
-    2026,
-    2026,
-    2026,
-    2026
-   ],
-   "local": "Canil da UESB, Quadra, CAP, Portaria",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "Serena foi encontrada na UESB junto com seus filhotes, em situação de abandono. No início, era muito magra, debilitada e bastante arisca, evitando o contato com as pessoas. Estudantes da Residência Universitária começaram a cuidar dos filhotes e, aos poucos, foram conquistando a confiança de Serena.\n\nDepois de ser resgatada com o apoio do projeto Amigo Pet, Serena passou por uma grande transformação. Recuperou o peso, a saúde e, principalmente, a confiança nas pessoas. Hoje, é uma cadela carinhosa, brincalhona e conhecida por muitos que passam pela UESB.\n\nSeu nome foi escolhido pelos próprios estudantes que participaram do resgate.",
-   "pers": [
-    "Carinhoso",
-    "Dócil",
-    "Sociável",
-    "Calmo",
-    "Leal",
-    "Apegado",
-    "Independente",
-    "Tranquilo",
-    "Esperto",
-    "Obediente",
-    "Afetuoso",
-    "Amigável",
-    "Paciente"
-   ],
-   "car": [
-    "Porte médio",
-    "Pelagem curta",
-    "Pelagem lisa",
-    "Pelagem caramelo",
-    "Orelhas caídas",
-    "Olhos claros",
-    "Castrado",
-    "Gordinho"
-   ],
-   "foto": [
-    "fotos/a1790900984986-muq8pmxl-0.jpg",
-    "fotos/a1790900984986-muzirhhw-2.jpg",
-    "fotos/a1790900984986-muzirhhw-3.jpg",
-    "fotos/a1790900984986-muzirhhw-4.jpg",
-    "fotos/a1790900984986-muzmqder-4.jpg"
-   ],
-   "fotoCred": [
-    "David Matos, @davidmatos_15",
-    "Luna Moura, @dillua.r",
-    "Luna Moura, @dillua.r",
-    "Luna Moura, @dillua.r",
-    "David Matos, @davidmatos_15"
-   ],
-   "idadeReferencia": "2026-10-08",
-   "nascimentoEstimado": "2023-10-08",
-   "idadeAproximada": true
   },
   {
    "id": "a1790813408364",
