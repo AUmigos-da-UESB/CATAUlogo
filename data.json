@@ -180,6 +180,7 @@
    "idade": "Indefinida",
    "status": "Comunitário",
    "ano": [
+    2026,
     2026
    ],
    "local": "Canil da UESB",
@@ -190,9 +191,11 @@
    "pers": [],
    "car": [],
    "foto": [
-    "fotos/a1790813408364-muos2ell0.jpg"
+    "fotos/a1790813408364-muos2ell0.jpg",
+    "fotos/a1790813408364-muzgfw0p-1.jpg"
    ],
    "fotoCred": [
+    "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ]
   },
