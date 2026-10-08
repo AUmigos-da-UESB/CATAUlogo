@@ -385,3 +385,14 @@ body.inline-text-edit .inline-text-input{
 .order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
 .order-editing #grid .order-handle{cursor:grab!important}
 .order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
+
+/* Reordenação: cards deixam de ser links durante a edição para o drag funcionar de forma confiável. */
+.order-editing #grid .order-card{cursor:grab!important;user-select:none!important;-webkit-user-select:none!important}
+.order-editing #grid .order-card:active{cursor:grabbing!important}
+.order-editing #grid .order-card.is-dragging{opacity:.5!important;transform:scale(.99)!important}
+.order-editing #grid .order-card *{cursor:inherit}
+.order-editing #grid .order-card .card-actions button{cursor:pointer!important}
+.order-editing .location-filter{align-items:stretch!important}
+.order-editing .btn.order-edit-toggle{align-self:stretch!important;height:auto!important;min-height:0!important;width:48px!important;flex:0 0 48px!important;padding:0!important;border-radius:16px!important;background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
+.order-editing .btn.order-edit-toggle:hover{background:var(--card)!important;color:var(--ink)!important;border-color:var(--line)!important}
+.btn.order-edit-toggle{align-self:stretch!important;height:auto!important;min-height:0!important;width:48px!important;flex:0 0 48px!important;padding:0!important;border-radius:16px!important;background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
