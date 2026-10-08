@@ -368,11 +368,10 @@ body.inline-text-edit .inline-text-input{
 
 
 /* Edição da ordem dos animais no Admin */
-.order-edit-toggle{display:none!important;width:42px;height:42px;flex:0 0 42px;padding:0!important;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--txt);align-items:center;justify-content:center;cursor:pointer}
-.order-edit-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.order-edit-toggle{display:none!important;align-items:center;justify-content:center}
 .isadm .order-edit-toggle{display:inline-flex!important}
-.order-edit-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.order-edit-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .card-actions .order-handle{display:none!important;width:30px;height:30px;padding:0!important;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--mut);font-size:18px;font-weight:900;cursor:grab;align-items:center;justify-content:center;line-height:1;user-select:none;touch-action:none}
-.isadm .card-actions .order-handle{display:inline-flex!important}
+.isadm.order-editing .card-actions .order-handle{display:inline-flex!important}
 .card.is-dragging{opacity:.55;transform:scale(.99)}
-@media(max-width:620px){.order-edit-toggle{width:42px;height:42px;flex-basis:42px}.card-actions .order-handle{width:28px;height:28px;font-size:16px}}
+@media(max-width:620px){.card-actions .order-handle{width:28px;height:28px;font-size:16px}}
