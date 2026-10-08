@@ -367,14 +367,29 @@ body.inline-text-edit .inline-text-input{
 
 
 
-/* Edição da ordem dos animais no Admin */
+/* Edição da ordem dos animais no Admin: menu suspenso, sem arrastar cards. */
 .order-edit-toggle{display:none!important;align-items:center;justify-content:center}
 .isadm .order-edit-toggle{display:inline-flex!important}
 .order-edit-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.card-actions .order-handle{display:none!important;width:30px;height:30px;padding:0!important;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--mut);font-size:18px;font-weight:900;cursor:grab;align-items:center;justify-content:center;line-height:1;user-select:none;touch-action:none}
-.isadm.order-editing .card-actions .order-handle{display:inline-flex!important}
-.card.is-dragging{opacity:.55;transform:scale(.99)}
-@media(max-width:620px){.card-actions .order-handle{width:28px;height:28px;font-size:16px}}
+.btn.order-edit-toggle{display:none!important;flex:0 0 48px!important;width:48px!important;height:42px!important;padding:0!important;margin:0!important;border:1px solid var(--line)!important;border-radius:12px!important;background:var(--card)!important;color:var(--ink)!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
+.isadm .btn.order-edit-toggle{display:inline-flex!important}
+.btn.order-edit-toggle:hover{background:var(--card)!important;border-color:var(--acc)!important;color:var(--acc)!important}
+.order-menu{width:100%;margin-top:10px;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 12px 30px rgba(0,0,0,.14);box-sizing:border-box}
+.order-menu-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.order-menu-head>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.order-menu-head strong{font-size:15px}
+.order-menu-head span{font-size:12px;color:var(--mut)}
+.order-menu-close{width:30px;height:30px;flex:0 0 30px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.order-menu-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(150px,1fr) auto;gap:8px;align-items:end}
+.order-menu-controls label{display:grid;gap:5px;font-size:12px;color:var(--mut);min-width:0}
+.order-menu-controls select{width:100%;min-width:0;box-sizing:border-box}
+.order-menu-controls .btn{height:42px;white-space:nowrap}
+.order-menu-note{margin:10px 0 0;font-size:12px;color:var(--mut)}
+@media(max-width:620px){
+ .search-row .location-filter{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(48px,48px)!important}
+ .order-menu-controls{grid-template-columns:1fr 1fr}
+ .order-menu-controls .btn{grid-column:1/-1;width:100%}
+}
 
 /* Botão de editar ordem: mesmo padrão visual dos botões do site, em formato de ícone. */
 .btn.order-edit-toggle{display:none!important;flex:0 0 42px!important;width:42px!important;height:42px!important;padding:0!important;margin:0!important;border:1px solid var(--line)!important;border-radius:10px!important;background:var(--card)!important;color:var(--ink)!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
