@@ -140,8 +140,12 @@ function passa(d){
 }
 function lista(){
  const r=DOGS.filter(passa);
- if(ordem==="alfabetica") r.sort((a,b)=>String(a.nome||"").localeCompare(String(b.nome||""),"pt-BR",{sensitivity:"base",numeric:true}));
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ if(ordem==="alfabetica") r.sort((a,b)=>{
+  const na=String(a.nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  const nb=String(b.nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  return na<nb?-1:na>nb?1:0;
+ });
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>${admin?`<button type="button" class="order-animal order-up" data-id="${d.id}" aria-label="Subir ${esc(d.nome)}" title="Subir animal">↑</button><button type="button" class="order-animal order-down" data-id="${d.id}" aria-label="Descer ${esc(d.nome)}" title="Descer animal">↓</button>`:""}</span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -497,6 +501,20 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
+document.addEventListener("click",async e=>{
+ const x=e.target.closest(".order-up,.order-down");
+ if(!x||!admin)return;
+ e.preventDefault();e.stopPropagation();
+ const id=x.dataset.id;
+ try{
+  await salvar(s=>{
+   const arr=s.dogs||[];const i=arr.findIndex(a=>a.id===id);if(i<0)return;
+   const j=x.classList.contains("order-up")?i-1:i+1;if(j<0||j>=arr.length)return;
+   [arr[i],arr[j]]=[arr[j],arr[i]];
+  },(x.classList.contains("order-up")?"Move animal para cima: ":"Move animal para baixo: ")+id);
+  ordem="normal";lista();
+ }catch(err){erro(err)}
+},true);
 document.addEventListener("click",async e=>{const x=e.target.closest(".dx,.dxf");if(!x)return;e.preventDefault();e.stopPropagation();if(!admin)return;
  const d=DOGS.find(a=>a.id===x.dataset.id);if(!d||!confirm("Excluir "+d.nome+" do CATAUlogo? Essa ação não pode ser desfeita."))return;
  try{await salvar(s=>{s.dogs=s.dogs.filter(a=>a.id!==d.id)},"Remove "+d.nome)}catch(err){return erro(err)}
