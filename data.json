@@ -365,6 +365,38 @@
    "fotoCred": [
     "Luna Moura, @dillua.r"
    ]
+  },
+  {
+   "id": "a1791458905079",
+   "esp": "Cachorro",
+   "mod": "Luisão",
+   "nome": "[Em pesquisa]",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Luisão",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Orelhas caídas",
+    "Rabo comprido"
+   ],
+   "foto": [
+    "fotos/a1791458905079-muzgdnmb-0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
   }
  ],
  "locs": [
@@ -372,7 +404,8 @@
   "Lar Temporário",
   "Módulo I e IV",
   "Luisão, Módulo IV",
-  "Luisão, Canil"
+  "Luisão, Canil",
+  "Luisão"
  ],
  "vol": [
   {
