@@ -89,23 +89,39 @@ async function ghContentsPut(path,base64,message,isData=false){
  return r.json();
 }
 async function load(){
- let s=null,restored=false;
- // Se o Admin já foi autenticado neste navegador, restaura a sessão após validar o token.
- if(TOKEN&&REPO){
-  try{
-   const r=await gh("");
-   BRANCH=r.default_branch||BRANCH;
-   const remoteData=await remote();
-   if(remoteData){s=remoteData;admin=true;restored=true;}
-  }catch(e){
-   TOKEN="";admin=false;
-   try{localStorage.removeItem("auu_token")}catch(err){}
-  }
- }
- if(!s){try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(r.ok)s=await r.json()}catch(e){}}
+ let s=null;
+ // Primeiro carrega a versão pública do site. A validação do Admin acontece em segundo plano,
+ // para que uma sessão antiga ou uma chamada lenta da API do GitHub nunca deixe a página em branco.
+ try{
+  const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});
+  if(r.ok)s=await r.json();
+ }catch(e){}
  apply(s||SEED);
- if(restored)rAdm();
- else{document.body.classList.remove("isadm");const bgButton=document.getElementById("fbgedit");if(bgButton)bgButton.style.display="none";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="none";if(b)b.style.display="inline-flex";const t=document.getElementById("ftext");if(t)t.style.display="none"}
+ document.body.classList.remove("isadm");
+ const bgButton=document.getElementById("fbgedit"),a=document.getElementById("fadd"),b=document.getElementById("fadm"),t=document.getElementById("ftext");
+ if(bgButton)bgButton.style.display="none";
+ if(a)a.style.display="none";
+ if(b)b.style.display="inline-flex";
+ if(t)t.style.display="none";
+
+ // Restaura o Admin sem bloquear o carregamento público.
+ if(TOKEN&&REPO){
+  (async()=>{
+   try{
+    const r=await gh("");
+    BRANCH=r.default_branch||BRANCH;
+    const remoteData=await remote();
+    if(remoteData){
+     apply(remoteData);
+     admin=true;
+     rAdm();
+    }
+   }catch(e){
+    TOKEN="";admin=false;
+    try{localStorage.removeItem("auu_token")}catch(err){}
+   }
+  })();
+ }
 }
 async function entrar(){
  if(!REPO){const r=(prompt("Endereço do repositório no GitHub (usuario/repositorio):")||"").trim();if(!/^[\w.-]+\/[\w.-]+$/.test(r))return false;REPO=r}
