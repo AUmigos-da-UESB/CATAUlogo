@@ -502,44 +502,61 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
-let draggedAnimalId=null,draggedAnimalCard=null,orderPointerMoved=false,orderSaving=false;
+let draggedAnimalId=null,draggedAnimalCard=null,orderPointerMoved=false,orderSaving=false,orderPointerId=null;
 document.addEventListener("pointerdown",e=>{
- const x=e.target.closest(".order-handle");
- if(!x||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
+ if(!admin||ordem!=="normal"||!editOrder||orderSaving)return;
+ const card=e.target.closest("#grid .card");
+ if(!card)return;
+ const handle=card.querySelector(".order-handle");
+ if(!handle)return;
  e.preventDefault();e.stopPropagation();
- draggedAnimalId=x.dataset.id;draggedAnimalCard=x.closest(".card");orderPointerMoved=false;
- draggedAnimalCard?.classList.add("is-dragging");
- try{x.setPointerCapture(e.pointerId)}catch(err){}
+ draggedAnimalId=handle.dataset.id;draggedAnimalCard=card;orderPointerMoved=false;orderPointerId=e.pointerId;
+ try{card.setPointerCapture(e.pointerId)}catch(err){}
+ card.classList.add("is-dragging");
 },true);
 document.addEventListener("pointermove",e=>{
- if(!draggedAnimalCard||!draggedAnimalId)return;
- e.preventDefault();
+ if(!draggedAnimalCard||!draggedAnimalId||e.pointerId!==orderPointerId)return;
+ e.preventDefault();e.stopPropagation();
  if(Math.abs(e.movementX)+Math.abs(e.movementY)>1)orderPointerMoved=true;
  const el=document.elementFromPoint(e.clientX,e.clientY);
- const target=el?.closest?.(".card");
- if(!target||target===draggedAnimalCard||!target.closest("#grid"))return;
+ const target=el?.closest?.("#grid .card");
+ if(!target||target===draggedAnimalCard)return;
  const r=target.getBoundingClientRect();
  if(e.clientY<r.top+r.height/2)target.parentNode.insertBefore(draggedAnimalCard,target);
  else target.parentNode.insertBefore(draggedAnimalCard,target.nextSibling);
 },true);
 document.addEventListener("pointerup",async e=>{
- if(!draggedAnimalCard||!draggedAnimalId)return;
+ if(!draggedAnimalCard||!draggedAnimalId||e.pointerId!==orderPointerId)return;
  e.preventDefault();e.stopPropagation();
- const card=draggedAnimalCard,id=draggedAnimalId;
- card.classList.remove("is-dragging");draggedAnimalCard=null;draggedAnimalId=null;
- if(!orderPointerMoved)return;
+ const card=draggedAnimalCard;
+ const moved=orderPointerMoved;
+ card.classList.remove("is-dragging");
+ try{card.releasePointerCapture?.(e.pointerId)}catch(err){}
+ draggedAnimalCard=null;const movedId=draggedAnimalId;draggedAnimalId=null;orderPointerId=null;
+ if(!moved)return;
  const visibleIds=[...document.querySelectorAll("#grid .card")].map(x=>x.querySelector(".order-handle")?.dataset.id).filter(Boolean);
  if(!visibleIds.length)return;
  orderSaving=true;
  try{
   await salvar(s=>{
-   const arr=s.dogs||[],byId=new Map(arr.map(x=>[x.id,x])),idx=arr.map((x,i)=>visibleIds.includes(x.id)?i:-1).filter(i=>i>=0);
-   const ordered=visibleIds.map(x=>byId.get(x)).filter(Boolean);
-   idx.forEach((i,n)=>{if(ordered[n])arr[i]=ordered[n]});
+   const arr=s.dogs||[];
+   const currentVisible=arr.filter(x=>visibleIds.includes(x.id));
+   const byId=new Map(currentVisible.map(x=>[x.id,x]));
+   const reordered=visibleIds.map(id=>byId.get(id)).filter(Boolean);
+   let n=0;
+   for(let i=0;i<arr.length;i++)if(visibleIds.includes(arr[i].id))arr[i]=reordered[n++];
   },"Reordena animais");
-  ordem="normal";editOrder=false;document.body.classList.remove("order-editing");lista();
+  editOrder=false;document.body.classList.remove("order-editing");lista();
  }catch(err){erro(err);lista()}
  finally{orderSaving=false}
+},true);
+document.addEventListener("pointercancel",e=>{
+ if(!draggedAnimalCard)return;
+ draggedAnimalCard.classList.remove("is-dragging");draggedAnimalCard=null;draggedAnimalId=null;orderPointerId=null;orderPointerMoved=false;
+},true);
+document.addEventListener("click",e=>{
+ if(!admin||ordem!=="normal"||!editOrder)return;
+ if(e.target.closest("#grid .card")&&orderPointerMoved){e.preventDefault();e.stopPropagation();orderPointerMoved=false;}
 },true);
 
 const bgDialog=document.getElementById("bgdlg"), bgDefaults={blue:"#84a8b0",pink:"#c89a9b",scale:140,aboutStart:"#1c2922",aboutEnd:"#222b38"};
