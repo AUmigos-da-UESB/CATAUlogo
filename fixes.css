@@ -530,3 +530,9 @@ body.inline-text-edit .inline-text-input{
 #grid{
   padding-top:8px!important;
 }
+
+
+/* Espaço entre seções: mantém a separação visual, mas sem o vão exagerado. */
+#grid{
+  padding-bottom:42px!important;
+}
