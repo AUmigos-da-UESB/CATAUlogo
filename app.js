@@ -130,7 +130,7 @@ const cls=s=>s==="Disponível para adoção"?"badge adocao":s==="Adotado"?"badge
 const filtrosAtivos=new Set();let busca="";
 const gruposFiltros=[["Machos","Fêmeas"],["Comunitários","Disponível para adoção","Adotados"],["Cachorros","Gatos"]];
 const FILTROS=["Machos","Fêmeas","Comunitários","Disponível para adoção","Adotados","Cachorros","Gatos","Lar temporário"];
-let loc="Todos os locais";let ordem="normal";
+let loc="Todos os locais";let ordem="normal";let editOrder=false;
 function passa(d){
  const locationText=[d.mod,d.local].filter(Boolean).join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
  const checks={"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":String(d.status||"").startsWith("Comunit"),"Disponível para adoção":d.status==="Disponível para adoção","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato","Lar temporário":/lar\s*temporario/.test(locationText)};
@@ -145,7 +145,7 @@ function lista(){
   const nb=String(b.nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
   return na<nb?-1:na>nb?1:0;
  });
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>${admin?`<span class="order-handle" draggable="true" data-id="${d.id}" title="Arraste para mudar a ordem" aria-label="Arraste para mudar a ordem">☷</span>`:""}</span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>${admin&&ordem==="normal"&&editOrder?`<span class="order-handle" draggable="true" data-id="${d.id}" title="Arraste para mudar a ordem" aria-label="Arraste para mudar a ordem">☷</span>`:""}</span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -172,7 +172,7 @@ function home(){
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
  <section class="wrap tools" id="catalogo"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2>
-  <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select></div></div>
+  <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select>${admin?`<button type="button" class="order-edit-toggle" id="orderEditToggle" title="${editOrder?"Concluir edição da ordem":"Editar ordem dos animais"}" aria-label="${editOrder?"Concluir edição da ordem":"Editar ordem dos animais"}">${editOrder?`<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>`:`<svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg>`}</button>`:""}</div></div>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
 <section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
@@ -195,7 +195,8 @@ function home(){
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const f=b.dataset.f;if(filtrosAtivos.has(f))filtrosAtivos.delete(f);else{for(const grupo of gruposFiltros)if(grupo.includes(f))grupo.forEach(outro=>filtrosAtivos.delete(outro));filtrosAtivos.add(f)}document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(filtrosAtivos.has(x.dataset.f))));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
- document.getElementById("sort").onchange=e=>{ordem=e.target.value;lista()};
+ document.getElementById("sort").onchange=e=>{ordem=e.target.value;if(ordem!=="normal")editOrder=false;lista()};
+ const oet=document.getElementById("orderEditToggle");if(oet)oet.onclick=()=>{if(ordem!=="normal")return;editOrder=!editOrder;lista()};
  lista();links();renderVol();const be=document.getElementById("bedit");if(be){be.style.display=admin?"inline-flex":"none";if(admin)be.onclick=openBackEditor}
 }
 function openBackLightbox(index){
@@ -230,7 +231,7 @@ function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);e
 
 function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
 function forceFtextGradient(t){if(!t)return;t.classList.add("gradient-flow");t.style.removeProperty("animation");t.style.removeProperty("animation-delay");t.style.removeProperty("animation-play-state");}
-function rAdm(){admin=true;document.body.classList.add("isadm");const bgButton=document.getElementById("fbgedit"),out=document.getElementById("flogout");if(bgButton)bgButton.style.display="inline-flex";if(out)out.style.display="inline-flex";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t){t.style.display="inline-flex";forceFtextGradient(t)}const be=document.getElementById("bedit");if(be){be.style.display="inline-flex";be.onclick=openBackEditor}}
+function rAdm(){admin=true;editOrder=false;document.body.classList.add("isadm");const bgButton=document.getElementById("fbgedit"),out=document.getElementById("flogout");if(bgButton)bgButton.style.display="inline-flex";if(out)out.style.display="inline-flex";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t){t.style.display="inline-flex";forceFtextGradient(t)}const be=document.getElementById("bedit");if(be){be.style.display="inline-flex";be.onclick=openBackEditor}}
 function cleanRich(v){
   const src=String(v??"");
   const doc=new DOMParser().parseFromString(src,"text/html");
@@ -388,7 +389,7 @@ document.getElementById("backFields").addEventListener("change",async e=>{const 
 document.getElementById("backFields").addEventListener("input",e=>{const row=e.target.closest(".back-row");if(!row)return;const i=Number(row.dataset.i);if(e.target.classList.contains("back-caption"))SITE.backstage[i].caption=e.target.value;if(e.target.classList.contains("back-credit"))SITE.backstage[i].credit=e.target.value});
 document.getElementById("backFields").addEventListener("click",async e=>{const row=e.target.closest(".back-row");if(!row)return;const i=Number(row.dataset.i);const btn=e.target.closest(".back-remove,.back-crop,.back-rotate");if(!btn)return;if(btn.classList.contains("back-remove")){SITE.backstage.splice(i,1);renderBackEditor();return}const src=SITE.backstage[i]?.src;if(!src)return;try{const u=PREV[src]||src;const img=await new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>resolve(im);im.onerror=reject;im.src=u});if(btn.classList.contains("back-crop")){const final=await cropBackImage(img,"Escolha a área da foto que será usada no bastidor.");if(!final)return;SITE.backstage[i].src=final;PREV[final]=final}else{const c=document.createElement("canvas");c.width=img.naturalHeight;c.height=img.naturalWidth;const x=c.getContext("2d");x.translate(c.width/2,c.height/2);x.rotate(Math.PI/2);x.drawImage(img,-img.naturalWidth/2,-img.naturalHeight/2);const blob=await new Promise(resolve=>c.toBlob(resolve,"image/jpeg",.84));const final=await redimBlob(blob);SITE.backstage[i].src=final;PREV[final]=final}renderBackEditor()}catch(err){alert("Não foi possível editar esta foto.")}});
 document.getElementById("bsave").onclick=async()=>{const btn=document.getElementById("bsave");if(!admin)return;btn.disabled=true;btn.textContent="Salvando…";try{await salvar(s=>{s.site={...s.site,backstage:JSON.parse(JSON.stringify((SITE.backstage||[]).filter(b=>b&&b.src)))}},"Atualiza bastidores do documentário");document.getElementById("bdlg").close();home()}catch(err){erro(err)}finally{btn.disabled=false;btn.textContent="Salvar bastidores"}};
-function sairAdmin(){admin=false;document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm"),bg=document.getElementById("fbgedit"),t=document.getElementById("ftext"),out=document.getElementById("flogout");if(a)a.style.display="none";if(b)b.style.display="inline-flex";if(bg)bg.style.display="none";if(t)t.style.display="none";if(out)out.style.display="none";try{localStorage.removeItem("auu_token")}catch(err){}TOKEN="";try{rota2()}catch(err){console.error(err)}}
+function sairAdmin(){admin=false;editOrder=false;document.body.classList.remove("isadm");const a=document.getElementById("fadd"),b=document.getElementById("fadm"),bg=document.getElementById("fbgedit"),t=document.getElementById("ftext"),out=document.getElementById("flogout");if(a)a.style.display="none";if(b)b.style.display="inline-flex";if(bg)bg.style.display="none";if(t)t.style.display="none";if(out)out.style.display="none";try{localStorage.removeItem("auu_token")}catch(err){}TOKEN="";try{rota2()}catch(err){console.error(err)}}
 document.addEventListener("click",async e=>{
  if(e.target.closest("#fadd")){if(admin)abrirForm();return}
  if(e.target.closest("#flogout")){if(admin)sairAdmin();return}
@@ -503,14 +504,14 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
 let draggedAnimalId=null;
 document.addEventListener("dragstart",e=>{
- const x=e.target.closest(".order-handle");if(!x||!admin||ordem!=="normal")return;
+ const x=e.target.closest(".order-handle");if(!x||!admin||ordem!=="normal"||!editOrder)return;
  draggedAnimalId=x.dataset.id;e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",draggedAnimalId);
  x.closest(".card")?.classList.add("is-dragging");
 },true);
 document.addEventListener("dragend",e=>{e.target.closest(".card")?.classList.remove("is-dragging");draggedAnimalId=null},true);
-document.addEventListener("dragover",e=>{const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!draggedAnimalId)return;e.preventDefault();e.dataTransfer.dropEffect="move";},true);
+document.addEventListener("dragover",e=>{const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!editOrder||!draggedAnimalId)return;e.preventDefault();e.dataTransfer.dropEffect="move";},true);
 document.addEventListener("drop",async e=>{
- const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!draggedAnimalId)return;
+ const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!editOrder||!draggedAnimalId)return;
  e.preventDefault();e.stopPropagation();
  const targetId=card.querySelector(".order-handle")?.dataset.id;if(!targetId||targetId===draggedAnimalId)return;
  try{
@@ -518,7 +519,7 @@ document.addEventListener("drop",async e=>{
    const arr=s.dogs||[];const from=arr.findIndex(a=>a.id===draggedAnimalId);const to=arr.findIndex(a=>a.id===targetId);if(from<0||to<0||from===to)return;
    const [item]=arr.splice(from,1);arr.splice(to,0,item);
   },"Reordena animais");
-  ordem="normal";lista();
+  ordem="normal";editOrder=false;lista();
  }catch(err){erro(err)}
 },true);
 
