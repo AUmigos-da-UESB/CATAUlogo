@@ -391,24 +391,5 @@ body.inline-text-edit .inline-text-input{
  .order-menu-controls .btn{grid-column:1/-1;width:100%}
 }
 
-/* Botão de editar ordem: mesmo padrão visual dos botões do site, em formato de ícone. */
-.btn.order-edit-toggle{display:none!important;flex:0 0 42px!important;width:42px!important;height:42px!important;padding:0!important;margin:0!important;border:1px solid var(--line)!important;border-radius:10px!important;background:var(--card)!important;color:var(--ink)!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
-.isadm .btn.order-edit-toggle{display:inline-flex!important}
-.btn.order-edit-toggle:hover{background:var(--card)!important;border-color:var(--acc)!important;color:var(--acc)!important}
-.btn.order-edit-toggle svg{width:18px!important;height:18px!important;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.order-editing #grid .card{cursor:grab!important;user-select:none!important}
-.order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
-.order-editing #grid .order-handle{cursor:grab!important}
-.order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
-
-/* Reordenação: cards deixam de ser links durante a edição para o drag funcionar de forma confiável. */
-.order-editing #grid .order-card{cursor:grab!important;user-select:none!important;-webkit-user-select:none!important}
-.order-editing #grid .order-card{touch-action:none!important;-webkit-touch-callout:none}
-.order-editing #grid .order-card:active{cursor:grabbing!important}
-.order-editing #grid .order-card.is-dragging{opacity:.5!important;transform:scale(.99)!important}
-.order-editing #grid .order-card *{cursor:inherit}
-.order-editing #grid .order-card .card-actions button{cursor:pointer!important}
-.order-editing .location-filter{align-items:stretch!important}
-.order-editing .btn.order-edit-toggle{align-self:stretch!important;height:auto!important;min-height:0!important;width:48px!important;flex:0 0 48px!important;padding:0!important;border-radius:16px!important;background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
 .order-editing .btn.order-edit-toggle:hover{background:var(--card)!important;color:var(--ink)!important;border-color:var(--line)!important}
 .btn.order-edit-toggle{align-self:stretch!important;height:auto!important;min-height:0!important;width:48px!important;flex:0 0 48px!important;padding:0!important;border-radius:16px!important;background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
