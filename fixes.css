@@ -368,7 +368,29 @@ body.inline-text-edit .inline-text-input{
 
 
 
-/* Somente os três controles do menu de organização ficam neutros. */
+/* Somente os controles da organização ficam neutros; o restante do site mantém seus botões. */
+#orderEditToggle{
+ background:var(--card)!important;
+ background-image:none!important;
+ background-size:auto!important;
+ background-position:center!important;
+ color:var(--ink)!important;
+ border:1px solid var(--line)!important;
+ box-shadow:none!important;
+ animation:none!important;
+ filter:none!important;
+ transform:none!important;
+}
+#orderEditToggle:hover{
+ background:var(--bg)!important;
+ background-image:none!important;
+ color:var(--ink)!important;
+ border-color:var(--line)!important;
+ filter:none!important;
+ transform:none!important;
+}
+#orderEditToggle svg{width:19px!important;height:19px!important;display:block!important;fill:none!important;stroke:currentColor!important;stroke-width:1.9!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+
 #orderMenu .order-menu-close,
 #orderMenu .order-drag-handle,
 #orderMenu #orderMenuDone{
@@ -393,7 +415,7 @@ body.inline-text-edit .inline-text-input{
  filter:none!important;
  transform:none!important;
 }
-#orderMenu .order-drag-handle{cursor:grab!important}
+#orderMenu .order-drag-handle{cursor:grab!important;touch-action:none}
 #orderMenu .order-drag-handle:active{cursor:grabbing!important}
 
 /* Menu flutuante para organizar os animais. */
