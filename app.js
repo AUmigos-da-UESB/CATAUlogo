@@ -196,9 +196,10 @@ function home(){
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const f=b.dataset.f;if(filtrosAtivos.has(f))filtrosAtivos.delete(f);else{for(const grupo of gruposFiltros)if(grupo.includes(f))grupo.forEach(outro=>filtrosAtivos.delete(outro));filtrosAtivos.add(f)}document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(filtrosAtivos.has(x.dataset.f))));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
  document.getElementById("sort").onchange=e=>{ordem=e.target.value;if(ordem!=="normal")editOrder=false;lista()};
- const oet=document.getElementById("orderEditToggle");if(oet)oet.onclick=()=>{if(ordem!=="normal")return;editOrder=!editOrder;document.body.classList.toggle("order-editing",editOrder);lista()};
+ /* O botão de edição da ordem usa delegação global. */
  lista();links();renderVol();const be=document.getElementById("bedit");if(be){be.style.display=admin?"inline-flex":"none";if(admin)be.onclick=openBackEditor}
 }
+document.addEventListener("click",e=>{const o=e.target.closest("#orderEditToggle");if(!o||!admin||ordem!=="normal")return;e.preventDefault();e.stopPropagation();editOrder=!editOrder;document.body.classList.toggle("order-editing",editOrder);lista()},true);
 function openBackLightbox(index){
  const items=(SITE.backstage||[]).filter(b=>b&&b.src); if(!items.length)return;
  let current=Math.max(0,Math.min(index,items.length-1));
