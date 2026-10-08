@@ -377,8 +377,11 @@ body.inline-text-edit .inline-text-input{
 @media(max-width:620px){.card-actions .order-handle{width:28px;height:28px;font-size:16px}}
 
 /* Botão de editar ordem: mesmo padrão visual dos botões do site, em formato de ícone. */
-.btn.order-edit-toggle{display:none!important;flex:0 0 46px!important;width:46px!important;height:46px!important;padding:0!important;margin:0!important;border:0!important;border-radius:999px!important;background:var(--acc)!important;color:#fff!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
+.btn.order-edit-toggle{display:none!important;flex:0 0 42px!important;width:42px!important;height:42px!important;padding:0!important;margin:0!important;border:1px solid var(--line)!important;border-radius:10px!important;background:var(--card)!important;color:var(--ink)!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
 .isadm .btn.order-edit-toggle{display:inline-flex!important}
-.btn.order-edit-toggle svg{width:19px!important;height:19px!important;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.order-editing #grid .card{cursor:grab!important;user-select:none}
+.btn.order-edit-toggle:hover{background:var(--card)!important;border-color:var(--acc)!important;color:var(--acc)!important}
+.btn.order-edit-toggle svg{width:18px!important;height:18px!important;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.order-editing #grid .card{cursor:grab!important;user-select:none!important}
+.order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
+.order-editing #grid .order-handle{cursor:grab!important}
 .order-editing #grid .card.is-dragging{cursor:grabbing!important;opacity:.55!important;transform:scale(.99)!important}
