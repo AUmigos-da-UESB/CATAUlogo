@@ -239,6 +239,55 @@
    ]
   },
   {
+   "id": "a1790976427005",
+   "esp": "Cachorro",
+   "mod": "Lar Temporário",
+   "nome": "Lua",
+   "sexo": "Fêmea",
+   "idade": "Cerca de 1 ano e 6 meses",
+   "status": "Disponível para adoção",
+   "ano": [
+    2026,
+    2025,
+    2025
+   ],
+   "local": "Lar Temporário",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Brincalhão",
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Curioso",
+    "Leal",
+    "Apegado",
+    "Tímido",
+    "Tranquilo",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Pelagem caramelo"
+   ],
+   "foto": [
+    "fotos/a1790976427005-murh4fx9-0.jpg",
+    "fotos/a1790976427005-murz6aoe-1.jpg",
+    "fotos/a1790976427005-murz6aoe-2.jpg"
+   ],
+   "fotoCred": [
+    "Nívea Ferraz, @nivia.ferraz",
+    "David Matos, @davidmatos_15",
+    "David Matos, @davidmatos_15"
+   ],
+   "idadeReferencia": "2026-10-03",
+   "nascimentoEstimado": "2025-04-03",
+   "idadeAproximada": true
+  },
+  {
    "id": "a1790900984986",
    "esp": "Cachorro",
    "mod": "Canil da UESB",
@@ -299,55 +348,6 @@
    ],
    "idadeReferencia": "2026-10-08",
    "nascimentoEstimado": "2023-10-08",
-   "idadeAproximada": true
-  },
-  {
-   "id": "a1790976427005",
-   "esp": "Cachorro",
-   "mod": "Lar Temporário",
-   "nome": "Lua",
-   "sexo": "Fêmea",
-   "idade": "Cerca de 1 ano e 6 meses",
-   "status": "Disponível para adoção",
-   "ano": [
-    2026,
-    2025,
-    2025
-   ],
-   "local": "Lar Temporário",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [
-    "Brincalhão",
-    "Carinhoso",
-    "Dócil",
-    "Sociável",
-    "Curioso",
-    "Leal",
-    "Apegado",
-    "Tímido",
-    "Tranquilo",
-    "Afetuoso",
-    "Amigável",
-    "Paciente"
-   ],
-   "car": [
-    "Pelagem caramelo"
-   ],
-   "foto": [
-    "fotos/a1790976427005-murh4fx9-0.jpg",
-    "fotos/a1790976427005-murz6aoe-1.jpg",
-    "fotos/a1790976427005-murz6aoe-2.jpg"
-   ],
-   "fotoCred": [
-    "Nívea Ferraz, @nivia.ferraz",
-    "David Matos, @davidmatos_15",
-    "David Matos, @davidmatos_15"
-   ],
-   "idadeReferencia": "2026-10-03",
-   "nascimentoEstimado": "2025-04-03",
    "idadeAproximada": true
   },
   {
