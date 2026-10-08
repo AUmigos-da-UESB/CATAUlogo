@@ -163,6 +163,7 @@ function lista(){
  });
  document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
+  renderOrderMenu();
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
  let i;do{i=Math.floor(Math.random()*DOGS.length)}while(DOGS.length>1&&i===u);
@@ -188,7 +189,7 @@ function home(){
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section>
  <section class="wrap tools" id="catalogo"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2>
-   <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select>${admin?`<button type="button" class="btn order-edit-toggle" id="orderEditToggle" title="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}" aria-label="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>`:""}</div></div>${admin&&editOrder&&ordem==="normal"?`<div class="order-menu" id="orderMenu"><div class="order-menu-head"><div><strong>Reordenar animais</strong><span>Escolha um animal e a posição que ele deve ocupar.</span></div><button type="button" class="order-menu-close" id="orderMenuClose" aria-label="Fechar menu">×</button></div><div class="order-menu-controls"><label>Animal<select id="orderAnimal" aria-label="Escolher animal para reordenar"></select></label><label>Posição<select id="orderPosition" aria-label="Escolher posição do animal"></select></label><button type="button" class="btn gradient-flow" id="orderMove">Mover</button></div><p class="order-menu-note">A ordem exibida aqui acompanha os filtros atuais. A ordem alfabética continua automática.</p></div>`:""}
+   <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select>${admin?`<button type="button" class="btn order-edit-toggle" id="orderEditToggle" title="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}" aria-label="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>`:""}</div></div>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
 <section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
@@ -213,7 +214,7 @@ function home(){
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
  document.getElementById("sort").onchange=e=>{ordem=e.target.value;if(ordem!=="normal")editOrder=false;lista()};
  /* O botão de edição da ordem usa delegação global. */
-  lista();links();renderVol();preencherMenuOrdem();const oa=document.getElementById("orderAnimal"),op=document.getElementById("orderPosition"),om=document.getElementById("orderMove"),oc=document.getElementById("orderMenuClose");if(oa)oa.onchange=()=>{const items=DOGS.filter(passa),idx=items.findIndex(d=>d.id===oa.value);if(op)op.value=String(idx+1)};if(om)om.onclick=moverAnimalPorMenu;if(oc)oc.onclick=()=>{editOrder=false;document.body.classList.remove("order-editing");lista()};const be=document.getElementById("bedit");if(be){be.style.display=admin?"inline-flex":"none";if(admin)be.onclick=openBackEditor}
+  lista();links();renderVol();const be=document.getElementById("bedit");if(be){be.style.display=admin?"inline-flex":"none";if(admin)be.onclick=openBackEditor}
 }
 document.addEventListener("click",e=>{const o=e.target.closest("#orderEditToggle");if(!o||!admin||ordem!=="normal")return;e.preventDefault();e.stopPropagation();editOrder=!editOrder;document.body.classList.toggle("order-editing",editOrder);lista()},true);
 function openBackLightbox(index){
@@ -540,6 +541,18 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
 let orderSaving=false;
+function renderOrderMenu(){
+ const row=document.querySelector(".search-row");
+ if(!row)return;
+ const old=document.getElementById("orderMenu");
+ if(!admin||!editOrder||ordem!=="normal"){if(old)old.remove();return}
+ if(!old)row.insertAdjacentHTML("afterend",`<div class="order-menu" id="orderMenu"><div class="order-menu-head"><div><strong>Reordenar animais</strong><span>Escolha um animal e a posição que ele deve ocupar.</span></div><button type="button" class="order-menu-close" id="orderMenuClose" aria-label="Fechar menu">×</button></div><div class="order-menu-controls"><label>Animal<select id="orderAnimal" aria-label="Escolher animal para reordenar"></select></label><label>Posição<select id="orderPosition" aria-label="Escolher posição do animal"></select></label><button type="button" class="btn gradient-flow" id="orderMove">Mover</button></div><p class="order-menu-note">A ordem exibida aqui acompanha os filtros atuais. A ordem alfabética continua automática.</p></div>`);
+ preencherMenuOrdem();
+ const oa=document.getElementById("orderAnimal"),op=document.getElementById("orderPosition"),om=document.getElementById("orderMove"),oc=document.getElementById("orderMenuClose");
+ if(oa)oa.onchange=()=>{const items=DOGS.filter(passa),idx=items.findIndex(d=>d.id===oa.value);if(op)op.value=String(idx+1)};
+ if(om)om.onclick=moverAnimalPorMenu;
+ if(oc)oc.onclick=()=>{editOrder=false;document.body.classList.remove("order-editing");lista()};
+}
 function preencherMenuOrdem(){
  const menu=document.getElementById("orderMenu");
  if(!menu||!admin||ordem!=="normal"||!editOrder)return;
