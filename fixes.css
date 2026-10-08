@@ -486,3 +486,24 @@ body.inline-text-edit .inline-text-input{
   height:25px!important;
   fill:currentColor!important;
 }
+
+
+/* Ajuste de respiro da área do CATAUlogo: distribuição vertical mais equilibrada. */
+#catalogo.tools{
+  padding-top:0!important;
+  padding-bottom:20px!important;
+}
+#catalogo.tools h2{
+  margin-bottom:26px!important;
+}
+#catalogo.tools .chips{
+  margin-top:14px!important;
+}
+#catalogo.tools #cnt{
+  margin-top:14px!important;
+  margin-bottom:0!important;
+}
+#grid{
+  padding-top:24px!important;
+  padding-bottom:80px!important;
+}
