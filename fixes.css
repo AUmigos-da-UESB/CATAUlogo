@@ -507,3 +507,26 @@ body.inline-text-edit .inline-text-input{
   padding-top:24px!important;
   padding-bottom:80px!important;
 }
+
+
+/* Espaçamento vertical do catálogo: elimina os vãos excessivos e distribui o conteúdo de forma uniforme. */
+.hero{
+  padding-bottom:44px!important;
+}
+#catalogo.tools{
+  padding-top:0!important;
+  padding-bottom:8px!important;
+}
+#catalogo.tools h2{
+  margin-bottom:18px!important;
+}
+#catalogo.tools .chips{
+  margin-top:18px!important;
+}
+#catalogo.tools #cnt{
+  margin-top:18px!important;
+  margin-bottom:0!important;
+}
+#grid{
+  padding-top:8px!important;
+}
