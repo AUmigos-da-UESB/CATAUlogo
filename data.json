@@ -9,6 +9,7 @@
    "idade": "Indefinida",
    "status": "Comunitário",
    "ano": [
+    2026,
     2026
    ],
    "local": "Quadra, CAP, Portaria",
@@ -43,9 +44,11 @@
     "Tricolor"
    ],
    "foto": [
-    "fotos/a1790800495807-muolvonw0.jpg"
+    "fotos/a1790800495807-muolvonw0.jpg",
+    "fotos/a1790800495807-muzijaef-1.jpg"
    ],
    "fotoCred": [
+    "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ]
   },
