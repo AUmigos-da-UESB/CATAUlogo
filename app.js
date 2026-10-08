@@ -503,14 +503,14 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
 let draggedAnimalId=null;
 document.addEventListener("dragstart",e=>{
- const x=e.target.closest(".order-handle");if(!x||!admin)return;
+ const x=e.target.closest(".order-handle");if(!x||!admin||ordem!=="normal")return;
  draggedAnimalId=x.dataset.id;e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",draggedAnimalId);
  x.closest(".card")?.classList.add("is-dragging");
 },true);
 document.addEventListener("dragend",e=>{e.target.closest(".card")?.classList.remove("is-dragging");draggedAnimalId=null},true);
-document.addEventListener("dragover",e=>{const card=e.target.closest(".card");if(!card||!admin||!draggedAnimalId)return;e.preventDefault();e.dataTransfer.dropEffect="move";},true);
+document.addEventListener("dragover",e=>{const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!draggedAnimalId)return;e.preventDefault();e.dataTransfer.dropEffect="move";},true);
 document.addEventListener("drop",async e=>{
- const card=e.target.closest(".card");if(!card||!admin||!draggedAnimalId)return;
+ const card=e.target.closest(".card");if(!card||!admin||ordem!=="normal"||!draggedAnimalId)return;
  e.preventDefault();e.stopPropagation();
  const targetId=card.querySelector(".order-handle")?.dataset.id;if(!targetId||targetId===draggedAnimalId)return;
  try{
