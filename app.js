@@ -248,7 +248,7 @@ function rota2(){const m=location.hash.match(/^#\/cao\/(.+)/);if(m)ficha(m[1]);e
 
 function links(){const a=document.getElementById("lig");if(a)a.href="https://www.instagram.com/amigopet.vca/"}
 function forceFtextGradient(t){if(!t)return;t.classList.add("gradient-flow");t.style.removeProperty("animation");t.style.removeProperty("animation-delay");t.style.removeProperty("animation-play-state");}
-function rAdm(){admin=true;editOrder=false;document.body.classList.remove("order-editing");document.body.classList.add("isadm");const bgButton=document.getElementById("fbgedit"),out=document.getElementById("flogout");if(bgButton)bgButton.style.display="inline-flex";if(out)out.style.display="inline-flex";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t){t.style.display="inline-flex";forceFtextGradient(t)}const be=document.getElementById("bedit");if(be){be.style.display="inline-flex";be.onclick=openBackEditor}}
+function rAdm(){admin=true;editOrder=false;document.body.classList.remove("order-editing");document.body.classList.add("isadm");const bgButton=document.getElementById("fbgedit"),out=document.getElementById("flogout");if(bgButton)bgButton.style.display="inline-flex";if(out)out.style.display="inline-flex";const a=document.getElementById("fadd"),b=document.getElementById("fadm");if(a)a.style.display="inline-flex";if(b)b.style.display="none";const t=document.getElementById("ftext");if(t){t.style.display="inline-flex";forceFtextGradient(t)}const be=document.getElementById("bedit");if(be){be.style.display="inline-flex";be.onclick=openBackEditor}if(document.getElementById("app")){const y=scrollY;home();requestAnimationFrame(()=>scrollTo(0,y))}}
 function cleanRich(v){
   const src=String(v??"");
   const doc=new DOMParser().parseFromString(src,"text/html");
@@ -518,36 +518,107 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  const sv=document.getElementById("save");sv.disabled=true;sv.textContent="Salvando…";
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
- dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
-let nativeDraggedId=null,nativeDraggedCard=null,orderSaving=false;
-document.addEventListener("dragstart",e=>{
- const card=e.target.closest("#grid .order-card");
- if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
- nativeDraggedCard=card;nativeDraggedId=card.dataset.orderId;
- e.dataTransfer.effectAllowed="move";e.dataTransfer.dropEffect="move";e.dataTransfer.setData("text/plain",nativeDraggedId);
- card.classList.add("is-dragging");
-},true);
-document.addEventListener("dragover",e=>{
- if(!nativeDraggedCard||!admin||ordem!=="normal"||!editOrder)return;
- const target=e.target.closest("#grid .order-card");
- if(!target)return;
- e.preventDefault();e.dataTransfer.dropEffect="move";
- if(target===nativeDraggedCard)return;
- const r=target.getBoundingClientRect();
- target.parentNode.insertBefore(nativeDraggedCard,e.clientY<r.top+r.height/2?target:target.nextSibling);
-},true);
-document.addEventListener("drop",async e=>{
- if(!nativeDraggedCard||!nativeDraggedId)return;
- e.preventDefault();e.stopPropagation();
- nativeDraggedCard.classList.remove("is-dragging");
- const visibleIds=[...document.querySelectorAll("#grid .order-card")].map(x=>x.dataset.orderId).filter(Boolean);
- nativeDraggedCard=null;nativeDraggedId=null;
- if(!visibleIds.length)return;
+ dlg.close();editIlet pointerDragCard=null,pointerDragId=null,pointerDragStartX=0,pointerDragStartY=0,pointerDragActive=false,pointerDragMoved=false,orderSaving=false;
+
+function ordemPointerTarget(clientX,clientY){
+ const cards=[...document.querySelectorAll("#grid .order-card")].filter(x=>x!==pointerDragCard);
+ for(const card of cards){
+  const r=card.getBoundingClientRect();
+  if(clientY>=r.top&&clientY<=r.bottom){
+   return {card,before:clientY<r.top+r.height/2};
+  }
+ }
+ return null;
+}
+function ordemMoveCard(clientX,clientY){
+ if(!pointerDragCard)return;
+ const hit=ordemPointerTarget(clientX,clientY);
+ if(!hit)return;
+ const parent=hit.card.parentNode;
+ if(hit.before)parent.insertBefore(pointerDragCard,hit.card);
+ else parent.insertBefore(pointerDragCard,hit.card.nextSibling);
+ pointerDragMoved=true;
+}
+async function finalizarOrdemPorPointer(){
+ if(!pointerDragCard||!pointerDragId)return;
+ const card=pointerDragCard;
+ card.classList.remove("is-dragging");
+ const ids=[...document.querySelectorAll("#grid .order-card")].map(x=>x.dataset.orderId).filter(Boolean);
+ pointerDragCard=null;pointerDragId=null;pointerDragActive=false;
+ if(!pointerDragMoved||!ids.length){pointerDragMoved=false;return}
  orderSaving=true;
  try{
   await salvar(s=>{
-   const arr=s.dogs||[],visible=new Set(visibleIds),items=arr.filter(x=>visible.has(x.id)),by=new Map(items.map(x=>[x.id,x]));
-   const reordered=visibleIds.map(id=>by.get(id)).filter(Boolean);let n=0;
+   const arr=s.dogs||[],visible=new Set(ids),items=arr.filter(x=>visible.has(x.id)),by=new Map(items.map(x=>[x.id,x]));
+   const reordered=ids.map(id=>by.get(id)).filter(Boolean);let n=0;
+   for(let i=0;i<arr.length;i++)if(visible.has(arr[i].id))arr[i]=reordered[n++];
+  },"Reordena animais");
+  editOrder=false;document.body.classList.remove("order-editing");lista();
+ }catch(err){erro(err);lista()}
+ finally{orderSaving=false;pointerDragMoved=false}
+}
+
+document.addEventListener("pointerdown",e=>{
+ const card=e.target.closest("#grid .order-card");
+ if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
+ if(e.target.closest("button,a,input,select,textarea"))return;
+ pointerDragCard=card;pointerDragId=card.dataset.orderId;
+ pointerDragStartX=e.clientX;pointerDragStartY=e.clientY;pointerDragMoved=false;pointerDragActive=false;
+ card.setPointerCapture?.(e.pointerId);
+},true);
+
+document.addEventListener("pointermove",e=>{
+ if(!pointerDragCard||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
+ const dx=e.clientX-pointerDragStartX,dy=e.clientY-pointerDragStartY;
+ if(!pointerDragActive){
+  if(Math.hypot(dx,dy)<6)return;
+  pointerDragActive=true;
+  pointerDragCard.classList.add("is-dragging");
+ }
+ e.preventDefault();
+ ordemMoveCard(e.clientX,e.clientY);
+},true);
+
+document.addEventListener("pointerup",async e=>{
+ if(!pointerDragCard)return;
+ e.preventDefault();
+ await finalizarOrdemPorPointer();
+},true);
+
+document.addEventListener("pointercancel",()=>{
+ if(pointerDragCard)pointerDragCard.classList.remove("is-dragging");
+ pointerDragCard=null;pointerDragId=null;pointerDragActive=false;pointerDragMoved=false;
+},true);
+
+// Mantém o suporte nativo de arrastar do desktop como fallback.
+document.addEventListener("dragstart",e=>{
+ const card=e.target.closest("#grid .order-card");
+ if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
+ if(pointerDragCard)return;
+ card.draggable=true;
+ card.classList.add("is-dragging");
+ e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",card.dataset.orderId);
+},true);
+document.addEventListener("dragover",e=>{
+ const card=e.target.closest("#grid .order-card");
+ const dragging=document.querySelector("#grid .order-card.is-dragging");
+ if(!dragging||!card||dragging===card||!admin||ordem!=="normal"||!editOrder)return;
+ e.preventDefault();
+ const r=card.getBoundingClientRect();
+ card.parentNode.insertBefore(dragging,e.clientY<r.top+r.height/2?card:card.nextSibling);
+},true);
+document.addEventListener("drop",async e=>{
+ const dragging=document.querySelector("#grid .order-card.is-dragging");
+ if(!dragging||!admin||ordem!=="normal"||!editOrder)return;
+ e.preventDefault();e.stopPropagation();
+ const ids=[...document.querySelectorAll("#grid .order-card")].map(x=>x.dataset.orderId).filter(Boolean);
+ dragging.classList.remove("is-dragging");
+ if(!ids.length)return;
+ orderSaving=true;
+ try{
+  await salvar(s=>{
+   const arr=s.dogs||[],visible=new Set(ids),items=arr.filter(x=>visible.has(x.id)),by=new Map(items.map(x=>[x.id,x]));
+   const reordered=ids.map(id=>by.get(id)).filter(Boolean);let n=0;
    for(let i=0;i<arr.length;i++)if(visible.has(arr[i].id))arr[i]=reordered[n++];
   },"Reordena animais");
   editOrder=false;document.body.classList.remove("order-editing");lista();
@@ -556,6 +627,8 @@ document.addEventListener("drop",async e=>{
 },true);
 document.addEventListener("dragend",e=>{
  const card=e.target.closest("#grid .order-card");if(card)card.classList.remove("is-dragging");
+});
+card)card.classList.remove("is-dragging");
  nativeDraggedCard=null;nativeDraggedId=null;
 },true);
 
