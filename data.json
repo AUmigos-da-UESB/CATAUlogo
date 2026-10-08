@@ -112,6 +112,7 @@
    "idade": "Indefinida",
    "status": "Comunitário",
    "ano": [
+    2026,
     2026
    ],
    "local": "Canil da UESB",
@@ -143,9 +144,11 @@
     "Olhos claros"
    ],
    "foto": [
-    "fotos/a1790812807837-muorpjhf0.jpg"
+    "fotos/a1790812807837-muzmriap-0.jpg",
+    "fotos/a1790812807837-muzmriap-1.jpg"
    ],
    "fotoCred": [
+    "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ]
   },
