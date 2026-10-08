@@ -367,6 +367,31 @@ body.inline-text-edit .inline-text-input{
 
 
 
+
+/* O menu de organização não herda as cores/gradientes dos botões do site. */
+.order-menu .order-menu-close,
+.order-menu .order-drag-handle,
+.order-menu .btn{
+ background:var(--card)!important;
+ background-image:none!important;
+ color:var(--ink)!important;
+ border:1px solid var(--line)!important;
+ box-shadow:none!important;
+ animation:none!important;
+ filter:none!important;
+ transform:none!important;
+}
+.order-menu .order-menu-close:hover,
+.order-menu .order-drag-handle:hover,
+.order-menu .btn:hover{
+ background:var(--bg)!important;
+ color:var(--ink)!important;
+ border-color:var(--line)!important;
+ filter:none!important;
+ transform:none!important;
+}
+.order-menu .order-drag-handle{cursor:grab!important}
+.order-menu .order-drag-handle:active{cursor:grabbing!important}
 /* Menu flutuante para organizar os animais. */
 .order-menu-backdrop{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;background:rgba(0,0,0,.48);backdrop-filter:blur(3px)}
 .order-menu{width:min(680px,100%);max-height:min(82vh,760px);display:flex;flex-direction:column;box-sizing:border-box;border:1px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.28);overflow:hidden}
