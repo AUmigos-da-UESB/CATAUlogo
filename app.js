@@ -538,21 +538,19 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  const sv=document.getElementById("save");sv.disabled=true;sv.textContent="Salvando…";
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
- dlg.close();editIlet pointerDragCard=null,pointerDragId=null,pointerDragStartX=0,pointerDragStartY=0,pointerDragActive=false,pointerDragMoved=false,orderSaving=false;
-
-function ordemPointerTarget(clientX,clientY){
+ dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
+let pointerDragCard=null,pointerDragId=null,pointerDragStartX=0,pointerDragStartY=0,pointerDragActive=false,pointerDragMoved=false,orderSaving=false;
+function ordemPointerTarget(clientY){
  const cards=[...document.querySelectorAll("#grid .order-card")].filter(x=>x!==pointerDragCard);
  for(const card of cards){
   const r=card.getBoundingClientRect();
-  if(clientY>=r.top&&clientY<=r.bottom){
-   return {card,before:clientY<r.top+r.height/2};
-  }
+  if(clientY>=r.top&&clientY<=r.bottom)return {card,before:clientY<r.top+r.height/2};
  }
  return null;
 }
-function ordemMoveCard(clientX,clientY){
+function ordemMoveCard(clientY){
  if(!pointerDragCard)return;
- const hit=ordemPointerTarget(clientX,clientY);
+ const hit=ordemPointerTarget(clientY);
  if(!hit)return;
  const parent=hit.card.parentNode;
  if(hit.before)parent.insertBefore(pointerDragCard,hit.card);
@@ -577,7 +575,6 @@ async function finalizarOrdemPorPointer(){
  }catch(err){erro(err);lista()}
  finally{orderSaving=false;pointerDragMoved=false}
 }
-
 document.addEventListener("pointerdown",e=>{
  const card=e.target.closest("#grid .order-card");
  if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
@@ -586,7 +583,6 @@ document.addEventListener("pointerdown",e=>{
  pointerDragStartX=e.clientX;pointerDragStartY=e.clientY;pointerDragMoved=false;pointerDragActive=false;
  card.setPointerCapture?.(e.pointerId);
 },true);
-
 document.addEventListener("pointermove",e=>{
  if(!pointerDragCard||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
  const dx=e.clientX-pointerDragStartX,dy=e.clientY-pointerDragStartY;
@@ -596,26 +592,22 @@ document.addEventListener("pointermove",e=>{
   pointerDragCard.classList.add("is-dragging");
  }
  e.preventDefault();
- ordemMoveCard(e.clientX,e.clientY);
+ ordemMoveCard(e.clientY);
 },true);
-
 document.addEventListener("pointerup",async e=>{
  if(!pointerDragCard)return;
  e.preventDefault();
  await finalizarOrdemPorPointer();
 },true);
-
 document.addEventListener("pointercancel",()=>{
  if(pointerDragCard)pointerDragCard.classList.remove("is-dragging");
  pointerDragCard=null;pointerDragId=null;pointerDragActive=false;pointerDragMoved=false;
 },true);
 
-// Mantém o suporte nativo de arrastar do desktop como fallback.
+// Fallback nativo para navegadores desktop.
 document.addEventListener("dragstart",e=>{
  const card=e.target.closest("#grid .order-card");
  if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
- if(pointerDragCard)return;
- card.draggable=true;
  card.classList.add("is-dragging");
  e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",card.dataset.orderId);
 },true);
@@ -647,9 +639,6 @@ document.addEventListener("drop",async e=>{
 },true);
 document.addEventListener("dragend",e=>{
  const card=e.target.closest("#grid .order-card");if(card)card.classList.remove("is-dragging");
-});
-card)card.classList.remove("is-dragging");
- nativeDraggedCard=null;nativeDraggedId=null;
 },true);
 
 const bgDialog=document.getElementById("bgdlg"), bgDefaults={blue:"#84a8b0",pink:"#c89a9b",scale:140,aboutStart:"#1c2922",aboutEnd:"#222b38"};
