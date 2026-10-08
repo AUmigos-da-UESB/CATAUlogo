@@ -367,29 +367,43 @@ body.inline-text-edit .inline-text-input{
 
 
 
-/* Edição da ordem dos animais no Admin: menu suspenso, sem arrastar cards. */
-.order-edit-toggle{display:none!important;align-items:center;justify-content:center}
-.isadm .order-edit-toggle{display:inline-flex!important}
-.order-edit-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn.order-edit-toggle{display:none!important;flex:0 0 48px!important;width:48px!important;height:42px!important;padding:0!important;margin:0!important;border:1px solid var(--line)!important;border-radius:12px!important;background:var(--card)!important;color:var(--ink)!important;align-items:center!important;justify-content:center!important;box-shadow:none!important}
-.isadm .btn.order-edit-toggle{display:inline-flex!important}
-.btn.order-edit-toggle:hover{background:var(--card)!important;border-color:var(--acc)!important;color:var(--acc)!important}
-.order-menu{width:100%;margin-top:10px;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 12px 30px rgba(0,0,0,.14);box-sizing:border-box}
-.order-menu-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
-.order-menu-head>div{display:flex;flex-direction:column;gap:3px;min-width:0}
-.order-menu-head strong{font-size:15px}
-.order-menu-head span{font-size:12px;color:var(--mut)}
-.order-menu-close{width:30px;height:30px;flex:0 0 30px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
-.order-menu-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(150px,1fr) auto;gap:8px;align-items:end}
-.order-menu-controls label{display:grid;gap:5px;font-size:12px;color:var(--mut);min-width:0}
-.order-menu-controls select{width:100%;min-width:0;box-sizing:border-box}
-.order-menu-controls .btn{height:42px;white-space:nowrap}
-.order-menu-note{margin:10px 0 0;font-size:12px;color:var(--mut)}
+/* Menu flutuante para organizar os animais. */
+.order-menu-backdrop{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;background:rgba(0,0,0,.48);backdrop-filter:blur(3px)}
+.order-menu{width:min(680px,100%);max-height:min(82vh,760px);display:flex;flex-direction:column;box-sizing:border-box;border:1px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.28);overflow:hidden}
+.order-menu-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:20px 20px 15px;border-bottom:1px solid var(--line);flex:0 0 auto}
+.order-menu-head>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.order-menu-head strong{font-size:20px;line-height:1.15}
+.order-menu-head span{font-size:13px;color:var(--mut);line-height:1.4}
+.order-menu-close{width:34px;height:34px;flex:0 0 34px;border:0;border-radius:50%;background:transparent;color:var(--mut);font-size:26px;line-height:1;cursor:pointer}
+.order-menu-close:hover{background:var(--bg);color:var(--ink)}
+.order-list{padding:8px 12px;overflow:auto;min-height:0}
+.order-item{display:grid;grid-template-columns:52px minmax(0,1fr) 38px;align-items:center;gap:12px;padding:8px 6px;border-bottom:1px solid var(--line);background:var(--card);transition:opacity .12s,transform .12s,background .12s}
+.order-item:last-child{border-bottom:0}
+.order-item:hover{background:var(--bg)}
+.order-item.is-dragging{opacity:.45;transform:scale(.99)}
+.order-item-thumb-wrap{width:52px;height:52px}
+.order-item-thumb{width:52px;height:52px;overflow:hidden;border-radius:11px;background:var(--bg);border:1px solid var(--line);box-sizing:border-box}
+.order-item-thumb>*{width:100%!important;height:100%!important;object-fit:cover!important;display:block}
+.order-item-thumb .cr{display:none!important}
+.order-item-info{min-width:0;display:flex;flex-direction:column;gap:3px}
+.order-item-info strong{font-size:14px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.order-item-info span{font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.order-drag-handle{width:34px;height:42px;display:flex;align-items:center;justify-content:center;padding:0;border:0;border-radius:9px;background:transparent;color:var(--mut);cursor:grab}
+.order-drag-handle:hover{background:var(--bg);color:var(--ink)}
+.order-drag-handle:active{cursor:grabbing}
+.order-drag-handle svg{width:21px;height:25px;fill:currentColor}
+.order-menu-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;border-top:1px solid var(--line);flex:0 0 auto}
+.order-menu-foot span{font-size:11px;color:var(--mut)}
+.order-menu-foot .btn{min-width:105px}
 @media(max-width:620px){
- .search-row .location-filter{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(48px,48px)!important}
- .order-menu-controls{grid-template-columns:1fr 1fr}
- .order-menu-controls .btn{grid-column:1/-1;width:100%}
+ .order-menu-backdrop{padding:10px}
+ .order-menu{max-height:88vh;border-radius:17px}
+ .order-menu-head{padding:16px 15px 12px}
+ .order-menu-head strong{font-size:18px}
+ .order-list{padding:6px 8px}
+ .order-item{grid-template-columns:48px minmax(0,1fr) 38px;gap:10px;padding:7px 4px}
+ .order-item-thumb-wrap,.order-item-thumb{width:48px;height:48px}
+ .order-item-info strong{font-size:13px}
+ .order-menu-foot{padding:11px 15px}
+ .order-menu-foot span{max-width:60%}
 }
-
-.order-editing .btn.order-edit-toggle:hover{background:var(--card)!important;color:var(--ink)!important;border-color:var(--line)!important}
-.btn.order-edit-toggle{align-self:stretch!important;height:auto!important;min-height:0!important;width:48px!important;flex:0 0 48px!important;padding:0!important;border-radius:16px!important;background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
