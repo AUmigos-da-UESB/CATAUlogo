@@ -145,7 +145,7 @@ function lista(){
   const nb=String(b.nome||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
   return na<nb?-1:na>nb?1:0;
  });
- document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" draggable="${admin&&ordem==="normal"&&editOrder?"true":"false"}" data-order-id="${d.id}" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>${admin&&ordem==="normal"&&editOrder?`<span class="order-handle" data-id="${d.id}" title="Arraste para mudar a ordem" aria-label="Arraste para mudar a ordem">☷</span>`:""}</span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
+ document.getElementById("grid").innerHTML=r.length?r.map(d=>`${admin&&ordem==="normal"&&editOrder?`<div class="card order-card" draggable="true" data-order-id="${d.id}" role="button" tabindex="0" aria-label="Arraste para mudar a ordem de ${esc(d.nome)}">`:`<a class="card" href="#/cao/${d.id}">`}<div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div>${admin&&ordem==="normal"&&editOrder?`</div>`:`</a>`}`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
@@ -503,30 +503,29 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
 let draggedAnimalId=null,draggedAnimalCard=null,orderPointerMoved=false,orderSaving=false,orderPointerId=null;
-let nativeDraggedId=null,nativeDraggedCard=null;
+let nativeDraggedId=null,nativeDraggedCard=null,orderSaving=false;
 document.addEventListener("dragstart",e=>{
- const card=e.target.closest("#grid .card");
+ const card=e.target.closest("#grid .order-card");
  if(!card||!admin||ordem!=="normal"||!editOrder||orderSaving)return;
  nativeDraggedCard=card;nativeDraggedId=card.dataset.orderId;
- e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",nativeDraggedId);
+ e.dataTransfer.effectAllowed="move";e.dataTransfer.dropEffect="move";e.dataTransfer.setData("text/plain",nativeDraggedId);
  card.classList.add("is-dragging");
 },true);
 document.addEventListener("dragover",e=>{
- const card=e.target.closest("#grid .card");
- if(!card||!nativeDraggedCard||!admin||ordem!=="normal"||!editOrder)return;
- e.preventDefault();
- const r=card.getBoundingClientRect();
- if(card!==nativeDraggedCard){
-  if(e.clientY<r.top+r.height/2)card.parentNode.insertBefore(nativeDraggedCard,card);
-  else card.parentNode.insertBefore(nativeDraggedCard,card.nextSibling);
- }
+ if(!nativeDraggedCard||!admin||ordem!=="normal"||!editOrder)return;
+ const target=e.target.closest("#grid .order-card");
+ if(!target)return;
+ e.preventDefault();e.dataTransfer.dropEffect="move";
+ if(target===nativeDraggedCard)return;
+ const r=target.getBoundingClientRect();
+ target.parentNode.insertBefore(nativeDraggedCard,e.clientY<r.top+r.height/2?target:target.nextSibling);
 },true);
 document.addEventListener("drop",async e=>{
  if(!nativeDraggedCard||!nativeDraggedId)return;
- const card=nativeDraggedCard;e.preventDefault();e.stopPropagation();
- card.classList.remove("is-dragging");
- nativeDraggedCard=null;const movedId=nativeDraggedId;nativeDraggedId=null;
- const visibleIds=[...document.querySelectorAll("#grid .card")].map(x=>x.dataset.orderId).filter(Boolean);
+ e.preventDefault();e.stopPropagation();
+ nativeDraggedCard.classList.remove("is-dragging");
+ const visibleIds=[...document.querySelectorAll("#grid .order-card")].map(x=>x.dataset.orderId).filter(Boolean);
+ nativeDraggedCard=null;nativeDraggedId=null;
  if(!visibleIds.length)return;
  orderSaving=true;
  try{
@@ -540,64 +539,8 @@ document.addEventListener("drop",async e=>{
  finally{orderSaving=false}
 },true);
 document.addEventListener("dragend",e=>{
- const card=e.target.closest("#grid .card");if(card)card.classList.remove("is-dragging");
+ const card=e.target.closest("#grid .order-card");if(card)card.classList.remove("is-dragging");
  nativeDraggedCard=null;nativeDraggedId=null;
-},true);
-
-document.addEventListener("pointerdown",e=>{
- if(!admin||ordem!=="normal"||!editOrder||orderSaving)return;
- const card=e.target.closest("#grid .card");
- if(!card)return;
- const handle=card.querySelector(".order-handle");
- if(!handle)return;
- e.preventDefault();e.stopPropagation();
- draggedAnimalId=handle.dataset.id;draggedAnimalCard=card;orderPointerMoved=false;orderPointerId=e.pointerId;
- try{card.setPointerCapture(e.pointerId)}catch(err){}
- card.classList.add("is-dragging");
-},true);
-document.addEventListener("pointermove",e=>{
- if(!draggedAnimalCard||!draggedAnimalId||e.pointerId!==orderPointerId)return;
- e.preventDefault();e.stopPropagation();
- if(Math.abs(e.movementX)+Math.abs(e.movementY)>1)orderPointerMoved=true;
- const el=document.elementFromPoint(e.clientX,e.clientY);
- const target=el?.closest?.("#grid .card");
- if(!target||target===draggedAnimalCard)return;
- const r=target.getBoundingClientRect();
- if(e.clientY<r.top+r.height/2)target.parentNode.insertBefore(draggedAnimalCard,target);
- else target.parentNode.insertBefore(draggedAnimalCard,target.nextSibling);
-},true);
-document.addEventListener("pointerup",async e=>{
- if(!draggedAnimalCard||!draggedAnimalId||e.pointerId!==orderPointerId)return;
- e.preventDefault();e.stopPropagation();
- const card=draggedAnimalCard;
- const moved=orderPointerMoved;
- card.classList.remove("is-dragging");
- try{card.releasePointerCapture?.(e.pointerId)}catch(err){}
- draggedAnimalCard=null;const movedId=draggedAnimalId;draggedAnimalId=null;orderPointerId=null;
- if(!moved)return;
- const visibleIds=[...document.querySelectorAll("#grid .card")].map(x=>x.querySelector(".order-handle")?.dataset.id).filter(Boolean);
- if(!visibleIds.length)return;
- orderSaving=true;
- try{
-  await salvar(s=>{
-   const arr=s.dogs||[];
-   const currentVisible=arr.filter(x=>visibleIds.includes(x.id));
-   const byId=new Map(currentVisible.map(x=>[x.id,x]));
-   const reordered=visibleIds.map(id=>byId.get(id)).filter(Boolean);
-   let n=0;
-   for(let i=0;i<arr.length;i++)if(visibleIds.includes(arr[i].id))arr[i]=reordered[n++];
-  },"Reordena animais");
-  editOrder=false;document.body.classList.remove("order-editing");lista();
- }catch(err){erro(err);lista()}
- finally{orderSaving=false}
-},true);
-document.addEventListener("pointercancel",e=>{
- if(!draggedAnimalCard)return;
- draggedAnimalCard.classList.remove("is-dragging");draggedAnimalCard=null;draggedAnimalId=null;orderPointerId=null;orderPointerMoved=false;
-},true);
-document.addEventListener("click",e=>{
- if(!admin||ordem!=="normal"||!editOrder)return;
- if(e.target.closest("#grid .card")&&orderPointerMoved){e.preventDefault();e.stopPropagation();orderPointerMoved=false;}
 },true);
 
 const bgDialog=document.getElementById("bgdlg"), bgDefaults={blue:"#84a8b0",pink:"#c89a9b",scale:140,aboutStart:"#1c2922",aboutEnd:"#222b38"};
