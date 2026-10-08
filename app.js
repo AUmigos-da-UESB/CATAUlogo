@@ -130,7 +130,7 @@ const cls=s=>s==="Disponível para adoção"?"badge adocao":s==="Adotado"?"badge
 const filtrosAtivos=new Set();let busca="";
 const gruposFiltros=[["Machos","Fêmeas"],["Comunitários","Disponível para adoção","Adotados"],["Cachorros","Gatos"]];
 const FILTROS=["Machos","Fêmeas","Comunitários","Disponível para adoção","Adotados","Cachorros","Gatos","Lar temporário"];
-let loc="Todos os locais";
+let loc="Todos os locais";let ordem="normal";
 function passa(d){
  const locationText=[d.mod,d.local].filter(Boolean).join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
  const checks={"Machos":d.sexo==="Macho","Fêmeas":d.sexo==="Fêmea","Comunitários":String(d.status||"").startsWith("Comunit"),"Disponível para adoção":d.status==="Disponível para adoção","Adotados":d.status==="Adotado","Cachorros":d.esp==="Cachorro","Gatos":d.esp==="Gato","Lar temporário":/lar\s*temporario/.test(locationText)};
