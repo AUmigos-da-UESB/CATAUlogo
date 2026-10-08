@@ -140,6 +140,7 @@ function passa(d){
 }
 function lista(){
  const r=DOGS.filter(passa);
+ if(ordem==="alfabetica") r.sort((a,b)=>String(a.nome||"").localeCompare(String(b.nome||""),"pt-BR",{sensitivity:"base",numeric:true}));
  document.getElementById("grid").innerHTML=r.length?r.map(d=>`<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}${ico(d.esp)}<span class="card-actions"><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button></span></div><div class="bd"><h3>${esc(d.nome)}</h3><div class="meta">${d.sexo} · ${d.idade}</div><div class="meta loc">${pin}${esc(d.mod)}</div><div class="traits compact">${(Array.isArray(d.car)?d.car:[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><div class="traits compact">${(d.pers||[]).slice(0,3).map(p=>`<span>${esc(p)}</span>`).join("")}</div><span class="${cls(d.status)}">${d.status}</span></div></a>`).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
 }
