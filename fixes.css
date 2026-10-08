@@ -388,6 +388,7 @@ body.inline-text-edit .inline-text-input{
 
 /* Reordenação: cards deixam de ser links durante a edição para o drag funcionar de forma confiável. */
 .order-editing #grid .order-card{cursor:grab!important;user-select:none!important;-webkit-user-select:none!important}
+.order-editing #grid .order-card{touch-action:none!important;-webkit-touch-callout:none}
 .order-editing #grid .order-card:active{cursor:grabbing!important}
 .order-editing #grid .order-card.is-dragging{opacity:.5!important;transform:scale(.99)!important}
 .order-editing #grid .order-card *{cursor:inherit}
