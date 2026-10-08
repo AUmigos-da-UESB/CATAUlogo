@@ -526,42 +526,6 @@
    ]
   },
   {
-   "id": "a1791459854566",
-   "esp": "Cachorro",
-   "mod": "Módulo de medicina",
-   "nome": "[Em pesquisa]",
-   "sexo": "Macho",
-   "idade": "Indefinida",
-   "status": "Comunitário",
-   "ano": [
-    2026,
-    2026
-   ],
-   "local": "Módulo de medicina",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [],
-   "car": [
-    "Porte médio",
-    "Pelagem média",
-    "Pelagem lisa",
-    "Peito branco",
-    "Orelhas caídas",
-    "Rabo comprido",
-    "Pelagem creme"
-   ],
-   "foto": [
-    "fotos/a1791459854566-muzgxz3m-0.jpg",
-    "fotos/a1791459854566-muzgxz3m-1.jpg"
-   ],
-   "fotoCred": [
-    "Luna Moura, @dillua.r",
-    "Luna Moura, @dillua.r"
-   ]
-  },
-  {
    "id": "a1791460638504",
    "esp": "Cachorro",
    "mod": "Luisão, Portaria da UESB",
