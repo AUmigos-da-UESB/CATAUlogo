@@ -333,13 +333,46 @@
     "Luna Moura, @dillua.r",
     "Luna Moura, @dillua.r"
    ]
+  },
+  {
+   "id": "a1791458450607",
+   "esp": "Cachorro",
+   "mod": "Luisão, Canil",
+   "nome": "Bomba (Apelido)",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Luisão, Canil",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Orelhas caídas",
+    "Rabo comprido"
+   ],
+   "foto": [
+    "fotos/a1791458450607-muzg3vt9-0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
   }
  ],
  "locs": [
   "Canil da UESB",
   "Lar Temporário",
   "Módulo I e IV",
-  "Luisão, Módulo IV"
+  "Luisão, Módulo IV",
+  "Luisão, Canil"
  ],
  "vol": [
   {
