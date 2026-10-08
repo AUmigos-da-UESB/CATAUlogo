@@ -519,7 +519,7 @@
   {
    "id": "a1791460638504",
    "esp": "Cachorro",
-   "mod": "Módulo I",
+   "mod": "Luisão, Portaria da UESB",
    "nome": "[Em Pesquisa]",
    "sexo": "Macho",
    "idade": "Indefinida",
@@ -527,13 +527,29 @@
    "ano": [
     2026
    ],
-   "local": "Módulo I",
+   "local": "Perto dos quiosques em frente ao Luis",
    "coat": "#b98a55",
    "ear": "#7d5a36",
    "bg": "#e3e7d8",
    "hist": "História em breve.",
-   "pers": [],
-   "car": [],
+   "pers": [
+    "Sociável",
+    "Curioso",
+    "Apegado",
+    "Medroso",
+    "Tímido",
+    "Tranquilo",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem longa",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Olhos escuros"
+   ],
    "foto": [
     "fotos/a1791460638504-muzherve-0.jpg"
    ],
@@ -550,7 +566,8 @@
   "Luisão, Canil",
   "Luisão",
   "Módulo I, Módulo IV, Módulo de Medicina",
-  "Módulo de medicina"
+  "Módulo de medicina",
+  "Luisão, Portaria da UESB"
  ],
  "vol": [
   {
