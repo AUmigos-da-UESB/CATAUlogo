@@ -356,6 +356,10 @@ body.inline-text-edit .inline-text-input{
  #inline-text-bar .inline-text-actions{width:100%}
  #inline-text-bar .inline-text-actions .btn{flex:1}
 }
-
-
-
+/* Catálogo: localização + ordem de visualização lado a lado. */
+.location-filter{display:flex!important;gap:8px!important;min-width:0!important}
+.location-filter select{min-width:0!important;flex:1 1 0!important}
+@media(max-width:620px){
+ .search-row .location-filter{width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:8px!important}
+ .search-row .location-filter select{width:100%!important;min-width:0!important}
+}
