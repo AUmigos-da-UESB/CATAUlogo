@@ -363,3 +363,10 @@ body.inline-text-edit .inline-text-input{
  .search-row .location-filter{width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:8px!important}
  .search-row .location-filter select{width:100%!important;min-width:0!important}
 }
+
+
+/* Controles de ordem dos animais no Admin */
+.card-actions .order-animal{display:none!important;min-width:30px;height:30px;padding:0!important;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font-weight:800;cursor:pointer;line-height:1}
+.isadm .card-actions .order-animal{display:inline-flex!important;align-items:center;justify-content:center}
+.isadm .card-actions{gap:5px!important;align-items:center!important}
+@media(max-width:620px){.isadm .card-actions .order-animal{min-width:28px;height:28px;font-size:14px}}
