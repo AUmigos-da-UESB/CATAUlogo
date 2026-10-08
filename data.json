@@ -104,6 +104,52 @@
    ]
   },
   {
+   "id": "a1790812807837",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Mimosa",
+   "sexo": "Fêmea",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Canil da UESB",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Apegado",
+    "Independente",
+    "Tímido",
+    "Tranquilo",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Pelagem branca",
+    "Manchas",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Olhos claros"
+   ],
+   "foto": [
+    "fotos/a1790812807837-muorpjhf0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
    "id": "a1790800495807",
    "esp": "Cachorro",
    "mod": "Canil da UESB",
@@ -152,52 +198,6 @@
    ],
    "fotoCred": [
     "Luna Moura, @dillua.r",
-    "Luna Moura, @dillua.r"
-   ]
-  },
-  {
-   "id": "a1790812807837",
-   "esp": "Cachorro",
-   "mod": "Canil da UESB",
-   "nome": "Mimosa",
-   "sexo": "Fêmea",
-   "idade": "Indefinida",
-   "status": "Comunitário",
-   "ano": [
-    2026
-   ],
-   "local": "Canil da UESB",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [
-    "Carinhoso",
-    "Dócil",
-    "Sociável",
-    "Apegado",
-    "Independente",
-    "Tímido",
-    "Tranquilo",
-    "Afetuoso",
-    "Amigável",
-    "Paciente"
-   ],
-   "car": [
-    "Porte médio",
-    "Pelagem curta",
-    "Pelagem lisa",
-    "Pelagem preta",
-    "Pelagem branca",
-    "Manchas",
-    "Orelhas caídas",
-    "Rabo comprido",
-    "Olhos claros"
-   ],
-   "foto": [
-    "fotos/a1790812807837-muorpjhf0.jpg"
-   ],
-   "fotoCred": [
     "Luna Moura, @dillua.r"
    ]
   },
