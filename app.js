@@ -502,7 +502,6 @@ frm.onsubmit=async e=>{e.preventDefault();if(!admin)return;
  try{await salvar(s=>{const k=s.dogs.findIndex(a=>a.id===n.id);if(k>=0)s.dogs[k]=n;else s.dogs.push(n);if(!BASE.includes(n.mod)&&!s.locs.includes(n.mod))s.locs.push(n.mod)},(old?"Edita ":"Adiciona ")+nome)}
  catch(err){return erro(err)}finally{sv.disabled=false;sv.textContent=old?"Salvar alterações":"Salvar animal"}
  dlg.close();editId=null;if(/#\/cao\//.test(location.hash))ficha(n.id);else{const y=scrollY;home();scrollTo(0,y)}};
-let draggedAnimalId=null,draggedAnimalCard=null,orderPointerMoved=false,orderSaving=false,orderPointerId=null;
 let nativeDraggedId=null,nativeDraggedCard=null,orderSaving=false;
 document.addEventListener("dragstart",e=>{
  const card=e.target.closest("#grid .order-card");
