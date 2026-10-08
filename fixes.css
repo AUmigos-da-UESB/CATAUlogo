@@ -458,3 +458,31 @@ body.inline-text-edit .inline-text-input{
  .order-menu-foot{padding:11px 15px}
  .order-menu-foot span{max-width:60%}
 }
+
+/* Reordenação: o item inteiro é a área de arraste; o ícone da direita é apenas o indicador visual. */
+#orderMenu .order-item{
+  cursor:grab!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  touch-action:none!important;
+}
+#orderMenu .order-item:active{cursor:grabbing!important}
+#orderMenu .order-item.is-dragging{
+  opacity:.58!important;
+  transform:scale(.992)!important;
+  background:var(--bg)!important;
+}
+#orderMenu .order-drag-handle{
+  pointer-events:none!important;
+  width:38px!important;
+  height:42px!important;
+  border-radius:10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#orderMenu .order-drag-handle svg{
+  width:21px!important;
+  height:25px!important;
+  fill:currentColor!important;
+}
