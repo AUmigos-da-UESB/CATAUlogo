@@ -1,58 +1,6 @@
 {
  "dogs": [
   {
-   "id": "a1790800495807",
-   "esp": "Cachorro",
-   "mod": "Canil da UESB",
-   "nome": "Floquinho",
-   "sexo": "Macho",
-   "idade": "Indefinida",
-   "status": "Comunitário",
-   "ano": [
-    2026,
-    2026
-   ],
-   "local": "Quadra, CAP, Portaria",
-   "coat": "#b98a55",
-   "ear": "#7d5a36",
-   "bg": "#e3e7d8",
-   "hist": "História em breve.",
-   "pers": [
-    "Brincalhão",
-    "Sociável",
-    "Energético",
-    "Curioso",
-    "Independente",
-    "Medroso",
-    "Agitado",
-    "Esperto",
-    "Territorial",
-    "Desconfiado"
-   ],
-   "car": [
-    "Porte grande",
-    "Pelagem longa",
-    "Pelagem lisa",
-    "Pelagem marrom",
-    "Manchas",
-    "Peito branco",
-    "Orelhas caídas",
-    "Rabo comprido",
-    "Castrado",
-    "Vacinado",
-    "Olhos castanhos",
-    "Tricolor"
-   ],
-   "foto": [
-    "fotos/a1790800495807-muolvonw0.jpg",
-    "fotos/a1790800495807-muzijaef-1.jpg"
-   ],
-   "fotoCred": [
-    "Luna Moura, @dillua.r",
-    "Luna Moura, @dillua.r"
-   ]
-  },
-  {
    "id": "a1790803645938",
    "esp": "Gato",
    "mod": "Lar Temporário",
@@ -108,6 +56,58 @@
    "idadeReferencia": "2026-10-04",
    "nascimentoEstimado": "2024-10-04",
    "idadeAproximada": true
+  },
+  {
+   "id": "a1790800495807",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Floquinho",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Quadra, CAP, Portaria",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Brincalhão",
+    "Sociável",
+    "Energético",
+    "Curioso",
+    "Independente",
+    "Medroso",
+    "Agitado",
+    "Esperto",
+    "Territorial",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte grande",
+    "Pelagem longa",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Manchas",
+    "Peito branco",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Castrado",
+    "Vacinado",
+    "Olhos castanhos",
+    "Tricolor"
+   ],
+   "foto": [
+    "fotos/a1790800495807-muolvonw0.jpg",
+    "fotos/a1790800495807-muzijaef-1.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
   },
   {
    "id": "a1790804622019",
