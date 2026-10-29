@@ -264,7 +264,7 @@ function home(){
  </section>
  <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
   <div class="catalog-head"><div><h2 id="catalog-title">Encontre um <em>AUmigo.</em></h2></div>
-   <div class="catalog-help" id="catalog-help"><button class="catalog-prompt-icon" id="catalog-help-toggle" type="button" aria-label="Recolher orientação de busca" aria-expanded="true" aria-controls="catalog-help-copy"><span aria-hidden="true">⌕</span></button><div class="catalog-help-copy" id="catalog-help-copy"><strong>Explore o CATAUlogo</strong><span>Use a busca e os filtros para encontrar animais por nome, localização, espécie ou situação.</span></div></div>
+   <div class="catalog-help" id="catalog-help"><button class="catalog-prompt-icon" id="catalog-help-toggle" type="button" aria-label="Recolher orientação de busca" aria-expanded="true" aria-controls="catalog-help-copy"><span class="catalog-prompt-symbol" aria-hidden="true">⌕</span><span class="catalog-help-copy" id="catalog-help-copy"><strong>Explore o CATAUlogo</strong><span>Use a busca e os filtros para encontrar animais por nome, localização, espécie ou situação.</span></span></button></div>
   </div>
   <div class="toolbar">
    <label><span class="hidden">Buscar animal por nome</span><input id="q" class="field" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder||"⌕  Buscar pelo nome do animal")}" aria-label="Buscar animal pelo nome" autocomplete="off" value="${esc(busca)}"></label>
