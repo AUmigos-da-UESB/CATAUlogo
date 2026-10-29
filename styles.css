@@ -1009,10 +1009,11 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 #ftext,#fadd,#vadd{animation:catau-gradient-flow 8s linear infinite alternate!important}
 
 
-/* Movimento contínuo do padrão original em SVG, sem imagem de teste ou camada duplicada. */
+/* Movimento contínuo apenas da textura original em PNG; o degradê permanece imóvel. */
 @keyframes catau-original-bg-drift {
-  from { background-position: 0 0; }
-  to { background-position: 260px 250px; }
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 260px 250px; }
 }
-body { animation: catau-original-bg-drift 48s linear infinite; }
+body.bg-motion-on { animation: catau-original-bg-drift var(--bg-motion-duration, 36s) linear infinite; }
+body.bg-motion-off { animation: none !important; }
 @media (prefers-reduced-motion: reduce) { body { animation: none !important; } }
