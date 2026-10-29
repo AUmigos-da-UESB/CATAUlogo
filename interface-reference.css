@@ -541,3 +541,41 @@ header {
     min-height: 40px;
   }
 }
+
+
+/* Ajustes finais da interface principal */
+#app .hero .actions > a.btn:first-child {
+  background: var(--blue) !important;
+  background-color: var(--blue) !important;
+  background-image: none !important;
+  color: #101914 !important;
+  border: 1px solid rgba(167,185,208,.82) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+#app .hero .actions > a.btn:first-child:hover {
+  background: #d0dbe8 !important;
+  background-color: #d0dbe8 !important;
+  border-color: #d0dbe8 !important;
+}
+#app .hero .actions > a.btn.secondary,
+#app a#lig {
+  background: rgba(255,255,255,.08) !important;
+  background-color: rgba(255,255,255,.08) !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(255,255,255,.34) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+  backdrop-filter: blur(12px) saturate(125%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 3px 14px rgba(0,0,0,.08) !important;
+}
+#app .hero .actions > a.btn.secondary:hover,
+#app a#lig:hover {
+  background: rgba(255,255,255,.16) !important;
+  background-color: rgba(255,255,255,.16) !important;
+  border-color: rgba(255,255,255,.48) !important;
+}
+#app .catalog h2 em {
+  color: var(--terra) !important;
+}
