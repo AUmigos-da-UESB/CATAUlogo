@@ -74,7 +74,7 @@
 
 /* Hero desktop: reduz o vazio visual entre o destaque e o título sem mover a foto. */
 @media(min-width:821px){
- .hero>div:first-child{transform:translateY(-24px)}
+ .legacy-hero>div:first-child{transform:translateY(-24px)}
 }
 
 /* Idade */
@@ -510,7 +510,7 @@ body.inline-text-edit .inline-text-input{
 
 
 /* Espaçamento vertical do catálogo: elimina os vãos excessivos e distribui o conteúdo de forma uniforme. */
-.hero{
+.legacy-hero{
   padding-bottom:44px!important;
 }
 #catalogo.tools{
