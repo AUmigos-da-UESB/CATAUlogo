@@ -1,741 +1,741 @@
 {
-  "dogs": [
-    {
-      "id": "a1790900984986",
-      "esp": "Cachorro",
-      "mod": "Canil da UESB",
-      "nome": "Serena",
-      "sexo": "Fêmea",
-      "idade": "Cerca de 3 anos",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026,
-        2026,
-        2026,
-        2026
-      ],
-      "local": "Canil da UESB, Quadra, CAP, Portaria",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "Serena foi encontrada na UESB junto com seus filhotes, em situação de abandono. No início, era muito magra, debilitada e bastante arisca, evitando o contato com as pessoas. Estudantes da Residência Universitária começaram a cuidar dos filhotes e, aos poucos, foram conquistando a confiança de Serena.\n\nDepois de ser resgatada com o apoio do projeto Amigo Pet, Serena passou por uma grande transformação. Recuperou o peso, a saúde e, principalmente, a confiança nas pessoas. Hoje, é uma cadela carinhosa, brincalhona e conhecida por muitos que passam pela UESB.\n\nSeu nome foi escolhido pelos próprios estudantes que participaram do resgate.",
-      "pers": [
-        "Carinhoso",
-        "Dócil",
-        "Sociável",
-        "Calmo",
-        "Leal",
-        "Apegado",
-        "Independente",
-        "Tranquilo",
-        "Esperto",
-        "Obediente",
-        "Afetuoso",
-        "Amigável",
-        "Paciente"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem caramelo",
-        "Orelhas caídas",
-        "Olhos claros",
-        "Castrado",
-        "Gordinho"
-      ],
-      "foto": [
-        "fotos/a1790900984986-muq8pmxl-0.jpg",
-        "fotos/a1790900984986-muzirhhw-2.jpg",
-        "fotos/a1790900984986-muzirhhw-3.jpg",
-        "fotos/a1790900984986-muzirhhw-4.jpg",
-        "fotos/a1790900984986-muzmqder-4.jpg"
-      ],
-      "fotoCred": [
-        "David Matos, @davidmatos_15",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "David Matos, @davidmatos_15"
-      ],
-      "idadeReferencia": "2026-10-08",
-      "nascimentoEstimado": "2023-10-08",
-      "idadeAproximada": true
-    },
-    {
-      "id": "a1790804622019",
-      "esp": "Cachorro",
-      "mod": "Módulo I e IV",
-      "nome": "Bob Jr.",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026
-      ],
-      "local": "Módulo I e IV",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Brincalhão",
-        "Carinhoso",
-        "Dócil",
-        "Calmo",
-        "Independente",
-        "Tranquilo",
-        "Amigável"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem caramelo",
-        "Peito branco",
-        "Orelhas pontudas",
-        "Rabo comprido",
-        "Gordinho",
-        "Olhos castanhos"
-      ],
-      "foto": [
-        "fotos/a1790804622019-muomu3120.jpg",
-        "fotos/a1790804622019-muzgni1v-1.jpg"
-      ],
-      "fotoCred": [
-        "Gabriel Braga, @photos.gsb",
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1790803645938",
-      "esp": "Gato",
-      "mod": "Lar Temporário",
-      "nome": "Tom",
-      "sexo": "Macho",
-      "idade": "Cerca de 2 anos",
-      "status": "Disponível para adoção",
-      "ano": [
-        2026,
-        2026,
-        2026,
-        2026
-      ],
-      "local": "Lar Temporário",
-      "coat": "#b9a58c",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Carinhoso",
-        "Brincalhão",
-        "Dócil",
-        "Sociável",
-        "Calmo",
-        "Curioso",
-        "Tranquilo",
-        "Esperto",
-        "Afetuoso",
-        "Amigável",
-        "Dorminhoco"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem média",
-        "Pelagem lisa",
-        "Manchas",
-        "Rabo comprido",
-        "Vacinado",
-        "Pelagem cinza e branca"
-      ],
-      "foto": [
-        "fotos/a1790803645938-muom95qk0.jpg",
-        "fotos/a1790803645938-muos8prz1.jpg",
-        "fotos/a1790803645938-muos8prz2.jpg",
-        "fotos/a1790803645938-muos8prz3.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ],
-      "idadeReferencia": "2026-10-04",
-      "nascimentoEstimado": "2024-10-04",
-      "idadeAproximada": true
-    },
-    {
-      "id": "a1790812807837",
-      "esp": "Cachorro",
-      "mod": "Canil da UESB",
-      "nome": "Mimosa",
-      "sexo": "Fêmea",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026
-      ],
-      "local": "Canil da UESB",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Carinhoso",
-        "Dócil",
-        "Sociável",
-        "Apegado",
-        "Independente",
-        "Tímido",
-        "Tranquilo",
-        "Afetuoso",
-        "Amigável",
-        "Paciente"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem preta",
-        "Pelagem branca",
-        "Manchas",
-        "Orelhas caídas",
-        "Rabo comprido",
-        "Olhos claros"
-      ],
-      "foto": [
-        "fotos/a1790812807837-muzms7my-0.jpg",
-        "fotos/a1790812807837-muzms7my-1.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1790800495807",
-      "esp": "Cachorro",
-      "mod": "Canil da UESB",
-      "nome": "Floquinho",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026
-      ],
-      "local": "Quadra, CAP, Portaria",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Brincalhão",
-        "Sociável",
-        "Energético",
-        "Curioso",
-        "Independente",
-        "Medroso",
-        "Agitado",
-        "Esperto",
-        "Territorial",
-        "Desconfiado"
-      ],
-      "car": [
-        "Porte grande",
-        "Pelagem longa",
-        "Pelagem lisa",
-        "Pelagem marrom",
-        "Manchas",
-        "Peito branco",
-        "Orelhas caídas",
-        "Rabo comprido",
-        "Castrado",
-        "Vacinado",
-        "Olhos castanhos",
-        "Tricolor"
-      ],
-      "foto": [
-        "fotos/a1790800495807-muolvonw0.jpg",
-        "fotos/a1790800495807-muzijaef-1.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1790813408364",
-      "esp": "Cachorro",
-      "mod": "Canil da UESB",
-      "nome": "Rob",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026,
-        2026,
-        2026
-      ],
-      "local": "Canil da UESB",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Carinhoso",
-        "Dócil",
-        "Sociável",
-        "Calmo",
-        "Independente",
-        "Tímido",
-        "Tranquilo",
-        "Esperto",
-        "Afetuoso"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem preta",
-        "Pelagem branca",
-        "Pelagem marrom",
-        "Manchas",
-        "Peito branco",
-        "Rabo curto",
-        "Castrado",
-        "Vacinado",
-        "Olhos castanhos",
-        "Tricolor",
-        "Orelhas semi-eretas"
-      ],
-      "foto": [
-        "fotos/a1790813408364-muos2ell0.jpg",
-        "fotos/a1790813408364-muzgfw0p-1.jpg",
-        "fotos/a1790813408364-muzih3hi-2.jpg",
-        "fotos/a1790813408364-muzih3hi-3.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1790976427005",
-      "esp": "Cachorro",
-      "mod": "Lar Temporário",
-      "nome": "Lua",
-      "sexo": "Fêmea",
-      "idade": "Cerca de 1 ano e 6 meses",
-      "status": "Disponível para adoção",
-      "ano": [
-        2026,
-        2025,
-        2025
-      ],
-      "local": "Lar Temporário",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Brincalhão",
-        "Carinhoso",
-        "Dócil",
-        "Sociável",
-        "Curioso",
-        "Leal",
-        "Apegado",
-        "Tímido",
-        "Tranquilo",
-        "Afetuoso",
-        "Amigável",
-        "Paciente"
-      ],
-      "car": [
-        "Pelagem caramelo"
-      ],
-      "foto": [
-        "fotos/a1790976427005-murh4fx9-0.jpg",
-        "fotos/a1790976427005-murz6aoe-1.jpg",
-        "fotos/a1790976427005-murz6aoe-2.jpg"
-      ],
-      "fotoCred": [
-        "Nívea Ferraz, @nivia.ferraz",
-        "David Matos, @davidmatos_15",
-        "David Matos, @davidmatos_15"
-      ],
-      "idadeReferencia": "2026-10-03",
-      "nascimentoEstimado": "2025-04-03",
-      "idadeAproximada": true
-    },
-    {
-      "id": "a1791458276059",
-      "esp": "Cachorro",
-      "mod": "Luisão, Módulo IV",
-      "nome": "Apollo",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026,
-        2026
-      ],
-      "local": "Costuma ficar deitado próximo ao ginásio de esportes ou perto dos quiosques do Luizão.",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem marrom",
-        "Orelhas caídas",
-        "Rabo comprido"
-      ],
-      "foto": [
-        "fotos/a1791458276059-muzg05cq-0.jpg",
-        "fotos/a1791458276059-mvsw7gjt-1.jpg",
-        "fotos/a1791458276059-muzh0t7g-2.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "David Matos, @davidmatos_15"
-      ]
-    },
-    {
-      "id": "a1791458450607",
-      "esp": "Cachorro",
-      "mod": "Luisão, Canil",
-      "nome": "Bomba (Apelido)",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026
-      ],
-      "local": "Luisão, Canil",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem preta",
-        "Orelhas caídas",
-        "Rabo comprido"
-      ],
-      "foto": [
-        "fotos/a1791458450607-muzg3vt9-0.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1791458905079",
-      "esp": "Cachorro",
-      "mod": "Luisão",
-      "nome": "[Em pesquisa]",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026
-      ],
-      "local": "Luisão",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem marrom",
-        "Orelhas caídas",
-        "Rabo comprido"
-      ],
-      "foto": [
-        "fotos/a1791458905079-muzgdnmb-0.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1791459651451",
-      "esp": "Cachorro",
-      "mod": "Módulo I, Módulo IV, Módulo de Medicina",
-      "nome": "Bob",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026,
-        2026,
-        2026
-      ],
-      "local": "Módulo I, Módulo IV, Módulo de Medicina",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [],
-      "car": [
-        "Porte médio",
-        "Pelagem média",
-        "Pelagem lisa",
-        "Peito branco",
-        "Orelhas caídas",
-        "Rabo comprido",
-        "Pelagem creme"
-      ],
-      "foto": [
-        "fotos/a1791459651451-muzgtmji-0.jpg",
-        "fotos/a1791459651451-muzgtmji-1.jpg",
-        "fotos/a1791459651451-muziw912-2.jpg",
-        "fotos/a1791459651451-muziw912-3.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1791460638504",
-      "esp": "Cachorro",
-      "mod": "Luisão, Portaria da UESB",
-      "nome": "[Em Pesquisa]",
-      "sexo": "Macho",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026
-      ],
-      "local": "Perto dos quiosques em frente ao Luis",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [
-        "Sociável",
-        "Curioso",
-        "Apegado",
-        "Medroso",
-        "Tímido",
-        "Tranquilo",
-        "Desconfiado"
-      ],
-      "car": [
-        "Porte médio",
-        "Pelagem longa",
-        "Pelagem lisa",
-        "Pelagem caramelo",
-        "Orelhas caídas",
-        "Rabo comprido",
-        "Olhos escuros"
-      ],
-      "foto": [
-        "fotos/a1791460638504-muzherve-0.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r"
-      ]
-    },
-    {
-      "id": "a1791459318423",
-      "esp": "Cachorro",
-      "mod": "Módulo IV",
-      "nome": "[Em pesquisa]",
-      "sexo": "Fêmea",
-      "idade": "Indefinida",
-      "status": "Comunitário",
-      "ano": [
-        2026,
-        2026
-      ],
-      "local": "Módulo IV",
-      "coat": "#b98a55",
-      "ear": "#7d5a36",
-      "bg": "#e3e7d8",
-      "hist": "História em breve.",
-      "pers": [],
-      "car": [
-        "Porte médio",
-        "Pelagem curta",
-        "Pelagem lisa",
-        "Pelagem branca",
-        "Pelagem caramelo",
-        "Manchas",
-        "Rabo comprido",
-        "Orelhas semi-eretas"
-      ],
-      "foto": [
-        "fotos/a1791459318423-muzgmhb6-0.jpg",
-        "fotos/a1791459318423-muzgmhb6-1.jpg"
-      ],
-      "fotoCred": [
-        "Luna Moura, @dillua.r",
-        "Luna Moura, @dillua.r"
-      ]
-    }
-  ],
-  "locs": [
-    "Canil da UESB",
-    "Lar Temporário",
-    "Módulo I e IV",
-    "Luisão, Módulo IV",
-    "Luisão, Canil",
-    "Luisão",
-    "Módulo I, Módulo IV, Módulo de Medicina",
-    "Módulo de medicina",
-    "Luisão, Portaria da UESB"
-  ],
-  "vol": [
-    {
-      "id": "v1790800150469",
-      "nome": "David Matos Ferreira",
-      "papel": "ADM da página 🐶"
-    },
-    {
-      "id": "v1790803104805",
-      "nome": "Luna M A Moura",
-      "papel": "ADM da página 🐶"
-    },
-    {
-      "id": "v1790942933753",
-      "nome": "Roberta D'Angela Menduni Bortoloti",
-      "papel": "Representante do AmigoPET e da CPMEAC🐶"
-    }
-  ],
-  "options": {
-    "Cachorro": {
-      "pers": [],
-      "car": [
-        "Gordinho",
-        "Olhos castanhos",
-        "Tricolor",
-        "Orelhas semi-eretas",
-        "Pelagem creme"
-      ]
-    },
-    "Gato": {
-      "pers": [
-        "miau"
-      ],
-      "car": [
-        "Pelagem cinza e branca"
-      ]
-    }
+ "dogs": [
+  {
+   "id": "a1790900984986",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Serena",
+   "sexo": "Fêmea",
+   "idade": "Cerca de 3 anos",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Canil da UESB, Quadra, CAP, Portaria",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "Serena foi encontrada na UESB junto com seus filhotes, em situação de abandono. No início, era muito magra, debilitada e bastante arisca, evitando o contato com as pessoas. Estudantes da Residência Universitária começaram a cuidar dos filhotes e, aos poucos, foram conquistando a confiança de Serena.\n\nDepois de ser resgatada com o apoio do projeto Amigo Pet, Serena passou por uma grande transformação. Recuperou o peso, a saúde e, principalmente, a confiança nas pessoas. Hoje, é uma cadela carinhosa, brincalhona e conhecida por muitos que passam pela UESB.\n\nSeu nome foi escolhido pelos próprios estudantes que participaram do resgate.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Leal",
+    "Apegado",
+    "Independente",
+    "Tranquilo",
+    "Esperto",
+    "Obediente",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Orelhas caídas",
+    "Olhos claros",
+    "Castrado",
+    "Gordinho"
+   ],
+   "foto": [
+    "fotos/a1790900984986-muq8pmxl-0.jpg",
+    "fotos/a1790900984986-muzirhhw-2.jpg",
+    "fotos/a1790900984986-muzirhhw-3.jpg",
+    "fotos/a1790900984986-muzirhhw-4.jpg",
+    "fotos/a1790900984986-muzmqder-4.jpg"
+   ],
+   "fotoCred": [
+    "David Matos, @davidmatos_15",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "David Matos, @davidmatos_15"
+   ],
+   "idadeReferencia": "2026-10-08",
+   "nascimentoEstimado": "2023-10-08",
+   "idadeAproximada": true
   },
-  "site": {
-    "navAbout": "Sobre e apoio",
-    "heroTitle": "Cada focinho<br>tem <em>uma história.</em>",
-    "heroText": "Conheça os cães e gatos que vivem ou circulam pelo campus. Descubra quem é quem, onde costumam ficar e formas de contribuir para o cuidado desses companheiros.",
-    "heroCatalog": "Explorar o catálogo",
-    "heroAbout": "Como posso ajudar?",
-    "catalogTitle": "Encontre um AUmigo",
-    "searchPlaceholder": "Buscar pelo nome do animal",
-    "volTitle": "Voluntários do AmigoPet",
-    "volText": "Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.",
-    "aboutTitle": "Cuidar também é documentar",
-    "aboutText1": "O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.",
-    "aboutText2": "Quem cuida dos animais no dia a dia é o AmigoPet, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.",
-    "contactTitle": "Fale com o AmigoPet",
-    "contactText": "Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.",
-    "help1Title": "Adote ou apadrinhe",
-    "help1Text": "Conheça os animais em adoção e chame o AmigoPet para conversar.",
-    "help2Title": "Doe ração",
-    "help2Text": "A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.",
-    "help3Title": "Seja voluntário",
-    "help3Text": "Ajude com cuidados, mutirões de vacina, fotos e divulgação.",
-    "help4Title": "Mande fotos",
-    "help4Text": "Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.",
-    "email1": "david.matosferreira15@gmail.com",
-    "email2": "ilunahmoura@gmail.com",
-    "comingTitle": "<span style=\"color: rgb(255, 255, 255);\">De onde tudo começou 🐾</span>",
-    "comingText": "Antes do CATAUlogo existir, nasceu o <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">AUmigos da UESB</span><span style=\"color: rgb(255, 255, 255);\">,&nbsp;</span>um projeto do curso de Cinema e Audiovisual que deu início à pesquisa sobre os cães que vivem e circulam pelo campus e as relações que constroem com estudantes, funcionários e professores.<br><br>O documentário, que está atualmente <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">em produção</span>, acompanha essa convivência entre os animais e a comunidade universitária, buscando conhecer suas histórias, seus espaços e os vínculos que surgem no cotidiano da UESB.<br><br>Durante a pesquisa, percebemos que contar essas histórias também significava saber quem são esses <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">AUmigos, onde costumam ficar e como a comunidade pode ajudar</span>. Foi assim que nasceu o CATAUlogo: uma extensão do projeto audiovisual que leva essa pesquisa para além da tela e transforma informações, histórias e registros em um catálogo vivo.<br><br>Enquanto o documentário acompanha essa relação através do cinema, o CATAUlogo continua esse trabalho no dia a dia, ajudando a <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">registrar, conhecer e cuidar dos AUmigos da UESB</span>. 🐶💛<br>",
-    "comingBackstageLabel": "Por trás das câmeras",
-    "backstage": [
-      {
-        "src": "fotos/bastidores/muqfgask-0.jpg",
-        "caption": "Sr. Eron sendo entrevistado no Módulo IV",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/muqfrbh2-1.jpg",
-        "caption": "Luana Segala, diretora do documentário, durante a gravação no Módulo IV",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murreb5u-2.jpg",
-        "caption": "Roberta D'Angela sendo entrevistada no BazarCão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/muqfrbh2-3.jpg",
-        "caption": "Beatriz Balzana, diretora de fotografia do documentário, durante a gravação no BazarCão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-4.jpg",
-        "caption": "Beatriz Balzana operando a câmera na gravação do Bazarcão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-5.jpg",
-        "caption": "Luana Segala, diretora, e David Matos, assistente de produção e de fotografia, durante a gravação no Bazarcão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-6.jpg",
-        "caption": "Marcela Aparecida, Técnica de Som, e Pedro Arthur, Assistente de Som, durante a gravação no BazarCão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-7.jpg",
-        "caption": "Claquete do documentário durante a gravação no BazarCão. Roberta D'Angela ao fundo.",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-8.jpg",
-        "caption": "David Matos, assistente de produção e de fotografia, durante a gravação no BazarCão",
-        "credit": "Luna Moura, @dillua.r"
-      },
-      {
-        "src": "fotos/bastidores/murryc9x-9.jpg",
-        "caption": "Gravador de áudio durante a gravação no Bazarcão. Marcela Aparecida ao fundo.",
-        "credit": "Luna Moura, @dillua.r"
-      }
-    ],
-    "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>",
-    "background": {
-      "blue": "#42526c",
-      "pink": "#844039",
-      "scale": 170,
-      "aboutStart": "#1c2922",
-      "aboutEnd": "#222b38",
-      "motionSeconds": 78,
-      "motionEnabled": true,
-      "preset": "custom"
-    }
+  {
+   "id": "a1790804622019",
+   "esp": "Cachorro",
+   "mod": "Módulo I e IV",
+   "nome": "Bob Jr.",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Módulo I e IV",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Brincalhão",
+    "Carinhoso",
+    "Dócil",
+    "Calmo",
+    "Independente",
+    "Tranquilo",
+    "Amigável"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Peito branco",
+    "Orelhas pontudas",
+    "Rabo comprido",
+    "Gordinho",
+    "Olhos castanhos"
+   ],
+   "foto": [
+    "fotos/a1790804622019-muomu3120.jpg",
+    "fotos/a1790804622019-muzgni1v-1.jpg"
+   ],
+   "fotoCred": [
+    "Gabriel Braga, @photos.gsb",
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1790803645938",
+   "esp": "Gato",
+   "mod": "Lar Temporário",
+   "nome": "Tom",
+   "sexo": "Macho",
+   "idade": "Cerca de 2 anos",
+   "status": "Disponível para adoção",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Lar Temporário",
+   "coat": "#b9a58c",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Carinhoso",
+    "Brincalhão",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Curioso",
+    "Tranquilo",
+    "Esperto",
+    "Afetuoso",
+    "Amigável",
+    "Dorminhoco"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem média",
+    "Pelagem lisa",
+    "Manchas",
+    "Rabo comprido",
+    "Vacinado",
+    "Pelagem cinza e branca"
+   ],
+   "foto": [
+    "fotos/a1790803645938-muom95qk0.jpg",
+    "fotos/a1790803645938-muos8prz1.jpg",
+    "fotos/a1790803645938-muos8prz2.jpg",
+    "fotos/a1790803645938-muos8prz3.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ],
+   "idadeReferencia": "2026-10-04",
+   "nascimentoEstimado": "2024-10-04",
+   "idadeAproximada": true
+  },
+  {
+   "id": "a1790812807837",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Mimosa",
+   "sexo": "Fêmea",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Canil da UESB",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Apegado",
+    "Independente",
+    "Tímido",
+    "Tranquilo",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Pelagem branca",
+    "Manchas",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Olhos claros"
+   ],
+   "foto": [
+    "fotos/a1790812807837-muzms7my-0.jpg",
+    "fotos/a1790812807837-muzms7my-1.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1790800495807",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Floquinho",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Quadra, CAP, Portaria",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Brincalhão",
+    "Sociável",
+    "Energético",
+    "Curioso",
+    "Independente",
+    "Medroso",
+    "Agitado",
+    "Esperto",
+    "Territorial",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte grande",
+    "Pelagem longa",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Manchas",
+    "Peito branco",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Castrado",
+    "Vacinado",
+    "Olhos castanhos",
+    "Tricolor"
+   ],
+   "foto": [
+    "fotos/a1790800495807-muolvonw0.jpg",
+    "fotos/a1790800495807-muzijaef-1.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1790813408364",
+   "esp": "Cachorro",
+   "mod": "Canil da UESB",
+   "nome": "Rob",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Canil da UESB",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Calmo",
+    "Independente",
+    "Tímido",
+    "Tranquilo",
+    "Esperto",
+    "Afetuoso"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Pelagem branca",
+    "Pelagem marrom",
+    "Manchas",
+    "Peito branco",
+    "Rabo curto",
+    "Castrado",
+    "Vacinado",
+    "Olhos castanhos",
+    "Tricolor",
+    "Orelhas semi-eretas"
+   ],
+   "foto": [
+    "fotos/a1790813408364-muos2ell0.jpg",
+    "fotos/a1790813408364-muzgfw0p-1.jpg",
+    "fotos/a1790813408364-muzih3hi-2.jpg",
+    "fotos/a1790813408364-muzih3hi-3.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1790976427005",
+   "esp": "Cachorro",
+   "mod": "Lar Temporário",
+   "nome": "Lua",
+   "sexo": "Fêmea",
+   "idade": "Cerca de 1 ano e 6 meses",
+   "status": "Disponível para adoção",
+   "ano": [
+    2026,
+    2025,
+    2025
+   ],
+   "local": "Lar Temporário",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Brincalhão",
+    "Carinhoso",
+    "Dócil",
+    "Sociável",
+    "Curioso",
+    "Leal",
+    "Apegado",
+    "Tímido",
+    "Tranquilo",
+    "Afetuoso",
+    "Amigável",
+    "Paciente"
+   ],
+   "car": [
+    "Pelagem caramelo"
+   ],
+   "foto": [
+    "fotos/a1790976427005-murh4fx9-0.jpg",
+    "fotos/a1790976427005-murz6aoe-1.jpg",
+    "fotos/a1790976427005-murz6aoe-2.jpg"
+   ],
+   "fotoCred": [
+    "Nívea Ferraz, @nivia.ferraz",
+    "David Matos, @davidmatos_15",
+    "David Matos, @davidmatos_15"
+   ],
+   "idadeReferencia": "2026-10-03",
+   "nascimentoEstimado": "2025-04-03",
+   "idadeAproximada": true
+  },
+  {
+   "id": "a1791458276059",
+   "esp": "Cachorro",
+   "mod": "Luisão, Módulo IV",
+   "nome": "Apollo",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Costuma ficar deitado próximo ao ginásio de esportes ou perto dos quiosques do Luizão.",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Orelhas caídas",
+    "Rabo comprido"
+   ],
+   "foto": [
+    "fotos/a1791458276059-muzg05cq-0.jpg",
+    "fotos/a1791458276059-mvsw7gjt-1.jpg",
+    "fotos/a1791458276059-muzh0t7g-2.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "David Matos, @davidmatos_15"
+   ]
+  },
+  {
+   "id": "a1791458450607",
+   "esp": "Cachorro",
+   "mod": "Luisão, Canil",
+   "nome": "Bomba (Apelido)",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Luisão, Canil",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Orelhas caídas",
+    "Rabo comprido"
+   ],
+   "foto": [
+    "fotos/a1791458450607-muzg3vt9-0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1791458905079",
+   "esp": "Cachorro",
+   "mod": "Luisão",
+   "nome": "[Em pesquisa]",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Luisão",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem marrom",
+    "Orelhas caídas",
+    "Rabo comprido"
+   ],
+   "foto": [
+    "fotos/a1791458905079-muzgdnmb-0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1791459651451",
+   "esp": "Cachorro",
+   "mod": "Módulo I, Módulo IV, Módulo de Medicina",
+   "nome": "Bob",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026,
+    2026,
+    2026
+   ],
+   "local": "Módulo I, Módulo IV, Módulo de Medicina",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem média",
+    "Pelagem lisa",
+    "Peito branco",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Pelagem creme"
+   ],
+   "foto": [
+    "fotos/a1791459651451-muzgtmji-0.jpg",
+    "fotos/a1791459651451-muzgtmji-1.jpg",
+    "fotos/a1791459651451-muziw912-2.jpg",
+    "fotos/a1791459651451-muziw912-3.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1791460638504",
+   "esp": "Cachorro",
+   "mod": "Luisão, Portaria da UESB",
+   "nome": "[Em Pesquisa]",
+   "sexo": "Macho",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026
+   ],
+   "local": "Perto dos quiosques em frente ao Luis",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Sociável",
+    "Curioso",
+    "Apegado",
+    "Medroso",
+    "Tímido",
+    "Tranquilo",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte médio",
+    "Pelagem longa",
+    "Pelagem lisa",
+    "Pelagem caramelo",
+    "Orelhas caídas",
+    "Rabo comprido",
+    "Olhos escuros"
+   ],
+   "foto": [
+    "fotos/a1791460638504-muzherve-0.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r"
+   ]
+  },
+  {
+   "id": "a1791459318423",
+   "esp": "Cachorro",
+   "mod": "Módulo IV",
+   "nome": "[Em pesquisa]",
+   "sexo": "Fêmea",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Módulo IV",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [],
+   "car": [
+    "Porte médio",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem branca",
+    "Pelagem caramelo",
+    "Manchas",
+    "Rabo comprido",
+    "Orelhas semi-eretas"
+   ],
+   "foto": [
+    "fotos/a1791459318423-muzgmhb6-0.jpg",
+    "fotos/a1791459318423-muzgmhb6-1.jpg"
+   ],
+   "fotoCred": [
+    "Luna Moura, @dillua.r",
+    "Luna Moura, @dillua.r"
+   ]
   }
+ ],
+ "locs": [
+  "Canil da UESB",
+  "Lar Temporário",
+  "Módulo I e IV",
+  "Luisão, Módulo IV",
+  "Luisão, Canil",
+  "Luisão",
+  "Módulo I, Módulo IV, Módulo de Medicina",
+  "Módulo de medicina",
+  "Luisão, Portaria da UESB"
+ ],
+ "vol": [
+  {
+   "id": "v1790800150469",
+   "nome": "David Matos Ferreira",
+   "papel": "ADM da página 🐶"
+  },
+  {
+   "id": "v1790803104805",
+   "nome": "Luna M A Moura",
+   "papel": "ADM da página 🐶"
+  },
+  {
+   "id": "v1790942933753",
+   "nome": "Roberta D'Angela Menduni Bortoloti",
+   "papel": "Representante do AmigoPET e da CPMEAC🐶"
+  }
+ ],
+ "options": {
+  "Cachorro": {
+   "pers": [],
+   "car": [
+    "Gordinho",
+    "Olhos castanhos",
+    "Tricolor",
+    "Orelhas semi-eretas",
+    "Pelagem creme"
+   ]
+  },
+  "Gato": {
+   "pers": [
+    "miau"
+   ],
+   "car": [
+    "Pelagem cinza e branca"
+   ]
+  }
+ },
+ "site": {
+  "navAbout": "Sobre e apoio",
+  "heroTitle": "Cada focinho<br>tem <em>uma história.</em>",
+  "heroText": "Conheça os cães e gatos que vivem ou circulam pelo campus. Descubra quem é quem, onde costumam ficar e formas de contribuir para o cuidado desses companheiros.",
+  "heroCatalog": "Explorar o catálogo",
+  "heroAbout": "Como posso ajudar?",
+  "catalogTitle": "Encontre um AUmigo",
+  "searchPlaceholder": "Buscar pelo nome do animal",
+  "volTitle": "Voluntários do AmigoPet",
+  "volText": "Pessoas que dedicam tempo, trabalho e carinho aos animais da UESB.",
+  "aboutTitle": "Cuidar também é documentar",
+  "aboutText1": "O AUmigos da UESB é o CATAUlogo dos cães e gatos que vivem ou circulam pelo campus da UESB em Vitória da Conquista. Aqui reunimos informações sobre cada animal, seus locais de convivência e formas de ajudar.",
+  "aboutText2": "Quem cuida dos animais no dia a dia é o AmigoPet, projeto que acolhe, alimenta, vacina e encaminha para adoção os bichos da UESB. O CATAUlogo existe para apoiar esse trabalho e fortalecer o cuidado com os animais do campus.",
+  "contactTitle": "Fale com o AmigoPet",
+  "contactText": "Adoções, voluntariado, doação de ração e novidades passam pelas redes do projeto.",
+  "help1Title": "Adote ou apadrinhe",
+  "help1Text": "Conheça os animais em adoção e chame o AmigoPet para conversar.",
+  "help2Title": "Doe ração",
+  "help2Text": "A ração é recebida pelo AmigoPet: entre em contato pelo Instagram para combinar a entrega.",
+  "help3Title": "Seja voluntário",
+  "help3Text": "Ajude com cuidados, mutirões de vacina, fotos e divulgação.",
+  "help4Title": "Mande fotos",
+  "help4Text": "Viu algum AUmigo por aí sem catalogar? Fotografe e envie ao projeto, com o nome do doguinho e o crédito de quem fotografou.",
+  "email1": "david.matosferreira15@gmail.com",
+  "email2": "ilunahmoura@gmail.com",
+  "comingTitle": "<span style=\"color: rgb(255, 255, 255);\">De onde tudo começou 🐾</span>",
+  "comingText": "Antes do CATAUlogo existir, nasceu o <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">AUmigos da UESB</span><span style=\"color: rgb(255, 255, 255);\">,&nbsp;</span>um projeto do curso de Cinema e Audiovisual que deu início à pesquisa sobre os cães que vivem e circulam pelo campus e as relações que constroem com estudantes, funcionários e professores.<br><br>O documentário, que está atualmente <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">em produção</span>, acompanha essa convivência entre os animais e a comunidade universitária, buscando conhecer suas histórias, seus espaços e os vínculos que surgem no cotidiano da UESB.<br><br>Durante a pesquisa, percebemos que contar essas histórias também significava saber quem são esses <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">AUmigos, onde costumam ficar e como a comunidade pode ajudar</span>. Foi assim que nasceu o CATAUlogo: uma extensão do projeto audiovisual que leva essa pesquisa para além da tela e transforma informações, histórias e registros em um catálogo vivo.<br><br>Enquanto o documentário acompanha essa relação através do cinema, o CATAUlogo continua esse trabalho no dia a dia, ajudando a <span style=\"color: rgb(142, 163, 255); font-weight: bold;\">registrar, conhecer e cuidar dos AUmigos da UESB</span>. 🐶💛<br>",
+  "comingBackstageLabel": "Por trás das câmeras",
+  "backstage": [
+   {
+    "src": "fotos/bastidores/muqfgask-0.jpg",
+    "caption": "Sr. Eron sendo entrevistado no Módulo IV",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/muqfrbh2-1.jpg",
+    "caption": "Luana Segala, diretora do documentário, durante a gravação no Módulo IV",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murreb5u-2.jpg",
+    "caption": "Roberta D'Angela sendo entrevistada no BazarCão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/muqfrbh2-3.jpg",
+    "caption": "Beatriz Balzana, diretora de fotografia do documentário, durante a gravação no BazarCão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-4.jpg",
+    "caption": "Beatriz Balzana operando a câmera na gravação do Bazarcão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-5.jpg",
+    "caption": "Luana Segala, diretora, e David Matos, assistente de produção e de fotografia, durante a gravação no Bazarcão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-6.jpg",
+    "caption": "Marcela Aparecida, Técnica de Som, e Pedro Arthur, Assistente de Som, durante a gravação no BazarCão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-7.jpg",
+    "caption": "Claquete do documentário durante a gravação no BazarCão. Roberta D'Angela ao fundo.",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-8.jpg",
+    "caption": "David Matos, assistente de produção e de fotografia, durante a gravação no BazarCão",
+    "credit": "Luna Moura, @dillua.r"
+   },
+   {
+    "src": "fotos/bastidores/murryc9x-9.jpg",
+    "caption": "Gravador de áudio durante a gravação no Bazarcão. Marcela Aparecida ao fundo.",
+    "credit": "Luna Moura, @dillua.r"
+   }
+  ],
+  "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>",
+  "background": {
+   "blue": "#42526c",
+   "pink": "#844039",
+   "scale": 170,
+   "aboutStart": "#1c2922",
+   "aboutEnd": "#222b38",
+   "motionSeconds": 78,
+   "motionEnabled": true,
+   "preset": "custom"
+  }
+ }
 }
