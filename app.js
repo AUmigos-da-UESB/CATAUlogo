@@ -188,7 +188,7 @@ function home(){
   <p class="hero-intro">${et("heroText",SITE.heroText)}</p>
   <div class="hero-actions">
    <a class="btn gradient-flow hero-primary" href="#catalogo">${et("heroCatalog",SITE.heroCatalog)}<span class="hero-arrow" aria-hidden="true">↗</span></a>
-   <a class="btn ghost hero-secondary" href="#sobre">${et("heroAbout",SITE.heroAbout)}</a>
+   <a class="btn ghost hero-secondary" href="#ajudar">${et("heroAbout",SITE.heroAbout)}</a>
   </div>
   <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
  </div><div class="ph hero-visual" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section> <section class="wrap tools" id="catalogo"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2>
