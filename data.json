@@ -732,7 +732,10 @@
    "pink": "#844039",
    "scale": 170,
    "aboutStart": "#1c2922",
-   "aboutEnd": "#222b38"
+   "aboutEnd": "#222b38",
+   "motionSeconds": 78,
+   "motionEnabled": true,
+   "preset": "custom"
   }
  }
 }
