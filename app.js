@@ -168,10 +168,60 @@ function lista(){
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
  let i;do{i=Math.floor(Math.random()*DOGS.length)}while(DOGS.length>1&&i===u);
  try{localStorage.auu_last=DOGS[i].id}catch(e){}return DOGS[i]}
-let destaqueTimer=null,destaquePool=[],destaquePos=0;
 function creditoFoto(d,i){const credito=d.fotoCred&&d.fotoCred[i];if(!credito)return "";const ano=(Array.isArray(d.ano)?d.ano[i]:d.ano)||new Date().getFullYear();return `Foto por ${esc(credito)}, ${ano}`}
-let destaqueRequest=0;function atualizarDestaque(item){const el=document.getElementById("destaque-rotativo");if(!el)return;const request=++destaqueRequest,img=el.querySelector("img"),href=el.closest(".ph")?.querySelector(".tag"),src=assetUrl(PREV[item.d.foto[item.i]]||item.d.foto[item.i]);if(!img||!src)return;const preload=new Image;preload.onload=()=>{if(request!==destaqueRequest||!el.isConnected)return;img.style.opacity=".25";img.src=src;img.alt=`Foto de ${item.d.nome}`;let cr=el.querySelector(".cr");const texto=creditoFoto(item.d,item.i);if(texto){if(!cr){cr=document.createElement("span");cr.className="cr";el.append(cr)}cr.textContent=texto}else cr?.remove();if(href){href.href="#/cao/"+item.d.id;href.innerHTML=`<i class="dot"></i>${esc(item.d.nome)} · ${esc(item.d.mod)}`};requestAnimationFrame(()=>{if(request===destaqueRequest)img.style.opacity="1"})};preload.onerror=()=>{};preload.src=src}
-function iniciarDestaqueRotacao(){if(destaqueTimer)clearInterval(destaqueTimer);const pool=[];DOGS.forEach(d=>(d.foto||[]).forEach((src,i)=>{if(src)pool.push({d,i})}));if(pool.length<2)return;destaquePool=pool;destaquePos=0;destaqueTimer=setInterval(()=>{if(!document.getElementById("destaque-rotativo"))return;destaquePos=(destaquePos+1)%destaquePool.length;atualizarDestaque(destaquePool[destaquePos])},15000)}
+let destaqueTimer=null,destaquePool=[],destaquePos=0,destaqueRequest=0,destaqueVisibilityBound=false;
+function atualizarDestaque(item){
+ const figure=document.getElementById("destaque-rotativo"),img=document.getElementById("hero-photo");
+ if(!figure||!img||!item?.d?.foto?.[item.i])return;
+ const request=++destaqueRequest,src=assetUrl(PREV[item.d.foto[item.i]]||item.d.foto[item.i]);
+ if(!src)return;
+ const preload=new Image();
+ preload.onload=()=>{
+  if(request!==destaqueRequest||!figure.isConnected)return;
+  img.classList.add("is-changing");
+  window.setTimeout(()=>{
+   if(request!==destaqueRequest||!figure.isConnected)return;
+   img.src=src;
+   img.alt=`${item.d.nome}, fotografia de um animal do campus`;
+   const name=figure.querySelector("#photo-name"),place=figure.querySelector("#photo-place");
+   const credit=figure.querySelector("#photo-credit-name"),year=figure.querySelector("#photo-credit-year");
+   if(name)name.textContent=item.d.nome||"Animal do campus";
+   if(place)place.textContent=item.d.mod||item.d.local||"UESB";
+   if(credit)credit.textContent=(item.d.fotoCred&&item.d.fotoCred[item.i])||"Equipe CATAUlogo";
+   const yr=Array.isArray(item.d.ano)?item.d.ano[item.i]:item.d.ano;
+   if(year)year.textContent=String(yr||new Date().getFullYear());
+   img.classList.remove("is-changing");
+  },180);
+ };
+ preload.onerror=()=>{};
+ preload.src=src;
+}
+function iniciarDestaqueRotacao(initialDog,initialIndex=0){
+ if(destaqueTimer){clearInterval(destaqueTimer);destaqueTimer=null}
+ const pool=[];
+ DOGS.forEach(d=>(d.foto||[]).forEach((src,i)=>{if(src)pool.push({d,i})}));
+ if(pool.length<2)return;
+ destaquePool=pool;
+ const initial=pool.findIndex(item=>item.d.id===initialDog?.id&&item.i===initialIndex);
+ destaquePos=initial>=0?initial:0;
+ const frame=document.getElementById("hero-photo-frame");
+ function stop(){if(destaqueTimer){clearInterval(destaqueTimer);destaqueTimer=null}}
+ function start(){
+  stop();
+  if(document.hidden||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  destaqueTimer=setInterval(()=>{
+   if(!document.getElementById("destaque-rotativo")){stop();return}
+   destaquePos=(destaquePos+1)%destaquePool.length;
+   atualizarDestaque(destaquePool[destaquePos]);
+  },8000);
+ }
+ if(frame){frame.onmouseenter=stop;frame.onmouseleave=start}
+ if(!destaqueVisibilityBound){
+  document.addEventListener("visibilitychange",()=>{if(document.hidden){if(destaqueTimer){clearInterval(destaqueTimer);destaqueTimer=null}}else if(document.getElementById("destaque-rotativo"))start()});
+  destaqueVisibilityBound=true;
+ }
+ start();
+}
 function assetUrl(src){
  if(!src)return "";
  const u=String(src);
@@ -180,7 +230,13 @@ function assetUrl(src){
 }
 function et(key,value){return `<span class="site-editable" data-site-edit="${key}">${rh(value)}</span>`}
 function home(){
- const n=k=>DOGS.filter(d=>d.status===k).length,d0=destaque()||SEED.dogs[0];
+ const n=k=>DOGS.filter(d=>d.status===k).length;
+ let d0=destaque()||SEED.dogs[0];
+ if(!d0?.foto?.length)d0=DOGS.find(d=>d.foto&&d.foto.length)||d0;
+ const heroPhotoSrc=d0?.foto?.[0]?assetUrl(PREV[d0.foto[0]]||d0.foto[0]):"";
+ const heroImage=heroPhotoSrc?'<img id="hero-photo" class="photo" src="'+esc(heroPhotoSrc)+'" alt="'+esc(d0.nome)+', fotografia de um animal do campus'+'" decoding="async" fetchpriority="high">':art(d0);
+ const heroCredit=(d0.fotoCred&&d0.fotoCred[0])||"Equipe CATAUlogo";
+ const heroYear=(Array.isArray(d0.ano)?d0.ano[0]:d0.ano)||new Date().getFullYear();
  document.getElementById("app").innerHTML=`
  <section class="wrap hero" id="inicio" aria-labelledby="hero-title"><div class="hero-copy">
   <p class="hero-eyebrow">Um catálogo vivo da UESB</p>
@@ -190,8 +246,14 @@ function home(){
    <a class="btn gradient-flow hero-primary" href="#catalogo">${et("heroCatalog",SITE.heroCatalog)}<span class="hero-arrow" aria-hidden="true">↗</span></a>
    <a class="btn ghost hero-secondary" href="#ajudar">${et("heroAbout",SITE.heroAbout)}</a>
   </div>
-  <div class="count-grid"><div><b>${DOGS.length}</b>Animais catalogados</div><div><b>${n("Comunitário")+n("Comunitária")}</b>Comunitários</div><div><b>${n("Disponível para adoção")}</b>Disponível para adoção</div><div><b>${n("Adotado")}</b>Adotados</div></div>
- </div><div class="ph hero-visual" id="destaque-rotativo">${art(d0)}<a class="tag" href="#/cao/${d0.id}" style="text-decoration:none"><i class="dot"></i>${esc(d0.nome)} · ${esc(d0.mod)}</a></div></section> <section class="wrap tools" id="catalogo"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2>
+  <div class="count-grid" aria-label="Indicadores do catálogo"><div><b>${DOGS.length}</b><span>Animais catalogados</span></div><div><b>${n("Comunitário")+n("Comunitária")}</b><span>Comunitários</span></div><div><b>${n("Disponível para adoção")}</b><span>Disponíveis para adoção</span></div><div><b>${n("Adotado")}</b><span>Adotados</span></div></div>
+ </div><figure class="hero-visual" id="destaque-rotativo" aria-label="Fotografias dos animais do CATAUlogo">
+  <div class="hero-photo-frame" id="hero-photo-frame">${heroImage}<div class="photo-shade" aria-hidden="true"></div></div>
+  <figcaption class="photo-caption" aria-live="off">
+   <div class="photo-subject"><span class="caption-kicker">Um AUmigo do campus</span><strong id="photo-name">${esc(d0.nome)}</strong><span id="photo-place">${esc(d0.mod||d0.local||"UESB")}</span></div>
+   <div class="photo-credit"><span>Fotografia</span><strong id="photo-credit-name">${esc(heroCredit)}</strong><span id="photo-credit-year">${esc(heroYear)}</span></div>
+  </figcaption>
+ </figure></section> <section class="wrap tools" id="catalogo"><div class="catalog-head"><h2>${et("catalogTitle",SITE.catalogTitle)}</h2><div class="catalog-help" id="catalog-help"><button class="catalog-help-toggle" id="catalog-help-toggle" type="button" aria-controls="catalog-help-copy" aria-expanded="true" aria-label="Recolher orientação de busca">i</button><div class="catalog-help-copy" id="catalog-help-copy"><strong>Explore o CATAUlogo</strong><span>Use a busca e os filtros para encontrar animais por nome, localização, espécie ou situação.</span></div></div></div>
    <div class="search-row"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select>${admin?`<button type="button" class="btn order-edit-toggle" id="orderEditToggle" title="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}" aria-label="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>`:""}</div></div>
   <div class="chips" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><p class="meta" id="cnt" style="color:var(--mut);margin:18px 0 0"></p></section>
  <section class="wrap grid" id="grid"></section>
@@ -211,7 +273,8 @@ function home(){
 </div></div></section>
  <section class="coming" id="vem-ai"><div class="wrap"><div class="coming-box"><div><h2>${et("comingTitle",SITE.comingTitle)}</h2><p>${et("comingText",SITE.comingText)}</p></div><div class="coming-art" aria-hidden="true">🎬 🐾</div></div><div class="backstage-head"><div><h3>${et("comingBackstageLabel",SITE.comingBackstageLabel||"Por trás das câmeras")}</h3><p>Um pouquinho do processo de criação do documentário.</p></div><button class="btn ghost" id="bedit" style="display:none">✎ Editar bastidores</button></div><div class="backstage-grid">${(SITE.backstage||[]).filter(b=>b&&b.src).length?(SITE.backstage||[]).filter(b=>b&&b.src).map((b,i)=>`<figure class="backstage-photo" data-back-index="${i}"><div class="back-image"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt="${esc(b.alt||("Bastidores do documentário "+(i+1)))}" loading="${i===0?"eager":"lazy"}" decoding="async" fetchpriority="${i===0?"high":"auto"}"><button type="button" class="back-expand" aria-label="Expandir foto" title="Expandir foto">⤢</button>${b.credit?`<span class="back-credit">Foto por ${esc(String(b.credit).replace(/^foto\s+por\s+/i,""))}</span>`:""}</div><figcaption>${b.caption?rh(b.caption):"Bastidores do documentário."}</figcaption></figure>`).join(""): '<div class="back-empty">Os bastidores vão aparecer aqui 🎬<br><span style="font-size:12px">Em breve, fotos do processo de pesquisa e filmagem do documentário.</span></div>'}</div></div></section>
  <footer><div class="wrap">${et("footer",SITE.footer)}</div></footer>`;
- iniciarDestaqueRotacao();
+ iniciarDestaqueRotacao(d0,0);
+ const helpToggle=document.getElementById("catalog-help-toggle");if(helpToggle)helpToggle.onclick=()=>{const panel=document.getElementById("catalog-help-copy"),open=helpToggle.getAttribute("aria-expanded")!=="true";helpToggle.setAttribute("aria-expanded",String(open));helpToggle.setAttribute("aria-label",open?"Recolher orientação de busca":"Mostrar orientação de busca");panel?.classList.toggle("is-collapsed",!open)};
  document.getElementById("q").oninput=e=>{busca=e.target.value;lista()};
  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const f=b.dataset.f;if(filtrosAtivos.has(f))filtrosAtivos.delete(f);else{for(const grupo of gruposFiltros)if(grupo.includes(f))grupo.forEach(outro=>filtrosAtivos.delete(outro));filtrosAtivos.add(f)}document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(filtrosAtivos.has(x.dataset.f))));lista()});
  document.getElementById("loc").onchange=e=>{loc=e.target.value;lista()};
