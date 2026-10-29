@@ -515,3 +515,105 @@
     border-radius:2rem 2rem 2rem .55rem!important;
   }
 }
+
+
+/* Cabeçalho em três áreas: marca à esquerda, navegação central e identificação à direita. */
+#site-header .site-header-inner{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:clamp(1rem,2.4vw,2.5rem)!important;
+}
+#site-header .logo{grid-column:1;justify-self:start!important}
+#site-header #site-primary-nav{
+  grid-column:2;
+  justify-self:center!important;
+  justify-content:center!important;
+  gap:clamp(1rem,2vw,2rem)!important;
+}
+#site-header .desktop-version{
+  grid-column:3;
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:.35rem .75rem;
+  border:1px solid rgba(169,186,210,.28);
+  border-radius:999px;
+  color:#a9bad2;
+  font:600 .68rem/1 Figtree,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+#site-header .logo img{width:196px!important;max-width:100%!important}
+@media(max-width:900px){
+  #site-header .site-header-inner{
+    grid-template-columns:minmax(0,1fr) 44px!important;
+    gap:12px!important;
+  }
+  #site-header #site-primary-nav{grid-column:auto;justify-self:stretch!important}
+  #site-header .desktop-version{display:none!important}
+}
+
+/* Todas as seções compartilham a mesma área útil dos três controles de busca. */
+#app .vol.wrap{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(2rem,4vw,3rem) 0 3rem!important;
+}
+#app .about .wrap,
+#app .coming .wrap,
+#app footer .wrap{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+#app .about{padding:clamp(2.5rem,4vw,3.5rem) 0!important}
+#app .about .wrap{gap:clamp(2rem,4vw,4rem)!important}
+#app .coming{padding:clamp(2.5rem,4vw,3.5rem) 0 1.5rem!important}
+#app footer{padding:2rem 0!important}
+
+/* Títulos editoriais: mesma família e escala de "Encontre um AUmigo". */
+#app .vol .vhead h2,
+#app .about h2,
+#app .coming .coming-box h2,
+#app .backstage-head h3{
+  margin:0!important;
+  color:#f2f0e8!important;
+  font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif!important;
+  font-size:clamp(2.1rem,3.5vw,3.5rem)!important;
+  font-weight:700!important;
+  line-height:1.08!important;
+  letter-spacing:-.055em!important;
+}
+#app .vol .vhead h2 em,
+#app .about h2 em,
+#app .coming .coming-box h2 em,
+#app .backstage-head h3 em{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:1em!important;
+  font-style:italic!important;
+  font-weight:400!important;
+  letter-spacing:-.06em!important;
+}
+#app .vol .vhead h2 em{color:#a9bad2!important}
+#app .about h2 em{color:#d99a78!important}
+#app .coming .coming-box h2 em{color:#a9bad2!important}
+#app .backstage-head h3 em{color:#d99a78!important}
+#app .coming .coming-box h2{margin-bottom:14px!important}
+#app .backstage-head{align-items:center!important}
+#app .backstage-head h3{font-size:clamp(2.1rem,3.5vw,3.5rem)!important}
+@media(max-width:620px){
+  #app .vol.wrap{padding:2rem 0 2.4rem!important}
+  #app .about{padding:2.4rem 0!important}
+  #app .about .wrap{gap:1.8rem!important}
+  #app .coming{padding:2.4rem 0 1rem!important}
+  #app .vol .vhead h2,
+  #app .about h2,
+  #app .coming .coming-box h2,
+  #app .backstage-head h3{font-size:clamp(1.8rem,7.3vw,2.65rem)!important}
+}
