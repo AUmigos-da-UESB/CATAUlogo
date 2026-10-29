@@ -168,7 +168,6 @@ function lista(){
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
  let i;do{i=Math.floor(Math.random()*DOGS.length)}while(DOGS.length>1&&i===u);
  try{localStorage.auu_last=DOGS[i].id}catch(e){}return DOGS[i]}
-let destaqueTimer=null,destaquePool=[],destaquePos=0;
 function creditoFoto(d,i){const credito=d.fotoCred&&d.fotoCred[i];if(!credito)return "";const ano=(Array.isArray(d.ano)?d.ano[i]:d.ano)||new Date().getFullYear();return `Foto por ${esc(credito)}, ${ano}`}
 let destaqueTimer=null,destaquePool=[],destaquePos=0,destaqueRequest=0,destaqueVisibilityBound=false;
 function atualizarDestaque(item){
