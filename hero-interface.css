@@ -617,3 +617,95 @@
   #app .coming .coming-box h2,
   #app .backstage-head h3{font-size:clamp(1.8rem,7.3vw,2.65rem)!important}
 }
+
+
+/* Padronização definitiva dos controles administrativos: sem gradientes, cores de ação ou animações. */
+#fab button,
+#tdlg button,
+#bdlg button,
+#vdlg button,
+#bgdlg button,
+#cdlg button,
+#dlg button,
+#dlg .pick,
+#tdlg .pick,
+#bdlg .pick,
+#vdlg .pick,
+#bgdlg .pick,
+#cdlg .pick{
+  background:rgba(210,220,230,.10)!important;
+  background-color:rgba(210,220,230,.10)!important;
+  background-image:none!important;
+  border:1px solid rgba(190,205,220,.24)!important;
+  color:#e7edf4!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 4px 14px rgba(0,0,0,.12)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(110%)!important;
+  backdrop-filter:blur(14px) saturate(110%)!important;
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  filter:none!important;
+}
+#fab button:hover,
+#tdlg button:hover,
+#bdlg button:hover,
+#vdlg button:hover,
+#bgdlg button:hover,
+#cdlg button:hover,
+#dlg button:hover,
+#dlg .pick:hover,
+#tdlg .pick:hover,
+#bdlg .pick:hover,
+#vdlg .pick:hover,
+#bgdlg .pick:hover,
+#cdlg .pick:hover{
+  background:rgba(210,220,230,.16)!important;
+  background-color:rgba(210,220,230,.16)!important;
+  background-image:none!important;
+  border-color:rgba(190,205,220,.38)!important;
+  color:#fff!important;
+  animation:none!important;
+  transform:none!important;
+  filter:none!important;
+}
+#fab button:active,
+#tdlg button:active,
+#bdlg button:active,
+#vdlg button:active,
+#bgdlg button:active,
+#cdlg button:active,
+#dlg button:active{
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+}
+
+/* Status dos animais sem verde, vermelho, roxo ou azul temático. */
+#app .badge.comunitario,
+#app .badge.adocao,
+#app .badge.adotado,
+#app .fic-title-row>.badge{
+  background:rgba(210,220,230,.10)!important;
+  background-color:rgba(210,220,230,.10)!important;
+  background-image:none!important;
+  border:1px solid rgba(190,205,220,.25)!important;
+  color:#e3eaf1!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;
+  -webkit-backdrop-filter:blur(12px) saturate(110%)!important;
+  backdrop-filter:blur(12px) saturate(110%)!important;
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+/* Remove qualquer sobra das antigas animações de gradiente nos elementos administrativos. */
+#fab *,
+#tdlg *,
+#bdlg *,
+#vdlg *,
+#bgdlg *,
+#cdlg *,
+#dlg *{
+  animation:none!important;
+}
