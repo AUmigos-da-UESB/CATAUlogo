@@ -489,17 +489,17 @@ body.inline-text-edit .inline-text-input{
 
 
 /* Ajuste de respiro da área do CATAUlogo: distribuição vertical mais equilibrada. */
-#catalogo.tools{
+#legacy-catalogo.tools{
   padding-top:0!important;
   padding-bottom:20px!important;
 }
-#catalogo.tools h2{
+#legacy-catalogo.tools h2{
   margin-bottom:26px!important;
 }
-#catalogo.tools .chips{
+#legacy-catalogo.tools .chips{
   margin-top:14px!important;
 }
-#catalogo.tools #cnt{
+#legacy-catalogo.tools #cnt{
   margin-top:14px!important;
   margin-bottom:0!important;
 }
@@ -513,17 +513,17 @@ body.inline-text-edit .inline-text-input{
 .legacy-hero{
   padding-bottom:44px!important;
 }
-#catalogo.tools{
+#legacy-catalogo.tools{
   padding-top:0!important;
   padding-bottom:8px!important;
 }
-#catalogo.tools h2{
+#legacy-catalogo.tools h2{
   margin-bottom:18px!important;
 }
-#catalogo.tools .chips{
+#legacy-catalogo.tools .chips{
   margin-top:18px!important;
 }
-#catalogo.tools #cnt{
+#legacy-catalogo.tools #cnt{
   margin-top:18px!important;
   margin-bottom:0!important;
 }
