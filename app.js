@@ -238,25 +238,45 @@ function home(){
  const heroCredit=(d0.fotoCred&&d0.fotoCred[0])||"Equipe CATAUlogo";
  const heroYear=(Array.isArray(d0.ano)?d0.ano[0]:d0.ano)||new Date().getFullYear();
  document.getElementById("app").innerHTML=`
- <section class="hero" id="inicio" aria-labelledby="hero-title"><div class="hero-copy">
-  <p class="hero-eyebrow">Um catálogo vivo da UESB</p>
-  <h1 id="hero-title">${et("heroTitle",SITE.heroTitle)}</h1>
-  <p class="hero-intro">${et("heroText",SITE.heroText)}</p>
-  <div class="hero-actions">
-   <a class="btn gradient-flow hero-primary" href="#catalogo">${et("heroCatalog",SITE.heroCatalog)}<span class="hero-arrow" aria-hidden="true">↗</span></a>
-   <a class="btn ghost hero-secondary" href="#ajudar">${et("heroAbout",SITE.heroAbout)}</a>
+ <section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero-copy">
+   <p class="eyebrow hero-eyebrow">Um catálogo vivo da UESB</p>
+   <h1 id="hero-title">Cada focinho<br>tem <em>uma história.</em></h1>
+   <p class="intro">Conheça os cães e gatos que vivem ou circulam pelo campus. Descubra quem é quem, onde costumam ficar e formas de contribuir para o cuidado desses companheiros.</p>
+   <div class="actions">
+    <a class="btn" href="#catalogo">Explorar o catálogo <span class="btn-arrow" aria-hidden="true">↗</span></a>
+    <a class="btn secondary" href="#ajudar">Como posso ajudar?</a>
+   </div>
+   <div class="stats" aria-label="Indicadores do catálogo">
+    <div class="stat"><strong>${DOGS.length}</strong><span>animais catalogados</span></div>
+    <div class="stat"><strong>${n("Comunitário")+n("Comunitária")}</strong><span>comunitários</span></div>
+    <div class="stat"><strong>${n("Disponível para adoção")}</strong><span>disponíveis para adoção</span></div>
+    <div class="stat"><strong>${n("Adotado")}</strong><span>adotados</span></div>
+   </div>
   </div>
-  <div class="count-grid" aria-label="Indicadores do catálogo"><div><b>${DOGS.length}</b><span>Animais catalogados</span></div><div><b>${n("Comunitário")+n("Comunitária")}</b><span>Comunitários</span></div><div><b>${n("Disponível para adoção")}</b><span>Disponíveis para adoção</span></div><div><b>${n("Adotado")}</b><span>Adotados</span></div></div>
- </div><figure class="hero-visual" id="destaque-rotativo" aria-label="Fotografias dos animais do CATAUlogo">
-  <div class="hero-photo-frame" id="hero-photo-frame">${heroImage}<div class="photo-shade" aria-hidden="true"></div></div>
-  <figcaption class="photo-caption" aria-live="off">
-   <div class="photo-subject"><span class="caption-kicker">Um AUmigo do campus</span><strong id="photo-name">${esc(d0.nome)}</strong><span id="photo-place">${esc(d0.mod||d0.local||"UESB")}</span></div>
-   <div class="photo-credit"><span>Fotografia</span><strong id="photo-credit-name">${esc(heroCredit)}</strong><span id="photo-credit-year">${esc(String(heroYear))}</span></div>
-  </figcaption>
- </figure></section> <section class="catalog" id="catalogo"><div class="catalog-head"><h2 id="catalog-title">Encontre um <em>AUmigo.</em></h2><div class="catalog-help" id="catalog-help"><button class="catalog-prompt-icon" id="catalog-help-toggle" type="button" aria-controls="catalog-help-copy" aria-expanded="true" aria-label="Recolher orientação de busca">i</button><div class="catalog-help-copy" id="catalog-help-copy"><strong>Explore o CATAUlogo</strong><span>Use a busca e os filtros para encontrar animais por nome, localização, espécie ou situação.</span></div></div></div>
-   <div class="toolbar"><label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" class="field" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder)}" aria-label="Buscar animal pelo nome" value="${esc(busca)}"></label><div class="location-filter"><select id="loc" class="field" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>`<option${m===loc?" selected":""}>${m}</option>`).join("")}</select><select id="sort" class="field" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select>${admin?`<button type="button" class="btn order-edit-toggle" id="orderEditToggle" title="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}" aria-label="${editOrder?"Fechar menu de ordem":"Editar ordem dos animais"}"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></svg></button>`:""}</div></div>
-  <div class="filters" role="group" aria-label="Filtros">${FILTROS.map(f=>`<button class="filter chip" aria-pressed="${filtrosAtivos.has(f)}" data-f="${f}">${f}</button>`).join("")}</div><div class="resultbar"><p class="meta" id="cnt" style="color:var(--mut);margin:0"></p></div></section>
- <section class="animal-grid grid" id="grid"></section>
+  <figure class="hero-visual" id="destaque-rotativo" aria-label="Fotografias dos animais do CATAUlogo">
+   <div class="hero-photo-frame" id="hero-photo-frame">${heroImage}<div class="photo-shade" aria-hidden="true"></div></div>
+   <figcaption class="photo-caption" aria-live="off">
+    <div class="photo-subject"><span class="caption-kicker">Um AUmigo do campus</span><strong id="photo-name">${esc(d0.nome)}</strong><span id="photo-place">${esc(d0.mod||d0.local||"UESB")}</span></div>
+    <div class="photo-credit"><span>Fotografia</span><strong id="photo-credit-name">${esc(heroCredit)}</strong><span id="photo-credit-year">${esc(String(heroYear))}</span></div>
+   </figcaption>
+  </figure>
+ </section>
+ <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+  <div class="catalog-head"><div><h2 id="catalog-title">Encontre um <em>AUmigo.</em></h2></div>
+   <div class="catalog-help" id="catalog-help"><button class="catalog-prompt-icon" id="catalog-help-toggle" type="button" aria-label="Recolher orientação de busca" aria-expanded="true" aria-controls="catalog-help-copy"><span aria-hidden="true">⌕</span></button><div class="catalog-help-copy" id="catalog-help-copy"><strong>Explore o CATAUlogo</strong><span>Use a busca e os filtros para encontrar animais por nome, localização, espécie ou situação.</span></div></div>
+  </div>
+  <div class="toolbar">
+   <label><span class="hidden">Buscar animal por nome</span><input id="q" class="field" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder||"⌕  Buscar pelo nome do animal")}" aria-label="Buscar animal pelo nome" autocomplete="off" value="${esc(busca)}"></label>
+   <div class="location-filter"><label><span class="hidden">Filtrar por local</span><select id="loc" class="field" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>"<option"+(m===loc?" selected":"")+">"+esc(m)+"</option>").join("")}</select></label>
+    <label><span class="hidden">Modo de visualização</span><select id="sort" class="field" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select></label>
+    ${admin?"<button type=\"button\" class=\"admin order-edit-toggle\" id=\"orderEditToggle\" title=\""+(editOrder?"Fechar menu de ordem":"Editar ordem dos animais")+"\" aria-label=\""+(editOrder?"Fechar menu de ordem":"Editar ordem dos animais")+"\">↗ Administração</button>":""}
+   </div>
+  </div>
+  <div class="filters" role="group" aria-label="Filtros do catálogo">${FILTROS.map(f=>"<button class=\"filter chip\" aria-pressed=\""+filtrosAtivos.has(f)+"\" data-f=\""+esc(f)+"\">"+esc(f)+"</button>").join("")}</div>
+  <div class="resultbar"><span id="cnt" class="meta" aria-live="polite"></span></div>
+  <section class="animal-grid grid" id="grid" aria-live="polite"></section>
+ </section>
 <section class="wrap vol" id="voluntarios"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></section>
  <section class="about" id="sobre"><div class="wrap"><div>
  <h2>${et("aboutTitle",SITE.aboutTitle)}</h2>
