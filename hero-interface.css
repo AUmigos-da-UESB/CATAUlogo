@@ -210,3 +210,64 @@
   #app #catalogo .animal-grid.grid,
   #app #catalogo #grid{grid-template-columns:1fr!important}
 }
+
+/* Ajuste dos cards do catálogo: marcador de espécie pequeno e no canto superior direito. */
+#app #catalogo #grid .card .ph>.sp{
+  position:absolute!important;
+  top:10px!important;
+  right:10px!important;
+  left:auto!important;
+  bottom:auto!important;
+  z-index:3!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:calc(100% - 20px)!important;
+  padding:4px 8px!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  border-radius:999px!important;
+  background:rgba(16,25,20,.82)!important;
+  color:#f2f0e8!important;
+  font:600 10px/1.2 Figtree,sans-serif!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.2)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+  backdrop-filter:blur(8px)!important;
+}
+#app #catalogo #grid .card .ph>.sp svg{
+  display:block!important;
+  width:13px!important;
+  height:13px!important;
+  min-width:13px!important;
+  min-height:13px!important;
+  max-width:13px!important;
+  max-height:13px!important;
+  flex:0 0 13px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+}
+#app #catalogo #grid .card .ph>.sp~svg{width:100%;height:100%}
+
+/* Cinco animais por fileira em telas grandes; duas em tablets e uma em celulares. */
+@media(min-width:1100px){
+  #app #catalogo .animal-grid.grid,
+  #app #catalogo #grid{
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  }
+}
+@media(min-width:621px) and (max-width:1099px){
+  #app #catalogo .animal-grid.grid,
+  #app #catalogo #grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:620px){
+  #app #catalogo .animal-grid.grid,
+  #app #catalogo #grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
