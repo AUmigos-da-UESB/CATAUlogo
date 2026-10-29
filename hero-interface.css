@@ -332,42 +332,50 @@
 
 
 
-/* Botão de orientação: cápsula com ícone separado, igual ao modelo CATAUlogo-seta-ajustada. */
+/* Orientação do catálogo: área fixa para expandir sem deslocar o cabeçalho. */
+#app #catalogo .catalog-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 500px!important;
+  align-items:center!important;
+  gap:1.5rem!important;
+}
 #app #catalogo .catalog-help{
+  appearance:none!important;
+  -webkit-appearance:none!important;
   display:flex!important;
+  flex-direction:row-reverse!important;
   align-items:center!important;
   justify-content:flex-start!important;
   gap:.7rem!important;
-  width:min(450px,100%)!important;
-  max-width:450px!important;
-  min-width:0!important;
-  flex:0 1 450px!important;
-  margin-left:auto!important;
-  padding:.55rem .9rem .55rem .55rem!important;
+  width:500px!important;
+  min-width:500px!important;
+  max-width:500px!important;
+  height:58px!important;
+  min-height:58px!important;
+  margin:0!important;
+  padding:.45rem .55rem!important;
   border:1px solid rgba(169,186,210,.24)!important;
-  border-radius:999px 999px 999px 12px!important;
+  border-radius:999px 999px 12px 999px!important;
   background:rgba(24,36,30,.76)!important;
   box-shadow:0 8px 26px rgba(0,0,0,.08)!important;
   box-sizing:border-box!important;
-  transition:width .22s ease,padding .22s ease,border-radius .22s ease,background .2s ease!important;
+  color:inherit!important;
+  font:inherit!important;
+  text-align:left!important;
+  cursor:pointer!important;
+  transition:background .2s ease,border-color .2s ease!important;
 }
-#app #catalogo .catalog-prompt-icon{
+#app #catalogo .catalog-prompt-symbol{
   display:grid!important;
   place-items:center!important;
   flex:0 0 40px!important;
   width:40px!important;
   height:40px!important;
-  min-width:40px!important;
-  min-height:40px!important;
-  padding:0!important;
-  border:0!important;
   border-radius:50%!important;
   background:rgba(169,186,210,.13)!important;
   color:#d9e2ee!important;
   font:600 25px/1 Figtree,sans-serif!important;
-  cursor:pointer!important;
 }
-#app #catalogo .catalog-prompt-symbol{display:block!important;flex:none!important;width:auto!important;font-size:25px!important;line-height:1!important}
 #app #catalogo .catalog-help-copy{
   display:flex!important;
   flex:1 1 auto!important;
@@ -376,26 +384,51 @@
   min-width:0!important;
   color:#b8c1b8!important;
   font-size:.76rem!important;
-  line-height:1.4!important;
-  white-space:normal!important;
+  line-height:1.3!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
 }
-#app #catalogo .catalog-help-copy strong{color:#f2f0e8!important;font-size:.82rem!important;font-weight:750!important}
+#app #catalogo .catalog-help-copy strong{
+  color:#f2f0e8!important;
+  font-size:.82rem!important;
+  font-weight:750!important;
+}
 #app #catalogo .catalog-help.is-collapsed{
-  width:40px!important;
-  max-width:40px!important;
-  min-width:40px!important;
-  flex:0 0 40px!important;
-  padding:0!important;
-  gap:0!important;
-  justify-content:center!important;
-  border-radius:50%!important;
-  background:rgba(24,36,30,.9)!important;
+  justify-content:flex-start!important;
+  border-color:transparent!important;
+  background:transparent!important;
+  box-shadow:none!important;
 }
-#app #catalogo .catalog-help.is-collapsed .catalog-help-copy{display:none!important}
-#app #catalogo .catalog-help.is-collapsed .catalog-prompt-icon{background:transparent!important}
+#app #catalogo .catalog-help.is-collapsed .catalog-prompt-symbol{
+  margin-left:auto!important;
+  background:rgba(24,36,30,.9)!important;
+  border:1px solid rgba(169,186,210,.24)!important;
+}
+#app #catalogo .catalog-help.is-collapsed .catalog-help-copy{
+  visibility:hidden!important;
+  opacity:0!important;
+}
 @media(max-width:900px){
-  #app #catalogo .catalog-help{width:min(450px,100%)!important;max-width:100%!important;flex-basis:min(450px,100%)!important}
-  #app #catalogo .catalog-help.is-collapsed{width:40px!important;max-width:40px!important;flex-basis:40px!important}
+  #app #catalogo .catalog-head{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:1rem!important;
+  }
+  #app #catalogo .catalog-help{
+    justify-self:end!important;
+    width:min(500px,100%)!important;
+    min-width:0!important;
+    max-width:500px!important;
+  }
+}
+@media(max-width:560px){
+  #app #catalogo .catalog-help{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  #app #catalogo .catalog-help-copy{
+    font-size:.68rem!important;
+  }
+  #app #catalogo .catalog-help-copy strong{font-size:.76rem!important}
 }
 @media(prefers-reduced-motion:reduce){
   #app #catalogo .catalog-help{transition:none!important}
