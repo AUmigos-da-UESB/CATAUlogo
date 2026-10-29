@@ -1007,3 +1007,15 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
   animation-play-state:running!important;
 }
 #ftext,#fadd,#vadd{animation:catau-gradient-flow 8s linear infinite alternate!important}
+
+
+/* Fundo único do CATAUlogo: textura original com movimento diagonal suave. */
+@keyframes catau-pattern-drift {
+  from { background-position: center top, 0 0; }
+  to { background-position: center top, calc(var(--bg-motion-shift, 280px) * -1) calc(var(--bg-motion-shift, 280px) * -1); }
+}
+body.bg-motion-on { animation: catau-pattern-drift var(--bg-motion-duration, 36s) linear infinite; }
+body.bg-motion-off { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  body.bg-motion-on { animation: none !important; }
+}
