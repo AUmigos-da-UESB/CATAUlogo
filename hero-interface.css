@@ -335,7 +335,7 @@
 /* Orientação do catálogo: área fixa para expandir sem deslocar o cabeçalho. */
 #app #catalogo .catalog-head{
   display:grid!important;
-  grid-template-columns:minmax(0,1fr) 500px!important;
+  grid-template-columns:minmax(0,1fr) 580px!important;
   align-items:center!important;
   gap:1.5rem!important;
 }
@@ -347,9 +347,9 @@
   align-items:center!important;
   justify-content:flex-start!important;
   gap:.7rem!important;
-  width:500px!important;
-  min-width:500px!important;
-  max-width:500px!important;
+  width:580px!important;
+  min-width:580px!important;
+  max-width:580px!important;
   height:58px!important;
   min-height:58px!important;
   margin:0!important;
@@ -415,9 +415,9 @@
   }
   #app #catalogo .catalog-help{
     justify-self:end!important;
-    width:min(500px,100%)!important;
+    width:min(580px,100%)!important;
     min-width:0!important;
-    max-width:500px!important;
+    max-width:580px!important;
   }
 }
 @media(max-width:560px){
