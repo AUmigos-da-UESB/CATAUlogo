@@ -23,7 +23,7 @@
 }
 
 @media(max-width:620px){
- header nav{display:none!important}
+ .legacy-site-header nav{display:none!important}
 
  .fab{
   position:fixed!important;
@@ -69,11 +69,11 @@
  }
 
  /* Destaque rotativo sem piscar e ocupando toda a moldura. */
- #destaque-rotativo{
+ #legacy-destaque-rotativo{
   position:relative!important;
   overflow:hidden!important;
  }
- #destaque-rotativo img{
+ #legacy-destaque-rotativo img{
   position:absolute!important;
   inset:0!important;
   width:100%!important;
@@ -85,7 +85,7 @@
  }
 
  /* Nome/status e crédito permanecem na parte inferior, lado a lado. */
- #destaque-rotativo .tag{
+ #legacy-destaque-rotativo .tag{
   left:12px!important;
   right:auto!important;
   bottom:12px!important;
@@ -95,7 +95,7 @@
   line-height:1.2!important;
   z-index:5!important;
  }
- #destaque-rotativo .cr{
+ #legacy-destaque-rotativo .cr{
   right:12px!important;
   left:auto!important;
   bottom:12px!important;
@@ -136,7 +136,7 @@
 
 /* Ajuste final: crédito do destaque maior no desktop, sem alterar o mobile. */
 @media(min-width:621px){
- #destaque-rotativo .cr{
+ #legacy-destaque-rotativo .cr{
   font-size:14px!important;
   padding:4px 10px!important;
   line-height:1.25!important;
@@ -183,7 +183,7 @@
 
 /* Crédito do destaque: maior no desktop. */
 @media(min-width:621px){
- #destaque-rotativo .cr{
+ #legacy-destaque-rotativo .cr{
   font-size:14px!important;
   padding:5px 11px!important;
   line-height:1.25!important;
@@ -192,10 +192,10 @@
 
 /* Crédito do destaque: mesma linha de base da tag, com quebra quando faltar espaço. */
 @media(min-width:621px){
- #destaque-rotativo .tag{
+ #legacy-destaque-rotativo .tag{
   bottom:12px!important;
  }
- #destaque-rotativo .cr{
+ #legacy-destaque-rotativo .cr{
   bottom:12px!important;
   max-width:42%!important;
   white-space:normal!important;
