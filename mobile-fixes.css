@@ -1,8 +1,8 @@
 /* CATAUlogo 2026-10-03: correções mobile isoladas */
 
 /* Destaque: desktop preservado; no mobile os dois textos ficam juntos na base. */
-.hero .ph{position:relative!important}
-.hero .ph .tag{
+.legacy-hero .ph{position:relative!important}
+.legacy-hero .ph .tag{
  bottom:16px!important;
  left:16px!important;
  right:auto!important;
@@ -10,9 +10,9 @@
  white-space:normal!important;
  z-index:5!important;
 }
-.hero .ph .credit,
-.hero .ph .photo-credit,
-.hero .ph [class*="credit"]{
+.legacy-hero .ph .credit,
+.legacy-hero .ph .photo-credit,
+.legacy-hero .ph [class*="credit"]{
  bottom:14px!important;
  left:auto!important;
  right:16px!important;
@@ -23,7 +23,7 @@
 }
 
 @media(max-width:620px){
- .legacy-site-header nav{display:none!important}
+ .legacy-site-header .legacy-site-nav{display:none!important}
 
  .fab{
   position:fixed!important;
@@ -107,9 +107,9 @@
   z-index:4!important;
  }
 
- .hero .ph .credit,
- .hero .ph .photo-credit,
- .hero .ph [class*="credit"]{
+ .legacy-hero .ph .credit,
+ .legacy-hero .ph .photo-credit,
+ .legacy-hero .ph [class*="credit"]{
   right:12px!important;
   left:auto!important;
   bottom:12px!important;
