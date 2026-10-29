@@ -733,7 +733,7 @@
    "scale": 170,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
-   "motionSeconds": 78,
+   "motionSeconds": 100,
    "motionEnabled": true,
    "preset": "custom"
   }
