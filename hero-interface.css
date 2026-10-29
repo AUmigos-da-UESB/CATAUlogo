@@ -14,6 +14,11 @@
 #site-header .site-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 #site-header .site-menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
 #site-header a:focus-visible,#site-header button:focus-visible{outline:2px solid #a9bad2;outline-offset:4px}
+/* O acesso ao Admin continua flutuante, com o acabamento discreto da interface aprovada. */
+.fab{right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));gap:8px}
+#fadm{min-height:42px;padding:9px 16px!important;border:1px solid #526357!important;border-radius:999px!important;background:rgba(18,25,20,.94)!important;color:#eef2ea!important;box-shadow:0 8px 24px rgba(0,0,0,.24)!important;backdrop-filter:blur(10px);font-size:13px!important}
+#fadm:hover{background:#26362b!important;border-color:#a9bad2!important}
+
 #app #inicio,#app #catalogo,#app #ajudar,#app #sobre{scroll-margin-top:88px}
 #app .hero{width:100%;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:start;gap:clamp(2rem,5vw,5rem);padding:clamp(2.8rem,5vh,3.8rem) clamp(1rem,5vw,5rem) 3.5rem;box-sizing:border-box}
 #app .hero-copy{min-width:0;padding:0}
