@@ -333,7 +333,7 @@
 
 
 /* Botão de orientação: cápsula com ícone separado, igual ao modelo CATAUlogo-seta-ajustada. */
-#app #catalogo.tools .catalog-help{
+#app #catalogo .catalog-help{
   display:flex!important;
   align-items:center!important;
   justify-content:flex-start!important;
@@ -351,7 +351,7 @@
   box-sizing:border-box!important;
   transition:width .22s ease,padding .22s ease,border-radius .22s ease,background .2s ease!important;
 }
-#app #catalogo.tools .catalog-prompt-icon{
+#app #catalogo .catalog-prompt-icon{
   display:grid!important;
   place-items:center!important;
   flex:0 0 40px!important;
@@ -367,8 +367,8 @@
   font:600 25px/1 Figtree,sans-serif!important;
   cursor:pointer!important;
 }
-#app #catalogo.tools .catalog-prompt-symbol{display:block!important;flex:none!important;width:auto!important;font-size:25px!important;line-height:1!important}
-#app #catalogo.tools .catalog-help-copy{
+#app #catalogo .catalog-prompt-symbol{display:block!important;flex:none!important;width:auto!important;font-size:25px!important;line-height:1!important}
+#app #catalogo .catalog-help-copy{
   display:flex!important;
   flex:1 1 auto!important;
   flex-direction:column!important;
@@ -379,8 +379,8 @@
   line-height:1.4!important;
   white-space:normal!important;
 }
-#app #catalogo.tools .catalog-help-copy strong{color:#f2f0e8!important;font-size:.82rem!important;font-weight:750!important}
-#app #catalogo.tools .catalog-help.is-collapsed{
+#app #catalogo .catalog-help-copy strong{color:#f2f0e8!important;font-size:.82rem!important;font-weight:750!important}
+#app #catalogo .catalog-help.is-collapsed{
   width:40px!important;
   max-width:40px!important;
   min-width:40px!important;
@@ -391,12 +391,12 @@
   border-radius:50%!important;
   background:rgba(24,36,30,.9)!important;
 }
-#app #catalogo.tools .catalog-help.is-collapsed .catalog-help-copy{display:none!important}
-#app #catalogo.tools .catalog-help.is-collapsed .catalog-prompt-icon{background:transparent!important}
+#app #catalogo .catalog-help.is-collapsed .catalog-help-copy{display:none!important}
+#app #catalogo .catalog-help.is-collapsed .catalog-prompt-icon{background:transparent!important}
 @media(max-width:900px){
-  #app #catalogo.tools .catalog-help{width:min(450px,100%)!important;max-width:100%!important;flex-basis:min(450px,100%)!important}
-  #app #catalogo.tools .catalog-help.is-collapsed{width:40px!important;max-width:40px!important;flex-basis:40px!important}
+  #app #catalogo .catalog-help{width:min(450px,100%)!important;max-width:100%!important;flex-basis:min(450px,100%)!important}
+  #app #catalogo .catalog-help.is-collapsed{width:40px!important;max-width:40px!important;flex-basis:40px!important}
 }
 @media(prefers-reduced-motion:reduce){
-  #app #catalogo.tools .catalog-help{transition:none!important}
+  #app #catalogo .catalog-help{transition:none!important}
 }
