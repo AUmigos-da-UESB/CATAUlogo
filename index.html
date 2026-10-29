@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="fixes.css?v=20261028-adminbg1">
 <link rel="stylesheet" href="mobile-fixes.css?v=20261003-mobile12">
 <link rel="stylesheet" href="inline-text-tools.css?v=20261003-color5">
+<link rel="stylesheet" href="hero-interface.css?v=20261029-1">
 </head>
 <body class="app-loading">
 <header><div class="wrap">
- <a class="logo" href="#/"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--acc)"/><path d="M8 11c0-3 4-3 4 1v3M24 11c0-3-4-3-4 1v3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="16" cy="18" r="6" fill="#fff"/><circle cx="14" cy="17" r="1" fill="#17231d"/><circle cx="18" cy="17" r="1" fill="#17231d"/><ellipse cx="16" cy="20" rx="1.6" ry="1.1" fill="#17231d"/></svg>AUmigos da UESB</a>
- <nav><a href="#/">Início</a><a href="#catalogo">CATAUlogo</a><a href="#voluntarios">Voluntários</a><a href="#sobre">Sobre e apoio</a><a href="#vem-ai">Vem aí 👀</a></nav>
+ <a class="logo" href="#/" aria-label="CATAUlogo, página inicial"><img src="cataulogo-logo.svg" alt="CATAUlogo"></a>
+ <nav aria-label="Navegação principal"><a href="#/">Início</a><a href="#catalogo">CATAUlogo</a><a href="#ajudar">Como ajudar</a><a href="#sobre">Sobre o projeto</a></nav>
 </div></header>
 
 <div class="fab" id="fab"><button class="btn ghost fab-icon-btn fab-logout gradient-flow" id="flogout" style="display:none" title="Sair do admin" aria-label="Sair do admin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg></button><button class="btn ghost fab-icon-btn pencil-btn gradient-flow" id="ftext" style="display:none" title="Editar textos" aria-label="Editar textos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg></button><button class="btn ghost fab-icon-btn gradient-flow" id="fbgedit" style="display:none" title="Editar cores" aria-label="Editar cores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 15l4-4 4 4 3-3 5 5"/><circle cx="9" cy="8" r="1.5"/></svg></button><button class="btn gradient-flow" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
@@ -71,5 +72,6 @@
 <script src="fixes.js?v=20261008c" defer></script>
 <script src="sync.js?v=20261008c" defer></script>
 <script src="inline-text-tools.js?v=20261008c" defer></script>
+<script src="hero-interface.js?v=20261029-1" defer></script>
 </body>
 </html>
