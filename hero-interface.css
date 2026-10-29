@@ -461,3 +461,57 @@
 @media(prefers-reduced-motion:reduce){
   #app #catalogo .catalog-help{transition:none!important}
 }
+
+
+/* Abertura alinhada ao mesmo recuo do catálogo, com moldura deslocada da referência. */
+#app .hero{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+#app .hero-copy{
+  min-width:0!important;
+}
+#app .hero-photo-frame{
+  overflow:visible!important;
+  isolation:isolate!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+#app .hero-photo-frame:after{
+  content:""!important;
+  position:absolute!important;
+  inset:-.65rem -.65rem .65rem .65rem!important;
+  z-index:0!important;
+  display:block!important;
+  border:1px solid rgba(167,185,208,.38)!important;
+  border-radius:3.4rem 3.4rem 3.4rem .7rem!important;
+  pointer-events:none!important;
+}
+#app .hero-photo-frame>img,
+#app .hero-photo-frame>svg{
+  z-index:1!important;
+  border-radius:2.2rem 2.2rem 2.2rem .65rem!important;
+}
+#app .hero-photo-frame .photo-shade{
+  border-radius:2.2rem 2.2rem 2.2rem .65rem!important;
+}
+@media(max-width:900px){
+  #app .hero{padding-left:0!important;padding-right:0!important}
+  #app .hero-photo-frame:after{
+    inset:-.45rem -.45rem .45rem .45rem!important;
+    border-radius:2.5rem 2.5rem 2.5rem .55rem!important;
+  }
+}
+@media(max-width:620px){
+  #app .hero{padding-left:0!important;padding-right:0!important}
+  #app .hero-photo-frame>img,
+  #app .hero-photo-frame>svg,
+  #app .hero-photo-frame .photo-shade{
+    border-radius:1.7rem 1.7rem 1.7rem .55rem!important;
+  }
+  #app .hero-photo-frame:after{
+    inset:-.4rem -.4rem .4rem .4rem!important;
+    border-radius:2rem 2rem 2rem .55rem!important;
+  }
+}
