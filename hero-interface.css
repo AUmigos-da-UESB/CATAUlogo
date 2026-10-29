@@ -129,3 +129,19 @@
 @media(prefers-reduced-motion:reduce){
  #site-header .site-menu-toggle span,#site-header #site-primary-nav a,#app .hero-arrow,#app .hero-photo-frame>img{transition:none!important}
 }
+
+
+/* Foto rotativa no formato original 10:11, sem altura fixa nem corte proporcional. */
+#app .hero-photo-frame{
+  width:100%;
+  height:auto!important;
+  aspect-ratio:10 / 11;
+  min-height:0;
+  max-height:none;
+}
+#app .hero-photo-frame>img,#app .hero-photo-frame>svg{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover;
+  object-position:center;
+}
