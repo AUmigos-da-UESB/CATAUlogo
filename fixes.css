@@ -536,3 +536,25 @@ body.inline-text-edit .inline-text-input{
 #grid{
   padding-bottom:42px!important;
 }
+
+
+/* Fundo animado: somente a camada do padrão se desloca, mantendo o degradê imóvel. */
+@keyframes cataulogo-pattern-diagonal{from{background-position:0 0,0 0}to{background-position:0 0,var(--bg-motion-shift,280px) var(--bg-motion-shift,280px)}}
+body.bg-motion-on{animation:cataulogo-pattern-diagonal var(--bg-motion-duration,36s) linear infinite;background-attachment:fixed!important}
+body.bg-motion-off{animation:none!important}
+#bgpreview{position:relative;overflow:hidden}
+#bgpreview.bg-preview-moving{animation:cataulogo-pattern-preview var(--preview-speed,36s) linear infinite}
+@keyframes cataulogo-pattern-preview{from{background-position:0 0}to{background-position:280px 280px}}
+.bg-motion-toggle{display:flex;align-items:center;gap:10px;margin:12px 0;color:var(--ink);font-size:14px}
+.bg-motion-toggle input{width:17px;height:17px;accent-color:var(--acc)}
+#bgPreset{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+#bgMotionSpeedValue{float:right;color:var(--mut);font-variant-numeric:tabular-nums}
+/* Privacidade dos controles administrativos: ocultos por padrão para qualquer visitante. */
+body:not(.isadm) #grid .card-actions,
+body:not(.isadm) #grid .dx,
+body:not(.isadm) #grid .ex,
+body:not(.isadm) #vgrid .vedit,
+body:not(.isadm) #vgrid .vrem,
+body:not(.isadm) #vadd,
+body:not(.isadm) #bedit{display:none!important;visibility:hidden!important;pointer-events:none!important}
+body.isadm #grid .card-actions{display:flex!important;visibility:visible!important;pointer-events:auto!important}
