@@ -145,3 +145,68 @@
   object-fit:cover;
   object-position:center;
 }
+
+/* CATAUlogo: controles de busca no padrão de vidro desfocado. */
+#app #catalogo .catalog-prompt-icon,
+#app #catalogo .filters .chip,
+#app #catalogo .filters .filter,
+#app #catalogo .filters button{
+  background:rgba(255,255,255,.075)!important;
+  background-color:rgba(255,255,255,.075)!important;
+  background-image:none!important;
+  color:#e8eee8!important;
+  border:1px solid rgba(226,236,228,.28)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(135%)!important;
+  backdrop-filter:blur(14px) saturate(135%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 4px 16px rgba(0,0,0,.12)!important;
+  text-shadow:none!important;
+  animation:none!important;
+  transform:none;
+  transition:background .18s ease,border-color .18s ease,color .18s ease!important;
+}
+#app #catalogo .catalog-prompt-icon:hover,
+#app #catalogo .filters .chip:hover,
+#app #catalogo .filters .filter:hover,
+#app #catalogo .filters button:hover{
+  background:rgba(255,255,255,.14)!important;
+  background-color:rgba(255,255,255,.14)!important;
+  border-color:rgba(226,236,228,.48)!important;
+  color:#fff!important;
+  transform:none!important;
+}
+#app #catalogo .filters .chip[aria-pressed="true"],
+#app #catalogo .filters .filter[aria-pressed="true"],
+#app #catalogo .filters button[aria-pressed="true"]{
+  background:rgba(169,186,210,.22)!important;
+  background-color:rgba(169,186,210,.22)!important;
+  background-image:none!important;
+  color:#f5f7fb!important;
+  border-color:rgba(169,186,210,.58)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 4px 16px rgba(0,0,0,.12)!important;
+}
+#app #catalogo .catalog-prompt-icon[aria-expanded="true"]{
+  background:rgba(255,255,255,.12)!important;
+  background-color:rgba(255,255,255,.12)!important;
+  color:#f5f7fb!important;
+}
+
+/* A grade e a contagem precisam permanecer visíveis abaixo dos filtros. */
+#app #catalogo .resultbar{
+  display:flex!important;
+}
+#app #catalogo .animal-grid.grid,
+#app #catalogo #grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:1rem!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+@media(max-width:900px){
+  #app #catalogo .animal-grid.grid,
+  #app #catalogo #grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:620px){
+  #app #catalogo .animal-grid.grid,
+  #app #catalogo #grid{grid-template-columns:1fr!important}
+}
