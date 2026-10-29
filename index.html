@@ -11,13 +11,23 @@
 <link rel="stylesheet" href="fixes.css?v=20261028-adminbg1">
 <link rel="stylesheet" href="mobile-fixes.css?v=20261003-mobile12">
 <link rel="stylesheet" href="inline-text-tools.css?v=20261003-color5">
-<link rel="stylesheet" href="hero-interface.css?v=20261029-1">
+<link rel="stylesheet" href="hero-interface.css?v=20261029-2">
 </head>
 <body class="app-loading">
-<header><div class="wrap">
- <a class="logo" href="#/" aria-label="CATAUlogo, página inicial"><img src="cataulogo-logo.svg" alt="CATAUlogo"></a>
- <nav aria-label="Navegação principal"><a href="#/">Início</a><a href="#catalogo">CATAUlogo</a><a href="#ajudar">Como ajudar</a><a href="#sobre">Sobre o projeto</a></nav>
-</div></header>
+<header id="site-header">
+ <div class="site-header-inner">
+  <a class="logo" href="#inicio" aria-label="CATAUlogo, página inicial"><img src="cataulogo-logo.svg" alt="CATAUlogo"></a>
+  <button class="site-menu-toggle" id="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-primary-nav" aria-label="Abrir menu">
+   <span></span><span></span><span></span>
+  </button>
+  <nav id="site-primary-nav" class="site-primary-nav" aria-label="Navegação principal">
+   <a href="#inicio" aria-current="page">Início</a>
+   <a href="#catalogo">CATAUlogo</a>
+   <a href="#ajudar">Como ajudar</a>
+   <a href="#sobre">Sobre o projeto</a>
+  </nav>
+ </div>
+</header>
 
 <div class="fab" id="fab"><button class="btn ghost fab-icon-btn fab-logout gradient-flow" id="flogout" style="display:none" title="Sair do admin" aria-label="Sair do admin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg></button><button class="btn ghost fab-icon-btn pencil-btn gradient-flow" id="ftext" style="display:none" title="Editar textos" aria-label="Editar textos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg></button><button class="btn ghost fab-icon-btn gradient-flow" id="fbgedit" style="display:none" title="Editar cores" aria-label="Editar cores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 15l4-4 4 4 3-3 5 5"/><circle cx="9" cy="8" r="1.5"/></svg></button><button class="btn gradient-flow" id="fadd" style="display:none">+ Adicionar animal</button><button class="btn ghost" id="fadm" style="background:var(--card)">Admin</button></div>
 
@@ -68,10 +78,10 @@
 </div>
 <div class="full" style="font-size:13px;color:var(--mut)">Tamanho recomendado: 1000 × 1100 px. Até 6 fotos. Informe o nome de quem fotografou para os créditos. Formatos aceitos: JPG, PNG, WebP e RAW.</div><div class="full" id="slots" style="display:grid;gap:8px"></div><div class="full"><button type="button" class="btn ghost" id="addslot" style="padding:8px 16px;font-size:14px">+ Adicionar outra foto</button></div>
 <div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" id="save">Salvar animal</button></div></form></div></dialog>
-<script src="app.js?v=20261028-motion1" defer></script>
+<script src="app.js?v=20261029-menu2" defer></script>
 <script src="fixes.js?v=20261008c" defer></script>
 <script src="sync.js?v=20261008c" defer></script>
 <script src="inline-text-tools.js?v=20261008c" defer></script>
-<script src="hero-interface.js?v=20261029-1" defer></script>
+<script src="hero-interface.js?v=20261029-2" defer></script>
 </body>
 </html>
