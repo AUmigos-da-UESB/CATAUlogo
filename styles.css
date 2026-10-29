@@ -121,8 +121,8 @@ dialog .full{grid-column:1/-1}
 
 /* Tema padrão do CATAUlogo: escuro */
 :root{--bg:#121914;--card:#1b251f;--ink:#eef2ea;--mut:#b1bdb4;--line:#2b382f;--acc:#8ea3ff;--accsoft:#232b4f;--sage:#1f2b23};--about-bg-start:#1c2922;--about-bg-end:#222b38
-body{background-color:var(--bg);color:var(--ink);background-image:linear-gradient(rgba(15,23,19,.38),rgba(15,23,19,.38)),url("fotos/padrao-pets-tile.png");background-position:center top;background-repeat:repeat;background-size:140px 140px;}
-body{background-image:linear-gradient(rgba(15,23,19,.38),rgba(15,23,19,.38)),url("fotos/padrao-pets-tile.png");background-position:center top;background-repeat:repeat;background-size:140px 140px;}
+body{background-color:var(--bg);color:var(--ink);background-attachment:fixed;}
+
 @media(max-width:620px){.vol{padding-bottom:68px}.vol+.about{padding-top:48px}.vgrid{grid-template-columns:1fr;gap:10px}.vc{align-items:flex-start}.ex,.dx{top:auto;bottom:10px}.chips{grid-template-columns:repeat(4,minmax(0,1fr))}.legacy-site-header .wrap{height:60px;padding:0 14px}.logo{gap:7px;font-size:15px}.logo svg{width:26px;height:26px}.legacy-site-header .btn{padding:8px 12px;font-size:12px}.legacy-hero{padding:24px 0 42px;gap:24px}.legacy-hero h1{font-size:clamp(34px,11vw,50px)}.legacy-hero p{font-size:16px;margin:16px 0 22px}.legacy-hero .btn{padding:10px 16px;font-size:14px}.count-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-top:24px}.count-grid b{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-bottom:48px}.card{border-radius:15px}.card .ph{aspect-ratio:4/4.5}.card .bd{padding:11px 12px 14px}.card h3{font-size:18px}.card .meta{font-size:12px}.badge{font-size:11px;padding:4px 8px}.tools{padding-bottom:18px}.search{max-width:none}.search input{font-size:15px}.chips{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-right:0;padding:0;overflow:visible}.chip{font-size:11px;line-height:1.2;padding:8px 4px;white-space:normal;min-height:40px}.row select{width:100%;min-width:0}.about{padding:48px 0}.about .wrap{gap:24px}.about h2{font-size:32px}.help div{padding:15px 16px}.coming{padding:44px 0 20px}.coming .coming-box{grid-template-columns:1fr;padding:24px 20px;gap:20px;border-radius:22px}.coming-art{min-height:120px;font-size:52px}.backstage-head{align-items:flex-start;flex-direction:column;margin-top:24px}.backstage-grid{grid-template-columns:1fr;gap:14px}.backstage-photo{border-radius:15px}.fic{gap:24px;padding-bottom:48px}.fic h1{font-size:42px}.kv{grid-template-columns:1fr}.thumbs{gap:8px}.thumbs button{border-radius:10px}.dialog-scroll{max-height:calc(100vh - 110px)}.text-editor-grid{grid-template-columns:1fr}.fab{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 20px)}.fab .btn{padding:9px 13px;font-size:12px}.back-lightbox{padding:10px}.back-lightbox-inner{width:100%;height:calc(100vh - 78px);grid-template-columns:36px minmax(0,1fr) 36px;grid-template-rows:minmax(0,1fr) auto auto;column-gap:4px;row-gap:8px}.back-lightbox-media{grid-column:2;grid-row:1;width:100%;aspect-ratio:3/2}.back-lightbox-info{grid-column:2;grid-row:2;position:static;width:100%;max-width:100%;margin:0;align-self:start}.back-lightbox-credit{font-size:10px}.back-lightbox-caption{font-size:12px;padding:9px 10px}.back-lightbox-thumbs{grid-column:2;grid-row:3;width:100%;max-height:68px;gap:6px}.back-lightbox-thumb{width:70px;max-width:70px}.back-lightbox-nav{width:36px;height:36px;font-size:22px}.back-lightbox-close{top:10px;left:10px;padding:7px 10px;font-size:12px}.back-arrow{width:18px;height:18px}.back-lightbox-count{top:10px;right:10px;font-size:11px}}@media(max-width:420px){.wrap{padding-left:14px;padding-right:14px}.grid{grid-template-columns:1fr 1fr;gap:9px}.card .bd{padding:10px}.card h3{font-size:17px}.legacy-hero .btn{width:100%;justify-content:center;margin-bottom:8px}.count-grid{gap:7px}.count-grid>div{font-size:12px}.count-grid b{font-size:20px}.back-lightbox-inner{grid-template-columns:30px minmax(0,1fr) 30px}.back-lightbox-nav{width:30px;height:30px;font-size:19px}}
 .legacy-hero p,.about p,.count-grid,.meta{ text-shadow:0 1px 4px rgba(0,0,0,.72) }
 
@@ -1009,13 +1009,10 @@ button.back-lightbox-close:not(.btn):not(.chip):not(.pick):hover,button.back-lig
 #ftext,#fadd,#vadd{animation:catau-gradient-flow 8s linear infinite alternate!important}
 
 
-/* Fundo único do CATAUlogo: textura original com movimento diagonal suave. */
-@keyframes catau-pattern-drift {
-  from { background-position: center top, 0 0; }
-  to { background-position: center top, calc(var(--bg-motion-shift, 280px) * -1) calc(var(--bg-motion-shift, 280px) * -1); }
+/* Movimento contínuo do padrão original em SVG, sem imagem de teste ou camada duplicada. */
+@keyframes catau-original-bg-drift {
+  from { background-position: 0 0; }
+  to { background-position: 260px 250px; }
 }
-body.bg-motion-on { animation: catau-pattern-drift var(--bg-motion-duration, 36s) linear infinite; }
-body.bg-motion-off { animation: none !important; }
-@media (prefers-reduced-motion: reduce) {
-  body.bg-motion-on { animation: none !important; }
-}
+body { animation: catau-original-bg-drift 48s linear infinite; }
+@media (prefers-reduced-motion: reduce) { body { animation: none !important; } }
