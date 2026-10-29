@@ -728,14 +728,14 @@
   ],
   "footer": "<p><strong>Projeto independente · UESB · Vitória da Conquista, BA · Cinema e Audiovisual</strong></p>",
   "background": {
-   "blue": "#688b78",
-   "pink": "#b58b45",
+   "blue": "#34495c",
+   "pink": "#633b30",
    "scale": 140,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
-   "motionSeconds": 44,
+   "motionSeconds": 36,
    "motionEnabled": true,
-   "preset": "floresta"
+   "preset": "noturno"
   }
  }
 }
