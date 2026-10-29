@@ -538,10 +538,31 @@ body.inline-text-edit .inline-text-input{
 }
 
 
-/* Fundo animado: somente a camada do padrão se desloca, mantendo o degradê imóvel. */
-@keyframes cataulogo-pattern-diagonal{from{background-position:0 0,0 0}to{background-position:0 0,var(--bg-motion-shift,280px) var(--bg-motion-shift,280px)}}
-body.bg-motion-on{animation:cataulogo-pattern-diagonal var(--bg-motion-duration,36s) linear infinite;background-attachment:fixed!important}
-body.bg-motion-off{animation:none!important}
+/* Fundo animado: o degradê fica imóvel e só o padrão decorativo se desloca. */
+body{position:relative;isolation:isolate}
+body::after{
+  content:"";
+  position:fixed;
+  inset:-8%;
+  z-index:-1;
+  pointer-events:none;
+  background-image:var(--catau-pattern-image);
+  background-repeat:repeat;
+  background-size:var(--catau-pattern-size,280px) var(--catau-pattern-size,280px);
+  background-position:0 0;
+  opacity:.15;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+@keyframes cataulogo-pattern-drift{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-140px,-140px,0)}
+}
+body.bg-motion-on::after{animation:cataulogo-pattern-drift var(--bg-motion-duration,36s) linear infinite}
+body.bg-motion-off::after{animation:none;transform:none}
+@media(prefers-reduced-motion:reduce){
+  body.bg-motion-on::after{animation:none;transform:none}
+}
 #bgpreview{position:relative;overflow:hidden}
 #bgpreview.bg-preview-moving{animation:cataulogo-pattern-preview var(--preview-speed,36s) linear infinite}
 @keyframes cataulogo-pattern-preview{from{background-position:0 0}to{background-position:280px 280px}}
