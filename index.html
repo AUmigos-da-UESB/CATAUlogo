@@ -8,7 +8,7 @@
 <style>body.app-loading{visibility:hidden}</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css?v=gradient-canonical-20261003">
-<link rel="stylesheet" href="fixes.css?v=20261008o">
+<link rel="stylesheet" href="fixes.css?v=20261028-adminbg1">
 <link rel="stylesheet" href="mobile-fixes.css?v=20261003-mobile12">
 <link rel="stylesheet" href="inline-text-tools.css?v=20261003-color5">
 </head>
@@ -33,6 +33,9 @@
    <label class="bg-color-field"><span>Cor 2</span><span class="bg-color-control"><input id="bgpink" type="color"><i id="bgpink-swatch" class="bg-color-swatch"></i></span></label>
   </div>
   <label class="bg-range-field"><span>Escala do padrão</span><input id="bgscale" type="range" min="90" max="380" step="10"></label>
+  <label class="bg-range-field"><span>Predefinição de cores</span><select id="bgPreset"><option value="custom">Personalizada</option><option value="original">CATAUlogo original</option><option value="noturno">Noturno azul e terracota (atual)</option><option value="floresta">Floresta suave</option><option value="neutro">Neutro discreto</option></select></label>
+  <label class="bg-range-field"><span>Velocidade diagonal <output id="bgMotionSpeedValue">36 s</output></span><input id="bgMotionSpeed" type="range" min="8" max="120" step="2" value="36"></label>
+  <label class="bg-motion-toggle"><input id="bgMotionEnabled" type="checkbox" checked><span>Ativar movimento diagonal contínuo</span></label>
   <div id="bgpreview" class="bg-editor-preview"></div>
   <p class="bg-preview-label">Prévia do padrão do site</p>
  </section>
@@ -64,7 +67,7 @@
 </div>
 <div class="full" style="font-size:13px;color:var(--mut)">Tamanho recomendado: 1000 × 1100 px. Até 6 fotos. Informe o nome de quem fotografou para os créditos. Formatos aceitos: JPG, PNG, WebP e RAW.</div><div class="full" id="slots" style="display:grid;gap:8px"></div><div class="full"><button type="button" class="btn ghost" id="addslot" style="padding:8px 16px;font-size:14px">+ Adicionar outra foto</button></div>
 <div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" id="save">Salvar animal</button></div></form></div></dialog>
-<script src="app.js?v=20261008p" defer></script>
+<script src="app.js?v=20261028-motion1" defer></script>
 <script src="fixes.js?v=20261008c" defer></script>
 <script src="sync.js?v=20261008c" defer></script>
 <script src="inline-text-tools.js?v=20261008c" defer></script>
