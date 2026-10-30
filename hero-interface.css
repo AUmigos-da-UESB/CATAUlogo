@@ -1718,3 +1718,57 @@ body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{
 body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{
   animation:catau-pattern-layer-travel 9s linear infinite alternate!important;
 }
+
+
+/* CORREÇÃO DE COMPOSIÇÃO: o vidro deve revelar o fundo global animado.
+   Não existe textura ou animação própria dentro dos cards. */
+html,body{min-height:100%;background-color:#0f1713!important}
+body{position:relative!important;isolation:isolate!important}
+#site-background-layer{
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  display:block!important;
+  pointer-events:none!important;
+  animation:none;
+}
+body.bg-motion-on #site-background-layer{
+  animation:catau-original-bg-drift var(--bg-motion-duration,36s) linear infinite!important;
+}
+body.bg-motion-off #site-background-layer{
+  animation:none!important;
+}
+#site-header{position:sticky!important;z-index:10000!important}
+#app{
+  position:relative!important;
+  z-index:1!important;
+  isolation:auto!important;
+  background:transparent!important;
+}
+.fab{position:fixed!important;z-index:50!important}
+#app #catalogo #grid > a.card{
+  background:rgba(18,31,24,.12)!important;
+  isolation:auto!important;
+}
+#app #catalogo #grid > a.card > .bd{
+  position:relative!important;
+  z-index:2!important;
+  overflow:visible!important;
+  isolation:auto!important;
+  background:rgba(17,36,26,.30)!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.025) 48%,rgba(255,255,255,.055))!important;
+  -webkit-backdrop-filter:blur(18px) saturate(165%)!important;
+  backdrop-filter:blur(18px) saturate(165%)!important;
+  border-top:1px solid rgba(235,245,237,.28)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.12)!important;
+}
+#app #catalogo #grid > a.card > .bd::before{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+#app #catalogo #grid > a.card > .bd::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
