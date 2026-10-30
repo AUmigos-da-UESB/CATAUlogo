@@ -1569,3 +1569,42 @@ body{position:relative!important;isolation:isolate!important}
   -webkit-backdrop-filter:blur(24px) saturate(165%)!important;
   backdrop-filter:blur(24px) saturate(165%)!important;
 }
+
+/* GLASSMORPHISM — acabamento definitivo dos cards */
+#app #catalogo #grid > a.card{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:auto!important;
+  background:rgba(18,31,24,.12)!important;
+  border:1px solid rgba(225,235,226,.28)!important;
+  border-radius:20px!important;
+  box-shadow:0 12px 32px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+#app #catalogo #grid > a.card > .ph{
+  position:relative!important;
+  z-index:1!important;
+}
+#app #catalogo #grid > a.card > .bd{
+  position:relative!important;
+  z-index:2!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  margin:0!important;
+  padding:14px 16px 18px!important;
+  background:rgba(19,37,27,.34)!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.015))!important;
+  -webkit-backdrop-filter:blur(30px) saturate(180%)!important;
+  backdrop-filter:blur(30px) saturate(180%)!important;
+  border-top:1px solid rgba(235,242,235,.22)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
+#app #catalogo #grid > a.card > .bd *{
+  position:relative!important;
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  #app #catalogo #grid > a.card > .bd{background:rgba(19,37,27,.88)!important}
+}
+@media(max-width:620px){
+  #app #catalogo #grid > a.card > .bd{padding:11px 13px 15px!important}
+}
