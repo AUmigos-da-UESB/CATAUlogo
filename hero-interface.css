@@ -1608,3 +1608,38 @@ body{position:relative!important;isolation:isolate!important}
 @media(max-width:620px){
   #app #catalogo #grid > a.card > .bd{padding:11px 13px 15px!important}
 }
+
+
+/* PADRÃO ANIMADO VISÍVEL DENTRO DO VIDRO DOS CARDS */
+#app #catalogo #grid > a.card > .bd{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:rgba(17,36,26,.22)!important;
+  -webkit-backdrop-filter:blur(12px) saturate(155%)!important;
+  backdrop-filter:blur(12px) saturate(155%)!important;
+}
+#app #catalogo #grid > a.card > .bd::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  display:block!important;
+  pointer-events:none!important;
+  opacity:.9!important;
+  background-image:linear-gradient(rgba(15,27,20,.38),rgba(15,27,20,.38)),var(--catau-pattern-image)!important;
+  background-size:auto,var(--catau-pattern-size,280px 280px)!important;
+  background-repeat:repeat,repeat!important;
+  background-position:0 0,0 0!important;
+  animation:catau-card-pattern-drift var(--bg-motion-duration,36s) linear infinite!important;
+}
+#app #catalogo #grid > a.card > .bd > *{
+  position:relative!important;
+  z-index:1!important;
+}
+@keyframes catau-card-pattern-drift{
+  from{background-position:0 0,0 0}
+  to{background-position:0 0,var(--catau-pattern-drift,280px) var(--catau-pattern-drift,280px)}
+}
+body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{animation:none!important}
+@media(prefers-reduced-motion:reduce){#app #catalogo #grid > a.card > .bd::before{animation:none!important}}
