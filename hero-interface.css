@@ -709,3 +709,101 @@
 #dlg *{
   animation:none!important;
 }
+
+
+/* Ajustes dos cards: espécie à esquerda, status junto ao nome e características organizadas. */
+#app #catalogo #grid .card .ph>.sp{
+  left:10px!important;
+  right:auto!important;
+}
+#app #catalogo #grid .card .bd{padding:15px 16px 17px!important}
+#app #catalogo #grid .card .card-title-row{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  min-width:0!important;
+}
+#app #catalogo #grid .card .card-title-row h3{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  margin:0!important;
+  line-height:1.15!important;
+}
+#app #catalogo #grid .card .card-title-row>.badge{
+  flex:0 0 auto!important;
+  margin:0!important;
+  max-width:58%!important;
+  white-space:nowrap!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+  padding:5px 9px!important;
+}
+#app #catalogo #grid .card .card-traits{
+  display:grid!important;
+  gap:9px!important;
+  margin-top:12px!important;
+  padding:10px 11px!important;
+  border:1px solid rgba(190,205,220,.13)!important;
+  border-radius:13px!important;
+  background:rgba(210,220,230,.045)!important;
+}
+#app #catalogo #grid .card .card-trait-group{display:grid!important;gap:5px!important;min-width:0!important}
+#app #catalogo #grid .card .card-trait-group>small{
+  color:var(--mut)!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+  font-weight:700!important;
+  letter-spacing:.07em!important;
+  text-transform:uppercase!important;
+}
+#app #catalogo #grid .card .card-trait-group .traits.compact{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+  margin:0!important;
+}
+#app #catalogo #grid .card .card-trait-group .traits.compact span{
+  padding:4px 8px!important;
+  border:1px solid rgba(190,205,220,.17)!important;
+  border-radius:7px!important;
+  background:rgba(210,220,230,.075)!important;
+  color:#e4eaf1!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+}
+#app .badge.comunitario,
+#app .badge.adocao,
+#app .badge.adotado,
+#app .fic-title-row>.badge{
+  color:#fff!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  border:0!important;
+  font-weight:700!important;
+}
+#app .badge.comunitario{background:#32845b!important}
+#app .badge.adocao{background:#b84f78!important}
+#app .badge.adotado{background:#7656a8!important}
+#app .fic-title-row>.badge{
+  margin:0!important;
+  padding:6px 12px!important;
+  border-radius:999px!important;
+}
+#app .fic-title-row{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+}
+#app .fic-title-row h1{flex:1 1 auto!important;min-width:0!important}
+#app .fic-title-row>.badge{margin-left:auto!important;flex:0 0 auto!important}
+@media(max-width:620px){
+  #app #catalogo #grid .card .card-title-row{gap:7px!important}
+  #app #catalogo #grid .card .card-title-row>.badge{font-size:9px!important;padding:4px 7px!important}
+  #app .fic-title-row{flex-wrap:wrap!important}
+  #app .fic-title-row h1{flex-basis:100%!important}
+  #app .fic-title-row>.badge{margin-left:0!important}
+}
