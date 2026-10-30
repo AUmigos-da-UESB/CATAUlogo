@@ -605,6 +605,17 @@ function abrirForm(id){if(!admin)return;editId=id||null;frm.reset();resetSlots()
   if(d.foto&&d.foto.length){const b=document.getElementById("slots");b.innerHTML="";d.foto.forEach((src,i)=>b.append(mkExisting(src,(d.fotoCred||[])[i]||"",i+1,(Array.isArray(d.ano)?d.ano[i]:d.ano)||new Date().getFullYear())));if(d.foto.length>=6)document.getElementById("addslot").style.display="none"}}
  dlg.showModal()}
 document.addEventListener("click",e=>{const x=e.target.closest(".ex,.exf");if(!x)return;e.preventDefault();e.stopPropagation();abrirForm(x.dataset.id)},true);
+document.addEventListener("click",async e=>{
+ const x=e.target.closest(".dx,.dxf");if(!x)return;
+ e.preventDefault();e.stopPropagation();
+ if(!admin)return;
+ const id=x.dataset.id,d=DOGS.find(a=>a.id===id);if(!d)return;
+ if(!confirm("Excluir "+d.nome+" do CATAUlogo? Esta ação não pode ser desfeita."))return;
+ x.disabled=true;
+ try{await salvar(s=>{s.dogs=(s.dogs||[]).filter(a=>a.id!==id)},"Exclui animal "+d.nome);
+  if(location.hash==="#/cao/"+id){location.hash="#/";setTimeout(()=>{home()},0)}else{const y=scrollY;home();scrollTo(0,y)}
+ }catch(err){erro(err)}finally{x.disabled=false}
+},true);
 const RAW=/\.(crw|cr2|cr3|nef|nrw|arw|srf|sr2|raf|raw|rw2|x3f|dng|orf|pef)$/i;
 async function rawPreview(f){
  const u8=new Uint8Array(await f.arrayBuffer()),pos=[];
