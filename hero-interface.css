@@ -1643,3 +1643,53 @@ body{position:relative!important;isolation:isolate!important}
 }
 body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{animation:none!important}
 @media(prefers-reduced-motion:reduce){#app #catalogo #grid > a.card > .bd::before{animation:none!important}}
+
+
+/* VIDRO FOSCO COM PADRÃO EM MOVIMENTO VISÍVEL */
+#app #catalogo #grid > a.card > .bd{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:rgba(13,31,22,.30)!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.025) 48%,rgba(255,255,255,.055))!important;
+  -webkit-backdrop-filter:blur(18px) saturate(165%)!important;
+  backdrop-filter:blur(18px) saturate(165%)!important;
+  border-top:1px solid rgba(235,245,237,.28)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.12)!important;
+}
+#app #catalogo #grid > a.card > .bd::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-9px!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  opacity:.62!important;
+  background-image:var(--catau-pattern-image)!important;
+  background-size:var(--catau-pattern-size,280px 280px)!important;
+  background-repeat:repeat!important;
+  background-position:0 0!important;
+  filter:blur(5px) saturate(125%)!important;
+  transform:scale(1.035)!important;
+  animation:catau-card-pattern-drift var(--bg-motion-duration,24s) ease-in-out infinite alternate!important;
+  will-change:background-position!important;
+}
+#app #catalogo #grid > a.card > .bd::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(115deg,rgba(255,255,255,.075),transparent 38%,rgba(0,0,0,.08))!important;
+}
+#app #catalogo #grid > a.card > .bd > *{
+  position:relative!important;
+  z-index:1!important;
+}
+@keyframes catau-card-pattern-drift{
+  from{background-position:0 0}
+  to{background-position:var(--catau-pattern-drift,140px 0px)}
+}
+body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{animation:none!important}
+@media(prefers-reduced-motion:reduce){
+  #app #catalogo #grid > a.card > .bd::before{animation:none!important}
+}
