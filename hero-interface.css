@@ -1712,3 +1712,9 @@ body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{
 @media(prefers-reduced-motion:reduce){
   #app #catalogo #grid > a.card > .bd::before{animation:none!important}
 }
+
+
+/* O movimento interno dos cards é independente do movimento do fundo geral. */
+body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{
+  animation:catau-pattern-layer-travel 9s linear infinite alternate!important;
+}
