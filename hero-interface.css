@@ -1772,3 +1772,23 @@ body.bg-motion-off #site-background-layer{
   display:none!important;
   animation:none!important;
 }
+
+/* Movimento contínuo do padrão global: anima diretamente a camada que contém a estampa. */
+@keyframes catau-visible-pattern-drift {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 0 0, 280px 280px; }
+}
+#site-background-layer {
+  background-repeat: repeat, repeat !important;
+  background-attachment: scroll, scroll !important;
+  will-change: background-position;
+}
+body.bg-motion-on #site-background-layer,
+#site-background-layer.bg-motion-on {
+  animation: catau-visible-pattern-drift var(--bg-motion-duration, 36s) linear infinite !important;
+  animation-play-state: running !important;
+}
+body.bg-motion-off #site-background-layer,
+#site-background-layer.bg-motion-off {
+  animation: none !important;
+}
