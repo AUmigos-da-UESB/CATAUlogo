@@ -1669,7 +1669,7 @@ body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{animation:none!im
   background-repeat:repeat!important;
   background-position:0 0!important;
   filter:blur(5px) saturate(125%)!important;
-  transform:scale(1.035)!important;
+  transform:scale(1.035);
   animation:catau-card-pattern-drift var(--bg-motion-duration,24s) ease-in-out infinite alternate!important;
   will-change:background-position!important;
 }
