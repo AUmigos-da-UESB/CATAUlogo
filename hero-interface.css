@@ -1550,3 +1550,22 @@ body.bg-motion-on,body.bg-motion-off{animation:none!important}
   backdrop-filter:blur(26px) saturate(165%)!important;
   border-top:1px solid rgba(225,235,226,.17)!important;
 }
+
+
+/* Corrigir a pilha de composição: o fundo precisa estar atrás do conteúdo,
+   mas dentro do mesmo contexto visual para ser capturado pelo backdrop-filter. */
+html,body{min-height:100%;background-color:#0f1713!important}
+body{position:relative!important;isolation:isolate!important}
+#site-background-layer{
+  position:fixed!important;inset:0!important;
+  z-index:-1!important;pointer-events:none!important;
+}
+#site-header{position:sticky!important;z-index:10000!important}
+#app{position:static!important;z-index:auto!important;isolation:auto!important}
+.fab{position:fixed!important;z-index:50!important}
+#app #catalogo #grid a.card>.bd{
+  position:relative!important;
+  background:rgba(17,36,26,.20)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(165%)!important;
+  backdrop-filter:blur(24px) saturate(165%)!important;
+}
