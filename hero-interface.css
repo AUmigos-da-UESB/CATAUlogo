@@ -1649,3 +1649,60 @@ body{
   border-top:1px solid rgba(235,245,235,.20)!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;
 }
+
+
+/* CORREÇÃO DA COMPOSIÇÃO: o fundo precisa estar no backdrop dos cards.
+   O #app não pode criar um stacking context acima da camada animada. */
+html,body{
+  min-height:100%;
+  background-color:#0f1713!important;
+}
+body{
+  position:relative!important;
+  isolation:auto!important;
+  background:transparent!important;
+  background-image:none!important;
+}
+#site-background-layer{
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  display:block!important;
+  pointer-events:none!important;
+  opacity:1!important;
+}
+#site-header{
+  position:sticky!important;
+  z-index:10000!important;
+}
+#app{
+  position:static!important;
+  z-index:auto!important;
+  isolation:auto!important;
+  transform:none!important;
+  filter:none!important;
+  background:transparent!important;
+  background-image:none!important;
+}
+.fab{position:fixed!important;z-index:50!important}
+#app #catalogo,
+#app #catalogo #grid,
+#app #catalogo #grid > a.card{
+  background:transparent!important;
+  background-image:none!important;
+}
+#app #catalogo #grid > a.card{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:auto!important;
+}
+#app #catalogo #grid > a.card > .bd{
+  position:relative!important;
+  z-index:auto!important;
+  background:rgba(12,35,23,.13)!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.006))!important;
+  -webkit-backdrop-filter:blur(32px) saturate(190%)!important;
+  backdrop-filter:blur(32px) saturate(190%)!important;
+  border-top:1px solid rgba(235,245,235,.20)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
