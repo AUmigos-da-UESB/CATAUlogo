@@ -1514,3 +1514,39 @@
 @media(max-width:620px){
  #app #catalogo #grid a.card > .bd{padding:10px 12px 14px!important}
 }
+
+
+/* Fundo como camada real do documento: backdrop-filter consegue capturá-lo */
+#site-background-layer{
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  display:block!important;
+  pointer-events:none!important;
+  background-color:#0f1713;
+  background-attachment:scroll,scroll;
+}
+#site-header,#app,.fab{position:relative;z-index:1}
+#site-header{z-index:10000}
+.fab{position:fixed;z-index:50}
+body.bg-motion-on #site-background-layer{
+  animation:catau-original-bg-drift var(--bg-motion-duration,36s) linear infinite!important;
+}
+body.bg-motion-off #site-background-layer{animation:none!important}
+body.bg-motion-on,body.bg-motion-off{animation:none!important}
+@media(prefers-reduced-motion:reduce){#site-background-layer{animation:none!important}}
+/* A área textual agora desfoca a camada de fundo visível, sem cinza opaco */
+#app #catalogo #grid a.card{
+  background:transparent!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+#app #catalogo #grid a.card>.bd{
+  position:relative!important;
+  z-index:1!important;
+  background:rgba(17,36,26,.24)!important;
+  background-image:none!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%)!important;
+  backdrop-filter:blur(26px) saturate(165%)!important;
+  border-top:1px solid rgba(225,235,226,.17)!important;
+}
