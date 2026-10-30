@@ -1139,3 +1139,37 @@
  #app #catalogo #grid .card .card-actions{top:9px!important;right:9px!important;gap:6px!important;height:34px!important}
  #app #catalogo #grid .card .card-actions button{flex-basis:34px!important;width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important;max-height:34px!important}
 }
+
+
+/* Cards com foto quase até a borda: moldura externa fina */
+#app #catalogo #grid .card{
+  border:1px solid rgba(169,186,210,.24)!important;
+  border-top:2px solid #a9bad2!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+#app #catalogo #grid .card .ph{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  aspect-ratio:10 / 11!important;
+  border:0!important;
+  border-radius:0 0 8px 8px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+#app #catalogo #grid .card .ph>img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:0 0 8px 8px!important;
+}
+#app #catalogo #grid .card .bd{
+  padding:12px 15px 17px!important;
+}
+@media(max-width:620px){
+ #app #catalogo #grid .card .bd{padding:10px 12px 14px!important}
+}
