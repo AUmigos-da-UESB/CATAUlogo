@@ -1484,32 +1484,3 @@
  #app #catalogo #grid > a.card .card-actions{top:9px!important;right:9px!important;height:34px!important;gap:6px!important}
  #app #catalogo #grid > a.card .card-actions button{flex-basis:34px!important;width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important;max-height:34px!important}
 }
-
-
-/* Vidro fosco efetivo somente na área textual do card */
-#app #catalogo #grid a.card > .bd{
-  position:relative!important;
-  isolation:isolate!important;
-  overflow:hidden!important;
-  background:transparent!important;
-  -webkit-backdrop-filter:none!important;
-  backdrop-filter:none!important;
-}
-#app #catalogo #grid a.card > .bd::before{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:-1!important;
-  pointer-events:none!important;
-  background:rgba(16,35,26,.46)!important;
-  -webkit-backdrop-filter:blur(24px) saturate(160%)!important;
-  backdrop-filter:blur(24px) saturate(160%)!important;
-  border-top:1px solid rgba(224,237,228,.15)!important;
-}
-#app #catalogo #grid a.card > .bd > *{
-  position:relative!important;
-  z-index:1!important;
-}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
- #app #catalogo #grid a.card > .bd::before{background:rgba(16,35,26,.94)!important}
-}
