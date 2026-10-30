@@ -878,3 +878,83 @@
   #app #catalogo #grid .card .card-subline{align-items:flex-start!important;gap:6px!important}
   #app #catalogo #grid .card .card-nickname{font-size:10px!important;max-width:52%!important}
 }
+
+
+/* Reorganização dos cards conforme referência visual */
+#app #grid .card{
+  border:1px solid rgba(169,186,210,.24)!important;
+  border-top:3px solid #4b9bd8!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  background:#18271f!important;
+}
+#app #grid .card .ph{
+  position:relative!important;
+  aspect-ratio:4/4.25!important;
+  overflow:hidden!important;
+  border-radius:0!important;
+}
+#app #grid .card .ph>img,
+#app #grid .card .ph>svg:not(.card-species-icon svg){
+  width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;
+}
+#app #grid .card .ph .cr{
+  right:9px!important;bottom:8px!important;left:auto!important;
+  max-width:78%!important;border-radius:5px!important;
+  background:rgba(10,15,12,.72)!important;color:#fff!important;
+  font-size:10px!important;line-height:1.25!important;text-align:right!important;
+}
+#app #grid .card-species-icon{
+  position:absolute!important;left:12px!important;top:12px!important;z-index:4!important;
+  display:grid!important;place-items:center!important;width:36px!important;height:36px!important;
+  color:#18251e!important;background:rgba(244,239,225,.88)!important;
+  border-radius:50%!important;padding:6px!important;box-sizing:border-box!important;
+}
+#app #grid .card-species-icon svg{width:100%!important;height:100%!important;display:block!important}
+#app #grid .card .card-actions{
+  position:absolute!important;top:10px!important;right:10px!important;z-index:5!important;
+  display:flex!important;gap:6px!important;
+}
+#app #grid .card .card-actions button{
+  position:static!important;inset:auto!important;width:32px!important;height:32px!important;
+  min-width:32px!important;padding:6px!important;border-radius:50%!important;
+  display:grid!important;place-items:center!important;box-shadow:0 2px 7px rgba(0,0,0,.25)!important;
+}
+#app #grid .card .card-actions button.ex{background:#e64c55!important;color:#171b17!important}
+#app #grid .card .card-actions button.dx{background:#555b58!important;color:#101512!important}
+#app #grid .card .card-actions button svg{width:19px!important;height:19px!important}
+#app #grid .card .bd{padding:10px 13px 15px!important;display:flex!important;flex-direction:column!important;gap:7px!important}
+#app #grid .card .card-title-row{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:8px!important;margin:0!important;
+}
+#app #grid .card .card-title-row h3{
+  margin:0!important;font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif!important;
+  font-size:clamp(20px,2vw,25px)!important;font-weight:700!important;line-height:1.05!important;
+  color:#f3f1e9!important;letter-spacing:-.035em!important;
+}
+#app #grid .card .card-title-row .badge{margin:0!important;flex:0 0 auto!important;white-space:nowrap!important}
+#app #grid .card .card-nickname{
+  margin:0!important;color:#f08a45!important;font-size:15px!important;
+  font-weight:700!important;font-style:italic!important;line-height:1.25!important;
+}
+#app #grid .card .meta.loc,
+#app #grid .card .card-sexline{
+  display:flex!important;align-items:center!important;gap:7px!important;
+  margin:0!important;color:#c3cbc3!important;font-size:13px!important;line-height:1.35!important;
+}
+#app #grid .card .meta.loc .pin{
+  flex:0 0 16px!important;width:16px!important;height:16px!important;
+  margin:0!important;stroke:#b9c9c2!important;
+}
+#app #grid .card .card-sex{width:16px!important;height:16px!important;flex:0 0 16px!important;fill:none!important;stroke-width:2.2!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+#app #grid .card .card-sex.female{stroke:#e33d79!important}
+#app #grid .card .card-sex.male{stroke:#3989df!important}
+@media(max-width:620px){
+ #app #grid .card .bd{padding:9px 10px 12px!important;gap:6px!important}
+ #app #grid .card .card-title-row h3{font-size:18px!important}
+ #app #grid .card .card-title-row .badge{font-size:10px!important;padding:3px 7px!important}
+ #app #grid .card .card-nickname{font-size:13px!important}
+ #app #grid .card .meta.loc,#app #grid .card .card-sexline{font-size:11px!important}
+ #app #grid .card .ph{aspect-ratio:4/4.4!important}
+}
