@@ -1238,3 +1238,76 @@
  #app #catalogo #grid .card .card-species-icon{top:9px!important;left:9px!important;height:34px!important}
  #app #catalogo #grid .card .card-species-icon .sp{min-height:34px!important;padding:0 10px!important}
 }
+
+
+/* Correção de transparência real, contorno completo e alinhamento do topo */
+#app #catalogo #grid .card{
+  position:relative!important;
+  isolation:isolate!important;
+  border:1px solid rgba(169,186,210,.58)!important;
+  border-top:2px solid #a9bad2!important;
+  border-radius:22px!important;
+  background:rgba(15,29,22,.20)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(145%)!important;
+  backdrop-filter:blur(22px) saturate(145%)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+#app #catalogo #grid .card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:6!important;
+  pointer-events:none!important;
+  border:1px solid rgba(169,186,210,.40)!important;
+  border-radius:inherit!important;
+}
+#app #catalogo #grid .card .bd{
+  position:relative!important;
+  z-index:1!important;
+  background:rgba(13,29,21,.24)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(145%)!important;
+  backdrop-filter:blur(22px) saturate(145%)!important;
+  border-top:1px solid rgba(225,235,226,.12)!important;
+}
+#app #catalogo #grid .card .ph{
+  position:relative!important;
+  isolation:isolate!important;
+}
+#app #catalogo #grid .card .ph > .card-species-icon{
+  position:absolute!important;
+  top:12px!important;left:12px!important;right:auto!important;bottom:auto!important;
+  z-index:9!important;
+  width:max-content!important;height:40px!important;
+  margin:0!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  transform:none!important;
+}
+#app #catalogo #grid .card .ph > .card-species-icon .sp{
+  height:40px!important;min-height:40px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  margin:0!important;transform:none!important;box-sizing:border-box!important;
+}
+#app #catalogo #grid .card .ph > .card-actions{
+  position:absolute!important;
+  top:12px!important;right:12px!important;left:auto!important;bottom:auto!important;
+  z-index:10!important;
+  height:40px!important;margin:0!important;padding:0!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  justify-content:flex-end!important;gap:8px!important;
+  transform:none!important;
+}
+#app #catalogo #grid .card .ph > .card-actions button{
+  position:static!important;inset:auto!important;transform:none!important;
+  display:flex!important;flex:0 0 40px!important;
+  width:40px!important;height:40px!important;
+  min-width:40px!important;max-width:40px!important;
+  min-height:40px!important;max-height:40px!important;
+  margin:0!important;padding:0!important;
+  align-items:center!important;justify-content:center!important;
+}
+@media(max-width:620px){
+ #app #catalogo #grid .card .ph > .card-species-icon{top:9px!important;left:9px!important;height:34px!important}
+ #app #catalogo #grid .card .ph > .card-species-icon .sp{height:34px!important;min-height:34px!important}
+ #app #catalogo #grid .card .ph > .card-actions{top:9px!important;right:9px!important;height:34px!important;gap:6px!important}
+ #app #catalogo #grid .card .ph > .card-actions button{flex-basis:34px!important;width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;min-height:34px!important;max-height:34px!important}
+}
