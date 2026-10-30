@@ -428,12 +428,12 @@ function execRich(cmd,value,editor){
  editor.dispatchEvent(new Event("input",{bubbles:true}));
 }
 function richField(k,label,value){
-  const colors=["#eef2ea","#8ea3ff","#f2b6d8","#f3c969","#8fd3b6","#f29b7a","#c7a8ff","#ffffff"];
+  const colors=["#eef2ea","#a9bad2","#f2b6d8","#f3c969","#8fd3b6","#f29b7a","#c7a8ff","#ffffff"];
   return `<div class="rich-wrap" data-rich="${k}"><div class="rich-toolbar" role="toolbar" aria-label="Formatação de ${esc(label)}">
     <button type="button" data-cmd="bold" title="Negrito"><b>B</b></button>
     <button type="button" data-cmd="italic" title="Itálico"><i>I</i></button>
     ${colors.map((c,i)=>`<button type="button" class="color-dot ${i===0?"default-color":""}" data-color="${c}" title="${i===0?"Cor padrão da fonte":"Cor "+c}" style="background:${c}"></button>`).join("")}
-    <input type="color" data-custom-color title="Escolher cor" value="#8ea3ff">
+    <input type="color" data-custom-color title="Escolher cor" value="#a9bad2">
     <button type="button" data-clear-color title="Remover cor">A</button><button type="button" data-remove-format title="Remover formatação">Tx</button>
   </div><div class="rich-editor" contenteditable="true" data-rich-editor="${k}" aria-label="${esc(label)}">${rh(value)}</div></div>`;
 }
