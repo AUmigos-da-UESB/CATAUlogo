@@ -1073,3 +1073,69 @@
   #app #catalogo #grid .card .ph{margin:9px 9px 0!important;width:calc(100% - 18px)!important}
   #app #catalogo #grid .card .bd{padding:10px 9px 14px!important}
 }
+
+
+/* Acabamento: contorno mais discreto e controles superiores alinhados */
+#app #catalogo #grid .card{
+  border-top:2px solid #a9bad2!important;
+}
+#app #catalogo #grid .card .ph{
+  border-radius:8px!important;
+  overflow:hidden!important;
+}
+#app #catalogo #grid .card .ph>img{
+  border-radius:8px!important;
+}
+#app #catalogo #grid .card .card-actions{
+  position:absolute!important;
+  top:12px!important;
+  right:12px!important;
+  left:auto!important;
+  bottom:auto!important;
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  height:40px!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:8!important;
+}
+#app #catalogo #grid .card .card-actions button{
+  position:relative!important;
+  display:flex!important;
+  flex:0 0 40px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:40px!important;
+  min-width:40px!important;
+  max-width:40px!important;
+  height:40px!important;
+  min-height:40px!important;
+  max-height:40px!important;
+  margin:0!important;
+  padding:0!important;
+  inset:auto!important;
+  transform:none!important;
+  border-radius:50%!important;
+  line-height:1!important;
+  box-sizing:border-box!important;
+}
+#app #catalogo #grid .card .card-actions button svg{
+  display:block!important;
+  width:19px!important;
+  height:19px!important;
+  margin:0!important;
+  flex:none!important;
+}
+#app #catalogo #grid .card .card-species-icon{
+  top:12px!important;
+  left:12px!important;
+  z-index:8!important;
+}
+@media(max-width:620px){
+ #app #catalogo #grid .card .card-actions{top:9px!important;right:9px!important;gap:6px!important;height:34px!important}
+ #app #catalogo #grid .card .card-actions button{flex-basis:34px!important;width:34px!important;min-width:34px!important;max-width:34px!important;height:34px!important;min-height:34px!important;max-height:34px!important}
+}
