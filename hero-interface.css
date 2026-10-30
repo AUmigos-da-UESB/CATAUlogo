@@ -807,3 +807,74 @@
   #app .fic-title-row h1{flex-basis:100%!important}
   #app .fic-title-row>.badge{margin-left:0!important}
 }
+
+
+/* Cards: nome e status na primeira linha; gênero/idade e apelido alinhados na segunda. */
+#app #catalogo #grid .card .bd{display:flex!important;flex-direction:column!important;gap:0!important}
+#app #catalogo #grid .card .card-title-row{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:12px!important;width:100%!important;min-width:0!important;
+}
+#app #catalogo #grid .card .card-title-row h3{
+  flex:1 1 auto!important;min-width:0!important;margin:0!important;line-height:1.12!important;
+}
+#app #catalogo #grid .card .card-title-row>.badge{
+  flex:0 0 auto!important;margin:0!important;max-width:58%!important;
+  white-space:nowrap!important;font-size:10px!important;line-height:1.2!important;padding:5px 9px!important;
+}
+#app #catalogo #grid .card .card-subline{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:10px!important;min-height:23px!important;margin-top:7px!important;width:100%!important;
+}
+#app #catalogo #grid .card .card-subline>.meta{margin:0!important;min-width:0!important}
+#app #catalogo #grid .card .card-nickname{
+  margin-left:auto!important;max-width:58%!important;text-align:right!important;
+  color:#a9bad2!important;font-size:12px!important;line-height:1.25!important;
+  font-style:italic!important;font-weight:600!important;overflow-wrap:anywhere!important;
+}
+#app #catalogo #grid .card .meta.loc{margin-top:8px!important}
+#app #catalogo #grid .card .card-traits{display:none!important}
+
+/* A seção institucional volta a ter conteúdo centralizado em duas colunas,
+   mantendo o degradê configurável de ponta a ponta da página. */
+#app .about{
+  display:block!important;width:100%!important;
+  background:linear-gradient(115deg,var(--about-bg-start,#1c2922) 0%,var(--about-bg-end,#222b38) 100%)!important;
+  padding:clamp(2.8rem,5vw,4.5rem) 0!important;
+}
+#app .about .wrap{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:start!important;gap:clamp(2rem,4vw,3.5rem)!important;
+  width:min(1120px,calc(100% - 48px))!important;max-width:1120px!important;
+  margin:0 auto!important;padding:0!important;
+}
+#app .about .wrap>div{min-width:0!important}
+#app .about h2{max-width:15ch!important}
+#app .about p{max-width:58ch!important}
+#app .about .amigo{margin-top:24px!important}
+#app .about .help{gap:12px!important}
+#app .about .help>div{align-items:flex-start!important;gap:14px!important}
+#app .about .help svg{color:#a9bad2!important;stroke:#a9bad2!important}
+#app .about .soc .btn{background:#a9bad2!important;border-color:#a9bad2!important;color:#101914!important}
+#app .about a:not(.btn){color:#c6d3e4!important}
+#app .about a:not(.btn):hover{color:#fff!important}
+#app .coming .coming-art{
+  background:rgba(169,186,210,.09)!important;
+  border:1px solid rgba(169,186,210,.22)!important;
+  box-shadow:none!important;transform:none!important;
+}
+#app .coming .eyebrow,
+#app .coming .backstage-head p{color:#b8c8dc!important}
+#app .coming .backstage-photo .back-expand{border-color:rgba(169,186,210,.38)!important}
+#app .coming .backstage-photo .back-expand:hover{background:rgba(169,186,210,.2)!important}
+:root{--acc:#a9bad2;--accsoft:rgba(169,186,210,.16)}
+@media(max-width:720px){
+  #app .about .wrap{grid-template-columns:1fr!important;width:calc(100% - 36px)!important;gap:1.6rem!important}
+  #app .about h2{max-width:none!important}
+}
+@media(max-width:620px){
+  #app #catalogo #grid .card .card-title-row{gap:7px!important}
+  #app #catalogo #grid .card .card-title-row>.badge{font-size:9px!important;padding:4px 7px!important}
+  #app #catalogo #grid .card .card-subline{align-items:flex-start!important;gap:6px!important}
+  #app #catalogo #grid .card .card-nickname{font-size:10px!important;max-width:52%!important}
+}
