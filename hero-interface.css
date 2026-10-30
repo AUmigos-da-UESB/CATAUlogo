@@ -1693,3 +1693,22 @@ body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{animation:none!im
 @media(prefers-reduced-motion:reduce){
   #app #catalogo #grid > a.card > .bd::before{animation:none!important}
 }
+
+
+/* Movimento real da camada de estampa, independente do background-position */
+#app #catalogo #grid > a.card > .bd::before{
+  inset:-150px!important;
+  background-position:0 0!important;
+  animation:catau-pattern-layer-travel 9s linear infinite alternate!important;
+  will-change:transform!important;
+}
+@keyframes catau-pattern-layer-travel{
+  from{transform:translate3d(0,0,0) scale(1.035)}
+  to{transform:translate3d(-140px,0,0) scale(1.035)}
+}
+body.bg-motion-off #app #catalogo #grid > a.card > .bd::before{
+  animation:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #app #catalogo #grid > a.card > .bd::before{animation:none!important}
+}
