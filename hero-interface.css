@@ -1853,3 +1853,56 @@ body.isadm #app #catalogo #grid .card .card-actions{
   #app .coming .coming-box{padding:20px!important}
   #app .coming .coming-art{font-size:32px!important}
 }
+
+
+/* ===== Identidade cromática única do CATAUlogo =====
+   Azul institucional: destaque de "uma história" e "começou".
+   Laranja: apelidos dos animais. Todos os demais títulos ficam neutros. */
+:root{
+  --brand-blue:#a9bad2;
+  --brand-orange:#f08a45;
+  --acc:var(--brand-blue);
+  --accsoft:rgba(169,186,210,.16);
+}
+#app .hero h1 em,
+#app .hero .hero-title em{color:var(--brand-blue)!important}
+#app .vol .vhead h2 em,
+#app .about h2 em,
+#app .backstage-head h3 em{color:#eef2ea!important}
+#app .coming .coming-box h2 em{color:var(--brand-blue)!important}
+#app #catalogo #grid .card .card-nickname,
+#app #grid .card .card-nickname{color:var(--brand-orange)!important}
+
+/* Evita cores avulsas em títulos, links e textos editoriais. */
+#app .about a:not(.btn){color:var(--brand-blue)!important}
+#app .about .help svg{color:var(--brand-blue)!important;stroke:var(--brand-blue)!important}
+#app .coming .coming-box p a,
+#app .coming .coming-box p strong,
+#app .coming .coming-box p [style*="color"],
+#app .coming .eyebrow,
+#app .coming .backstage-head p{color:#d0d5cd!important}
+#app .coming .backstage-photo .back-expand{border-color:rgba(169,186,210,.38)!important}
+#app .coming .backstage-photo .back-expand:hover{background:rgba(169,186,210,.16)!important}
+
+/* O fundo de "Cuidar também é documentar" sangra até as bordas.
+   O conteúdo permanece centralizado na largura editorial do site. */
+#app .about{
+  width:100vw!important;
+  max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:calc(50% - 50vw)!important;
+  box-sizing:border-box!important;
+}
+#app .about .wrap{
+  width:min(850px,calc(100% - 48px))!important;
+  max-width:850px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+}
+@media(max-width:760px){
+  #app .about .wrap{width:calc(100% - 36px)!important;max-width:none!important}
+}
+@media(max-width:620px){
+  #app .about .wrap{width:calc(100% - 32px)!important}
+}
