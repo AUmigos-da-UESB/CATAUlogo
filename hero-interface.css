@@ -1608,3 +1608,40 @@ body.bg-motion-off #site-background-layer{
 @media(max-width:620px){
   #app #catalogo #grid>a.card>.bd{padding:11px 13px 15px!important}
 }
+
+
+/* Ajuste final dos controles dos cards: selo e ações na mesma linha.
+   O .sp herdava position:absolute do estilo global, causando deslocamento duplo. */
+#app #catalogo #grid > a.card .card-species-icon{
+  position:absolute!important;
+  top:12px!important;left:12px!important;right:auto!important;bottom:auto!important;
+  width:max-content!important;height:40px!important;min-height:40px!important;
+  margin:0!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  z-index:12!important;transform:none!important;
+}
+#app #catalogo #grid > a.card .card-species-icon .sp{
+  position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  height:40px!important;min-height:40px!important;width:auto!important;
+  margin:0!important;transform:none!important;
+}
+#app #catalogo #grid > a.card .card-actions{
+  top:12px!important;right:12px!important;height:40px!important;
+  display:flex!important;align-items:center!important;gap:8px!important;
+}
+#app #catalogo #grid > a.card .card-actions button.ex{
+  background:#555b58!important;color:#101512!important;
+  border-color:rgba(255,255,255,.38)!important;
+}
+#app #catalogo #grid > a.card .card-actions button.dx{
+  background:#e64c55!important;color:#171b17!important;
+  border-color:rgba(255,255,255,.38)!important;
+}
+#app #catalogo #grid > a.card .card-actions button.ex:hover{background:#69716d!important}
+#app #catalogo #grid > a.card .card-actions button.dx:hover{background:#f05a63!important}
+@media(max-width:620px){
+  #app #catalogo #grid > a.card .card-species-icon{top:9px!important;left:9px!important;height:34px!important;min-height:34px!important}
+  #app #catalogo #grid > a.card .card-species-icon .sp{height:34px!important;min-height:34px!important;padding:0 10px!important}
+  #app #catalogo #grid > a.card .card-actions{top:9px!important;right:9px!important;height:34px!important;gap:6px!important}
+}
