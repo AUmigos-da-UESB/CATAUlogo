@@ -1961,3 +1961,7 @@ body.isadm #app #catalogo #grid .card .card-actions{
     padding-right:16px!important;
   }
 }
+
+/* Substitui os últimos acentos terracota antigos pelo azul da identidade. */
+#site-header #site-primary-nav a[aria-current="page"]{border-bottom-color:var(--brand-blue)!important}
+#app .hero .hero-eyebrow:before{background:var(--brand-blue)!important}
