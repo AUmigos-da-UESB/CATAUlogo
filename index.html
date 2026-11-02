@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="inline-text-tools.css?v=muted-documentary-blue-20261030">
 <link rel="stylesheet" href="reference-menus.css?v=remove-extra-body-layer-20261029">
 <link rel="stylesheet" href="interface-reference.css?v=background-layer-fix-20261029">
-<link rel="stylesheet" href="hero-interface.css?v=uesb-blue-documentar-orange-alignment-20261101">
+<link rel="stylesheet" href="hero-interface.css?v=global-palette-alignment-20261102">
 </head>
 <body class="app-loading">
 <header id="site-header">
@@ -50,6 +50,15 @@
   <label class="bg-motion-toggle"><input id="bgMotionEnabled" type="checkbox" checked><span>Ativar movimento diagonal contínuo</span></label>
   <div id="bgpreview" class="bg-editor-preview"></div>
   <p class="bg-preview-label">Prévia do padrão do site</p>
+ </section>
+ <section class="bg-editor-section">
+  <div class="bg-editor-head"><div><h3>Cores de destaque do site</h3><p>Estas duas cores controlam globalmente os títulos destacados, apelidos, ícones, links e botões.</p></div></div>
+  <div class="bg-color-grid">
+   <label class="bg-color-field"><span>Cor principal (azul)</span><span class="bg-color-control"><input id="bgPrimary" type="color"><i id="bgPrimary-swatch" class="bg-color-swatch"></i></span></label>
+   <label class="bg-color-field"><span>Cor secundária (laranja)</span><span class="bg-color-control"><input id="bgSecondary" type="color"><i id="bgSecondary-swatch" class="bg-color-swatch"></i></span></label>
+  </div>
+  <div id="bgaccentpreview" class="bg-accent-preview"></div>
+  <p class="bg-preview-label">Prévia das cores globais</p>
  </section>
  <section class="bg-editor-section">
   <div class="bg-editor-head"><div><h3>Gradiente da seção Sobre</h3><p>Escolha as duas cores que formam o gradiente.</p></div></div>
