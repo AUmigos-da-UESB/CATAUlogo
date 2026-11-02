@@ -1965,3 +1965,76 @@ body.isadm #app #catalogo #grid .card .card-actions{
 /* Substitui os últimos acentos terracota antigos pelo azul da identidade. */
 #site-header #site-primary-nav a[aria-current="page"]{border-bottom-color:var(--brand-blue)!important}
 #app .hero .hero-eyebrow:before{background:var(--brand-blue)!important}
+
+
+/* ===== Paleta global editável: azul principal e laranja secundário ===== */
+:root{
+  --brand-blue:#a9bad2;
+  --brand-orange:#f08a45;
+  --acc:var(--brand-blue);
+  --accsoft:rgba(169,186,210,.16);
+}
+/* As três seções seguem o mesmo eixo e a mesma largura dos cards do catálogo. */
+#app section.vol.wrap,
+#app .about .wrap,
+#app .coming>.wrap{
+  width:min(1440px,calc(100% - clamp(40px,10vw,160px)))!important;
+  max-width:1440px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+@media(max-width:760px){
+  #app section.vol.wrap,
+  #app .about .wrap,
+  #app .coming>.wrap{
+    width:calc(100% - 36px)!important;
+    max-width:none!important;
+  }
+}
+@media(max-width:620px){
+  #app section.vol.wrap,
+  #app .about .wrap,
+  #app .coming>.wrap{width:calc(100% - 32px)!important}
+}
+/* Destaques tipográficos: cada palavra recebe a cor correspondente à marca. */
+#app .vol .vhead h2 em,
+#app .coming .coming-box h2 em{color:var(--brand-blue)!important}
+#app .about h2 em,
+#app .coming .backstage-head h3 em{color:var(--brand-orange)!important}
+#app #catalogo #grid .card .card-nickname,
+#app #grid .card .card-nickname{color:var(--brand-orange)!important}
+/* Ícones de apoio em laranja; links e botão do Instagram em azul. */
+#app .about .help svg{color:var(--brand-orange)!important;stroke:var(--brand-orange)!important}
+#app .about .help a,
+#app .about .help a:visited,
+#app .about .amigo a:not(.btn){color:var(--brand-blue)!important}
+#app .about .soc .btn,
+#app .about .soc .btn:visited{
+  background:var(--brand-blue)!important;
+  border-color:var(--brand-blue)!important;
+  color:#152019!important;
+}
+#app .about .soc .btn svg{stroke:currentColor!important}
+#app .about .help a:hover,
+#app .about .amigo a:not(.btn):hover{text-decoration-thickness:2px!important}
+#app .coming .backstage-photo .back-expand{
+  border-color:color-mix(in srgb,var(--brand-orange) 45%,transparent)!important;
+}
+#app .coming .backstage-photo .back-expand:hover{
+  background:color-mix(in srgb,var(--brand-orange) 16%,transparent)!important;
+}
+/* Prévia da paleta no editor de aparência. */
+#bgdlg .bg-accent-preview{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 16px;border:1px solid var(--line);border-radius:12px;
+  background:rgba(0,0,0,.12);font-weight:700;
+}
+#bgdlg .bg-accent-preview a{
+  display:inline-flex;padding:5px 10px;border-radius:999px;text-decoration:none;
+}
+#bgdlg .bg-accent-preview button{
+  border:0;border-radius:999px;padding:7px 14px;font:600 13px Figtree, sans-serif;
+}
