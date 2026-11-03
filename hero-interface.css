@@ -29,8 +29,8 @@
 #app .hero .hero-intro{max-width:46ch;margin:0 0 1.6rem;color:#d0d5cd;font-size:clamp(1rem,1.35vw,1.18rem);line-height:1.7;text-shadow:none}
 #app .hero .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin:1.8rem 0}
 #app .hero .hero-actions .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.85rem 1.2rem;font-weight:700;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);font-size:14px}
-#app .hero .hero-primary{gap:0;background:#a9bad2!important;color:#101914!important;border:1px solid rgba(195,207,225,.8)!important}
-#app .hero .hero-primary:hover{background:#c1cede!important;filter:none}
+#app .hero .hero-primary{gap:0;background:var(--brand-blue,#a9bad2)!important;color:#101914!important;border:1px solid color-mix(in srgb,var(--brand-blue,#a9bad2) 78%,white)!important}
+#app .hero .hero-primary:hover{background:color-mix(in srgb,var(--brand-blue,#a9bad2) 82%,white)!important;filter:none}
 #app .hero .hero-arrow{display:inline-block;margin-left:1rem;line-height:1;transition:transform .16s ease}
 #app .hero .hero-primary:hover .hero-arrow{transform:translate(3px,-1px)}
 #app .hero .hero-secondary{background:transparent!important;color:#f2f0e8!important;border:1px solid #66796d!important;box-shadow:none!important}
@@ -49,7 +49,7 @@
 #app .photo-subject,#app .photo-credit{display:flex;flex-direction:column;gap:.22rem;min-width:0}
 #app .photo-subject strong{font-family:"Bricolage Grotesque",Figtree,sans-serif;font-size:1.35rem;line-height:1.2;color:#f2f0e8}
 #app .photo-subject>span:last-child{font-size:.86rem;color:#b8c1b8}
-#app .caption-kicker,#app .photo-credit>span{font-size:.66rem;line-height:1.35;letter-spacing:.11em;text-transform:uppercase;color:#a9bad2}
+#app .caption-kicker,#app .photo-credit>span{font-size:.66rem;line-height:1.35;letter-spacing:.11em;text-transform:uppercase;color:var(--brand-blue,#a9bad2)}
 #app .photo-credit{text-align:right;max-width:54%}
 #app .photo-credit strong{font-size:.8rem;font-weight:600;line-height:1.4;overflow-wrap:anywhere;color:#f2f0e8}
 #app .photo-credit>span:last-child{font-size:.75rem;color:#b8c1b8;letter-spacing:0}
@@ -57,7 +57,7 @@
 #app #catalogo.tools .catalog-head{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:0 0 1.6rem}
 #app #catalogo.tools h2{margin:0!important;color:#f2f0e8;font-family:"Bricolage Grotesque",Figtree,sans-serif;font-size:clamp(1.9rem,3.5vw,2.7rem);letter-spacing:-.045em;line-height:1.08}
 #app #catalogo.tools .catalog-help{display:flex;align-items:center;gap:.75rem;max-width:450px;min-width:0}
-#app #catalogo.tools .catalog-help-toggle{flex:0 0 40px;width:40px;height:40px;border:1px solid rgba(169,186,210,.45);border-radius:50%;background:rgba(169,186,210,.1);color:#d9e2ee;font:600 18px/1 Figtree,sans-serif;cursor:pointer}
+#app #catalogo.tools .catalog-help-toggle{flex:0 0 40px;width:40px;height:40px;border:1px solid color-mix(in srgb,var(--brand-blue,#a9bad2) 45%,transparent);border-radius:50%;background:color-mix(in srgb,var(--brand-blue,#a9bad2) 10%,transparent);color:#d9e2ee;font:600 18px/1 Figtree,sans-serif;cursor:pointer}
 #app #catalogo.tools .catalog-help-toggle[aria-expanded="true"]{background:#a9bad2;color:#101914}
 #app #catalogo.tools .catalog-help-copy{display:flex;flex-direction:column;gap:.25rem;color:#b8c1b8;font-size:.8rem;line-height:1.45}
 #app #catalogo.tools .catalog-help-copy strong{color:#f2f0e8;font-size:.86rem}
@@ -177,11 +177,11 @@
 #app #catalogo .filters .chip[aria-pressed="true"],
 #app #catalogo .filters .filter[aria-pressed="true"],
 #app #catalogo .filters button[aria-pressed="true"]{
-  background:rgba(169,186,210,.22)!important;
-  background-color:rgba(169,186,210,.22)!important;
+  background:color-mix(in srgb,var(--brand-blue,#a9bad2) 22%,transparent)!important;
+  background-color:color-mix(in srgb,var(--brand-blue,#a9bad2) 22%,transparent)!important;
   background-image:none!important;
   color:#f5f7fb!important;
-  border-color:rgba(169,186,210,.58)!important;
+  border-color:color-mix(in srgb,var(--brand-blue,#a9bad2) 58%,transparent)!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 4px 16px rgba(0,0,0,.12)!important;
 }
 #app #catalogo .catalog-prompt-icon[aria-expanded="true"]{
