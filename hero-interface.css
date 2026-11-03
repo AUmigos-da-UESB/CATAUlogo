@@ -2583,3 +2583,9 @@ html,body{overflow-x:clip!important}
   #app .coming .coming-emoji:first-child{font-size:42px!important}
   #app .coming .coming-emoji:nth-child(2){font-size:52px!important}
 }
+
+
+/* Correção de identidade: "começou" pertence à cor secundária. */
+#app .coming .coming-box h2 em{
+  color:var(--brand-orange)!important;
+}
