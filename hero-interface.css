@@ -2038,3 +2038,53 @@ body.isadm #app #catalogo #grid .card .card-actions{
 #bgdlg .bg-accent-preview button{
   border:0;border-radius:999px;padding:7px 14px;font:600 13px Figtree, sans-serif;
 }
+
+
+/* ===== Eixo editorial único: voluntários, apoio e história =====
+   O mesmo elemento de conteúdo envolve título, cards e texto em cada seção.
+   Assim, a largura e as bordas laterais são idênticas por construção. */
+#app .section-content{
+  width:min(1440px,calc(100% - clamp(40px,10vw,160px)))!important;
+  max-width:1440px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+#app .vol{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(2rem,4vw,3rem) 0 3rem!important;
+}
+#app .vol .section-content{
+  display:block!important;
+}
+#app .vol .vhead,
+#app .vol .vgrid{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+#app .about .section-content,
+#app .coming .section-content{
+  width:min(1440px,calc(100% - clamp(40px,10vw,160px)))!important;
+  max-width:1440px!important;
+}
+@media(max-width:760px){
+  #app .section-content,
+  #app .about .section-content,
+  #app .coming .section-content{
+    width:calc(100% - 36px)!important;
+    max-width:none!important;
+  }
+}
+@media(max-width:620px){
+  #app .section-content,
+  #app .about .section-content,
+  #app .coming .section-content{
+    width:calc(100% - 32px)!important;
+  }
+}
