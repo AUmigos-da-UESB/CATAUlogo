@@ -316,8 +316,15 @@
       input.className = "custom-input";
       input.value = state[f.key];
       add.onclick = () => input.click();
-      input.oninput = e => {
-        const c = e.target.value;
+      const updateColorLive = c => {
+        state[f.key] = c.toLowerCase();
+        title.querySelector("code").textContent = state[f.key];
+        // Keep the native picker element alive while the user drags either selector.
+        updatePreviews();
+      };
+      input.oninput = e => updateColorLive(e.target.value);
+      input.onchange = e => {
+        const c = e.target.value.toLowerCase();
         if (!palette.includes(c)) palette.push(c);
         state[f.key] = c;
         refresh();
@@ -370,9 +377,9 @@
   let previewPaintId = 0;
   function recolorPreviewPattern(blue,pink) {
     const id=++previewPaintId, preview=document.getElementById("prev-pattern");
-    if(!patternSource){preview.style.backgroundImage="none";return;}
+    if(!patternSource){preview.style.backgroundImage="none";preview.style.backgroundColor="#0f1713";return;}
     const img=new Image();
-    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;preview.style.backgroundRepeat="repeat";preview.style.backgroundSize=`${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px ${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px`;};img.src=patternSource;
+    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;preview.style.backgroundRepeat="repeat";preview.style.backgroundSize=`${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px ${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px`;};img.onerror=()=>{if(id===previewPaintId){preview.style.backgroundImage=`url("${patternSource}")`;preview.style.backgroundRepeat="repeat";}};img.src=patternSource;
   }
 
   function updatePreviews() {
