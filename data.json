@@ -735,7 +735,7 @@
    "blue": "#34495c",
    "pink": "#633b30",
    "scale": 161,
-   "patternOpacity": 71,
+   "patternOpacity": 0,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
