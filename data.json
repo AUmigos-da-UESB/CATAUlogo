@@ -734,13 +734,13 @@
   "background": {
    "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 219,
-   "patternOpacity": 45,
+   "scale": 241,
+   "patternOpacity": 27,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
    "secondary": "#f08a45",
-   "motionSeconds": 36,
+   "motionSeconds": 26,
    "motionEnabled": true,
    "preset": "custom",
    "palette": [
