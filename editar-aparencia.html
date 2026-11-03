@@ -429,13 +429,14 @@
     document.getElementById("val-speed").textContent = e.target.value + " s";
   };
 
-  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette } }, window.location.origin);
+  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette, customPresets: userPresets } }, window.location.origin);
   document.getElementById("cancel").onclick = () => parent.postMessage({ type: "catau-appearance-cancel" }, window.location.origin);
 
   window.addEventListener("message", event => {
     if (event.source !== window.parent || event.origin !== window.location.origin || event.data?.type !== "catau-appearance-init") return;
     const d = event.data.settings || {};
     patternSource = d.patternSource || patternSource;
+    if (Array.isArray(d.customPresets)) { userPresets = d.customPresets.filter(p => p && typeof p.name === "string"); PRESETS = [...BUILTIN_PRESETS, ...userPresets]; try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); } catch(e) {} }
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
     if (Array.isArray(d.palette) && d.palette.length) palette = [...new Set(d.palette.filter(v => /^#[0-9a-f]{6}$/i.test(v)))];
     document.getElementById("scale").value = d.scalePercent ?? 50;
