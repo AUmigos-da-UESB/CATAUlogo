@@ -369,15 +369,19 @@
         tools.append(rename, remove); btn.appendChild(tools);
       }
       btn.onclick = () => {
-        selectedPresetName = p.name;
+        // Resolve the most recently saved version, including overrides of built-in presets.
+        const latest = (p.originalName
+          ? userPresets.find(x => x._builtinOverride && x.originalName === p.originalName)
+          : userPresets.find(x => !x._builtinOverride && x.name === p.name)) || p;
+        selectedPresetName = latest.name;
         Object.assign(state, {
-          pattern1: p.c1, pattern2: p.c2,
-          primary: p.primary, secondary: p.secondary,
-          grad1: p.grad1 || state.grad1, grad2: p.grad2 || state.grad2
+          pattern1: latest.c1, pattern2: latest.c2,
+          primary: latest.primary, secondary: latest.secondary,
+          grad1: latest.grad1 || state.grad1, grad2: latest.grad2 || state.grad2
         });
-        document.getElementById("scale").value=p.scale??50;
-        document.getElementById("patternOpacity").value=p.opacity??100;
-        document.getElementById("speed").value=p.speed??36;
+        document.getElementById("scale").value=latest.scale??50;
+        document.getElementById("patternOpacity").value=latest.opacity??100;
+        document.getElementById("speed").value=latest.speed??36;
         document.getElementById("val-scale").textContent=document.getElementById("scale").value+"%";
         document.getElementById("val-opacity").textContent=document.getElementById("patternOpacity").value+"%";
         document.getElementById("val-speed").textContent=document.getElementById("speed").value+" s";
@@ -459,9 +463,14 @@
   let selectedPresetName = null;
   function selectedPreset(){
     if(!selectedPresetName)return null;
-    // Prefer persisted overrides over the built-in default with the same name.
-    return userPresets.find(p=>p.name===selectedPresetName&&p._builtinOverride)
-      || userPresets.find(p=>p.name===selectedPresetName)
+    // A renamed built-in keeps its original identity even when its display name changes.
+    const visible=PRESETS.find(p=>p.name===selectedPresetName);
+    if(visible?.originalName){
+      return userPresets.find(p=>p._builtinOverride&&p.originalName===visible.originalName)
+        || visible;
+    }
+    return userPresets.find(p=>p.name===selectedPresetName&&!p._builtinOverride)
+      || userPresets.find(p=>p.name===selectedPresetName&&p._builtinOverride)
       || BUILTIN_PRESETS.find(p=>p.name===selectedPresetName)
       || null;
   }
@@ -475,7 +484,7 @@
       return;
     }
     p[field]=next;
-    if(BUILTIN_PRESETS.some(x=>x.name===p.name)){
+    if(p.originalName || BUILTIN_PRESETS.some(x=>x.name===p.name)){
       p._builtinOverride=true;
       const idx=userPresets.findIndex(x=>x.name===p.name&&x._builtinOverride);
       if(idx>=0)userPresets[idx]={...p};else userPresets.push({...p});
