@@ -244,7 +244,7 @@ function home(){
    <h1 id="hero-title">Cada focinho<br>tem <em>uma história.</em></h1>
    <p class="intro">Conheça os cães e gatos que vivem ou circulam pelo campus. Descubra quem é quem, onde costumam ficar e formas de contribuir para o cuidado desses companheiros.</p>
    <div class="actions">
-    <a class="btn" href="#catalogo">CATAUlogo <span class="btn-arrow" aria-hidden="true">↗</span></a>
+    <a class="btn hero-catalog-link" href="#catalogo" style="background:var(--brand-blue,#a9bad2);border-color:var(--brand-blue,#a9bad2);color:#101914">CATAUlogo <span class="btn-arrow" aria-hidden="true">↗</span></a>
     <a class="btn secondary" href="#ajudar">Como posso ajudar?</a>
    </div>
    <div class="stats" aria-label="Indicadores do catálogo">
