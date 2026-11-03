@@ -4,7 +4,7 @@
  const header=document.getElementById("site-header"),toggle=document.getElementById("site-menu-toggle"),nav=document.getElementById("site-primary-nav");
  if(!header||!toggle||!nav)return;
  const links=Array.from(nav.querySelectorAll("a"));
- const targets=[{href:"#inicio",selector:"#inicio"},{href:"#catalogo",selector:"#catalogo"},{href:"#ajudar",selector:"#ajudar"},{href:"#sobre",selector:"#sobre"}];
+ const targets=[{href:"#inicio",selector:"#inicio"},{href:"#catalogo",selector:"#catalogo"},{href:"#sobre",selector:"#sobre"},{href:"#voluntarios",selector:"#voluntarios"},{href:"#vem-ai",selector:"#vem-ai"},{href:"#documentario",selector:"#documentario"}];
  function closeMenu(){nav.classList.remove("is-open");toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Abrir menu")}
  function updateActive(){
   const marker=window.scrollY+Math.min(window.innerHeight*.32,210);let current="#inicio";
