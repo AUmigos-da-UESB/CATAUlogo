@@ -735,7 +735,7 @@
    "blue": "#34495c",
    "pink": "#633b30",
    "scale": 187,
-   "patternOpacity": 27,
+   "patternOpacity": 37,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
@@ -768,7 +768,7 @@
      "grad1": "#1c2922",
      "grad2": "#222b38",
      "scale": 40,
-     "opacity": 45,
+     "opacity": 37,
      "speed": 36,
      "_builtinOverride": true
     }
