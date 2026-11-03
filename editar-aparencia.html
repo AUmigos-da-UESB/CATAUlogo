@@ -388,7 +388,7 @@
     document.getElementById("val-speed").textContent = document.getElementById("speed").value + " s";
     refresh();
   });
-  window.addEventListener("load", () => parent.postMessage({ type: "catau-appearance-ready" }, window.location.origin));
+  function announceReady(){parent.postMessage({type:"catau-appearance-ready"},window.location.origin)}window.addEventListener("load",announceReady);window.addEventListener("message",event=>{if(event.source!==window.parent||event.origin!==window.location.origin)return;if(event.data?.type==="catau-appearance-ping")announceReady()});
   refresh();
 </script>
 </body>
