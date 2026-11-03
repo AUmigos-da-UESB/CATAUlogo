@@ -218,8 +218,8 @@
 
     <!-- Coluna 3: mantida, mas sem controles de gradiente -->
     <div class="card">
-      <h2>Gradiente da seção Sobre</h2>
-      <p class="hint">Escolha as duas cores do gradiente usado na seção Sobre.</p>
+      <h2>De onde tudo começou e Cuidar também é documentar</h2>
+      <p class="hint">Edite as duas cores do gradiente usado nessas seções.</p>
       <div id="pick-grad1"></div>
       <div id="pick-grad2"></div>
       <span class="label">Prévia</span>
@@ -239,8 +239,8 @@
   let palette = ["#a9bad2", "#34495c", "#633b30", "#f08a45", "#0f1713", "#1c2922", "#222b38", "#8a6cff", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
 
   const PRESETS = [
-    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45" },
-    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a" },
+    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38" },
+    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38" },
     { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
     { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
     { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
@@ -331,14 +331,15 @@
       const btn = document.createElement("button");
       btn.className = "preset";
       const isActive = state.pattern1 === p.c1 && state.pattern2 === p.c2 &&
-                       state.primary === p.primary && state.secondary === p.secondary;
+                       state.primary === p.primary && state.secondary === p.secondary &&
+                       state.grad1 === (p.grad1 || p.c1) && state.grad2 === (p.grad2 || p.c2);
       if (isActive) btn.classList.add("active");
       btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span>${p.name}`;
       btn.onclick = () => {
         Object.assign(state, {
           pattern1: p.c1, pattern2: p.c2,
           primary: p.primary, secondary: p.secondary,
-          grad1: p.grad1 || p.c1, grad2: p.grad2 || p.c2
+          grad1: p.grad1 || state.grad1, grad2: p.grad2 || state.grad2
         });
         refresh();
       };
