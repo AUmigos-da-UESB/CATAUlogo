@@ -256,21 +256,7 @@
     { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
   ];
 
-  const BUILTIN_PRESETS = [
-    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
-    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
-    { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
-    { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
-    { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
-    { name: "Oceano",                   c1: "#0b3b4f", c2: "#062a38", primary: "#3fd0e8", secondary: "#7ef0c8" },
-    { name: "Pôr do sol",               c1: "#3a1020", c2: "#1f0a2e", primary: "#ff6b6b", secondary: "#ffb347" },
-    { name: "Vinho e dourado",          c1: "#3b0f1d", c2: "#1a0a10", primary: "#e0a84f", secondary: "#f2d6a2" },
-    { name: "Ardósia rosa",             c1: "#2b2d42", c2: "#8d5b7a", primary: "#ff9ecd", secondary: "#c9d6ff" },
-    { name: "Areia e cacau",            c1: "#e9dcc9", c2: "#c9a77c", primary: "#4a2f1d", secondary: "#8a5a3c" },
-    { name: "Menta clara",              c1: "#d8f3ea", c2: "#a8dfc8", primary: "#0f5c4a", secondary: "#2a9d7a" },
-    { name: "Neon cyberpunk",           c1: "#0a0a1f", c2: "#1f0a3a", primary: "#00f0ff", secondary: "#ff2fb3" },
-    { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
-  ];
+
   let userPresets = [];
   try { userPresets = JSON.parse(localStorage.getItem("catau-user-presets") || "[]"); } catch(e) { userPresets = []; }
   let hiddenBuiltins = [];
