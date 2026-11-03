@@ -2187,3 +2187,42 @@ body.isadm #app #catalogo #grid .card .card-actions{
     width:calc(100% - 32px)!important;
   }
 }
+
+
+/* ===== Cartão da história: gradiente ampliado e texto alinhado ao título =====
+   O cartão avança para fora da coluna, preservando o respiro lateral.
+   Título e parágrafos começam no mesmo eixo interno. */
+#app .coming .coming-box{
+  --story-bleed:clamp(26px,4vw,56px);
+  width:calc(100% + 2 * var(--story-bleed))!important;
+  max-width:none!important;
+  margin-left:calc(-1 * var(--story-bleed))!important;
+  margin-right:0!important;
+  padding:var(--story-bleed)!important;
+  box-sizing:border-box!important;
+}
+#app .coming .coming-box>div:first-child{
+  min-width:0!important;
+  max-width:78ch!important;
+}
+#app .coming .coming-box h2{
+  margin-left:0!important;
+}
+#app .coming .coming-box p{
+  margin-left:0!important;
+  max-width:78ch!important;
+}
+#app #catalogo .catalog-head #catalog-title em{
+  color:var(--brand-orange,#f08a45)!important;
+}
+@media(max-width:760px){
+  #app .coming .coming-box{
+    --story-bleed:0px;
+    width:100%!important;
+    margin-left:0!important;
+    padding:24px!important;
+  }
+}
+@media(max-width:620px){
+  #app .coming .coming-box{padding:20px!important}
+}
