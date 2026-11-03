@@ -354,7 +354,7 @@
       btn.className = "preset";
       const isActive = state.pattern1 === p.c1 && state.pattern2 === p.c2 &&
                        state.primary === p.primary && state.secondary === p.secondary &&
-                       state.grad1 === (p.grad1 || p.c1) && state.grad2 === (p.grad2 || p.c2);
+                       state.grad1 === (p.grad1 || p.c1) && state.grad2 === (p.grad2 || p.c2) && Number(document.getElementById("scale").value)===Number(p.scale??50) && Number(document.getElementById("patternOpacity").value)===Number(p.opacity??100) && Number(document.getElementById("speed").value)===Number(p.speed??36);
       if (isActive) btn.classList.add("active");
       btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span><span>${p.name}</span>`;
       if (true) {
@@ -470,7 +470,10 @@
     const defaults={scale:50,opacity:100,speed:36},old=Number(p[field]??defaults[field]),next=Number(value);
     if(old===next)return;
     const accepted=confirm(`A predefinição "${p.name}" está salva com ${label} em ${old}; o valor que você escolheu é ${next}. Deseja substituir o valor salvo nessa predefinição?`);
-    if(!accepted)return;
+    if(!accepted){
+      // Keep the chosen value in the current editor session; declining only means not overwriting the saved preset.
+      return;
+    }
     p[field]=next;
     if(BUILTIN_PRESETS.some(x=>x.name===p.name)){
       p._builtinOverride=true;
@@ -494,7 +497,7 @@
   };
   document.getElementById("speed").onchange = e => syncSelectedPresetSetting("speed",e.target.value,"a velocidade");
 
-  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette, customPresets: userPresets } }, window.location.origin);
+  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette, customPresets: userPresets, presetName:selectedPresetName } }, window.location.origin);
   document.getElementById("cancel").onclick = () => parent.postMessage({ type: "catau-appearance-cancel" }, window.location.origin);
 
   window.addEventListener("message", event => {
