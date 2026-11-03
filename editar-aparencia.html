@@ -372,7 +372,7 @@
     const id=++previewPaintId, preview=document.getElementById("prev-pattern");
     if(!patternSource){preview.style.backgroundImage="none";return;}
     const img=new Image();
-    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;preview.style.backgroundRepeat="repeat";preview.style.backgroundSize=`${Number(document.getElementById("scale").value)*2.8}px ${Number(document.getElementById("scale").value)*2.8}px`;};img.src=patternSource;
+    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;preview.style.backgroundRepeat="repeat";preview.style.backgroundSize=`${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*2}px ${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*2}px`;};img.src=patternSource;
   }
 
   function updatePreviews() {
@@ -384,7 +384,7 @@
     pat.style.setProperty("--primary", state.primary);
     pat.style.setProperty("--secondary", state.secondary);
     pat.style.opacity = String(Number(document.getElementById("patternOpacity").value)/100);
-    pat.style.backgroundSize = (Number(document.getElementById("scale").value)*2.8)+"px "+(Number(document.getElementById("scale").value)*2.8)+"px";
+    pat.style.backgroundSize = ((((Number(document.getElementById("scale").value)-10)/90)*290+90)*2)+"px "+((((Number(document.getElementById("scale").value)-10)/90)*290+90)*2)+"px";
 
     const acc = document.getElementById("prev-accent");
     acc.style.setProperty("--primary", state.primary);
