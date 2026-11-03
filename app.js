@@ -270,7 +270,7 @@ function home(){
    <label><span class="hidden">Buscar animal por nome</span><input id="q" class="field" type="search" data-site-edit-input="searchPlaceholder" placeholder="${esc(SITE.searchPlaceholder||"⌕  Buscar pelo nome do animal")}" aria-label="Buscar animal pelo nome" autocomplete="off" value="${esc(busca)}"></label>
    <div class="location-filter"><label><span class="hidden">Filtrar por local</span><select id="loc" class="field" aria-label="Filtrar por localização">${["Todos os locais",...MODS].map(m=>"<option"+(m===loc?" selected":"")+">"+esc(m)+"</option>").join("")}</select></label>
     <label><span class="hidden">Modo de visualização</span><select id="sort" class="field" aria-label="Ordenar animais"><option value="normal"${ordem==="normal"?" selected":""}>Visualização normal</option><option value="alfabetica"${ordem==="alfabetica"?" selected":""}>Ordem alfabética</option></select></label>
-    ${admin?"<button type=\"button\" class=\"admin order-edit-toggle\" id=\"orderEditToggle\" title=\""+(editOrder?"Fechar menu de ordem":"Editar ordem dos animais")+"\" aria-label=\""+(editOrder?"Fechar menu de ordem":"Editar ordem dos animais")+"\">↗ Administração</button>":""}
+    
    </div>
   </div>
   <div class="filters" role="group" aria-label="Filtros do catálogo">${FILTROS.map(f=>"<button class=\"filter chip\" aria-pressed=\""+filtrosAtivos.has(f)+"\" data-f=\""+esc(f)+"\">"+esc(f)+"</button>").join("")}</div>
