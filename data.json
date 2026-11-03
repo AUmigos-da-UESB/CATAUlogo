@@ -741,7 +741,7 @@
    "primary": "#a9bad2",
    "secondary": "#f08a45",
    "motionSeconds": 36,
-   "motionEnabled": true,
+   "motionEnabled": false,
    "preset": "custom",
    "palette": [
     "#a9bad2",
