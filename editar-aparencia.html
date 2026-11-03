@@ -392,11 +392,18 @@
   }
 
   let patternSource = "";
+  try { patternSource = localStorage.getItem("catau-pattern-source") || ""; } catch(e) {}
   let previewPaintId = 0;
   function recolorPreviewPattern(blue,pink) {
     const id=++previewPaintId, preview=document.getElementById("prev-pattern");
     preview.style.backgroundColor="#0f1713"; preview.style.backgroundRepeat="repeat";
-    if(!patternSource){preview.style.backgroundImage="none";return;}
+    if(!patternSource){
+      // Never erase a working preview because the parent message arrived without its image URL.
+      if(!preview.style.backgroundImage || preview.style.backgroundImage === "none") {
+        try { const cached=localStorage.getItem("catau-pattern-source"); if(cached) patternSource=cached; } catch(e) {}
+      }
+      if(!patternSource)return;
+    }
     preview.style.backgroundImage=`url("${patternSource}")`;
     preview.style.backgroundSize="180px 180px";
     const img=new Image();
@@ -404,7 +411,7 @@
       if(id!==previewPaintId)return;
       try {
         const canvas=document.createElement("canvas"); canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
-        const ctx=canvas.getContext("2d",{willReadFrequently:true}); if(!ctx)return;
+        const ctx=canvas.getContext("2d",{willReadFrequently:true}); if(!ctx){preview.style.backgroundImage=`url("${patternSource}")`;return;}
         ctx.drawImage(img,0,0); const image=ctx.getImageData(0,0,canvas.width,canvas.height);
         const b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];
         for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(Math.max(r,g,bl)<65)continue;if(g>=r*.88&&g>=bl*.82){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}
@@ -418,7 +425,6 @@
   function updatePreviews() {
     const pat = document.getElementById("prev-pattern");
     pat.style.backgroundColor = "#0f1713";
-    pat.style.backgroundImage = "none";
     pat.style.backgroundRepeat = "repeat";
     recolorPreviewPattern(state.pattern1,state.pattern2);
     pat.style.setProperty("--primary", state.primary);
@@ -512,7 +518,7 @@
   window.addEventListener("message", event => {
     if (event.source !== window.parent || event.origin !== window.location.origin || event.data?.type !== "catau-appearance-init") return;
     const d = event.data.settings || {};
-    patternSource = d.patternSource || patternSource;
+    if(d.patternSource){ patternSource=d.patternSource; try { localStorage.setItem("catau-pattern-source",patternSource); } catch(e) {} }
     if (Array.isArray(d.customPresets)) { userPresets=d.customPresets.filter(p=>p&&typeof p.name==="string"); PRESETS=visiblePresets(); try { localStorage.setItem("catau-user-presets",JSON.stringify(userPresets)); } catch(e) {} }
     selectedPresetName=d.presetName||null;
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
