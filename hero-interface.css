@@ -1536,8 +1536,8 @@ body{
   will-change:background-position;
 }
 @keyframes catau-global-pattern-drift{
-  from{background-position:0 0,0 0}
-  to{background-position:0 0,280px 280px}
+  from{background-position:0 0}
+  to{background-position:280px 280px}
 }
 body.bg-motion-on #site-background-layer{
   animation:catau-global-pattern-drift var(--bg-motion-duration,36s) linear infinite!important;
