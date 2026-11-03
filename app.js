@@ -277,8 +277,7 @@ function home(){
   <div class="resultbar"><span id="cnt" class="meta" aria-live="polite"></span></div>
   <section class="animal-grid grid" id="grid" aria-live="polite"></section>
  </section>
-<section class="vol" id="voluntarios"><div class="section-content"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></div></section>
- <section class="about" id="sobre"><div class="wrap section-content"><div>
+<section class="about" id="sobre"><div class="wrap section-content"><div>
  <h2>${et("aboutTitle",SITE.aboutTitle)}</h2>
  <p style="margin-top:18px">${et("aboutText1",SITE.aboutText1)}</p>
  <p>${et("aboutText2",SITE.aboutText2)}</p>
@@ -291,6 +290,7 @@ function home(){
  <div><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M17 11a3 3 0 100-6M21 18c0-2-1-4-3-5"/></svg><p style="margin:0"><b>${et("help3Title",SITE.help3Title)}</b><span>${et("help3Text",SITE.help3Text)}</span></p></div>
  <div><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7l1.5-3h5L16 7"/><circle cx="12" cy="12.5" r="3"/></svg><p style="margin:0"><b>${et("help4Title",SITE.help4Title)}</b><span>${et("help4Text",SITE.help4Text)}<br><br><b>Envie para:</b> <a href="mailto:${esc(SITE.email1)}">${et("email1",SITE.email1)}</a><br>ou <a href="mailto:${esc(SITE.email2)}">${et("email2",SITE.email2)}</a></span></p></div>
 </div></div></section>
+  <section class="vol" id="voluntarios"><div class="section-content"><div class="vhead"><div><h2>${et("volTitle",SITE.volTitle)}</h2><p>${et("volText",SITE.volText)}</p></div><button class="btn gradient-flow" id="vadd">+ Adicionar voluntário</button></div><div class="vgrid" id="vgrid"></div></div></section>
  <section class="coming" id="vem-ai"><div class="wrap section-content"><div class="coming-box"><div><h2>${et("comingTitle",SITE.comingTitle)}</h2><p>${et("comingText",SITE.comingText)}</p></div><div class="coming-art" aria-hidden="true"><span class="coming-emoji">🎬</span><span class="coming-emoji">🐾</span></div></div><div class="backstage-head"><div><h3>${et("comingBackstageLabel",SITE.comingBackstageLabel||"Por trás das câmeras")}</h3><p>Um pouquinho do processo de criação do documentário.</p></div><button class="btn ghost" id="bedit" style="display:none">✎ Editar bastidores</button></div><div class="backstage-grid">${(SITE.backstage||[]).filter(b=>b&&b.src).length?(SITE.backstage||[]).filter(b=>b&&b.src).map((b,i)=>`<figure class="backstage-photo" data-back-index="${i}"><div class="back-image"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt="${esc(b.alt||("Bastidores do documentário "+(i+1)))}" loading="${i===0?"eager":"lazy"}" decoding="async" fetchpriority="${i===0?"high":"auto"}"><button type="button" class="back-expand" aria-label="Expandir foto" title="Expandir foto">⤢</button>${b.credit?`<span class="back-credit">Foto por ${esc(String(b.credit).replace(/^foto\s+por\s+/i,""))}</span>`:""}</div><figcaption>${b.caption?rh(b.caption):"Bastidores do documentário."}</figcaption></figure>`).join(""): '<div class="back-empty">Os bastidores vão aparecer aqui 🎬<br><span style="font-size:12px">Em breve, fotos do processo de pesquisa e filmagem do documentário.</span></div>'}</div></div></section>
  <footer><div class="wrap">${et("footer",SITE.footer)}</div></footer>`;
  iniciarDestaqueRotacao(d0,0);
