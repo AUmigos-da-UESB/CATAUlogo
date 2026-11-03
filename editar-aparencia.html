@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editar aparência</title>
+<style>
+  :root {
+    --bg: #0f1116;
+    --panel: #171a22;
+    --card: #1e222c;
+    --border: #2b303c;
+    --text: #e8eaf0;
+    --muted: #8a909e;
+    --accent: #4f8cff;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+  .panel {
+    max-width: 1040px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  header h1 { margin: 0 0 4px; font-size: 20px; }
+  header p { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+
+  .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+
+  /* Predefinições */
+  .presets { margin-bottom: 20px; }
+  .preset-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .preset {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; padding: 6px 12px 6px 6px;
+    color: var(--text); font-size: 13px; cursor: pointer;
+  }
+  .preset:hover { border-color: var(--muted); }
+  .preset .dots { display: flex; }
+  .preset .dots i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--card); display: block; }
+  .preset .dots i + i { margin-left: -4px; }
+  .preset.active { border-color: var(--accent); }
+
+  /* Grade de colunas */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .card h2 { margin: 0; font-size: 15px; }
+  .card .hint { margin: -8px 0 0; font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* Seletor de cor por campo */
+  .picker-title { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .picker-title span { font-size: 13px; font-weight: 600; color: var(--text); }
+  .picker-title code { font-size: 12px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .swatch {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid transparent; cursor: pointer; padding: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+    position: relative;
+  }
+  .swatch:hover { transform: scale(1.08); }
+  .swatch.selected { border-color: var(--text); }
+  .swatch.add {
+    background: transparent; box-shadow: none;
+    border: 2px dashed var(--muted); color: var(--muted);
+    font-size: 18px; line-height: 24px; text-align: center;
+  }
+  .swatch.add:hover { border-color: var(--text); color: var(--text); }
+  .custom-input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+  .picker-wrap { position: relative; }
+
+  /* Modo de edição: bolinhas balançam, mostram × e são removidas ao clicar */
+  .editing .swatch:not(.add) { animation: wiggle .4s ease-in-out infinite alternate; }
+  .editing .swatch:not(.add)::after {
+    content: "×"; position: absolute; top: -6px; right: -6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #e8553d; color: #fff; font-size: 12px; line-height: 16px; text-align: center;
+  }
+  @keyframes wiggle { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+
+  .toggle-edit {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 999px; padding: 4px 10px; font-size: 12px; cursor: pointer;
+  }
+  .toggle-edit.on { border-color: var(--accent); color: var(--text); }
+
+  /* Sliders */
+  .slider-row { display: flex; flex-direction: column; gap: 6px; }
+  .slider-row .top { display: flex; justify-content: space-between; font-size: 13px; }
+  .slider-row .top span:last-child { color: var(--muted); }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+
+  /* Prévias */
+  .preview {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 14px;
+    min-height: 90px;
+    display: flex; flex-direction: column; justify-content: center; gap: 10px;
+    background-image: linear-gradient(120deg, var(--c1, #1a2a4a), var(--c2, #3a1f1a));
+    transition: background 0.3s;
+  }
+  .preview .title { font-weight: 700; font-size: 16px; color: var(--primary, #4f8cff); }
+  .preview .title-sec { font-size: 13px; color: var(--secondary, #ff9c4a); }
+  .preview .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .btn-prev {
+    border-radius: 999px; padding: 6px 14px; font-size: 13px; border: 1px solid var(--primary, #4f8cff);
+    background: var(--primary, #4f8cff); color: #fff; cursor: default;
+  }
+  .link-prev { color: var(--primary, #4f8cff); font-size: 13px; text-decoration: underline; }
+  .gradient-prev { min-height: 120px; }
+
+  /* Ações */
+  .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+  .btn {
+    border-radius: 10px; padding: 10px 18px; font-size: 14px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <header>
+    <h1>Editar aparência</h1>
+    <p>Ajuste o padrão do site, as cores de destaque e o gradiente da seção “Sobre”.</p>
+  </header>
+
+  <section class="presets">
+    <div class="section-head"><span class="label">Predefinições</span></div>
+    <div class="preset-list" id="presets"></div>
+  </section>
+
+  <div class="section-head" style="margin-bottom:16px">
+    <span class="label">Cores</span>
+    <button class="toggle-edit" id="toggleEdit">Editar paleta</button>
+  </div>
+
+  <div class="grid">
+
+    <!-- Coluna 1: Padrão do site -->
+    <div class="card">
+      <h2>Padrão do site</h2>
+      <p class="hint">Cores usadas nos elementos de fundo com padrão.</p>
+
+      <div id="pick-pattern1"></div>
+      <div id="pick-pattern2"></div>
+
+      <div class="slider-row">
+        <div class="top"><span>Escala do padrão</span><span id="val-scale">50%</span></div>
+        <input type="range" id="scale" min="10" max="100" value="50">
+      </div>
+
+      <div class="slider-row">
+        <div class="top"><span>Velocidade diagonal</span><span id="val-speed">36 s</span></div>
+        <input type="range" id="speed" min="5" max="90" value="36">
+      </div>
+
+      <label class="toggle"><input type="checkbox" id="motion" checked> Movimento diagonal contínuo</label>
+
+      <span class="label">Prévia</span>
+      <div class="preview" id="prev-pattern">
+        <div class="title">Título de exemplo</div>
+        <div class="title-sec">Subtítulo de exemplo</div>
+      </div>
+    </div>
+
+    <!-- Coluna 2: Cores de destaque -->
+    <div class="card">
+      <h2>Cores de destaque</h2>
+      <p class="hint">Controlam globalmente títulos, apelidos, ícones, links e botões.</p>
+
+      <div id="pick-primary"></div>
+      <div id="pick-secondary"></div>
+
+      <span class="label">Prévia</span>
+      <div class="preview" id="prev-accent">
+        <div class="title">Cor principal</div>
+        <div class="title-sec">Cor secundária</div>
+        <div class="row">
+          <span class="link-prev">Link</span>
+          <span class="btn-prev">Botão</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna 3: Gradiente Sobre -->
+    <div class="card">
+      <h2>Gradiente da seção Sobre</h2>
+      <p class="hint">As duas cores que formam o gradiente.</p>
+
+      <div id="pick-grad1"></div>
+      <div id="pick-grad2"></div>
+
+      <span class="label">Prévia</span>
+      <div class="preview gradient-prev" id="prev-grad"></div>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="cancel">Cancelar</button>
+    <button class="btn primary" id="save">Salvar aparência</button>
+  </div>
+</div>
+
+<script>
+  // Paleta compartilhada entre todos os campos
+  const palette = ["#4f8cff", "#2f5fd0", "#1a2a4a", "#0f1116", "#8a6cff", "#3a1f1a",
+                   "#ff9c4a", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
+
+  const PRESETS = [
+    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a" },
+    { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
+    { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
+    { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
+    { name: "Oceano",                   c1: "#0b3b4f", c2: "#062a38", primary: "#3fd0e8", secondary: "#7ef0c8" },
+    { name: "Pôr do sol",               c1: "#3a1020", c2: "#1f0a2e", primary: "#ff6b6b", secondary: "#ffb347" },
+    { name: "Vinho e dourado",          c1: "#3b0f1d", c2: "#1a0a10", primary: "#e0a84f", secondary: "#f2d6a2" },
+    { name: "Ardósia rosa",             c1: "#2b2d42", c2: "#8d5b7a", primary: "#ff9ecd", secondary: "#c9d6ff" },
+    { name: "Areia e cacau",            c1: "#e9dcc9", c2: "#c9a77c", primary: "#4a2f1d", secondary: "#8a5a3c" },
+    { name: "Menta clara",              c1: "#d8f3ea", c2: "#a8dfc8", primary: "#0f5c4a", secondary: "#2a9d7a" },
+    { name: "Neon cyberpunk",           c1: "#0a0a1f", c2: "#1f0a3a", primary: "#00f0ff", secondary: "#ff2fb3" },
+    { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
+  ];
+
+  const state = {
+    pattern1: "#1a2a4a", pattern2: "#3a1f1a",
+    primary: "#4f8cff", secondary: "#ff9c4a",
+    grad1: "#1a2a4a", grad2: "#3a1f1a"
+  };
+
+  let editing = false;
+
+  // Cada campo: id do container, chave no state e rótulo
+  const FIELDS = [
+    { id: "pick-pattern1", key: "pattern1",  label: "Cor principal" },
+    { id: "pick-pattern2", key: "pattern2",  label: "Cor secundária" },
+    { id: "pick-primary",  key: "primary",   label: "Cor principal" },
+    { id: "pick-secondary",key: "secondary", label: "Cor secundária" },
+    { id: "pick-grad1",    key: "grad1",     label: "Cor principal" },
+    { id: "pick-grad2",    key: "grad2",     label: "Cor secundária" }
+  ];
+
+  function renderFields() {
+    FIELDS.forEach(f => {
+      const box = document.getElementById(f.id);
+      box.innerHTML = "";
+
+      const title = document.createElement("div");
+      title.className = "picker-title";
+      title.innerHTML = `<span>${f.label}</span><code>${state[f.key]}</code>`;
+      box.appendChild(title);
+
+      const row = document.createElement("div");
+      row.className = "swatches";
+
+      palette.forEach((color, i) => {
+        const b = document.createElement("button");
+        b.className = "swatch" + (state[f.key].toLowerCase() === color.toLowerCase() ? " selected" : "");
+        b.style.background = color;
+        b.title = color;
+        b.onclick = () => {
+          if (editing) palette.splice(i, 1);
+          else state[f.key] = color;
+          refresh();
+        };
+        row.appendChild(b);
+      });
+
+      // Botão + abre o seletor nativo e salva a cor na paleta
+      const wrap = document.createElement("div");
+      wrap.className = "picker-wrap";
+      const add = document.createElement("button");
+      add.className = "swatch add";
+      add.textContent = "+";
+      add.title = "Adicionar cor";
+      const input = document.createElement("input");
+      input.type = "color";
+      input.className = "custom-input";
+      input.value = state[f.key];
+      add.onclick = () => input.click();
+      input.oninput = e => {
+        const c = e.target.value;
+        if (!palette.includes(c)) palette.push(c);
+        state[f.key] = c;
+        refresh();
+      };
+      wrap.append(add, input);
+      row.appendChild(wrap);
+
+      row.classList.toggle("editing", editing);
+      box.appendChild(row);
+    });
+  }
+
+  function renderPresets() {
+    const list = document.getElementById("presets");
+    list.innerHTML = "";
+    PRESETS.forEach(p => {
+      const btn = document.createElement("button");
+      btn.className = "preset";
+      const isActive = state.pattern1 === p.c1 && state.pattern2 === p.c2 &&
+                       state.primary === p.primary && state.secondary === p.secondary;
+      if (isActive) btn.classList.add("active");
+      btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span>${p.name}`;
+      btn.onclick = () => {
+        Object.assign(state, {
+          pattern1: p.c1, pattern2: p.c2,
+          primary: p.primary, secondary: p.secondary,
+          grad1: p.c1, grad2: p.c2
+        });
+        refresh();
+      };
+      list.appendChild(btn);
+    });
+  }
+
+  function updatePreviews() {
+    const pat = document.getElementById("prev-pattern");
+    pat.style.setProperty("--c1", state.pattern1);
+    pat.style.setProperty("--c2", state.pattern2);
+    pat.style.setProperty("--primary", state.primary);
+    pat.style.setProperty("--secondary", state.secondary);
+
+    const acc = document.getElementById("prev-accent");
+    acc.style.setProperty("--primary", state.primary);
+    acc.style.setProperty("--secondary", state.secondary);
+
+    document.getElementById("prev-grad").style.background =
+      `linear-gradient(120deg, ${state.grad1}, ${state.grad2})`;
+  }
+
+  function refresh() {
+    renderPresets();
+    renderFields();
+    updatePreviews();
+  }
+
+  document.getElementById("toggleEdit").onclick = e => {
+    editing = !editing;
+    e.target.classList.toggle("on", editing);
+    e.target.textContent = editing ? "Concluir edição" : "Editar paleta";
+    refresh();
+  };
+
+  document.getElementById("scale").oninput = e => {
+    document.getElementById("val-scale").textContent = e.target.value + "%";
+  };
+  document.getElementById("speed").oninput = e => {
+    document.getElementById("val-speed").textContent = e.target.value + " s";
+  };
+
+  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette } }, "*");
+  document.getElementById("cancel").onclick = () => parent.postMessage({ type: "catau-appearance-cancel" }, "*");
+
+  window.addEventListener("message", event => {
+    if (event.data?.type !== "catau-appearance-init") return;
+    const d = event.data.settings || {};
+    Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
+    document.getElementById("scale").value = d.scalePercent ?? 50;
+    document.getElementById("speed").value = d.speed ?? 36;
+    document.getElementById("motion").checked = d.motion !== false;
+    document.getElementById("val-scale").textContent = document.getElementById("scale").value + "%";
+    document.getElementById("val-speed").textContent = document.getElementById("speed").value + " s";
+    refresh();
+  });
+  refresh();
+</script>
+</body>
+</html>
