@@ -22,8 +22,8 @@
 #app #inicio,#app #catalogo,#app #ajudar,#app #sobre{scroll-margin-top:88px}
 #app .hero{width:100%;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:start;gap:clamp(2rem,5vw,5rem);padding:clamp(2.8rem,5vh,3.8rem) clamp(1rem,5vw,5rem) 3.5rem;box-sizing:border-box}
 #app .hero-copy{min-width:0;padding:0}
-#app .hero .hero-eyebrow{display:flex;align-items:center;gap:.65rem;margin:0;color:#a9bad2;font-size:.78rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-style:italic;white-space:nowrap}
-#app .hero .hero-eyebrow:before{content:"";flex:0 0 42px;height:1px;background:#b8735d}
+#app .hero .hero-eyebrow{display:flex;align-items:center;gap:.65rem;margin:0;color:var(--brand-blue,#a9bad2);font-size:.78rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-style:italic;white-space:nowrap}
+#app .hero .hero-eyebrow:before{content:"";flex:0 0 42px;height:1px;background:var(--brand-blue,#a9bad2)}
 #app .hero h1{max-width:700px;margin:1.15rem 0 1.45rem;color:#f2f0e8;font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;font-size:clamp(3rem,5.8vw,4.7rem);font-weight:700;letter-spacing:-.065em;line-height:.99;text-shadow:none}
 #app .hero h1 em{color:#a9bad2;font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.06em}
 #app .hero .hero-intro{max-width:46ch;margin:0 0 1.6rem;color:#d0d5cd;font-size:clamp(1rem,1.35vw,1.18rem);line-height:1.7;text-shadow:none}
