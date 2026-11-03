@@ -2088,3 +2088,67 @@ body.isadm #app #catalogo #grid .card .card-actions{
     width:calc(100% - 32px)!important;
   }
 }
+
+
+/* ===== Alinhamento definitivo pelo mesmo eixo do Hero e do CATAUlogo =====
+   Hero, título do catálogo e as quatro seções editoriais usam uma única
+   largura de conteúdo. Não dependem mais de .wrap ou larguras herdadas. */
+#app .hero,
+#app #catalogo,
+#app .section-content{
+  width:min(1190px,calc(100% - 48px))!important;
+  max-width:1190px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+#app .hero{
+  padding-top:clamp(2.8rem,5vh,3.8rem)!important;
+  padding-bottom:3.5rem!important;
+}
+#app #catalogo{
+  padding-top:2.5rem!important;
+  padding-bottom:2.8rem!important;
+}
+/* Os títulos e os respectivos conteúdos começam no mesmo ponto do contêiner. */
+#app .vol .vhead,
+#app .vol .vgrid,
+#app .about .wrap,
+#app .coming>.wrap,
+#app .coming .backstage-head,
+#app .coming .backstage-grid{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+#app .vol .vhead h2,
+#app .about h2,
+#app .coming .coming-box h2,
+#app .coming .backstage-head h3{
+  margin-left:0!important;
+}
+/* O título da história compensa o recuo interno do cartão para compartilhar
+   a mesma linha inicial dos demais títulos, sem deslocar o texto do corpo. */
+#app .coming .coming-box h2{
+  margin-left:calc(-1 * clamp(26px,4vw,56px))!important;
+}
+@media(max-width:760px){
+  #app .hero,
+  #app #catalogo,
+  #app .section-content{
+    width:calc(100% - 36px)!important;
+    max-width:none!important;
+  }
+  #app .coming .coming-box h2{margin-left:-24px!important}
+}
+@media(max-width:620px){
+  #app .hero,
+  #app #catalogo,
+  #app .section-content{
+    width:calc(100% - 32px)!important;
+  }
+  #app .coming .coming-box h2{margin-left:-20px!important}
+}
