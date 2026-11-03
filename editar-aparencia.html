@@ -218,10 +218,12 @@
 
     <!-- Coluna 3: mantida, mas sem controles de gradiente -->
     <div class="card">
-      <h2>Seção Sobre</h2>
-      <p class="hint">Prévia do fundo liso da seção, sem gradiente adicional.</p>
+      <h2>Gradiente da seção Sobre</h2>
+      <p class="hint">Escolha as duas cores do gradiente usado na seção Sobre.</p>
+      <div id="pick-grad1"></div>
+      <div id="pick-grad2"></div>
       <span class="label">Prévia</span>
-      <div class="preview" id="prev-grad" style="min-height:120px;background-color:#1c2922;background-image:none;"></div>
+      <div class="preview gradient-prev" id="prev-grad" style="min-height:120px;"></div>
     </div>
 
   </div>
@@ -266,6 +268,8 @@
     { id: "pick-pattern2", key: "pattern2",  label: "Cor secundária" },
     { id: "pick-primary",  key: "primary",   label: "Cor principal" },
     { id: "pick-secondary",key: "secondary", label: "Cor secundária" },
+    { id: "pick-grad1", key: "grad1", label: "Cor principal" },
+    { id: "pick-grad2", key: "grad2", label: "Cor secundária" },
   ];
 
   function renderFields() {
@@ -364,6 +368,10 @@
     const acc = document.getElementById("prev-accent");
     acc.style.setProperty("--primary", state.primary);
     acc.style.setProperty("--secondary", state.secondary);
+
+    const grad = document.getElementById("prev-grad");
+    grad.style.backgroundImage = `linear-gradient(120deg, ${state.grad1}, ${state.grad2})`;
+    grad.style.backgroundColor = "transparent";
 
 
   }
