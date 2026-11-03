@@ -256,9 +256,30 @@
     { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
   ];
 
+  const BUILTIN_PRESETS = [
+    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
+    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
+    { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
+    { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
+    { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
+    { name: "Oceano",                   c1: "#0b3b4f", c2: "#062a38", primary: "#3fd0e8", secondary: "#7ef0c8" },
+    { name: "Pôr do sol",               c1: "#3a1020", c2: "#1f0a2e", primary: "#ff6b6b", secondary: "#ffb347" },
+    { name: "Vinho e dourado",          c1: "#3b0f1d", c2: "#1a0a10", primary: "#e0a84f", secondary: "#f2d6a2" },
+    { name: "Ardósia rosa",             c1: "#2b2d42", c2: "#8d5b7a", primary: "#ff9ecd", secondary: "#c9d6ff" },
+    { name: "Areia e cacau",            c1: "#e9dcc9", c2: "#c9a77c", primary: "#4a2f1d", secondary: "#8a5a3c" },
+    { name: "Menta clara",              c1: "#d8f3ea", c2: "#a8dfc8", primary: "#0f5c4a", secondary: "#2a9d7a" },
+    { name: "Neon cyberpunk",           c1: "#0a0a1f", c2: "#1f0a3a", primary: "#00f0ff", secondary: "#ff2fb3" },
+    { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
+  ];
   let userPresets = [];
   try { userPresets = JSON.parse(localStorage.getItem("catau-user-presets") || "[]"); } catch(e) { userPresets = []; }
-  let PRESETS = [...BUILTIN_PRESETS, ...userPresets];
+  let hiddenBuiltins = [];
+  try { hiddenBuiltins = JSON.parse(localStorage.getItem("catau-hidden-presets") || "[]"); } catch(e) { hiddenBuiltins = []; }
+  const builtinOriginals = BUILTIN_PRESETS.map(p=>({...p, originalName:p.name}));
+  function visiblePresets() {
+    return [...builtinOriginals.map(base=>{const o=userPresets.find(x=>x._builtinOverride&&x.originalName===base.name);return o?{...base,...o,originalName:base.name}:base;}).filter(p=>!hiddenBuiltins.includes(p.originalName)),...userPresets.filter(p=>!p._builtinOverride&&!p._builtinDeleted)];
+  }
+  let PRESETS = visiblePresets();
 
   const state = {
     pattern1: "#34495c", pattern2: "#633b30",
@@ -337,7 +358,7 @@
     });
   }
 
-  function persistPresets() { try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); } catch(e) {} PRESETS = [...BUILTIN_PRESETS, ...userPresets]; renderPresets(); }
+  function persistPresets() { try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); localStorage.setItem("catau-hidden-presets",JSON.stringify(hiddenBuiltins)); } catch(e) {} PRESETS = visiblePresets(); renderPresets(); }
 
   function renderPresets() {
     const list = document.getElementById("presets");
@@ -350,15 +371,15 @@
                        state.grad1 === (p.grad1 || p.c1) && state.grad2 === (p.grad2 || p.c2);
       if (isActive) btn.classList.add("active");
       btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span><span>${p.name}</span>`;
-      if (presetIndex >= BUILTIN_PRESETS.length) {
+      if (true) {
         const tools = document.createElement("span");
         tools.className = "preset-tools";
         const rename = document.createElement("button");
         rename.className = "preset-tool"; rename.type = "button"; rename.title = "Renomear predefinição"; rename.textContent = "✎";
-        rename.onclick = e => { e.stopPropagation(); const name = prompt("Novo nome da predefinição:", p.name); if (name && name.trim()) { userPresets[presetIndex - BUILTIN_PRESETS.length].name = name.trim(); persistPresets(); } };
+        rename.onclick = e => { e.stopPropagation(); const name=prompt("Novo nome da predefinição:",p.name); if(!name||!name.trim())return; if(p.originalName){const idx=userPresets.findIndex(x=>x._builtinOverride&&x.originalName===p.originalName);const entry={...p,name:name.trim(),originalName:p.originalName,_builtinOverride:true};if(idx>=0)userPresets[idx]=entry;else userPresets.push(entry);}else{const item=userPresets.find(x=>x.name===p.name&&!x._builtinOverride);if(item)item.name=name.trim();} persistPresets(); };
         const remove = document.createElement("button");
         remove.className = "preset-tool"; remove.type = "button"; remove.title = "Apagar predefinição"; remove.textContent = "×";
-        remove.onclick = e => { e.stopPropagation(); if (confirm(`Apagar a predefinição "${p.name}"?`)) { userPresets.splice(presetIndex - BUILTIN_PRESETS.length, 1); persistPresets(); } };
+        remove.onclick = e => { e.stopPropagation(); if(!confirm(`Apagar a predefinição "${p.name}"?`))return; if(p.originalName){hiddenBuiltins.push(p.originalName);userPresets=userPresets.filter(x=>!(x._builtinOverride&&x.originalName===p.originalName));}else userPresets=userPresets.filter(x=>x.name!==p.name||x._builtinOverride); persistPresets(); };
         tools.append(rename, remove); btn.appendChild(tools);
       }
       btn.onclick = () => {
@@ -387,6 +408,7 @@
     preview.style.backgroundColor="#0f1713"; preview.style.backgroundRepeat="repeat";
     if(!patternSource){preview.style.backgroundImage="none";return;}
     preview.style.backgroundImage=`url("${patternSource}")`;
+    preview.style.backgroundSize="180px 180px";
     const img=new Image();
     img.onload=()=>{
       if(id!==previewPaintId)return;
@@ -397,9 +419,9 @@
         const b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];
         for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(Math.max(r,g,bl)<65)continue;if(g>=r*.88&&g>=bl*.82){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}
         ctx.putImageData(image,0,0); preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;
-      } catch(err) { preview.style.backgroundImage=`url("${patternSource}")`; }
+      } catch(err) { preview.style.backgroundImage=`url("${patternSource}")`; preview.style.backgroundSize="180px 180px"; }
     };
-    img.onerror=()=>{if(id===previewPaintId)preview.style.backgroundImage="none";};
+    img.onerror=()=>{if(id===previewPaintId){preview.style.backgroundImage=`url("${patternSource}")`;preview.style.backgroundSize="180px 180px";}};
     img.src=patternSource;
   }
 
@@ -493,7 +515,7 @@
     if (event.source !== window.parent || event.origin !== window.location.origin || event.data?.type !== "catau-appearance-init") return;
     const d = event.data.settings || {};
     patternSource = d.patternSource || patternSource;
-    if (Array.isArray(d.customPresets)) { const saved=d.customPresets.filter(p => p && typeof p.name === "string"); saved.filter(p=>p._builtinOverride).forEach(o=>{const base=BUILTIN_PRESETS.find(p=>p.name===o.name);if(base)Object.assign(base,o)}); userPresets=saved.filter(p=>!p._builtinOverride); PRESETS=[...BUILTIN_PRESETS,...userPresets]; try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); } catch(e) {} }
+    if (Array.isArray(d.customPresets)) { userPresets=d.customPresets.filter(p=>p&&typeof p.name==="string"); PRESETS=visiblePresets(); try { localStorage.setItem("catau-user-presets",JSON.stringify(userPresets)); } catch(e) {} }
     selectedPresetName=d.presetName||null;
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
     if (Array.isArray(d.palette) && d.palette.length) palette = [...new Set(d.palette.filter(v => /^#[0-9a-f]{6}$/i.test(v)))];
