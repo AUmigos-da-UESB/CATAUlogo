@@ -97,6 +97,8 @@ async function load(){
   if(r.ok)s=await r.json();
  }catch(e){}
  apply(s||SEED);
+ // Reaplica o tema depois de carregar data.json; antes disso SITE ainda contém apenas os padrões locais.
+ paintBackground(SITE.background||{});
  document.body.classList.remove("isadm");
  const bgButton=document.getElementById("fbgedit"),a=document.getElementById("fadd"),b=document.getElementById("fadm"),t=document.getElementById("ftext");
  if(bgButton)bgButton.style.display="none";
@@ -113,6 +115,7 @@ async function load(){
     const remoteData=await remote();
     if(remoteData){
      apply(remoteData);
+     paintBackground(SITE.background||{});
      admin=true;
      rAdm();
     }
