@@ -732,10 +732,10 @@
   ],
   "footer": "CATAUlogo · Catálogo de cães e gatos da UESB em Vitória da Conquista",
   "background": {
-   "blue": "#f08a45",
+   "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 187,
-   "patternOpacity": 48,
+   "scale": 219,
+   "patternOpacity": 100,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
