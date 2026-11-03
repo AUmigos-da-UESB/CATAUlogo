@@ -734,8 +734,8 @@
   "background": {
    "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 177,
-   "patternOpacity": 46,
+   "scale": 219,
+   "patternOpacity": 30,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
@@ -768,7 +768,7 @@
      "grad1": "#1c2922",
      "grad2": "#222b38",
      "scale": 37,
-     "opacity": 46,
+     "opacity": 30,
      "speed": 28,
      "_builtinOverride": true
     },
