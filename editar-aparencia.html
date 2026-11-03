@@ -51,6 +51,9 @@
   .preset .dots i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--card); display: block; }
   .preset .dots i + i { margin-left: -4px; }
   .preset.active { border-color: var(--accent); }
+  .preset-tools { display:flex; gap:5px; margin-left:4px; }
+  .preset-tool { border:0; background:transparent; color:var(--muted); cursor:pointer; padding:2px 4px; font-size:13px; border-radius:5px; }
+  .preset-tool:hover { color:var(--text); background:var(--border); }
 
   /* Grade de colunas */
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -118,11 +121,11 @@
     padding: 14px;
     min-height: 90px;
     display: flex; flex-direction: column; justify-content: center; gap: 10px;
-    background-color: #1c2922;
+    background-color: var(--card);
     background-image: none;
     transition: background 0.3s;
   }
-  .preview { position: relative; overflow: hidden; background-color:#1c2922; background-image:none; }
+  .preview { position: relative; overflow: hidden; background-color:var(--card); background-image:none; }
   .pattern-overlay { position:absolute; inset:0; pointer-events:none; opacity:1; background-repeat:repeat; background-position:0 0; background-size:var(--pattern-size,280px) var(--pattern-size,280px); }
   .preview > :not(.pattern-overlay) { position:relative; z-index:1; }
   .preview .title { font-weight: 700; font-size: 16px; color: var(--primary, #4f8cff); }
@@ -153,7 +156,7 @@
   </header>
 
   <section class="presets">
-    <div class="section-head"><span class="label">Predefinições</span></div>
+    <div class="section-head"><span class="label">Predefinições</span><button class="toggle-edit" id="savePreset">Salvar predefinição atual</button></div>
     <div class="preset-list" id="presets"></div>
   </section>
 
@@ -238,7 +241,7 @@
   // Paleta compartilhada entre todos os campos
   let palette = ["#a9bad2", "#34495c", "#633b30", "#f08a45", "#0f1713", "#1c2922", "#222b38", "#8a6cff", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
 
-  const PRESETS = [
+  const BUILTIN_PRESETS = [
     { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38" },
     { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38" },
     { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
@@ -253,6 +256,10 @@
     { name: "Neon cyberpunk",           c1: "#0a0a1f", c2: "#1f0a3a", primary: "#00f0ff", secondary: "#ff2fb3" },
     { name: "Sálvia e bronze",          c1: "#2e3b32", c2: "#4a3a2a", primary: "#b8d4a8", secondary: "#c98a4b" }
   ];
+
+  let userPresets = [];
+  try { userPresets = JSON.parse(localStorage.getItem("catau-user-presets") || "[]"); } catch(e) { userPresets = []; }
+  let PRESETS = [...BUILTIN_PRESETS, ...userPresets];
 
   const state = {
     pattern1: "#34495c", pattern2: "#633b30",
@@ -324,17 +331,30 @@
     });
   }
 
+  function persistPresets() { try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); } catch(e) {} PRESETS = [...BUILTIN_PRESETS, ...userPresets]; renderPresets(); }
+
   function renderPresets() {
     const list = document.getElementById("presets");
     list.innerHTML = "";
-    PRESETS.forEach(p => {
+    PRESETS.forEach((p, presetIndex) => {
       const btn = document.createElement("button");
       btn.className = "preset";
       const isActive = state.pattern1 === p.c1 && state.pattern2 === p.c2 &&
                        state.primary === p.primary && state.secondary === p.secondary &&
                        state.grad1 === (p.grad1 || p.c1) && state.grad2 === (p.grad2 || p.c2);
       if (isActive) btn.classList.add("active");
-      btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span>${p.name}`;
+      btn.innerHTML = `<span class="dots"><i style="background:${p.c1}"></i><i style="background:${p.c2}"></i><i style="background:${p.primary}"></i><i style="background:${p.secondary}"></i></span><span>${p.name}</span>`;
+      if (presetIndex >= BUILTIN_PRESETS.length) {
+        const tools = document.createElement("span");
+        tools.className = "preset-tools";
+        const rename = document.createElement("button");
+        rename.className = "preset-tool"; rename.type = "button"; rename.title = "Renomear predefinição"; rename.textContent = "✎";
+        rename.onclick = e => { e.stopPropagation(); const name = prompt("Novo nome da predefinição:", p.name); if (name && name.trim()) { userPresets[presetIndex - BUILTIN_PRESETS.length].name = name.trim(); persistPresets(); } };
+        const remove = document.createElement("button");
+        remove.className = "preset-tool"; remove.type = "button"; remove.title = "Apagar predefinição"; remove.textContent = "×";
+        remove.onclick = e => { e.stopPropagation(); if (confirm(`Apagar a predefinição "${p.name}"?`)) { userPresets.splice(presetIndex - BUILTIN_PRESETS.length, 1); persistPresets(); } };
+        tools.append(rename, remove); btn.appendChild(tools);
+      }
       btn.onclick = () => {
         Object.assign(state, {
           pattern1: p.c1, pattern2: p.c2,
@@ -359,7 +379,7 @@
   function updatePreviews() {
     const pat = document.getElementById("prev-pattern");
     pat.style.backgroundImage = "none";
-    pat.style.backgroundColor = "#1c2922";
+    pat.style.backgroundColor = "var(--card)";
     recolorPreviewPattern(state.pattern1,state.pattern2);
     pat.style.setProperty("--primary", state.primary);
     pat.style.setProperty("--secondary", state.secondary);
@@ -382,6 +402,16 @@
     renderFields();
     updatePreviews();
   }
+
+  document.getElementById("savePreset").onclick = () => {
+    const snapshot = { c1: state.pattern1, c2: state.pattern2, primary: state.primary, secondary: state.secondary, grad1: state.grad1, grad2: state.grad2 };
+    const exists = PRESETS.some(p => ["c1","c2","primary","secondary","grad1","grad2"].every(k => (p[k] || "") === (snapshot[k] || "")));
+    if (exists) { alert("Essas cores já correspondem a uma predefinição salva."); return; }
+    const name = prompt("Nome da nova predefinição:");
+    if (!name || !name.trim()) return;
+    userPresets.push({ name: name.trim(), ...snapshot });
+    persistPresets();
+  };
 
   document.getElementById("toggleEdit").onclick = e => {
     editing = !editing;
