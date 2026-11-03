@@ -118,12 +118,13 @@
     padding: 14px;
     min-height: 90px;
     display: flex; flex-direction: column; justify-content: center; gap: 10px;
-    background-image: linear-gradient(120deg, var(--c1, #1a2a4a), var(--c2, #3a1f1a));
+    background-color: #1c2922;
+    background-image: none;
     transition: background 0.3s;
   }
-  .preview { position: relative; overflow: hidden; }
-  .paw-overlay { position:absolute; inset:0; pointer-events:none; opacity:var(--paw-opacity,.7); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='%23ffffff'%3E%3Cellipse cx='36' cy='43' rx='10' ry='8'/%3E%3Cellipse cx='22' cy='30' rx='5' ry='7' transform='rotate(-25 22 30)'/%3E%3Cellipse cx='33' cy='24' rx='5' ry='7' transform='rotate(-8 33 24)'/%3E%3Cellipse cx='45' cy='25' rx='5' ry='7' transform='rotate(12 45 25)'/%3E%3Cellipse cx='54' cy='33' rx='5' ry='7' transform='rotate(25 54 33)'/%3E%3C/g%3E%3C/svg%3E"); background-size:var(--paw-size,52px) var(--paw-size,52px); }
-  .preview > :not(.paw-overlay) { position:relative; z-index:1; }
+  .preview { position: relative; overflow: hidden; background-color:#1c2922; background-image:none; }
+  .pattern-overlay { position:absolute; inset:0; pointer-events:none; opacity:1; background-repeat:repeat; background-position:0 0; background-size:var(--pattern-size,280px) var(--pattern-size,280px); }
+  .preview > :not(.pattern-overlay) { position:relative; z-index:1; }
   .preview .title { font-weight: 700; font-size: 16px; color: var(--primary, #4f8cff); }
   .preview .title-sec { font-size: 13px; color: var(--secondary, #ff9c4a); }
   .preview .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
@@ -148,7 +149,7 @@
 <div class="panel">
   <header>
     <h1>Editar aparência</h1>
-    <p>Ajuste o padrão do site, as cores de destaque e o gradiente da seção “Sobre”.</p>
+    <p>Ajuste o padrão do site e as cores de destaque.</p>
   </header>
 
   <section class="presets">
@@ -190,7 +191,7 @@
 
       <span class="label">Prévia</span>
       <div class="preview" id="prev-pattern">
-        <div class="paw-overlay" aria-hidden="true"></div>
+        <div class="pattern-overlay" id="preview-pattern-overlay" aria-hidden="true"></div>
         <div class="title">Título de exemplo</div>
         <div class="title-sec">Subtítulo de exemplo</div>
       </div>
@@ -215,18 +216,6 @@
       </div>
     </div>
 
-    <!-- Coluna 3: Gradiente Sobre -->
-    <div class="card">
-      <h2>Gradiente da seção Sobre</h2>
-      <p class="hint">As duas cores que formam o gradiente.</p>
-
-      <div id="pick-grad1"></div>
-      <div id="pick-grad2"></div>
-
-      <span class="label">Prévia</span>
-      <div class="preview gradient-prev" id="prev-grad"></div>
-    </div>
-
   </div>
 
   <div class="actions">
@@ -240,8 +229,8 @@
   let palette = ["#a9bad2", "#34495c", "#633b30", "#f08a45", "#0f1713", "#1c2922", "#222b38", "#8a6cff", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
 
   const PRESETS = [
-    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1:"#1c2922", grad2:"#222b38" },
-    { name: "Noturno azul e terracota", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1:"#1c2922", grad2:"#222b38" },
+    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45" },
+    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a" },
     { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
     { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
     { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
@@ -269,8 +258,6 @@
     { id: "pick-pattern2", key: "pattern2",  label: "Cor secundária" },
     { id: "pick-primary",  key: "primary",   label: "Cor principal" },
     { id: "pick-secondary",key: "secondary", label: "Cor secundária" },
-    { id: "pick-grad1",    key: "grad1",     label: "Cor principal" },
-    { id: "pick-grad2",    key: "grad2",     label: "Cor secundária" }
   ];
 
   function renderFields() {
@@ -347,21 +334,30 @@
     });
   }
 
+  let patternSource = "";
+  let previewPaintId = 0;
+  function recolorPreviewPattern(blue,pink) {
+    const id=++previewPaintId, overlay=document.getElementById("preview-pattern-overlay");
+    if(!patternSource){overlay.style.backgroundImage="none";return;}
+    const img=new Image();
+    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);overlay.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;};img.src=patternSource;
+  }
+
   function updatePreviews() {
     const pat = document.getElementById("prev-pattern");
-    pat.style.setProperty("--c1", state.pattern1);
-    pat.style.setProperty("--c2", state.pattern2);
+    pat.style.backgroundImage = "none";
+    pat.style.backgroundColor = "#1c2922";
+    recolorPreviewPattern(state.pattern1,state.pattern2);
     pat.style.setProperty("--primary", state.primary);
     pat.style.setProperty("--secondary", state.secondary);
-    pat.style.setProperty("--paw-opacity", Number(document.getElementById("patternOpacity").value)/100);
-    pat.style.setProperty("--paw-size", (Number(document.getElementById("scale").value)*1.1)+"px");
+    document.getElementById("preview-pattern-overlay").style.opacity = Number(document.getElementById("patternOpacity").value)/100;
+    document.getElementById("preview-pattern-overlay").style.setProperty("--pattern-size", (Number(document.getElementById("scale").value)*2.8)+"px");
 
     const acc = document.getElementById("prev-accent");
     acc.style.setProperty("--primary", state.primary);
     acc.style.setProperty("--secondary", state.secondary);
 
-    document.getElementById("prev-grad").style.background =
-      `linear-gradient(120deg, ${state.grad1}, ${state.grad2})`;
+
   }
 
   function refresh() {
@@ -379,6 +375,7 @@
 
   document.getElementById("scale").oninput = e => {
     document.getElementById("val-scale").textContent = e.target.value + "%";
+    updatePreviews();
   };
   document.getElementById("patternOpacity").oninput = e => { document.getElementById("val-opacity").textContent=e.target.value+"%"; updatePreviews(); };
   document.getElementById("speed").oninput = e => {
@@ -391,6 +388,7 @@
   window.addEventListener("message", event => {
     if (event.source !== window.parent || event.origin !== window.location.origin || event.data?.type !== "catau-appearance-init") return;
     const d = event.data.settings || {};
+    patternSource = d.patternSource || patternSource;
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
     if (Array.isArray(d.palette) && d.palette.length) palette = [...new Set(d.palette.filter(v => /^#[0-9a-f]{6}$/i.test(v)))];
     document.getElementById("scale").value = d.scalePercent ?? 50;
