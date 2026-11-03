@@ -432,8 +432,8 @@
   }
 
   document.getElementById("savePreset").onclick = () => {
-    const snapshot = { c1: state.pattern1, c2: state.pattern2, primary: state.primary, secondary: state.secondary, grad1: state.grad1, grad2: state.grad2 };
-    const exists = PRESETS.some(p => ["c1","c2","primary","secondary","grad1","grad2"].every(k => (p[k] || "") === (snapshot[k] || "")));
+    const snapshot = { c1: state.pattern1, c2: state.pattern2, primary: state.primary, secondary: state.secondary, grad1: state.grad1, grad2: state.grad2, scale:Number(document.getElementById("scale").value), opacity:Number(document.getElementById("patternOpacity").value), speed:Number(document.getElementById("speed").value) };
+    const exists = PRESETS.some(p => ["c1","c2","primary","secondary","grad1","grad2","scale","opacity","speed"].every(k => (p[k] ?? ({scale:50,opacity:100,speed:36}[k]) ?? "") === (snapshot[k] ?? "")));
     if (exists) { alert("Essas cores já correspondem a uma predefinição salva."); return; }
     const name = prompt("Nome da nova predefinição:");
     if (!name || !name.trim()) return;
@@ -449,13 +449,29 @@
   };
 
   let selectedPresetName = null;
+  function selectedPreset(){
+    if(!selectedPresetName)return null;
+    // Prefer persisted overrides over the built-in default with the same name.
+    return userPresets.find(p=>p.name===selectedPresetName&&p._builtinOverride)
+      || userPresets.find(p=>p.name===selectedPresetName)
+      || BUILTIN_PRESETS.find(p=>p.name===selectedPresetName)
+      || null;
+  }
   function syncSelectedPresetSetting(field,value,label){
-    const p=PRESETS.find(x=>x.name===selectedPresetName); if(!p)return;
-    const defaults={scale:50,opacity:100,speed:36},old=Number(p[field]??defaults[field]),next=Number(value); if(old===next)return;
-    if(!confirm(`A predefinição "${p.name}" tem ${label} em ${old}; o valor atual é ${next}. Deseja atualizar a predefinição?`))return;
+    const p=selectedPreset(); if(!p)return;
+    const defaults={scale:50,opacity:100,speed:36},old=Number(p[field]??defaults[field]),next=Number(value);
+    if(old===next)return;
+    const accepted=confirm(`A predefinição "${p.name}" está salva com ${label} em ${old}; o valor que você escolheu é ${next}. Deseja substituir o valor salvo nessa predefinição?`);
+    if(!accepted)return;
     p[field]=next;
-    if(BUILTIN_PRESETS.some(x=>x.name===p.name)){userPresets=userPresets.filter(x=>x.name!==p.name);userPresets.push({...p,_builtinOverride:true});}
-    else {const i=userPresets.findIndex(x=>x.name===p.name);if(i>=0)userPresets[i]=p;}
+    if(BUILTIN_PRESETS.some(x=>x.name===p.name)){
+      p._builtinOverride=true;
+      const idx=userPresets.findIndex(x=>x.name===p.name&&x._builtinOverride);
+      if(idx>=0)userPresets[idx]={...p};else userPresets.push({...p});
+    }else{
+      const idx=userPresets.findIndex(x=>x.name===p.name);
+      if(idx>=0)userPresets[idx]={...p};
+    }
     persistPresets();
   }
   document.getElementById("scale").oninput = e => {
@@ -489,6 +505,15 @@
     document.getElementById("val-scale").textContent = document.getElementById("scale").value + "%";
     document.getElementById("val-speed").textContent = document.getElementById("speed").value + " s";
     refresh();
+    // If the parent did not provide a preset name, identify the preset matching the loaded colors and sliders.
+    if(!selectedPresetName){
+      const sc=Number(document.getElementById("scale").value),op=Number(document.getElementById("patternOpacity").value),sp=Number(document.getElementById("speed").value);
+      const match=[...userPresets.filter(p=>p._builtinOverride),...userPresets.filter(p=>!p._builtinOverride),...BUILTIN_PRESETS].find(p=>
+        p.c1===state.pattern1&&p.c2===state.pattern2&&p.primary===state.primary&&p.secondary===state.secondary&&
+        (p.grad1||state.grad1)===state.grad1&&(p.grad2||state.grad2)===state.grad2&&
+        Number(p.scale??50)===sc&&Number(p.opacity??100)===op&&Number(p.speed??36)===sp);
+      if(match)selectedPresetName=match.name;
+    }
   });
   function announceReady(){parent.postMessage({type:"catau-appearance-ready"},window.location.origin)}window.addEventListener("load",announceReady);window.addEventListener("message",event=>{if(event.source!==window.parent||event.origin!==window.location.origin)return;if(event.data?.type==="catau-appearance-ping")announceReady()});
   refresh();
