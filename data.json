@@ -734,13 +734,13 @@
   "background": {
    "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 241,
+   "scale": 148,
    "patternOpacity": 27,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
    "secondary": "#f08a45",
-   "motionSeconds": 26,
+   "motionSeconds": 36,
    "motionEnabled": true,
    "preset": "custom",
    "palette": [
@@ -767,7 +767,7 @@
      "secondary": "#f08a45",
      "grad1": "#1c2922",
      "grad2": "#222b38",
-     "scale": 50,
+     "scale": 28,
      "opacity": 45,
      "speed": 36,
      "_builtinOverride": true
