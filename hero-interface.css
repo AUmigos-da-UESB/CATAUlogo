@@ -1679,10 +1679,10 @@ body.isadm #app #catalogo #grid .card .card-actions{
 /* Cuidar também é documentar: fundo em largura total e conteúdo nas mesmas margens do site. */
 #app .about{
   display:block!important;
-  width:100vw!important;
+  width:100%!important;
   max-width:none!important;
-  margin-left:calc(50% - 50vw)!important;
-  margin-right:calc(50% - 50vw)!important;
+  margin-left:0!important;
+  margin-right:0!important;
   box-sizing:border-box!important;
   padding:clamp(42px,5vw,76px) 0!important;
   background:linear-gradient(115deg,var(--about-bg-start,#1c2922) 0%,var(--about-bg-end,#222b38) 100%)!important;
@@ -1887,10 +1887,10 @@ body.isadm #app #catalogo #grid .card .card-actions{
 /* O fundo de "Cuidar também é documentar" sangra até as bordas.
    O conteúdo permanece centralizado na largura editorial do site. */
 #app .about{
-  width:100vw!important;
+  width:100%!important;
   max-width:none!important;
-  margin-left:calc(50% - 50vw)!important;
-  margin-right:calc(50% - 50vw)!important;
+  margin-left:0!important;
+  margin-right:0!important;
   box-sizing:border-box!important;
 }
 #app .about .wrap{
