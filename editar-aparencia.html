@@ -241,8 +241,8 @@
   let palette = ["#a9bad2", "#34495c", "#633b30", "#f08a45", "#0f1713", "#1c2922", "#222b38", "#8a6cff", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
 
   const BUILTIN_PRESETS = [
-    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38" },
-    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38" },
+    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
+    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a", grad1: "#1c2922", grad2: "#222b38", scale:50, opacity:100, speed:36 },
     { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
     { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
     { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
@@ -362,11 +362,18 @@
         tools.append(rename, remove); btn.appendChild(tools);
       }
       btn.onclick = () => {
+        selectedPresetName = p.name;
         Object.assign(state, {
           pattern1: p.c1, pattern2: p.c2,
           primary: p.primary, secondary: p.secondary,
           grad1: p.grad1 || state.grad1, grad2: p.grad2 || state.grad2
         });
+        document.getElementById("scale").value=p.scale??50;
+        document.getElementById("patternOpacity").value=p.opacity??100;
+        document.getElementById("speed").value=p.speed??36;
+        document.getElementById("val-scale").textContent=document.getElementById("scale").value+"%";
+        document.getElementById("val-opacity").textContent=document.getElementById("patternOpacity").value+"%";
+        document.getElementById("val-speed").textContent=document.getElementById("speed").value+" s";
         refresh();
       };
       list.appendChild(btn);
@@ -377,9 +384,23 @@
   let previewPaintId = 0;
   function recolorPreviewPattern(blue,pink) {
     const id=++previewPaintId, preview=document.getElementById("prev-pattern");
-    if(!patternSource){preview.style.backgroundImage="none";preview.style.backgroundColor="#0f1713";return;}
+    preview.style.backgroundColor="#0f1713"; preview.style.backgroundRepeat="repeat";
+    if(!patternSource){preview.style.backgroundImage="none";return;}
+    preview.style.backgroundImage=`url("${patternSource}")`;
     const img=new Image();
-    img.onload=()=>{if(id!==previewPaintId)return;const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);const image=ctx.getImageData(0,0,canvas.width,canvas.height),b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(bl>=r*.9&&g>=r*.88){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}ctx.putImageData(image,0,0);preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;preview.style.backgroundRepeat="repeat";preview.style.backgroundSize=`${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px ${(((Number(document.getElementById("scale").value)-10)/90)*290+90)*1.4}px`;};img.onerror=()=>{if(id===previewPaintId){preview.style.backgroundImage=`url("${patternSource}")`;preview.style.backgroundRepeat="repeat";}};img.src=patternSource;
+    img.onload=()=>{
+      if(id!==previewPaintId)return;
+      try {
+        const canvas=document.createElement("canvas"); canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
+        const ctx=canvas.getContext("2d",{willReadFrequently:true}); if(!ctx)return;
+        ctx.drawImage(img,0,0); const image=ctx.getImageData(0,0,canvas.width,canvas.height);
+        const b=parseInt(blue.slice(1),16),p=parseInt(pink.slice(1),16),br=[b>>16&255,b>>8&255,b&255],pr=[p>>16&255,p>>8&255,p&255];
+        for(let i=0;i<image.data.length;i+=4){if(image.data[i+3]===0)continue;const r=image.data[i],g=image.data[i+1],bl=image.data[i+2];if(Math.max(r,g,bl)<65)continue;if(g>=r*.88&&g>=bl*.82){image.data[i]=br[0];image.data[i+1]=br[1];image.data[i+2]=br[2]}else{image.data[i]=pr[0];image.data[i+1]=pr[1];image.data[i+2]=pr[2]}}
+        ctx.putImageData(image,0,0); preview.style.backgroundImage=`url("${canvas.toDataURL("image/png")}")`;
+      } catch(err) { preview.style.backgroundImage=`url("${patternSource}")`; }
+    };
+    img.onerror=()=>{if(id===previewPaintId)preview.style.backgroundImage="none";};
+    img.src=patternSource;
   }
 
   function updatePreviews() {
@@ -427,13 +448,25 @@
     refresh();
   };
 
+  let selectedPresetName = null;
+  function syncSelectedPresetSetting(field,value,label){
+    const p=PRESETS.find(x=>x.name===selectedPresetName); if(!p)return;
+    const defaults={scale:50,opacity:100,speed:36},old=Number(p[field]??defaults[field]),next=Number(value); if(old===next)return;
+    if(!confirm(`A predefinição "${p.name}" tem ${label} em ${old}; o valor atual é ${next}. Deseja atualizar a predefinição?`))return;
+    p[field]=next;
+    if(BUILTIN_PRESETS.some(x=>x.name===p.name)){userPresets=userPresets.filter(x=>x.name!==p.name);userPresets.push({...p,_builtinOverride:true});}
+    else {const i=userPresets.findIndex(x=>x.name===p.name);if(i>=0)userPresets[i]=p;}
+    persistPresets();
+  }
   document.getElementById("scale").oninput = e => {
     document.getElementById("val-scale").textContent = e.target.value + "%";
     updatePreviews();
+    syncSelectedPresetSetting("scale",e.target.value,"a escala do padrão");
   };
-  document.getElementById("patternOpacity").oninput = e => { document.getElementById("val-opacity").textContent=e.target.value+"%"; updatePreviews(); };
+  document.getElementById("patternOpacity").oninput = e => { document.getElementById("val-opacity").textContent=e.target.value+"%"; updatePreviews(); syncSelectedPresetSetting("opacity",e.target.value,"a transparência"); };
   document.getElementById("speed").oninput = e => {
     document.getElementById("val-speed").textContent = e.target.value + " s";
+    syncSelectedPresetSetting("speed",e.target.value,"a velocidade");
   };
 
   document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette, customPresets: userPresets } }, window.location.origin);
@@ -444,6 +477,7 @@
     const d = event.data.settings || {};
     patternSource = d.patternSource || patternSource;
     if (Array.isArray(d.customPresets)) { userPresets = d.customPresets.filter(p => p && typeof p.name === "string"); PRESETS = [...BUILTIN_PRESETS, ...userPresets]; try { localStorage.setItem("catau-user-presets", JSON.stringify(userPresets)); } catch(e) {} }
+    selectedPresetName=d.presetName||null;
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
     if (Array.isArray(d.palette) && d.palette.length) palette = [...new Set(d.palette.filter(v => /^#[0-9a-f]{6}$/i.test(v)))];
     document.getElementById("scale").value = d.scalePercent ?? 50;
