@@ -735,7 +735,7 @@
    "blue": "#34495c",
    "pink": "#633b30",
    "scale": 219,
-   "patternOpacity": 100,
+   "patternOpacity": 29,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
@@ -767,9 +767,10 @@
      "secondary": "#f08a45",
      "grad1": "#1c2922",
      "grad2": "#222b38",
-     "scale": 37,
-     "opacity": 30,
-     "speed": 28,
+     "scale": 50,
+     "opacity": 29,
+     "speed": 36,
+     "originalName": "CATAUlogo original",
      "_builtinOverride": true
     },
     {
