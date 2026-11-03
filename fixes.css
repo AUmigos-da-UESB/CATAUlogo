@@ -49,6 +49,8 @@
 
 
 /* Editor de aparência: estilos do protótipo, isolados no diálogo. */
+#bgdlg .appearance-hidden-fields{position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none}
+
 #bgdlg.appearance-dialog{width:min(1090px,calc(100vw - 24px));max-width:1090px;max-height:94vh;padding:0;border:0;border-radius:16px;background:transparent;color:#e8eaf0;overflow:auto}
 #bgdlg.appearance-dialog::backdrop{background:rgba(0,0,0,.68);backdrop-filter:blur(3px)}
 #bgdlg .panel{max-width:1040px;margin:0 auto;background:#171a22;border:1px solid #2b303c;border-radius:16px;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#e8eaf0}
