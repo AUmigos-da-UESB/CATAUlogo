@@ -121,6 +121,9 @@
     background-image: linear-gradient(120deg, var(--c1, #1a2a4a), var(--c2, #3a1f1a));
     transition: background 0.3s;
   }
+  .preview { position: relative; overflow: hidden; }
+  .paw-overlay { position:absolute; inset:0; pointer-events:none; opacity:var(--paw-opacity,.7); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='%23ffffff'%3E%3Cellipse cx='36' cy='43' rx='10' ry='8'/%3E%3Cellipse cx='22' cy='30' rx='5' ry='7' transform='rotate(-25 22 30)'/%3E%3Cellipse cx='33' cy='24' rx='5' ry='7' transform='rotate(-8 33 24)'/%3E%3Cellipse cx='45' cy='25' rx='5' ry='7' transform='rotate(12 45 25)'/%3E%3Cellipse cx='54' cy='33' rx='5' ry='7' transform='rotate(25 54 33)'/%3E%3C/g%3E%3C/svg%3E"); background-size:var(--paw-size,52px) var(--paw-size,52px); }
+  .preview > :not(.paw-overlay) { position:relative; z-index:1; }
   .preview .title { font-weight: 700; font-size: 16px; color: var(--primary, #4f8cff); }
   .preview .title-sec { font-size: 13px; color: var(--secondary, #ff9c4a); }
   .preview .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
@@ -174,6 +177,11 @@
       </div>
 
       <div class="slider-row">
+        <div class="top"><span>Transparência do padrão</span><span id="val-opacity">100%</span></div>
+        <input type="range" id="patternOpacity" min="0" max="100" value="100">
+      </div>
+
+      <div class="slider-row">
         <div class="top"><span>Velocidade diagonal</span><span id="val-speed">36 s</span></div>
         <input type="range" id="speed" min="5" max="90" value="36">
       </div>
@@ -182,6 +190,7 @@
 
       <span class="label">Prévia</span>
       <div class="preview" id="prev-pattern">
+        <div class="paw-overlay" aria-hidden="true"></div>
         <div class="title">Título de exemplo</div>
         <div class="title-sec">Subtítulo de exemplo</div>
       </div>
@@ -228,11 +237,11 @@
 
 <script>
   // Paleta compartilhada entre todos os campos
-  let palette = ["#4f8cff", "#2f5fd0", "#1a2a4a", "#0f1116", "#8a6cff", "#3a1f1a",
-                   "#ff9c4a", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
+  let palette = ["#a9bad2", "#34495c", "#633b30", "#f08a45", "#0f1713", "#1c2922", "#222b38", "#8a6cff", "#e8553d", "#ff6b9a", "#2ecc8f", "#f5c542", "#ffffff"];
 
   const PRESETS = [
-    { name: "Noturno azul e terracota", c1: "#1a2a4a", c2: "#3a1f1a", primary: "#4f8cff", secondary: "#ff9c4a" },
+    { name: "CATAUlogo original", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1:"#1c2922", grad2:"#222b38" },
+    { name: "Noturno azul e terracota", c1: "#34495c", c2: "#633b30", primary: "#a9bad2", secondary: "#f08a45", grad1:"#1c2922", grad2:"#222b38" },
     { name: "Floresta",                 c1: "#0f2a1f", c2: "#1f3d2b", primary: "#2ecc8f", secondary: "#f5c542" },
     { name: "Roxo profundo",            c1: "#2a1a4a", c2: "#14101f", primary: "#8a6cff", secondary: "#ff6b9a" },
     { name: "Mono grafite",             c1: "#1c1f26", c2: "#0f1116", primary: "#e8eaf0", secondary: "#8a909e" },
@@ -247,9 +256,9 @@
   ];
 
   const state = {
-    pattern1: "#1a2a4a", pattern2: "#3a1f1a",
-    primary: "#4f8cff", secondary: "#ff9c4a",
-    grad1: "#1a2a4a", grad2: "#3a1f1a"
+    pattern1: "#34495c", pattern2: "#633b30",
+    primary: "#a9bad2", secondary: "#f08a45",
+    grad1: "#1c2922", grad2: "#222b38"
   };
 
   let editing = false;
@@ -330,7 +339,7 @@
         Object.assign(state, {
           pattern1: p.c1, pattern2: p.c2,
           primary: p.primary, secondary: p.secondary,
-          grad1: p.c1, grad2: p.c2
+          grad1: p.grad1 || p.c1, grad2: p.grad2 || p.c2
         });
         refresh();
       };
@@ -344,6 +353,8 @@
     pat.style.setProperty("--c2", state.pattern2);
     pat.style.setProperty("--primary", state.primary);
     pat.style.setProperty("--secondary", state.secondary);
+    pat.style.setProperty("--paw-opacity", Number(document.getElementById("patternOpacity").value)/100);
+    pat.style.setProperty("--paw-size", (Number(document.getElementById("scale").value)*1.1)+"px");
 
     const acc = document.getElementById("prev-accent");
     acc.style.setProperty("--primary", state.primary);
@@ -369,11 +380,12 @@
   document.getElementById("scale").oninput = e => {
     document.getElementById("val-scale").textContent = e.target.value + "%";
   };
+  document.getElementById("patternOpacity").oninput = e => { document.getElementById("val-opacity").textContent=e.target.value+"%"; updatePreviews(); };
   document.getElementById("speed").oninput = e => {
     document.getElementById("val-speed").textContent = e.target.value + " s";
   };
 
-  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette } }, window.location.origin);
+  document.getElementById("save").onclick = () => parent.postMessage({ type: "catau-appearance-save", state: { ...state, scale: Number(document.getElementById("scale").value), patternOpacity:Number(document.getElementById("patternOpacity").value), speed: Number(document.getElementById("speed").value), motion: document.getElementById("motion").checked, palette } }, window.location.origin);
   document.getElementById("cancel").onclick = () => parent.postMessage({ type: "catau-appearance-cancel" }, window.location.origin);
 
   window.addEventListener("message", event => {
@@ -382,6 +394,8 @@
     Object.assign(state, { pattern1: d.blue || state.pattern1, pattern2: d.pink || state.pattern2, primary: d.primary || state.primary, secondary: d.secondary || state.secondary, grad1: d.aboutStart || state.grad1, grad2: d.aboutEnd || state.grad2 });
     if (Array.isArray(d.palette) && d.palette.length) palette = [...new Set(d.palette.filter(v => /^#[0-9a-f]{6}$/i.test(v)))];
     document.getElementById("scale").value = d.scalePercent ?? 50;
+    document.getElementById("patternOpacity").value = d.patternOpacity ?? 100;
+    document.getElementById("val-opacity").textContent = document.getElementById("patternOpacity").value + "%";
     document.getElementById("speed").value = d.speed ?? 36;
     document.getElementById("motion").checked = d.motion !== false;
     document.getElementById("val-scale").textContent = document.getElementById("scale").value + "%";
