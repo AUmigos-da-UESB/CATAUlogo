@@ -2152,3 +2152,38 @@ body.isadm #app #catalogo #grid .card .card-actions{
   }
   #app .coming .coming-box h2{margin-left:-20px!important}
 }
+
+
+/* Correção de especificidade: vence as larguras antigas de .about/.coming. */
+#app .hero,
+#app #catalogo,
+#app .vol .section-content,
+#app .about .section-content,
+#app .coming .section-content{
+  width:min(1190px,calc(100% - 48px))!important;
+  max-width:1190px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+@media(max-width:760px){
+  #app .hero,
+  #app #catalogo,
+  #app .vol .section-content,
+  #app .about .section-content,
+  #app .coming .section-content{
+    width:calc(100% - 36px)!important;
+    max-width:none!important;
+  }
+}
+@media(max-width:620px){
+  #app .hero,
+  #app #catalogo,
+  #app .vol .section-content,
+  #app .about .section-content,
+  #app .coming .section-content{
+    width:calc(100% - 32px)!important;
+  }
+}
