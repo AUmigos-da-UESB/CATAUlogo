@@ -193,3 +193,20 @@ body.isadm #vadd:hover{
   #app #catalogo .resultbar{margin-top:14px!important}
   #app #catalogo .animal-grid{gap:18px!important;padding-top:12px!important}
 }
+
+
+/* Zoom reduzido em desktop: aproximar as seções sem alterar identidade visual.
+   O breakpoint corresponde a viewports CSS muito largos (comuns ao reduzir zoom);
+   não modifica tipografia, cores, imagens, colunas ou largura editorial. */
+@media screen and (min-width:1800px) and (min-height:900px){
+  #app .hero{
+    padding-top:clamp(14px,1.1vw,22px)!important;
+    padding-bottom:clamp(10px,.8vw,16px)!important;
+  }
+  #app #catalogo.tools{
+    padding-top:clamp(10px,.8vw,16px)!important;
+    padding-bottom:clamp(20px,1.5vw,28px)!important;
+  }
+  #app .hero .hero-actions{margin-top:1.25rem!important;margin-bottom:1.25rem!important}
+  #app .hero .count-grid{margin-top:1.1rem!important;padding-top:.8rem!important}
+}
