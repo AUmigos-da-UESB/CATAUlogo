@@ -159,61 +159,37 @@ body.isadm #vadd:hover{
 }
 
 
-/* ===== Layout fluido por viewport: não encolher em zoom reduzido =====
-   Os limites anteriores em pixels (1190px no conteúdo e 460px na foto)
-   deixavam grandes áreas vazias quando o zoom diminuía. O eixo agora
-   acompanha a largura útil real do viewport, sem larguras máximas fixas. */
-#app .hero,
-#app #catalogo,
-#app .vol .section-content,
-#app .about .section-content,
-#app .coming .section-content{
-  width: min(94vw, 2400px)!important;
-  max-width: none!important;
-  margin-left: auto!important;
-  margin-right: auto!important;
-  box-sizing: border-box!important;
-}
-#app .hero{
-  display:grid!important;
-  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr)!important;
-  gap:clamp(24px,4vw,96px)!important;
-  align-items:center!important;
-}
-#app .hero-copy,
-#app .hero-visual{min-width:0!important;width:100%!important;max-width:none!important}
-#app .hero-visual{justify-self:stretch!important}
-#app .hero-photo-frame{width:100%!important;max-width:none!important}
-#app .hero-photo-frame .photo{width:100%!important}
-#app #catalogo #grid{
-  display:grid!important;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important;
-  gap:clamp(14px,1.5vw,26px)!important;
-  width:100%!important;
-  min-width:0!important;
-}
-#app .vol .vgrid{
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important;
-}
-#app .about .wrap,
-#app .coming>.wrap{width:100%!important;max-width:none!important}
-#app .about .section-content,
-#app .coming .section-content{min-width:0!important}
-#app .about .section-content{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(22px,3vw,64px)!important}
-#app .coming .coming-box{min-width:0!important}
-@media(max-width:760px){
-  #app .hero,
-  #app #catalogo,
-  #app .vol .section-content,
-  #app .about .section-content,
-  #app .coming .section-content{
-    width:calc(100% - 32px)!important;
+/* Espaçamento estável entre níveis de zoom: manter eixo e proporções originais.
+   Evita que unidades vw/vh ampliem os intervalos quando o zoom é reduzido. */
+@media (min-width:821px){
+  #app .hero{
+    width:min(1190px,calc(100% - 48px))!important;
+    max-width:1190px!important;
+    grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)!important;
+    gap:clamp(28px,3vw,52px)!important;
+    padding:44px 0 42px!important;
   }
-  #app .hero{grid-template-columns:minmax(0,1fr)!important;gap:26px!important}
-  #app .hero-visual{max-width:560px!important;justify-self:center!important}
-  #app .about .section-content{grid-template-columns:minmax(0,1fr)!important}
-  #app #catalogo #grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))!important}
-}
-@media(max-width:480px){
-  #app #catalogo #grid{grid-template-columns:minmax(0,1fr)!important}
+  #app .hero-visual{
+    width:100%!important;
+    max-width:460px!important;
+    justify-self:end!important;
+  }
+  #app .hero-photo-frame{
+    width:100%!important;
+    aspect-ratio:10/11!important;
+    height:auto!important;
+  }
+  #app #catalogo{
+    width:min(1190px,calc(100% - 48px))!important;
+    max-width:1190px!important;
+    padding:32px 0 38px!important;
+  }
+  #app #catalogo .catalog-head{
+    gap:24px!important;
+    margin-bottom:22px!important;
+  }
+  #app #catalogo .toolbar{gap:12px!important}
+  #app #catalogo .filters{gap:8px!important;margin-top:14px!important}
+  #app #catalogo .resultbar{margin-top:14px!important}
+  #app #catalogo .animal-grid{gap:18px!important;padding-top:12px!important}
 }
