@@ -210,3 +210,16 @@ body.isadm #vadd:hover{
   #app .hero .hero-actions{margin-top:1.25rem!important;margin-bottom:1.25rem!important}
   #app .hero .count-grid{margin-top:1.1rem!important;padding-top:.8rem!important}
 }
+
+
+/* Zoom desktop reduzido: neutraliza a altura mínima de viewport herdada
+   pela abertura. Em zoom baixo, 100svh vira milhares de pixels CSS e cria
+   o vão entre a abertura e o catálogo. Não altera o layout em zoom normal. */
+@media screen and (min-width:1800px) and (min-height:900px){
+  #app > .hero,
+  #app section.hero,
+  #app #inicio.hero{
+    min-height:0!important;
+    height:auto!important;
+  }
+}
