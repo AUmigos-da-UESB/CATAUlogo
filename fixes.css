@@ -651,3 +651,61 @@ body.isadm #vadd:hover{
     transform: translate(clamp(24px, 2.2vw, 40px), clamp(18px, 1.6vw, 28px)) !important;
   }
 }
+
+
+/* Ficha do animal: barra de edição textual nunca aparece nesta rota. */
+body.animal-page #inline-text-bar { display:none !important; }
+
+/* Retorno integrado ao cabeçalho, imediatamente antes da marca. */
+#animal-header-back {
+  display:none;
+}
+body.animal-page #animal-header-back {
+  display:inline-flex !important;
+  flex:0 0 34px;
+  width:34px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  margin:0 8px 0 0;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  text-decoration:none;
+}
+body.animal-page #animal-header-back img {
+  display:block;
+  width:25px;
+  height:25px;
+  object-fit:contain;
+  filter:invert(1);
+}
+body.animal-page #animal-header-back:hover { background:rgba(225,238,229,.09); }
+
+/* Metadados da ficha seguem o mesmo símbolo e tratamento da listagem. */
+.animal-profile .fic-title-row > .profile-sex {
+  display:inline-flex !important;
+  align-items:center;
+  gap:5px;
+}
+.animal-profile .fic-title-row > .profile-sex .card-sex {
+  display:block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.animal-profile .fic-title-row > .profile-age,
+.animal-profile .fic-title-row > .profile-sex,
+.animal-profile .fic-title-row > .badge {
+  align-self:center !important;
+}
+@media(max-width:820px){
+  body.animal-page #animal-header-back { flex-basis:30px; width:30px; margin-right:4px; }
+  body.animal-page #animal-header-back img { width:22px; height:22px; }
+}
