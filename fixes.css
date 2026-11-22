@@ -311,3 +311,37 @@ body.isadm #vadd:hover{
     margin-right: auto !important;
   }
 }
+
+
+/* Eixo da abertura: alinhar o início do texto à logo e o fim da foto
+   ao botão "Versão desktop" do cabeçalho. O contêiner anterior de 1190px
+   deixava ambos os lados recuados; aqui a abertura usa a largura do header. */
+@media (min-width: 821px) {
+  #app > .hero,
+  #app section.hero#inicio {
+    width: min(1440px, calc(100% - 48px)) !important;
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 44px 16px 42px 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  #app > .hero .hero-copy {
+    min-width: 0 !important;
+  }
+
+  #app > .hero .hero-visual {
+    justify-self: end !important;
+    margin-right: 0 !important;
+    max-width: 460px !important;
+  }
+}
+
+@media (min-width: 1800px) and (min-height: 900px) {
+  #app > .hero,
+  #app section.hero#inicio {
+    padding-top: clamp(14px, 1.1vw, 22px) !important;
+    padding-bottom: clamp(10px, .8vw, 16px) !important;
+  }
+}
