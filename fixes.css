@@ -425,3 +425,60 @@ body.isadm #vadd:hover{
     padding-right: 0 !important;
   }
 }
+
+
+/* Alinhamento efetivo: vence as regras antigas mais específicas de
+   hero-interface.css (em especial #catalogo.tools e .section-content). */
+@media (min-width: 901px) {
+  #site-header .site-header-inner {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #app > .hero,
+  #app #catalogo.tools,
+  #app .vol .section-content,
+  #app .about .section-content,
+  #app .coming .section-content {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app .vol {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app .vol .vhead,
+  #app .vol .vgrid,
+  #app .coming .backstage-head,
+  #app .coming .backstage-grid {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #app .coming .wrap.section-content {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+  }
+
+  #app .coming .coming-box {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+}
