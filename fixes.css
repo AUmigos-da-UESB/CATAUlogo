@@ -223,3 +223,76 @@ body.isadm #vadd:hover{
     height:auto!important;
   }
 }
+
+
+/* ===== Alinhamento horizontal unificado entre a abertura e as seções =====
+   As bordas laterais seguem o mesmo eixo da marca e do painel editorial.
+   O painel "De onde tudo começou" deixa de avançar além desse contêiner. */
+@media (min-width: 761px) {
+  #app .hero,
+  #app #catalogo,
+  #app .section-content,
+  #app .coming > .wrap {
+    width: min(1440px, calc(100% - clamp(40px, 13vw, 260px))) !important;
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app .hero {
+    padding-top: clamp(28px, 3vw, 46px) !important;
+    padding-bottom: clamp(18px, 2vw, 30px) !important;
+  }
+
+  #app .coming .coming-box {
+    --story-bleed: 0px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* O título do catálogo usa a mesma família tipográfica dos demais títulos. */
+#app #catalogo .catalog-head #catalog-title {
+  font-family: "Bricolage Grotesque", Figtree, system-ui, sans-serif !important;
+  font-size: clamp(2.1rem, 3.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.055em !important;
+}
+
+#app #catalogo .catalog-head #catalog-title em {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 1em !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: -.06em !important;
+}
+
+@media (max-width: 760px) {
+  #app .hero,
+  #app #catalogo,
+  #app .section-content,
+  #app .coming > .wrap {
+    width: calc(100% - 36px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 620px) {
+  #app .hero,
+  #app #catalogo,
+  #app .section-content,
+  #app .coming > .wrap {
+    width: calc(100% - 32px) !important;
+  }
+
+  #app #catalogo .catalog-head #catalog-title {
+    font-size: clamp(1.8rem, 7.3vw, 2.65rem) !important;
+  }
+}
