@@ -233,6 +233,8 @@ function assetUrl(src){
 }
 function et(key,value){return `<span class="site-editable" data-site-edit="${key}">${rh(value)}</span>`}
 function home(){
+ document.body.classList.remove("animal-page");
+ document.getElementById("animal-header-back")?.remove();
  const n=k=>DOGS.filter(d=>d.status===k).length;
  let d0=destaque()||SEED.dogs[0];
  if(!d0?.foto?.length)d0=DOGS.find(d=>d.foto&&d.foto.length)||d0;
@@ -317,9 +319,15 @@ function openBackLightbox(index){
 document.addEventListener("click",e=>{const card=e.target.closest(".backstage-photo");if(!card)return;const idx=Number(card.dataset.backIndex||0);if(e.target.closest(".back-expand")||(!e.target.closest("button,a,input")&&e.target.closest(".back-image")))openBackLightbox(idx)});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelector(".back-lightbox")?.remove()});
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
- document.getElementById("app").innerHTML=`<div class="wrap animal-profile"><a class="back back-arrow-button" href="#/" onclick="setTimeout(()=>document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth'}),50)"><img class="back-arrow" src="fotos/seta-voltar.png" alt=""> Voltar ao CATAUlogo</a>
+ inlineTextMode=false;inlineTextSnapshot=null;document.body.classList.remove("inline-text-edit");document.getElementById("inline-text-bar")?.remove();
+ document.querySelectorAll("[data-site-edit]").forEach(el=>{el.contentEditable="false"});
+ document.body.classList.add("animal-page");
+ const headerInner=document.querySelector("#site-header .site-header-inner");
+ document.getElementById("animal-header-back")?.remove();
+ if(headerInner){const back=document.createElement("a");back.id="animal-header-back";back.className="animal-header-back";back.href="#/";back.setAttribute("aria-label","Voltar ao CATAUlogo");back.innerHTML='<img src="fotos/seta-voltar.png" alt="">';headerInner.insertBefore(back,headerInner.querySelector(".logo"));}
+ document.getElementById("app").innerHTML=`<div class="wrap animal-profile">
  <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" ${i===0?`aria-current="true"`:""}>${art(d,i)}</button>`).join("")}</div></div>
- <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
+ <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${d.sexo==="Fêmea"?'<svg class="card-sex female" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M12 14v9m-4-4h8"/></svg>':'<svg class="card-sex male" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="6"/><path d="M13.5 10.5 22 2m-7 0h7v7"/></svg>'}${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
  <div class="kv"><div><small>Localização</small>${esc(d.mod)}</div><div><small>Onde costuma ficar</small>${esc(d.local)}</div></div>
  <h3>História</h3><p class="fic-story">${esc(d.hist)}</p>
  <h3>Personalidade</h3><div class="traits">${d.pers.map(p=>`<span>${esc(p)}</span>`).join("")}</div>
