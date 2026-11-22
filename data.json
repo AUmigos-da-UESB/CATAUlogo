@@ -803,14 +803,32 @@
   "background": {
    "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 140,
+   "scale": 142,
+   "patternOpacity": 69,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
    "secondary": "#f08a45",
    "motionSeconds": 36,
    "motionEnabled": true,
-   "preset": "noturno"
+   "preset": "custom",
+   "palette": [
+    "#a9bad2",
+    "#34495c",
+    "#633b30",
+    "#f08a45",
+    "#0f1713",
+    "#1c2922",
+    "#222b38",
+    "#8a6cff",
+    "#e8553d",
+    "#ff6b9a",
+    "#2ecc8f",
+    "#f5c542",
+    "#ffffff"
+   ],
+   "customPresets": [],
+   "presetName": null
   }
  }
 }
