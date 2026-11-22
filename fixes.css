@@ -296,3 +296,18 @@ body.isadm #vadd:hover{
     font-size: clamp(1.8rem, 7.3vw, 2.65rem) !important;
   }
 }
+
+
+/* Microalinhamento final: a margem esquerda acompanha a borda da logo,
+   enquanto a direita permanece no limite do botão "Versão desktop". */
+@media (min-width: 761px) {
+  #app .hero,
+  #app #catalogo,
+  #app .section-content,
+  #app .coming > .wrap {
+    --header-axis-offset: clamp(0px, .36vw, 6px);
+    width: calc(min(1440px, 100% - clamp(40px, 13vw, 260px)) - var(--header-axis-offset)) !important;
+    margin-left: calc((100% - min(1440px, 100% - clamp(40px, 13vw, 260px))) / 2 + var(--header-axis-offset)) !important;
+    margin-right: auto !important;
+  }
+}
