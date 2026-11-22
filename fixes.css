@@ -642,3 +642,12 @@ body.isadm #vadd:hover{
     padding-right: 0 !important;
   }
 }
+
+
+/* De onde tudo começou: desloca somente o bloco textual.
+   O painel com gradiente e a coluna da arte mantêm dimensões e posição. */
+@media (min-width: 761px) {
+  #app .coming .coming-box > div:first-child {
+    transform: translate(clamp(24px, 2.2vw, 40px), clamp(18px, 1.6vw, 28px)) !important;
+  }
+}
