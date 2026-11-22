@@ -709,3 +709,26 @@ body.animal-page #animal-header-back:hover { background:rgba(225,238,229,.09); }
   body.animal-page #animal-header-back { flex-basis:30px; width:30px; margin-right:4px; }
   body.animal-page #animal-header-back img { width:22px; height:22px; }
 }
+
+
+/* A seta usa a própria célula da marca: não adiciona item ao grid do cabeçalho. */
+#animal-header-back { display:none !important; }
+body.animal-page #site-header .site-header-inner > .logo {
+  gap:10px;
+}
+body.animal-page #site-header .site-header-inner > .logo::before {
+  content:"";
+  display:block;
+  flex:0 0 28px;
+  width:28px;
+  height:28px;
+  background:url("fotos/seta-voltar.png") center / contain no-repeat;
+  filter:invert(1);
+}
+@media(max-width:820px){
+  body.animal-page #site-header .site-header-inner > .logo::before {
+    flex-basis:24px;
+    width:24px;
+    height:24px;
+  }
+}
