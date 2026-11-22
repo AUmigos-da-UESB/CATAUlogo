@@ -566,3 +566,79 @@ body.isadm #vadd:hover{
     width: calc(100% - 32px) !important;
   }
 }
+
+
+/* Correção da origem do recuo: o próprio <main id="app"> herdava
+   max-width e padding laterais do CSS de referência. Isso encolhia e
+   deslocava todos os filhos antes mesmo das regras das seções.
+   O eixo passa a ser calculado no viewport, igual ao cabeçalho. */
+@media (min-width: 901px) {
+  :root {
+    --catau-content-width: min(1440px, calc(100vw - clamp(48px, 15.5vw, 260px)));
+  }
+
+  main#app {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #site-header .site-header-inner {
+    width: var(--catau-content-width) !important;
+    max-width: 1440px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  main#app > section.hero#inicio,
+  main#app > section#catalogo,
+  main#app > section.about > .wrap.section-content,
+  main#app > section.vol > .section-content,
+  main#app > section.coming > .wrap.section-content {
+    width: var(--catau-content-width) !important;
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  main#app > section.hero#inicio {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  main#app > section#catalogo .catalog-head,
+  main#app > section#catalogo .toolbar,
+  main#app > section#catalogo .filters,
+  main#app > section#catalogo .resultbar,
+  main#app > section#catalogo #grid,
+  main#app > section.vol .vhead,
+  main#app > section.vol .vgrid,
+  main#app > section.coming .coming-box,
+  main#app > section.coming .backstage-head,
+  main#app > section.coming .backstage-grid {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 900px) {
+  main#app {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
