@@ -345,3 +345,68 @@ body.isadm #vadd:hover{
     padding-bottom: clamp(10px, .8vw, 16px) !important;
   }
 }
+
+
+/* ===== Eixo horizontal único: cabeçalho e todas as seções principais =====
+   A largura é definida uma única vez pela mesma geometria do cabeçalho.
+   Em desktop, logo e botão de versão delimitam exatamente o conteúdo abaixo. */
+@media (min-width: 901px) {
+  :root {
+    --catau-content-width: min(1600px, calc(100% - clamp(48px, 15.5vw, 260px)));
+  }
+
+  #site-header .site-header-inner {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app > .hero,
+  #app #catalogo,
+  #app .about .section-content,
+  #app .vol > .section-content,
+  #app .coming > .section-content {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* O hero mantém seu grid; somente as margens externas passam a coincidir. */
+  #app > .hero {
+    padding-top: clamp(28px, 3vw, 46px) !important;
+    padding-bottom: clamp(18px, 2vw, 30px) !important;
+  }
+
+  /* Evita que os wrappers internos reintroduzam recuos diferentes. */
+  #app .about .wrap,
+  #app .coming .wrap {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app .vol {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #app .coming .coming-box {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
