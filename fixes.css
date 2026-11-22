@@ -482,3 +482,87 @@ body.isadm #vadd:hover{
     box-sizing: border-box !important;
   }
 }
+
+
+/* Eixo final compartilhado com o cabeçalho: logo à esquerda e versão desktop à direita.
+   Aplica-se aos elementos reais do HTML, sem depender de classes antigas (.tools/.wrap). */
+@media (min-width: 901px) {
+  :root {
+    --catau-content-width: min(1600px, calc(100% - clamp(48px, 15.5vw, 260px)));
+  }
+
+  #site-header .site-header-inner,
+  #app > .hero,
+  #app > #catalogo,
+  #app > .about > .section-content,
+  #app > .vol > .section-content,
+  #app > .coming > .section-content {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app > .vol > .section-content,
+  #app > .coming > .section-content {
+    display: block !important;
+  }
+
+  #app .vol .vhead,
+  #app .vol .vgrid,
+  #app .coming .coming-box,
+  #app .coming .backstage-head,
+  #app .coming .backstage-grid,
+  #app #catalogo .catalog-head,
+  #app #catalogo .toolbar,
+  #app #catalogo .filters,
+  #app #catalogo .resultbar,
+  #app #catalogo #grid {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #app .coming .coming-box {
+    margin-top: 0 !important;
+  }
+
+  #app #catalogo .catalog-head #catalog-title {
+    font-family: "Bricolage Grotesque", Figtree, system-ui, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -.055em !important;
+    line-height: 1.08 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #app > #catalogo,
+  #app > .vol > .section-content,
+  #app > .about > .section-content,
+  #app > .coming > .section-content {
+    width: calc(100% - 36px) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  #app #catalogo .catalog-head #catalog-title {
+    font-family: "Bricolage Grotesque", Figtree, system-ui, sans-serif !important;
+    font-weight: 700 !important;
+  }
+}
+
+@media (max-width: 620px) {
+  #app > #catalogo,
+  #app > .vol > .section-content,
+  #app > .about > .section-content,
+  #app > .coming > .section-content {
+    width: calc(100% - 32px) !important;
+  }
+}
