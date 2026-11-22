@@ -410,3 +410,18 @@ body.isadm #vadd:hover{
     box-sizing: border-box !important;
   }
 }
+
+
+/* Os wrappers .about .wrap e .coming .wrap também são os próprios
+   section-content; portanto devem conservar a largura comum, não 100vw. */
+@media (min-width: 901px) {
+  #app .about .wrap,
+  #app .coming .wrap {
+    width: var(--catau-content-width) !important;
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
