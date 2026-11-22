@@ -234,6 +234,8 @@ function assetUrl(src){
 function et(key,value){return `<span class="site-editable" data-site-edit="${key}">${rh(value)}</span>`}
 function home(){
  document.body.classList.remove("animal-page");
+ const logo=document.querySelector("#site-header .site-header-inner .logo");
+ if(logo){logo.href="#inicio";logo.setAttribute("aria-label","CATAUlogo, página inicial");}
  document.getElementById("animal-header-back")?.remove();
  const n=k=>DOGS.filter(d=>d.status===k).length;
  let d0=destaque()||SEED.dogs[0];
@@ -322,9 +324,9 @@ function ficha(id){
  inlineTextMode=false;inlineTextSnapshot=null;document.body.classList.remove("inline-text-edit");document.getElementById("inline-text-bar")?.remove();
  document.querySelectorAll("[data-site-edit]").forEach(el=>{el.contentEditable="false"});
  document.body.classList.add("animal-page");
- const headerInner=document.querySelector("#site-header .site-header-inner");
+ const logo=document.querySelector("#site-header .site-header-inner .logo");
  document.getElementById("animal-header-back")?.remove();
- if(headerInner){const back=document.createElement("a");back.id="animal-header-back";back.className="animal-header-back";back.href="#/";back.setAttribute("aria-label","Voltar ao CATAUlogo");back.innerHTML='<img src="fotos/seta-voltar.png" alt="">';headerInner.insertBefore(back,headerInner.querySelector(".logo"));}
+ if(logo){logo.href="#/";logo.setAttribute("aria-label","Voltar ao CATAUlogo");}
  document.getElementById("app").innerHTML=`<div class="wrap animal-profile">
  <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" ${i===0?`aria-current="true"`:""}>${art(d,i)}</button>`).join("")}</div></div>
  <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${d.sexo==="Fêmea"?'<svg class="card-sex female" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M12 14v9m-4-4h8"/></svg>':'<svg class="card-sex male" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="6"/><path d="M13.5 10.5 22 2m-7 0h7v7"/></svg>'}${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
