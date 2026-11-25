@@ -425,3 +425,30 @@
   #site-header .site-menu-toggle{width:38px!important;height:38px!important;min-width:38px!important}
   #site-header .desktop-version{font-size:8px!important;padding:0 8px!important}
 }
+
+
+@media(max-width:620px){
+  /* Os nomes de espécie e créditos são spans próprios dentro da foto do card. */
+  #app #catalogo #grid .card .ph .card-species-icon{top:8px!important;left:8px!important;right:auto!important}
+  #app #catalogo #grid .card .ph .card-species-icon .sp{
+    display:inline-flex!important;align-items:center!important;gap:5px!important;
+    min-height:25px!important;padding:4px 8px!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    border-radius:999px!important;background:rgba(16,24,19,.82)!important;
+    color:#f3f3ed!important;font-size:9px!important;font-weight:600!important;
+    line-height:1!important;box-shadow:none!important;
+  }
+  #app #catalogo #grid .card .ph .card-species-icon .sp svg{
+    width:13px!important;height:13px!important;flex:0 0 13px!important;
+  }
+  #app #catalogo #grid .card .ph .cr{
+    position:absolute!important;right:6px!important;bottom:6px!important;
+    left:auto!important;width:auto!important;max-width:calc(100% - 12px)!important;
+    padding:4px 6px!important;border:1px solid rgba(255,255,255,.12)!important;
+    border-radius:6px!important;background:rgba(12,18,15,.76)!important;
+    color:#f1f2ed!important;font-size:8px!important;line-height:1.2!important;
+    font-weight:500!important;text-align:right!important;
+    white-space:normal!important;overflow-wrap:anywhere!important;
+    box-shadow:none!important;
+  }
+}
