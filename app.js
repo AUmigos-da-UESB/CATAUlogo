@@ -320,19 +320,30 @@ function openBackLightbox(index){
  const items=(SITE.backstage||[]).filter(b=>b&&b.src); if(!items.length)return;
  let current=Math.max(0,Math.min(index,items.length-1));
  const box=document.createElement("div");box.className="back-lightbox";
+ const previousOverflow=document.body.style.overflow;
+ const closeLightbox=()=>{if(!box.isConnected)return;document.removeEventListener("keydown",box._galleryKey);document.body.style.overflow=previousOverflow;box.remove()};
  box.innerHTML=`<button type="button" class="back-lightbox-close back-arrow-button" aria-label="Voltar"><img class="back-arrow" src="fotos/seta-voltar.png" alt=""> Voltar</button><span class="back-lightbox-count"></span><div class="back-lightbox-inner"><button type="button" class="back-lightbox-nav back-lightbox-prev" aria-label="Foto anterior">‹</button><div class="back-lightbox-media"><img alt=""></div><div class="back-lightbox-info"><div class="back-lightbox-credit"></div><div class="back-lightbox-caption"></div></div><div class="back-lightbox-thumbs"></div><button type="button" class="back-lightbox-nav back-lightbox-next" aria-label="Próxima foto">›</button></div>`;
  const main=box.querySelector(".back-lightbox-media");const img=main.querySelector("img");const thumbs=box.querySelector(".back-lightbox-thumbs");
  function show(n){current=(n+items.length)%items.length;const b=items[current];const src=PREV[b.src]||assetUrl(b.src);img.src=src;img.alt=b.alt||`Bastidores do documentário ${current+1}`;const credit=box.querySelector(".back-lightbox-credit");credit.textContent=b.credit?"Foto por "+String(b.credit).replace(/^foto\s+por\s+/i,""):"";credit.style.display=b.credit?"block":"none";box.querySelector(".back-lightbox-caption").innerHTML=b.caption?rh(b.caption):"Bastidores do documentário.";box.querySelector(".back-lightbox-count").textContent=`${current+1} / ${items.length}`;thumbs.querySelectorAll("button").forEach((t,i)=>t.classList.toggle("is-current",i===current));}
- thumbs.innerHTML=items.map((b,i)=>`<button type="button" class="back-lightbox-thumb" data-i="${i}" aria-label="Foto ${i+1}"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt=""></button>`).join("");thumbs.querySelectorAll("button").forEach(t=>t.onclick=()=>show(Number(t.dataset.i)));box.querySelector(".back-lightbox-prev").onclick=()=>show(current-1);box.querySelector(".back-lightbox-next").onclick=()=>show(current+1);box.querySelector(".back-lightbox-close").onclick=()=>box.remove();box.addEventListener("click",ev=>{if(ev.target===box)box.remove()});box._galleryKey=e=>{if(e.key==="ArrowLeft")show(current-1);if(e.key==="ArrowRight")show(current+1);if(e.key==="Escape")box.remove()};document.addEventListener("keydown",box._galleryKey);box.addEventListener("remove",()=>document.removeEventListener("keydown",box._galleryKey));document.body.appendChild(box);show(current);}
+ thumbs.innerHTML=items.map((b,i)=>`<button type="button" class="back-lightbox-thumb" data-i="${i}" aria-label="Foto ${i+1}"><img src="${esc(PREV[b.src]||assetUrl(b.src))}" alt=""></button>`).join("");thumbs.querySelectorAll("button").forEach(t=>t.onclick=()=>show(Number(t.dataset.i)));box.querySelector(".back-lightbox-prev").onclick=()=>show(current-1);box.querySelector(".back-lightbox-next").onclick=()=>show(current+1);box.querySelector(".back-lightbox-close").onclick=closeLightbox;box.addEventListener("click",ev=>{if(ev.target===box)closeLightbox()});box._galleryKey=e=>{if(e.key==="ArrowLeft")show(current-1);if(e.key==="ArrowRight")show(current+1);if(e.key==="Escape")closeLightbox()};document.addEventListener("keydown",box._galleryKey);document.body.style.overflow="hidden";document.body.appendChild(box);show(current);}
 document.addEventListener("click",e=>{const card=e.target.closest(".backstage-photo");if(!card)return;const idx=Number(card.dataset.backIndex||0);if(e.target.closest(".back-expand")||(!e.target.closest("button,a,input")&&e.target.closest(".back-image")))openBackLightbox(idx)});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelector(".back-lightbox")?.remove()});
 function ficha(id){
  const d=DOGS.find(x=>x.id===id);if(!d)return home();
  inlineTextMode=false;inlineTextSnapshot=null;document.body.classList.remove("inline-text-edit");document.getElementById("inline-text-bar")?.remove();
  document.querySelectorAll("[data-site-edit]").forEach(el=>{el.contentEditable="false"});
  document.body.classList.add("animal-page");
- const logo=document.querySelector("#site-header .site-header-inner .logo");
+ const headerInner=document.querySelector("#site-header .site-header-inner");
+ const logo=headerInner?.querySelector(".logo");
  document.getElementById("animal-header-back")?.remove();
- if(logo){logo.href="#/";logo.setAttribute("aria-label","Voltar ao CATAUlogo");}
+ if(headerInner&&logo){
+  const back=document.createElement("button");
+  back.type="button";back.id="animal-header-back";back.className="animal-header-back";
+  back.setAttribute("aria-label","Voltar ao CATAUlogo");
+  back.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>';
+  back.addEventListener("click",()=>{location.hash="#/"});
+  headerInner.insertBefore(back,logo);
+  logo.href="#/";logo.setAttribute("aria-label","CATAUlogo, página inicial");
+ }
  document.getElementById("app").innerHTML=`<div class="wrap animal-profile">
  <article class="fic"><div class="gal"><div class="main" id="main">${art(d,0)}${ico(d.esp)}</div><div class="thumbs">${Array.from({length:d.foto&&d.foto.length?d.foto.length:3},(_,i)=>i).map(i=>`<button data-i="${i}" aria-label="Foto ${i+1}" ${i===0?`aria-current="true"`:""}>${art(d,i)}</button>`).join("")}</div></div>
  <div class="fic-info"><div class="fic-title-row"><h1>${esc(d.nome)}</h1><span class="profile-sex ${d.sexo==="Fêmea"?"female":"male"}">${d.sexo==="Fêmea"?'<svg class="card-sex female" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M12 14v9m-4-4h8"/></svg>':'<svg class="card-sex male" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="6"/><path d="M13.5 10.5 22 2m-7 0h7v7"/></svg>'}${esc(d.sexo)}</span><span class="profile-age">${esc(d.idade)}</span><span class="${cls(d.status)}">${esc(d.status)}</span></div>
