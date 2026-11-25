@@ -534,3 +534,34 @@
   #app #catalogo .filters .filter,
   #app #catalogo .filters .chip{font-size:7.5px!important;padding:5px 2px!important}
 }
+
+
+/* Status do animal: linha independente, sempre ancorada à esquerda. */
+@media (max-width:620px){
+  #app #catalogo #grid .card .card-status-row{
+    display:flex!important;
+    flex-direction:row!important;
+    justify-content:flex-start!important;
+    align-items:flex-start!important;
+    align-self:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:left!important;
+  }
+  #app #catalogo #grid .card .card-status-row .badge,
+  #app #catalogo #grid .card .card-status-row>span{
+    display:inline-flex!important;
+    position:static!important;
+    float:none!important;
+    align-self:flex-start!important;
+    justify-self:start!important;
+    width:max-content!important;
+    max-width:100%!important;
+    margin:0!important;
+    margin-left:0!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+}
