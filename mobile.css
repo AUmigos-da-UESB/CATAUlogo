@@ -486,3 +486,51 @@
     overflow-wrap: anywhere !important;
   }
 }
+
+
+/* Correções adicionais de interface mobile — 24/11/2026. */
+@media (max-width:620px){
+  /* O status fica abaixo do apelido e alinhado à esquerda, sem herdar auto-margin. */
+  #app #catalogo #grid .card .card-title-row>span{
+    order:3!important;
+    align-self:flex-start!important;
+    justify-self:start!important;
+    margin:0!important;
+    margin-inline-start:0!important;
+    text-align:left!important;
+  }
+
+  /* Oito filtros em duas linhas, com quatro colunas em cada linha. */
+  #app #catalogo .filters{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    grid-auto-flow:row!important;
+    grid-auto-rows:minmax(34px,auto)!important;
+    gap:7px!important;
+    align-items:stretch!important;
+  }
+  #app #catalogo .filters .filter,
+  #app #catalogo .filters .chip{
+    width:100%!important;min-width:0!important;min-height:34px!important;
+    padding:5px 3px!important;font-size:8px!important;line-height:1.15!important;
+    white-space:normal!important;text-align:center!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  /* Identifica corretamente a versão exibida no celular. */
+  #site-header .desktop-version{
+    font-size:0!important;
+  }
+  #site-header .desktop-version::after{
+    content:"Versão mobile"!important;
+    display:inline!important;
+    font-size:9px!important;
+    line-height:1!important;
+  }
+}
+@media(max-width:380px){
+  #site-header .desktop-version::after{font-size:8px!important}
+  #app #catalogo .filters{gap:5px!important}
+  #app #catalogo .filters .filter,
+  #app #catalogo .filters .chip{font-size:7.5px!important;padding:5px 2px!important}
+}
