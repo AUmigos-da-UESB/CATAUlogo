@@ -452,3 +452,37 @@
     box-shadow:none!important;
   }
 }
+
+
+/* Ajuste de alinhamento dos bastidores e do rodapé — 24/11/2026. */
+@media (max-width: 620px) {
+  /* Cada linha da grade acompanha a altura do cartão mais alto, sem alterar o 16:9 das fotos. */
+  #app .coming .backstage-grid {
+    align-items: stretch !important;
+  }
+  #app .coming .backstage-photo {
+    height: 100% !important;
+    align-self: stretch !important;
+  }
+  #app .coming .backstage-photo figcaption {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    text-align: left !important;
+  }
+
+  /* Rodapé alinhado ao mesmo recuo lateral do conteúdo da página. */
+  footer {
+    box-sizing: border-box !important;
+    padding: 24px 16px 32px !important;
+  }
+  footer .wrap {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere !important;
+  }
+}
