@@ -803,8 +803,8 @@
   "background": {
    "blue": "#34495c",
    "pink": "#633b30",
-   "scale": 219,
-   "patternOpacity": 100,
+   "scale": 180,
+   "patternOpacity": 60,
    "aboutStart": "#1c2922",
    "aboutEnd": "#222b38",
    "primary": "#a9bad2",
@@ -827,7 +827,22 @@
     "#f5c542",
     "#ffffff"
    ],
-   "customPresets": [],
+   "customPresets": [
+    {
+     "name": "CATAUlogo original",
+     "c1": "#34495c",
+     "c2": "#633b30",
+     "primary": "#a9bad2",
+     "secondary": "#f08a45",
+     "grad1": "#1c2922",
+     "grad2": "#222b38",
+     "scale": 38,
+     "opacity": 60,
+     "speed": 36,
+     "originalName": "CATAUlogo original",
+     "_builtinOverride": true
+    }
+   ],
    "presetName": "CATAUlogo original"
   }
  }
