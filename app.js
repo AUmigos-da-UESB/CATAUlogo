@@ -166,6 +166,12 @@ function lista(){
  });
  document.getElementById("grid").innerHTML=r.length?r.map(d=>{const sexIcon=d.sexo==="Fêmea"?'<svg class="card-sex female" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M12 14v9m-4-4h8"/></svg>':'<svg class="card-sex male" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="6"/><path d="M13.5 10.5 22 2m-7 0h7v7"/></svg>';return `<a class="card" href="#/cao/${d.id}"><div class="ph">${art(d)}<span class="card-species-icon">${ico(d.esp)}</span><span class="card-actions"><button class="ex" data-id="${d.id}" aria-label="Editar ${esc(d.nome)}" title="Editar animal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="dx" data-id="${d.id}" aria-label="Excluir ${esc(d.nome)}" title="Excluir animal"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></span></div><div class="bd"><div class="card-title-row"><h3>${esc(d.nome)}</h3><span class="${cls(d.status)}">${esc(d.status)}</span></div>${d.apelido?`<div class="card-nickname">${esc(d.apelido)}</div>`:""}<div class="meta loc">${pin}<span>${esc(d.mod)}</span></div><div class="meta card-sexline">${sexIcon}<span>${esc(d.sexo)} · ${esc(d.idade)}</span></div></div></a>`}).join(""):`<p class="empty">Nenhum AUmigo encontrado. Tente outro nome ou filtro.</p>`;
  document.getElementById("cnt").textContent=r.length+(r.length===1?" animal":" animais");
+  if(window.matchMedia("(max-width: 620px)").matches){
+   document.querySelectorAll("#grid .card .ph img").forEach(img=>{
+    img.loading="lazy";
+    img.decoding="async";
+   });
+  }
   renderOrderMenu();
 }
 function destaque(){let u=-1;try{u=DOGS.findIndex(x=>x.id===localStorage.auu_last)}catch(e){}
