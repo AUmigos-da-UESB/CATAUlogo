@@ -173,9 +173,9 @@
   #site-header .desktop-version{
     grid-column:2!important;display:inline-flex!important;justify-self:center!important;
     align-items:center!important;min-height:27px!important;padding:5px 8px!important;
-    border:1px solid var(--line,rgba(214,224,211,.24))!important;
+    border:1px solid rgba(220,230,220,.22)!important;
     border-radius:999px!important;background:rgba(255,255,255,.035)!important;
-    color:var(--ink,#d8ded5)!important;font:600 9px/1 Figtree,sans-serif!important;
+    color:#dce5dc!important;font:600 9px/1 Figtree,sans-serif!important;
     letter-spacing:.045em!important;white-space:nowrap!important;
     font-size:0!important;
   }
@@ -184,7 +184,7 @@
     grid-column:3!important;width:40px!important;height:40px!important;
     border-radius:12px!important;background:rgba(255,255,255,.045)!important;
     background-image:none!important;border:1px solid var(--line,rgba(214,224,211,.24))!important;
-    color:var(--ink,#eef2ea)!important;box-shadow:none!important;
+    color:#e9eee8!important;box-shadow:none!important;
   }
   #site-header .site-menu-toggle span{background:currentColor!important}
 
