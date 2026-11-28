@@ -669,6 +669,50 @@
    "fotoCred": [
     "Luana Segala, @lua_segala"
    ]
+  },
+  {
+   "id": "a1795884843269",
+   "esp": "Cachorro",
+   "mod": "Luisão",
+   "nome": "Sem nome",
+   "apelido": "",
+   "sexo": "Fêmea",
+   "idade": "Indefinida",
+   "status": "Comunitário",
+   "ano": [
+    2026,
+    2026
+   ],
+   "local": "Próximo aos quiosques do Luizão",
+   "coat": "#b98a55",
+   "ear": "#7d5a36",
+   "bg": "#e3e7d8",
+   "hist": "História em breve.",
+   "pers": [
+    "Calmo",
+    "Medroso",
+    "Tímido",
+    "Tranquilo",
+    "Desconfiado"
+   ],
+   "car": [
+    "Porte pequeno",
+    "Pelagem curta",
+    "Pelagem lisa",
+    "Pelagem preta",
+    "Pelagem branca",
+    "Manchas",
+    "Orelhas caídas",
+    "Olhos claros"
+   ],
+   "foto": [
+    "fotos/a1795884843269-mx0nguch-0.jpg",
+    "fotos/a1795884843269-mx0nguch-1.jpg"
+   ],
+   "fotoCred": [
+    "David Matos, @davidmatos_15",
+    "David Matos, @davidmatos_15"
+   ]
   }
  ],
  "locs": [
